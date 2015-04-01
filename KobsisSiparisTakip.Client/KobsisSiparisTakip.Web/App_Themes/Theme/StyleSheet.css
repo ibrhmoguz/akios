@@ -1,0 +1,165 @@
+﻿body
+{font-family:Verdana; font-size:12px;}
+img.textalign
+{border:0px; position:relative; top:4px; padding-right:3px;}
+.log
+{position:relative; top:3px;}
+
+table.header
+{border:solid 0px gray; width:100%;}
+
+a:link			{text-decoration:none; color:#6C7380; font-weight:bold;}     
+a:visited		{text-decoration:none; color:#6C7380; font-weight:bold;}    
+a:hover			{text-decoration:none; color:#FF6204; font-weight:bold;}     
+a:active		{text-decoration:none; color:#6C7380; font-weight:bold;} 
+
+a.btn:link			{text-decoration:none; color:#6C7380; font-weight:bold; background-image:url(Raster/buton.jpg); width:91px; height:22px; background-repeat:no-repeat; border:Solid 0px White; display:block; text-align:center; padding-top:3px;}     
+a.btn:visited		{text-decoration:none; color:#6C7380; font-weight:bold; background-image:url(Raster/buton.jpg); width:91px; height:22px; background-repeat:no-repeat; border:Solid 0px White; display:block; text-align:center; padding-top:3px;}    
+a.btn:hover			{text-decoration:none; color:#FF6204; font-weight:bold; background-image:url(Raster/buton.jpg); width:91px; height:22px; background-repeat:no-repeat; border:Solid 0px White; display:block; text-align:center; padding-top:3px;}     
+a.btn:active		{text-decoration:none; color:#6C7380; font-weight:bold; background-image:url(Raster/buton.jpg); width:91px; height:22px; background-repeat:no-repeat; border:Solid 0px White; display:block; text-align:center; padding-top:3px;} 
+
+b.baslik
+{font-size: 2.2em; color:Gray; }
+
+input[type=text], input[type=password]
+{color:Blue; border:Solid 0px White; border:Solid 1px Silver; background-color:Transparent; cursor:text;}
+input[type=submit]
+{border:Solid 0px White;  background-color:Transparent; cursor:hand; color:#6C7380;}
+input[type=submit]:hover
+{border:Solid 0px White;  background-color:Transparent; cursor:hand; color:#FF6204;}
+
+#infobox 
+{width: 600px; line-height:20px; text-align:left;}
+#infobox .title 
+{letter-spacing: -1px; font-size: 2.2em; color:#268ED4 }
+#infobox .posted 
+{margin-bottom: 2em; font-size: 1em; font-weight: normal; text-align: justify;}
+#infobox ul
+{line-height:20px;}
+
+#infobox2 
+{width: 420px;}
+
+#infobox2 h3 
+{width: 410px;height: 32px;padding: 12px 0 0 10px;background: #5A5A5A;font-size: 1,5em;color: #FFFFFF;}
+
+table.stil1
+{width:70%; border-color:black }
+
+table.stil1 th
+{
+	text-align:left; font-weight:bold; padding:5px; border:Solid 1px Gray; 
+	padding-left:15px;
+}
+
+table.stil1 td
+{text-align:left; padding:5px; border:Solid 1px Gray;}
+
+
+
+table.AnaTablo
+{ width:70%; border: 1px solid #61BBEF;background-color: #F0F4F8; vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;}
+
+table.AnaTablo th
+
+{background-color: #e5f1fb;text-align: left;font-weight: bold;padding-left: 5px; text-align:left}
+
+table.AnaTablo td
+{padding-left: 5px; text-align:left}
+
+table.AnaTabloRapor
+{ width:100%; border: 1px solid #61BBEF;background-color: #F0F4F8; vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;}
+
+table.AnaTabloRapor th
+
+{background-color: #e5f1fb;text-align: center;font-weight: bold;padding-left: 5px;}
+
+table.AnaTabloRapor th.thIlkKolon
+{background-color: #e5f1fb;text-align: left;font-weight: bold;padding-left: 5px;}
+
+table.AnaTabloRapor td
+{padding-left: 5px; text-align:center}
+
+/*CSS Standartları bu şekilde olacak FORMATLAMA YAPMAYINIZ!!!*/
+td.tdTabStripAktif{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7fbfe, endColorstr=#68b3f4, gradientType=0);}
+td.tdTabStripPasif{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dfdfdf, endColorstr=#ababab, gradientType=0);}
+INPUT{font-family: Tahoma;font-size: 12px;letter-spacing: 1px;}
+SELECT{font-family: Tahoma;font-size: 12px;
+}
+TEXTAREA{font-family: Tahoma;font-size: 12px;letter-spacing: 1px;}
+hr{border: 1px solid #737373;}
+
+body{background-repeat:repeat-x; background-image:url(../../App_Themes/Main/Images/Genel/background.jpg);margin:0px;background-position:top; background-color:#cbd4d8;}
+
+.AnaTablo2{border-left: 1px solid #79A5B0;border-right: 1px solid #79A5B0;border-top: 1px solid #79A5B0;padding: 2px;vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;height: 100%;}
+.AnaTablo3{border-left: 1px solid #79A5B0;border-right: 1px solid #79A5B0;padding: 2px;vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;height: 100%;}
+.AnaTablo4{border-left: 1px solid #79A5B0;border-right: 1px solid #79A5B0;border-bottom: 1px solid #79A5B0;padding: 2px;vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;height: 100%;}
+.hr_ince{border: solid 1px #79A5B0;}
+
+/* Master Page*/
+#main {width:844px; margin:0 auto; text-align:center}
+#header	{width:844px;height:164px;background-image:url(../../App_Themes/Main/Images/Genel/header.jpg);background-repeat:no-repeat;}
+#content {width:844px;background-image:url(../../App_Themes/Main/Images/Genel/content_back.jpg);background-repeat:repeat-y;}
+#footer	{width:844px;height:40px;background-image:url(../../App_Themes/Main/Images/Genel/footer.jpg);background-repeat:no-repeat;text-align:center;padding-top:6px;color:#FFFFFF;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:11px}
+#controls {padding:20px;}
+
+/*Tablelarda çerçeve verir ve background değiştirir. */
+
+
+
+
+.AnaAltTablo{border-bottom: 1px solid #737373;border-left: 1px solid #FF8F02;border-right: 1px solid #FF8F02;font-size: 12px;background-color: #F0F4F8; /*width: 100%;*/padding: 2px;vertical-align: top;}
+.AnaCercevesizTablo{background-color: #F0F4F8;vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;}
+.AnaSolSagUstCizgiliTablo{background-color: #F0F4F8;vertical-align: top;font-family: Segoe UI;font-size: 9pt;font-weight: normal;border-top: 1px solid #61BBEF;border-left: 1px solid #61BBEF;border-right: 1px solid #61BBEF;}
+.AnaHeaderTablo{border-top: 1px solid #61BBEF;font-size: 12px;background-color: #F0F4F8;width: 100%;vertical-align: top;}
+.tdrenk0{background-color: #d5e9fb;text-align: left;font-weight: bold;background-repeat: no-repeat;background-position: left;padding-left: 30px;height: 20px;}
+/*genel kullanımı label olan tdler içindir*/
+
+.TdRenkSolResimsizSerbest{background-color: #d5e9fb;font-weight: bold;background-repeat: no-repeat;padding-left: 30px;}
+/*genel kullanımı içeriik girilecek tdler içindir*/
+.TdRenkSag{text-align: left;padding-left: 10px;}
+/*text-align yok bunda*/
+.TdRenkSagSerbest{padding: 1px;}
+.TdRenkOrtala{text-align: center;padding-left: 10px;}
+.TdRenkSolaYasla{text-align: left;padding-left: 10px;}
+.TdRenkSagaYasla{text-align: right;padding-left: 10px;}
+/*bu başlık için olacak*/
+.ThBaslikRenk1{background-color: #1f89bd;background-image: url(../../App_Themes/Main/Images/Genel/thbg.gif);font-size: 12px;font-weight: bolder;text-align: center;font-family: Tahoma;font-weight: bold;height: 26px;color: white; background-repeat:repeat-x;}
+.ThAnasayfa{background-color: #1f89bd;background-image: url(../../App_Themes/Main/Images/Genel/thanasayfa.jpg);font-size: 12px;font-weight: bolder;text-align: center;font-family: Tahoma;font-weight: bold;height: 25px;color: #1a5171; background-repeat:repeat-x;}
+.ThBaslikRenk1 a{ color:White;}
+.ThBaslikRenk2 a{ color:White;}
+.ThBaslikRenk2{background-color: #98A2A5;background-image: url(/Resim/Ortak/MaviBackGround.jpg);font-size: 12px;font-weight: bolder;text-align: center;font-family: Tahoma;font-weight: bold;height: 22px;color: Black;}
+.ThBaslikRenk2Serbest{background-color: #98A2A5;background-image: url(/Resim/Ortak/MaviBackGround.png);font-size: 12px;font-weight: bolder;font-family: Tahoma;font-weight: bold;height: 22px;color: Black;}
+.ThBaslikRenk1Serbest{background-color: #1f89bd;background-image: url(../../App_Themes/Main/Images/Genel/thbg.gif);font-size: 12px;font-weight: bolder;font-family: Tahoma;font-weight: bold;height: 26px;color: Black; background-repeat:repeat-x;}
+.ThBaslikRenk1Serbest a{ color:White; text-decoration:none;}
+td.tdTabStripAktif{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#f7fbfe, endColorstr=#68b3f4, gradientType=0);}
+td.tdTabStripPasif{filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#dfdfdf, endColorstr=#ababab, gradientType=0);}
+/*Hizalamalar*/
+td.metin{ text-align:left;}
+td.tarih{ text-align:center;}
+td.sayiSolaHizali{ text-align:left;}
+td.sayiSagaHizali{ text-align:right;}
+td.sayiOrtali{ text-align:center;}
+td.para { text-align:right;}
+.TdRenkAciklama, .TdRenkAciklamaSefop{ color:#036; background-color:#d4e0ea; border-bottom:1px dashed #036; font-style:italic; padding:10px;  }
+h4{ color:#E60; padding-top:8px; }
+.TdRenkAciklamaSefop{font-style:normal; font-weight:bold}
+/*Mesaj Kutuları*/
+table.uyarimesajlari  td.mesajkutusubaslik{ background-image:url(../../App_Themes/Main/Images/MessageBox/baslikdoseme.gif); height:28px;}
+table.uyarimesajlari  td.mesajkutusubaslik div.mesajkutusubasliksol{background-image:url(../../App_Themes/Main/Images/MessageBox/basliksol.gif); background-repeat:no-repeat; background-position:left; height:28px; }
+table.uyarimesajlari  td.mesajkutusubaslik div.mesajkutusubasliksolsag{background-image:url(../../App_Themes/Main/Images/MessageBox/basliksag.gif); background-repeat:no-repeat; background-position:right; height:24px; font-weight:bold; padding-top:4px;}
+table.uyarimesajlari td.mesajlarHata, table.uyarimesajlari td.mesajlarUyari,table.uyarimesajlari td.mesajlarAciklama,table.uyarimesajlari td.mesajlarBasari,table.uyarimesajlari td.mesajlarKategorisiz,table.uyarimesajlari td.mesajlarOnay{ background-color:#FFF; background-image:url(../../App_Themes/Main/Images/MessageBox/hata.gif); background-repeat:no-repeat; padding-top:10px; padding-left:40px; padding-bottom:10px; padding-right:10px; color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.mesajlarUyari{ background-image:url(../../App_Themes/Main/Images/MessageBox/uyari.gif); color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.mesajlarAciklama{ background-image:url(../../App_Themes/Main/Images/MessageBox/aciklama.gif); color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.mesajlarBasari{background-image:url(../../App_Themes/Main/Images/MessageBox/basari.gif); color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.mesajlarKategorisiz{background-color:White; padding-left:10px; background-image:none; color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.mesajlarOnay{background-image:url(../../App_Themes/Main/Images/MessageBox/onay.gif); color:black; border:1px solid #d6d6d6; border-top:none;}
+table.uyarimesajlari td.BaslikHata,table.uyarimesajlari td.BaslikUyari,table.uyarimesajlari td.BaslikAciklama,table.uyarimesajlari td.BaslikBasari,table.uyarimesajlari td.BaslikKategorisiz{ color:#900; font-weight:bold; font-size:large; letter-spacing:1px; border-bottom:1px solid black;}
+table.uyarimesajlari td.BaslikUyari{color:#F90;}
+table.uyarimesajlari td.BaslikAciklama{ color:#069;}
+table.uyarimesajlari td.BaslikBasari{ color:#090;}
+table.uyarimesajlari td.BaslikKategorisiz{}
+table.uyarimesajlari{border-width: 3px;border-style: outset; border-color: White;}
+
+/*ModalPopUp*/
+.ModalPopupBackground{background-color:Gray;filter:alpha(opacity=70);opacity:0.7;}

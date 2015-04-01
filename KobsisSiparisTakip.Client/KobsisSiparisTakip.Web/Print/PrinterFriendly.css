@@ -1,0 +1,91 @@
+﻿@charset "utf-8";
+/* CSS Document */
+body {font-size: 75%; color: #222; background: #fff; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; }
+
+#header {visibility: hidden;}
+
+#footer{visibility: hidden;}
+
+@media print {
+    #header, #footer {visibility: visible;}
+  }
+
+/* Basliklar
+-------------------------------------------------------------- */
+
+h1,h2,h3,h4,h5,h6 { font-weight: normal; color: #111; }
+
+h1 { font-size: 3em; line-height: 1; margin-bottom: 0.5em; }
+h2 { font-size: 2em; margin-bottom: 0.75em; }
+h3 { font-size: 1.5em; line-height: 1; margin-bottom: 1em; }
+h4 { font-size: 1.2em; line-height: 1.25; margin-bottom: 1.25em; }
+h5 { font-size: 1em; font-weight: bold; margin-bottom: 1.5em; }
+h6 { font-size: 1em; font-weight: bold; }
+
+h1 img, 
+h2 img, 
+h3 img, 
+h4 img, 
+h5 img, 
+h6 img { margin: 0; }
+
+/* Yazilar
+-------------------------------------------------------------- */
+
+p          		{ margin: 0 0 1.5em; }
+p img.resimSola { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
+p img.resimSaga { float: right; margin: 1.5em 0 1.5em 1.5em; }
+
+a:focus, 
+a:hover   		{ color: #000; }
+a         		{ color: #009; text-decoration: underline; }
+
+blockquote  	{ margin: 1.5em; color: #666; font-style: italic; }
+strong    		{ font-weight: bold; }
+em		      	{ font-style: italic; }
+sup, sub    	{ line-height: 0; }
+
+abbr	    	{ border-bottom: 1px dotted #666; }
+address     	{ margin: 0 0 1.5em; font-style: italic; }
+del         	{ color:#666; }
+.acikRenk   	{ color: #666; }
+pre 			{ margin: 1.5em 0; white-space: pre; font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5; }
+
+/* Listeler
+-------------------------------------------------------------- */
+
+ul          { list-style-type: disc; }
+ol          { list-style-type: decimal; }
+
+/* Tablolar
+-------------------------------------------------------------- */
+
+table.normalTablo, table.normalTablo td { font-size:8pt; border-collapse:collapse; margin-bottom: 0.5em; border:1px solid gray;}
+table.normalTablo th   		{ font-weight: bold; background: #e5f1fb; }
+table.normalTablo th,td		{ padding: 5px 5px 5px 5px; vertical-align:top; }
+table.normalTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
+table.normalTablo tfoot		{ font-style: italic; }
+table.normalTablo caption	{ background: #eee; }
+
+table.boldTablo, table.boldTablo td { font-size:8pt; font-weight:normal; margin-bottom: 0.5em; border-collapse:collapse; border:1px solid gray;}
+table.boldTablo th   		{ font-weight: bold; background: #e5f1fb; }
+table.boldTablo th,td		{ padding: 0px 0px 0px 0px; }
+table.boldTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
+table.boldTablo tfoot		{ font-style: italic; }
+table.boldTablo caption		{ background: #eee; }
+
+/* Cesitli
+-------------------------------------------------------------- */
+
+.kucukYazi      { font-size: .8em; margin-bottom: 1.875em; line-height: 1.875em; }
+.buyukYazi      { font-size: 1.2em; line-height: 2.5em; margin-bottom: 1.25em; }
+.gizle       { display: none; }
+
+.vugulu  { background:#ff0; }
+.ozel      { background:#060; color: #fff; }
+.onemli    { background:#900; color: #fff; }
+.hata    { color: #fff; }
+
+td.yukariHizala        { margin-top:0; padding-top:0; }
+td.asagiHizala     { margin-bottom:0; padding-bottom:0; }
+th.baslik   		{ font-weight: bold; background: #C3D9FF; }

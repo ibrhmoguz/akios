@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="KobsisMasterPage.Master.cs" Inherits="KobsisSiparisTakip.Web.KobsisMasterPage" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <script src="Script/jquery.js"></script>
+    <script src="Script/NumberFormat.js"></script>
+    <link href="App_Themes/Theme/Template/Template.css" type="text/css" rel="stylesheet" />
+    <link href="App_Themes/Theme/StyleSheet.css" type="text/css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <script type="text/javascript">
+
+        $(function () {
+            $('.NumericFieldClass').priceFormat({
+                prefix: '',
+                suffix: '',
+                thousandsSeparator: '.',
+                centsSeparator: ',',
+                centsLimit: 2
+            });
+        });
+
+        var modalDiv = null;
+        function showNotification() {
+            $find("<%=RadNotificationACKMaster.ClientID %>").show();
+        }
+
+        function showModalDiv(sender, args) {
+            if (!modalDiv) {
+                modalDiv = document.createElement("div");
+                modalDiv.style.width = "100%";
+                modalDiv.style.height = "100%";
+                modalDiv.style.backgroundColor = "#aaaaaa";
+                modalDiv.style.position = "absolute";
+                modalDiv.style.left = "0px";
+                modalDiv.style.top = "0px";
+                modalDiv.style.filter = "progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=50)";
+                modalDiv.style.opacity = ".5";
+                modalDiv.style.MozOpacity = ".5";
+                modalDiv.setAttribute("unselectable", "on");
+                modalDiv.style.zIndex = (sender.get_zIndex() - 1).toString();
+                document.body.appendChild(modalDiv);
+            }
+            modalDiv.style.display = "";
+        }
+
+        function hideModalDiv() {
+            modalDiv.style.display = "none";
+        }
+    </script>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Telerik" ShowChooser="false"></telerik:RadSkinManager>
+        <table style="width: 100%">
+            <tr style="text-align: right">
+                <td>
+                    <asp:Label ID="LabelUserName" runat="server" Text="Kullanıcı: "></asp:Label>
+                    <asp:LinkButton ID="LB_Logout" runat="server" OnClick="LB_Logout_Click">(Çıkış)</asp:LinkButton>
+                </td>
+            </tr>
+        </table>
+
+        <telerik:RadRibbonBar ID="RadRibbonBarMenu" runat="server" Width="100%" OnCommand="RadRibbonBarMenu_Command">
+            <telerik:RibbonBarTab Text="SİPARİŞ">
+                <telerik:RibbonBarGroup Text="Sipariş Ekle">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbSiparisEkleNova" Size="Large" Text="NOVA" ToolTip="Nova sipariş eklemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/nova.png" CommandName="SiparisEkleNova" />
+                        <telerik:RibbonBarButton ID="rbbSiparisEkleKroma" Size="Large" Text="KROMA" ToolTip="Kroma sipariş eklemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/kroma.png" CommandName="SiparisEkleKroma" />
+                        <telerik:RibbonBarButton ID="rbbSiparisEkleGuard" Size="Large" Text="GUARD" ToolTip="Guard sipariş eklemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guard.png" CommandName="SiparisEkleGuard" />
+                        <telerik:RibbonBarButton ID="rbbSiparisEklePorte" Size="Large" Text="PORTE" ToolTip="Porte sipariş eklemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/porte.png" CommandName="SiparisEklePorte" />
+                        <telerik:RibbonBarButton ID="rbbSiparisEkleYangin" Size="Large" Text="YANGIN" ToolTip="Yangın sipariş eklemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/yangin.png" CommandName="SiparisEkleYangin" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Value="Sorgula" Text="Sorgula">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="SiparisSorgula" />
+                        <%--<telerik:RibbonBarButton ID="rbbMontajSorgula" Size="Large" Text="MONTAJ" ToolTip="Montaj sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="MontajSorgula" />--%>
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+            <telerik:RibbonBarTab Text="İŞ TAKVİMİ">
+                <telerik:RibbonBarGroup Text="Takvim Görünümü">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbIsTakvimiTakvimGorunumu" Size="Large" Text="TAKVİM" ToolTip="İş Takvimini görüntülemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/calendar.jpg" CommandName="IsTakvimiGoruntule" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+            <telerik:RibbonBarTab Text="YÖNETİM KONSOLU">
+                <telerik:RibbonBarGroup Text="Kullanıcı İşlemleri">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbKullaniciEkle" Size="Large" Text="KULLANICI" ToolTip="Kullanıcı eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/kullaniciEkle.png" CommandName="KullaniciEkle" />
+                        <telerik:RibbonBarButton ID="rbbPersonelEkle" Size="Large" Text="PERSONEL" ToolTip="Personel eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/personelEkle.png" CommandName="PersonelEkle" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="Form Öğelerini Güncelleme">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE DÜZENLE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="FormOgeGuncelle" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="Günlük Montaj Kota Tanımlama">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbMontajKota" Size="Large" Text="MONTAJ KOTA TANIMLA" ToolTip="Günlük montaj kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/montajKota.png" CommandName="MontajKotaDuzenle" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="Uygulama Ayarları">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbUygulamaAyar" Size="Large" Text="UYGULAMA AYARLARI" ToolTip="Uygulama ayarlarını belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/Settings.png" CommandName="UygulamaAyar" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="Hatalar">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbHatalar" Size="Large" Text="HATA LOG" ToolTip="Uygulamada alınan hataları görmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/hataLog.png" CommandName="HataListesi" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+            <telerik:RibbonBarTab Text="ŞİFRE GÜNCELLEME">
+                <telerik:RibbonBarGroup Text="Şifre Güncelleme">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbSifreGuncelle" Size="Large" Text="GÜNCELLEME" ToolTip="Şifrenizi güncellemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="SifreGuncelle" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+            <telerik:RibbonBarTab Text="RAPORLAR">
+                <telerik:RibbonBarGroup Text="Takip Formu">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbGunlukIsTakipFormu" Size="Large" Text="GÜNLÜK İŞ TAKİP FORMU" ToolTip="Günlük iş takip formu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/gunlukRapor.png" CommandName="GunlukIsTakipFormu" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="Kapı Tipine Göre Satış Raporu">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbKapiTipineGoreSatilanAdet" Size="Large" Text="KAPI TİPİNE GÖRE SATIŞ RAPORU" ToolTip="Kapı tipine göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="KapiTipineGoreSatilanAdet" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+                <telerik:RibbonBarGroup Text="İl İlçe Bazlı Satış Raporu">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbIlIlceyeGoreSatilanAdet" Size="Large" Text="İL İLÇEYE GÖRE SATIŞ RAPORU" ToolTip="İl İlçeye göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report2.png" CommandName="IlIlceyeGoreSatilanAdet" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+        </telerik:RadRibbonBar>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <telerik:RadNotification ID="RadNotificationACKMaster" runat="server" Position="Center" AutoCloseDelay="3000" Width="300px" EnableRoundedCorners="true"
+            Height="120px" Text="Lorem ipsum dolor sit amet" OnClientShowing="showModalDiv" OnClientHidden="hideModalDiv"
+            ShowCloseButton="true" ShowTitleMenu="false" TitleIcon="" EnableShadow="true">
+        </telerik:RadNotification>
+    </form>
+</body>
+</html>
