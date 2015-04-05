@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using Telerik.Web.UI;
 
-namespace KobsisSiparisTakip.Web.Helper
+namespace KobsisSiparisTakip.Web.Util
 {
     public static class MessageBox
     {

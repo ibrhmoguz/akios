@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
 
-namespace KobsisSiparisTakip.Web
+namespace KobsisSiparisTakip.Web.Util
 {
     public class CaptchaImage
     {
@@ -286,10 +286,9 @@ namespace KobsisSiparisTakip.Web
             return s;
         }
     }
-}
 
-
-public enum CaptchaType
-{
-    Numeric = 1, Alpha = 2, AlphaNumeric = 3
+    public enum CaptchaType
+    {
+        Numeric = 1, Alpha = 2, AlphaNumeric = 3
+    }
 }

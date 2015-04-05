@@ -116,7 +116,6 @@
     <Content Include="DBScripts\AppUserDBScript.sql" />
     <Content Include="DBScripts\Drop All Tables.sql" />
     <Content Include="DBScripts\VersiyonBilgisi.txt" />
-    <Content Include="deneme.aspx" />
     <Content Include="FormOgeGuncelleme.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GunlukIsTakipFormu.aspx" />
@@ -148,13 +147,23 @@
     <Content Include="SiparisFormYanginGuncelle.aspx" />
     <Content Include="SiparisFormYanginKayit.aspx" />
     <Content Include="SiparisSorgula.aspx" />
+    <Content Include="Test.aspx" />
     <Content Include="UygulamaAyarlari.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Code\KobsisBasePage.cs">
+    <Compile Include="Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\BrWebControl.cs" />
+    <Compile Include="Util\FormGenerator.cs" />
+    <Compile Include="Util\KobsisBasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Captcha.aspx.cs">
@@ -164,7 +173,7 @@
     <Compile Include="Captcha.aspx.designer.cs">
       <DependentUpon>Captcha.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\CaptchaImage.cs" />
+    <Compile Include="Util\CaptchaImage.cs" />
     <Compile Include="GunlukIsTakipFormu.aspx.cs">
       <DependentUpon>GunlukIsTakipFormu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -193,9 +202,10 @@
     <Compile Include="FormOgeGuncelleme.aspx.designer.cs">
       <DependentUpon>FormOgeGuncelleme.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Helper\JavascriptHelper.cs" />
-    <Compile Include="Helper\MessageBox.cs" />
-    <Compile Include="Helper\PopupPageHelper.cs" />
+    <Compile Include="Util\JavascriptHelper.cs" />
+    <Compile Include="Util\KontrolTipEnum.cs" />
+    <Compile Include="Util\MessageBox.cs" />
+    <Compile Include="Util\PopupPageHelper.cs" />
     <Compile Include="IlIlceyeGoreSatilanAdet.aspx.cs">
       <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -308,13 +318,6 @@
     <Compile Include="SiparisFormKayit.aspx.designer.cs">
       <DependentUpon>SiparisFormKayit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="deneme.aspx.cs">
-      <DependentUpon>deneme.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="deneme.aspx.designer.cs">
-      <DependentUpon>deneme.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,6 +371,7 @@
     <Compile Include="SiparisSorgula.aspx.designer.cs">
       <DependentUpon>SiparisSorgula.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Util\SessionManager.cs" />
     <Compile Include="UygulamaAyarlari.aspx.cs">
       <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

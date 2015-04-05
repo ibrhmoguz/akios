@@ -10,7 +10,7 @@ using System.IO;
 using System.Data;
 using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Helper;
+using KobsisSiparisTakip.Web.Util;
 using Telerik.Web.UI;
 
 namespace KobsisSiparisTakip.Web.Print

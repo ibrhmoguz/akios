@@ -5,14 +5,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div id="divSiparisForm" runat="server" style="width: 100%" class="RadGrid_Current_Theme">
+    <div id="divSiparisForm" runat="server" style="width: 100%" class=" ">
         <br />
         <table class="AnaTablo" style="width: 100%">
             <tr>
                 <td rowspan="6" style="text-align: center">
-                    <telerik:RadBinaryImage ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" />
+                    <asp:Image ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" src=""/>
                 </td>
-                <td colspan="2" rowspan="3" style="width: 45%; font-size: x-large; text-align: center;">
+                <td colspan="2" rowspan="3" style="width: 45%; font-size: x-large; text-align: center; font-weight:700">
 
                     <b>
                         <asp:Label ID="lblKapiTur" runat="server"></asp:Label></b>
@@ -137,7 +137,6 @@
                 </td>
             </tr>
             <tr>
-
                 <th>Ev Tel : </th>
                 <td>
                     <telerik:RadMaskedTextBox ID="txtEvTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
@@ -231,7 +230,7 @@
             <tr>
                 <th>İç Pervaz Rengi :</th>
                 <td>
-                    <telerik:RadDropDownList ID="ddlIcPervazRenk" runat="server" RenderMode="Lightweight" Height="22px"></telerik:RadDropDownList>
+                    <telerik:RadDropDownList ID="ddlIcPervazRenk" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
                 </td>
                 <th>Kasa Kaplama :</th>
                 <td>

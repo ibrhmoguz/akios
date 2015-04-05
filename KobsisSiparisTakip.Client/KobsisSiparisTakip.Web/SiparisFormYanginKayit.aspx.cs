@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Helper;
+using KobsisSiparisTakip.Web.Util;
 using Telerik.Web.UI;
 using System.Globalization;
 

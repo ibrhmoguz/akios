@@ -9,8 +9,9 @@ using System.Xml;
 using System.IO;
 using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Helper;
+using KobsisSiparisTakip.Web.Util;
 using Telerik.Web.UI;
+
 namespace KobsisSiparisTakip.Web
 {
     public partial class SiparisFormYanginGoruntule : KobsisBasePage
