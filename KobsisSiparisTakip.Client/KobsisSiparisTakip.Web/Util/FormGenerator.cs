@@ -17,6 +17,7 @@ namespace KobsisSiparisTakip.Web.Util
         {
             string parentKontrolID = string.Empty;
             WebControl wc = new WebControl(HtmlTextWriterTag.Div);
+            wc.ID = "SiparisFormKontrolleri";
             wc.CssClass = "RadGrid_Current_Theme";
             wc.Style.Add("width", "100%");
 
@@ -50,7 +51,7 @@ namespace KobsisSiparisTakip.Web.Util
             {
                 if (layout.YerlesimID == parentID)
                 {
-                    parentKontrolID = layout.KontrolAdi.Replace(" ", string.Empty) + layout.YerlesimTabloID;
+                    parentKontrolID = KontrolIDGetir(layout);
                     break;
                 }
             }
@@ -90,6 +91,9 @@ namespace KobsisSiparisTakip.Web.Util
                 case KontrolTipEnum.TableHeaderCell:
                     wc = TableHeaderCellOlustur(layout);
                     break;
+                case KontrolTipEnum.TextBox:
+                    wc = TextBoxOlustur(layout);
+                    break;
                 case KontrolTipEnum.NumericTextBox:
                     wc = NumericTextBoxOlustur(layout);
                     break;
@@ -114,9 +118,6 @@ namespace KobsisSiparisTakip.Web.Util
                 case KontrolTipEnum.CheckBox:
                     wc = CheckBoxOlustur(layout);
                     break;
-                case KontrolTipEnum.Br:
-                    wc = BrOlustur(layout);
-                    break;
             }
 
             return wc;
@@ -124,84 +125,130 @@ namespace KobsisSiparisTakip.Web.Util
 
         private WebControl BrOlustur(Layout layout)
         {
-            var wc = new BrWebControl();
+            var wc = new LiteralWebControl("<br />");
             wc.ID = KontrolIDGetir(layout);
             return wc;
         }
 
         private WebControl CheckBoxOlustur(Layout layout)
         {
-            return null;
+            var wc = new CheckBox();
+            if (layout.PostBack) wc.AutoPostBack = true;
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl DateTimePickerOlustur(Layout layout)
         {
-            return null;
+            var wc = new RadDateTimePicker();
+            if (layout.PostBack) wc.AutoPostBack = true;
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.SelectedDate = Convert.ToDateTime(layout.Text);
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl DropDownListOlustur(Layout layout)
         {
-            return null;
+            var wc = new RadDropDownList();
+            if (layout.PostBack) wc.AutoPostBack = true;
+            //Binding items
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl ImageOlustur(Layout layout)
         {
-            return null;
+            var wc = new Image();
+            wc.ImageUrl = "ImageForm.aspx?ImageID=" + layout.ImajID;
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl LabelOlustur(Layout layout)
         {
-            return null;
+            var wc = new Label();
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
+            if (layout.KontrolAdi == "lblKapiSeri")
+                wc.ID = layout.KontrolAdi;
+            return wc;
         }
 
         private WebControl LiteralOlustur(Layout layout)
         {
-            return null;
+            if (!string.IsNullOrWhiteSpace(layout.Text))
+            {
+                return new LiteralWebControl(layout.Text) { ID = KontrolIDGetir(layout) };
+            }
+            else
+                return null;
+        }
+
+        private WebControl TextBoxOlustur(Layout layout)
+        {
+            var wc = new RadTextBox();
+            if (!string.IsNullOrWhiteSpace(layout.TextMode)) wc.TextMode = (InputMode)Enum.Parse(typeof(InputMode), layout.TextMode);
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl MaskedTextBoxOlustur(Layout layout)
         {
-            return null;
+            var wc = new RadMaskedTextBox();
+            if (!string.IsNullOrWhiteSpace(layout.Mask)) wc.Mask = layout.Mask;
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl NumericTextBoxOlustur(Layout layout)
         {
-            return null;
+            var wc = new RadNumericTextBox();
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
         }
 
         private WebControl TableHeaderCellOlustur(Layout layout)
         {
-            var wc = new WebControl(HtmlTextWriterTag.Th);
-            wc.ID = KontrolIDGetir(layout);
+            var wc = new TableHeaderCell();
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
             return wc;
         }
 
         private WebControl TableCellOlustur(Layout layout)
         {
-            var wc = new WebControl(HtmlTextWriterTag.Td);
-            wc.ID = KontrolIDGetir(layout);
+            var wc = new TableCell();
+            if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
+            KontrolOzellikAyarla(layout, wc);
             return wc;
         }
 
         private WebControl TableRowOlustur(Layout layout)
         {
-            var wc = new WebControl(HtmlTextWriterTag.Tr);
-            wc.ID = KontrolIDGetir(layout);
-            return wc;
+            return new TableRow() { ID = KontrolIDGetir(layout) };
         }
 
         private WebControl TableOlustur(Layout layout)
         {
-            var wc = new WebControl(HtmlTextWriterTag.Table);
+            var wc = new Table();
+            KontrolOzellikAyarla(layout, wc);
+            return wc;
+        }
+
+        private void KontrolOzellikAyarla(Layout layout, WebControl wc)
+        {
             wc.ID = KontrolIDGetir(layout);
+            wc.Enabled = layout.Enabled;
             if (layout.Yukseklik != null) wc.Height = new Unit(layout.Yukseklik.Value);
             if (layout.Genislik != null) wc.Width = new Unit(layout.Genislik.Value);
-            wc.Enabled = layout.Enabled;
-            wc.CssClass = layout.CssClass;
-            wc.Attributes.Add("style", layout.Style);
+            if (!String.IsNullOrWhiteSpace(layout.CssClass)) wc.CssClass = layout.CssClass;
+            if (!String.IsNullOrWhiteSpace(layout.Style)) wc.Attributes.Add("style", layout.Style);
             if (layout.RowSpan != null) wc.Attributes.Add("rowspan", layout.RowSpan.ToString());
-            if (layout.ColumnSpan != null) wc.Attributes.Add("columnspan", layout.ColumnSpan.ToString());
-            return wc;
+            if (layout.ColSpan != null) wc.Attributes.Add("colspan", layout.ColSpan.ToString());
         }
 
         private string KontrolIDGetir(Layout layout)

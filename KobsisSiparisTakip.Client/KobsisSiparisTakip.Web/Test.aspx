@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Test.aspx.cs" Inherits="KobsisSiparisTakip.Web.Test" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Test.aspx.cs" Inherits="KobsisSiparisTakip.Web.Test" Trace="false" %>
 
 <!DOCTYPE html>
 

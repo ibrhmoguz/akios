@@ -122,6 +122,7 @@
     <Content Include="Hata.aspx" />
     <Content Include="Hatalar.aspx" />
     <Content Include="IlIlceyeGoreSatilanAdet.aspx" />
+    <Content Include="ImageForm.aspx" />
     <Content Include="KapiTipineGoreSatilanAdet.aspx" />
     <Content Include="Manage.aspx" />
     <Content Include="MontajKotaTanimla.aspx" />
@@ -154,6 +155,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageForm.aspx.cs">
+      <DependentUpon>ImageForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageForm.aspx.designer.cs">
+      <DependentUpon>ImageForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -161,7 +169,6 @@
     <Compile Include="Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Util\BrWebControl.cs" />
     <Compile Include="Util\FormGenerator.cs" />
     <Compile Include="Util\KobsisBasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -204,6 +211,7 @@
     </Compile>
     <Compile Include="Util\JavascriptHelper.cs" />
     <Compile Include="Util\KontrolTipEnum.cs" />
+    <Compile Include="Util\LiteralWebControl.cs" />
     <Compile Include="Util\MessageBox.cs" />
     <Compile Include="Util\PopupPageHelper.cs" />
     <Compile Include="IlIlceyeGoreSatilanAdet.aspx.cs">

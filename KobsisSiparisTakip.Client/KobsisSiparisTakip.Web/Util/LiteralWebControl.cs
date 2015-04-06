@@ -7,14 +7,19 @@ using System.Web.UI.WebControls;
 
 namespace KobsisSiparisTakip.Web.Util
 {
-    public class BrWebControl : WebControl
+    public class LiteralWebControl : WebControl
     {
-        public BrWebControl() : base() { }
+        public string Content { get; set; }
+
+        public LiteralWebControl(string content)
+            : base()
+        {
+            this.Content = content;
+        }
 
         protected override void Render(HtmlTextWriter writer)
         {
-            writer.WriteBeginTag("br");
-            writer.Write(HtmlTextWriter.SelfClosingTagEnd);
+            writer.Write(this.Content);
         }
     }
 }

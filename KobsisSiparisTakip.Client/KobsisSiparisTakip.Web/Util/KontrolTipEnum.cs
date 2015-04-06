@@ -19,7 +19,6 @@ namespace KobsisSiparisTakip.Web.Util
         DatePicker = 10,
         DropDownList = 11,
         CheckBox = 12,
-        Image = 13,
-        Br = 14
+        Image = 13
     }
 }

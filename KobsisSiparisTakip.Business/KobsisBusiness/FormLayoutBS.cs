@@ -33,12 +33,13 @@ namespace KobsisSiparisTakip.Business
 	                            ,K.CssClass
 	                            ,K.Style
 	                            ,K.RowSpan
-	                            ,K.ColumnSpan
+	                            ,K.ColSpan
 	                            ,(CASE WHEN K.[Text] IS NOT NULL THEN K.[Text]
 		                               WHEN K.KontrolDegerID IS NOT NULL THEN KD.KontrolDegeri 
 	                              END) AS [Text]
 	                            ,(CASE WHEN K.ImajID IS NOT NULL THEN I.ImajData END) AS ImajData
 	                            ,K.RefID
+                                ,K.ImajID
                             FROM dbo.YERLESIM AS Y
 	                            INNER JOIN dbo.KONTROL AS K ON K.KontrolID=Y.KontrolID
 	                            LEFT JOIN dbo.KONTROL_DEGER AS KD ON K.KontrolDegerID=KD.KontrolDegerID
@@ -77,14 +78,16 @@ namespace KobsisSiparisTakip.Business
                     layout.Style = row["Style"].ToString();
                 if (row["RowSpan"] != DBNull.Value)
                     layout.RowSpan = Convert.ToInt32(row["RowSpan"]);
-                if (row["ColumnSpan"] != DBNull.Value)
-                    layout.ColumnSpan = Convert.ToInt32(row["ColumnSpan"]);
+                if (row["ColSpan"] != DBNull.Value)
+                    layout.ColSpan = Convert.ToInt32(row["ColSpan"]);
                 if (row["Text"] != DBNull.Value)
                     layout.Text = row["Text"].ToString();
                 if (row["ImajData"] != DBNull.Value)
                     layout.ImajData = (byte[])row["ImajData"];
                 if (row["RefID"] != DBNull.Value)
                     layout.RefID = Convert.ToInt32(row["RefID"]);
+                if (row["ImajID"] != DBNull.Value)
+                    layout.ImajID = Convert.ToInt32(row["ImajID"]);
 
                 layoutList.Add(layout);
             }
