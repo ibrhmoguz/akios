@@ -36,7 +36,7 @@ namespace KobsisSiparisTakip.Web
         private void GenerateForm()
         {
             this.form1.Controls.Add(new ScriptManager());
-            this.form1.Controls.Add(new FormGenerator().Generate(this.KapiSeri));
+            this.form1.Controls.Add(new FormGenerator() { KapiSeri = this.KapiSeri }.Generate());
         }
 
         private void KapiSeriFormaYazdir()

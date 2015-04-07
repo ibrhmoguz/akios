@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -21,6 +22,18 @@ namespace KobsisSiparisTakip.Web.Util
             set
             {
                 HttpContext.Current.Session["MusteriID"] = value;
+            }
+        }
+
+        public static DataTable ReferansData
+        {
+            get
+            {
+                return (DataTable)HttpContext.Current.Session["ReferansData"] ?? null;
+            }
+            set
+            {
+                HttpContext.Current.Session["ReferansData"] = value;
             }
         }
     }

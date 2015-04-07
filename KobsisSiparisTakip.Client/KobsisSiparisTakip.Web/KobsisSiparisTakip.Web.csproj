@@ -379,6 +379,7 @@
     <Compile Include="SiparisSorgula.aspx.designer.cs">
       <DependentUpon>SiparisSorgula.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Util\ReferansDataManager.cs" />
     <Compile Include="Util\SessionManager.cs" />
     <Compile Include="UygulamaAyarlari.aspx.cs">
       <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>

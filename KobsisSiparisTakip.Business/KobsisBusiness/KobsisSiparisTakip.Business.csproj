@@ -48,6 +48,7 @@
     <Compile Include="KullaniciBS.cs" />
     <Compile Include="MontajBS.cs" />
     <Compile Include="PersonelBS.cs" />
+    <Compile Include="ReferansDataBS.cs" />
     <Compile Include="SiparisIslemleriBS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="YonetimKonsoluBS.cs" />

@@ -13,7 +13,9 @@ namespace KobsisSiparisTakip.Web.Util
 {
     public class FormGenerator
     {
-        public WebControl Generate(string kapiSeri)
+        public string KapiSeri { get; set; }
+
+        public WebControl Generate()
         {
             string parentKontrolID = string.Empty;
             WebControl wc = new WebControl(HtmlTextWriterTag.Div);
@@ -21,7 +23,7 @@ namespace KobsisSiparisTakip.Web.Util
             wc.CssClass = "RadGrid_Current_Theme";
             wc.Style.Add("width", "100%");
 
-            List<Layout> layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, kapiSeri);
+            List<Layout> layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, this.KapiSeri);
 
             foreach (Layout layout in layoutList)
             {
@@ -151,9 +153,18 @@ namespace KobsisSiparisTakip.Web.Util
         private WebControl DropDownListOlustur(Layout layout)
         {
             var wc = new RadDropDownList();
+            wc.RenderMode = RenderMode.Lightweight;
+            wc.DataValueField = "RefDetayID";
+            wc.DataTextField = "RefDetayAdi";
             if (layout.PostBack) wc.AutoPostBack = true;
-            //Binding items
             KontrolOzellikAyarla(layout, wc);
+            if (layout.RefID.HasValue)
+            {
+                wc.DataSource = new ReferansDataManager() { KapiSeri = this.KapiSeri }.ReferansVerisiGetir(layout.RefID.Value.ToString());
+                wc.DataBind();
+                if (wc.Items != null)
+                    wc.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+            }
             return wc;
         }
 
@@ -188,6 +199,7 @@ namespace KobsisSiparisTakip.Web.Util
         private WebControl TextBoxOlustur(Layout layout)
         {
             var wc = new RadTextBox();
+            wc.RenderMode = RenderMode.Lightweight;
             if (!string.IsNullOrWhiteSpace(layout.TextMode)) wc.TextMode = (InputMode)Enum.Parse(typeof(InputMode), layout.TextMode);
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
@@ -197,6 +209,7 @@ namespace KobsisSiparisTakip.Web.Util
         private WebControl MaskedTextBoxOlustur(Layout layout)
         {
             var wc = new RadMaskedTextBox();
+            wc.RenderMode = RenderMode.Lightweight;
             if (!string.IsNullOrWhiteSpace(layout.Mask)) wc.Mask = layout.Mask;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
@@ -206,6 +219,7 @@ namespace KobsisSiparisTakip.Web.Util
         private WebControl NumericTextBoxOlustur(Layout layout)
         {
             var wc = new RadNumericTextBox();
+            wc.RenderMode = RenderMode.Lightweight;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
             return wc;
