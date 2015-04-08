@@ -15,6 +15,8 @@ namespace KobsisSiparisTakip.Web.Util
     {
         public string KapiSeri { get; set; }
 
+        public FormIslemTipi IslemTipi { get; set; }
+
         public WebControl Generate()
         {
             string parentKontrolID = string.Empty;
@@ -23,7 +25,16 @@ namespace KobsisSiparisTakip.Web.Util
             wc.CssClass = "RadGrid_Current_Theme";
             wc.Style.Add("width", "100%");
 
-            List<Layout> layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, this.KapiSeri);
+            List<Layout> layoutList = null;
+            if (SessionManager.SiparisFormLayout == null)
+            {
+                layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, this.KapiSeri);
+                SessionManager.SiparisFormLayout = layoutList;
+            }
+            else
+            {
+                layoutList = SessionManager.SiparisFormLayout;
+            }
 
             foreach (Layout layout in layoutList)
             {
@@ -138,6 +149,15 @@ namespace KobsisSiparisTakip.Web.Util
             if (layout.PostBack) wc.AutoPostBack = true;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    bool value;
+                    if (Boolean.TryParse(SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString(), out value))
+                        wc.Checked = value;
+                }
+            }
             return wc;
         }
 

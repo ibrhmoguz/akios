@@ -37,13 +37,18 @@ namespace KobsisSiparisTakip.Business
 	                            ,(CASE WHEN K.[Text] IS NOT NULL THEN K.[Text]
 		                               WHEN K.KontrolDegerID IS NOT NULL THEN KD.KontrolDegeri 
 	                              END) AS [Text]
-	                            ,(CASE WHEN K.ImajID IS NOT NULL THEN I.ImajData END) AS ImajData
+	                            ,K.ImajID
+                                ,(CASE WHEN K.ImajID IS NOT NULL THEN I.ImajData END) AS ImajData
 	                            ,K.RefID
                                 ,K.ImajID
+                                ,SM.KolonAdi
+	                            ,VT.VeriTipAdi
                             FROM dbo.YERLESIM AS Y
 	                            INNER JOIN dbo.KONTROL AS K ON K.KontrolID=Y.KontrolID
 	                            LEFT JOIN dbo.KONTROL_DEGER AS KD ON K.KontrolDegerID=KD.KontrolDegerID
 	                            LEFT JOIN dbo.IMAJ AS I ON K.ImajID=I.ImajID
+                                LEFT JOIN dbo.SIPARIS_METADATA AS SM ON SM.MetadataID=K.MetadataID
+	                            LEFT JOIN dbo.VERI_TIP AS VT ON VT.VeriTipID=SM.VeriTipID
                             WHERE Y.KapiSeriID=@KapiSeriID AND Y.MusteriID=@MusteriID
                             ORDER BY Y.YerlesimTabloID";
             data.AddSqlParameter("KapiSeriID", kapiSeri, SqlDbType.VarChar, 50);
@@ -88,6 +93,10 @@ namespace KobsisSiparisTakip.Business
                     layout.RefID = Convert.ToInt32(row["RefID"]);
                 if (row["ImajID"] != DBNull.Value)
                     layout.ImajID = Convert.ToInt32(row["ImajID"]);
+                if (row["KolonAdi"] != DBNull.Value)
+                    layout.KolonAdi = row["KolonAdi"].ToString();
+                if (row["VeriTipAdi"] != DBNull.Value)
+                    layout.VeriTipi = row["VeriTipAdi"].ToString();
 
                 layoutList.Add(layout);
             }

@@ -27,5 +27,7 @@ namespace KobsisSiparisTakip.Business.DataTypes
         public byte[] ImajData { get; set; }
         public int? RefID { get; set; }
         public int? ImajID { get; set; }
+        public string KolonAdi { get; set; }
+        public string VeriTipi { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KobsisSiparisTakip.Business.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -34,6 +35,31 @@ namespace KobsisSiparisTakip.Web.Util
             set
             {
                 HttpContext.Current.Session["ReferansData"] = value;
+            }
+        }
+
+
+        public static List<Layout> SiparisFormLayout
+        {
+            get
+            {
+                return (List<Layout>)HttpContext.Current.Session["SiparisFormLayout"] ?? null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SiparisFormLayout"] = value;
+            }
+        }
+
+        public static DataTable SiparisBilgi
+        {
+            get
+            {
+                return (DataTable)HttpContext.Current.Session["SiparisBilgi"] ?? null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SiparisBilgi"] = value;
             }
         }
     }
