@@ -6,6 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
+using KobsisSiparisTakip.Web.Util;
+using System.Data;
+using KobsisSiparisTakip.Business;
+using Telerik.Web.UI;
 
 namespace KobsisSiparisTakip.Web
 {
@@ -15,18 +19,46 @@ namespace KobsisSiparisTakip.Web
         {
             if (!Page.IsPostBack)
             {
+                SiparisSeriYukle();
                 SeciliMenuAyarla();
                 YetkiyeGoreMenuAyarla();
             }
         }
 
+        private void SiparisSeriYukle()
+        {
+            SiparisBarGroup.Items.Clear();
+            DataTable dt = null;
+            if (SessionManager.SiparisSeri == null)
+            {
+                dt = new SiparisSeriBS().SeriGetirMusteriIDGore(SessionManager.MusteriBilgi.MusteriID.Value);
+                SessionManager.SiparisSeri = dt;
+            }
+            else
+                dt = SessionManager.SiparisSeri;
+
+            foreach (DataRow row in dt.Rows)
+            {
+                var seriAdi = row["SeriAdi"].ToString();
+                var seriID = row["KapiSeriID"].ToString();
+                var item = new RibbonBarButton()
+                {
+                    Text = seriAdi,
+                    Size = RibbonBarItemSize.Large,
+                    ImageUrlLarge = "App_Themes/Theme/Raster/porte.png",
+                    CommandName = "SiparisKayit.aspx?SiparisSeri=" + seriID
+                };
+                SiparisBarGroup.Items.Add(item);
+            }
+        }
+
         private void YetkiyeGoreMenuAyarla()
         {
-            if (Session["user"] != null)
+            if (SessionManager.KullaniciBilgi != null)
             {
-                LabelUserName.Text += Session["user"].ToString();
+                LabelUserName.Text += SessionManager.KullaniciBilgi.KullaniciAdi;
             }
-            if (Session["yetki"] != null && Session["yetki"].ToString() != "Yönetici")
+            if (SessionManager.KullaniciBilgi != null && SessionManager.KullaniciBilgi.Rol != KullaniciRol.Yonetici)
             {
                 RadRibbonBarMenu.Tabs[0].FindGroupByValue("Sorgula").Visible = false;
                 RadRibbonBarMenu.Tabs[1].Visible = false;
@@ -39,7 +71,7 @@ namespace KobsisSiparisTakip.Web
         {
             string url = Request.Url.AbsoluteUri;
 
-            if (url.Contains("SiparisForm"))
+            if (url.Contains("Siparis"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 0;
             }
@@ -71,90 +103,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void RadRibbonBarMenu_Command(object sender, CommandEventArgs e)
         {
-            string siparisNo = String.Empty;
-            if (Request.QueryString["SiparisNo"] != null)
-                siparisNo = Request.QueryString["SiparisNo"].ToString();
-
-            string urlSiparisFormKayit = "SiparisFormKayit.aspx?KapiTipi=";
-            string urlSiparisFormYanginKayit = "SiparisFormYanginKayit.aspx?KapiTipi=";
-            string urlSiparisFormGuncelle = "SiparisFormGuncelle.aspx?SiparisNo=" + siparisNo;
-            string urlKullanici = "KullaniciTanimlama.aspx";
-            string urlPersonel = "PersonelTanimlama.aspx";
-            string urlFormOgeGuncelle = "FormOgeGuncelleme.aspx";
-            string urlIsTakvimi = "IsTakvimi.aspx";
-            string urlSifre = "SifreGuncelleme.aspx";
-            string urlSiparisSorgula = "SiparisSorgula.aspx";
-            string urlMontajSorgula = "MontajSorgula.aspx";
-            string urlHatalar = "Hatalar.aspx";
-            string urlGunlukIsTakipFormu = "GunlukIsTakipFormu.aspx";
-            string urlMontajKotaDuzenle = "MontajKotaTanimla.aspx";
-            string urlUygulamaAyarlari = "UygulamaAyarlari.aspx";
-            string urlKapiTipineGoreSatilanAdet = "KapiTipineGoreSatilanAdet.aspx";
-            string urlIlIlceyeGoreSatilanAdet = "IlIlceyeGoreSatilanAdet.aspx";
-
-            switch (e.CommandName)
-            {
-                case "SiparisEkleNova":
-                    NavigateUrl(urlSiparisFormKayit + KapiTipi.Nova.ToString());
-                    break;
-                case "SiparisEkleKroma":
-                    NavigateUrl(urlSiparisFormKayit + KapiTipi.Kroma.ToString());
-                    break;
-                case "SiparisEkleGuard":
-                    NavigateUrl(urlSiparisFormKayit + KapiTipi.Guard.ToString());
-                    break;
-                case "SiparisEklePorte":
-                    NavigateUrl(urlSiparisFormYanginKayit + KapiTipi.Porte.ToString());
-                    break;
-                case "SiparisEkleYangin":
-                    NavigateUrl(urlSiparisFormYanginKayit + KapiTipi.Yangin.ToString());
-                    break;
-                case "KullaniciEkle":
-                    NavigateUrl(urlKullanici);
-                    break;
-                case "PersonelEkle":
-                    NavigateUrl(urlPersonel);
-                    break;
-                case "FormOgeGuncelle":
-                    Response.Redirect(urlFormOgeGuncelle);
-                    break;
-                case "IsTakvimiGoruntule":
-                    NavigateUrl(urlIsTakvimi);
-                    break;
-                case "SifreGuncelle":
-                    NavigateUrl(urlSifre);
-                    break;
-                case "SiparisSorgula":
-                    NavigateUrl(urlSiparisSorgula);
-                    break;
-                case "MontajSorgula":
-                    NavigateUrl(urlMontajSorgula);
-                    break;
-                case "HataListesi":
-                    NavigateUrl(urlHatalar);
-                    break;
-                case "GunlukIsTakipFormu":
-                    NavigateUrl(urlGunlukIsTakipFormu);
-                    break;
-                case "MontajKotaDuzenle":
-                    NavigateUrl(urlMontajKotaDuzenle);
-                    break;
-                case "UygulamaAyar":
-                    NavigateUrl(urlUygulamaAyarlari);
-                    break;
-                case "KapiTipineGoreSatilanAdet":
-                    NavigateUrl(urlKapiTipineGoreSatilanAdet);
-                    break;
-                case "IlIlceyeGoreSatilanAdet":
-                    NavigateUrl(urlIlIlceyeGoreSatilanAdet);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        private void NavigateUrl(string url)
-        {
+            string url = e.CommandName;
             Response.Redirect(url);
         }
 
@@ -166,6 +115,17 @@ namespace KobsisSiparisTakip.Web
             Response.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now;
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
+        }
+
+        protected void RadRibbonBarMenu_MenuItemClick(object sender, RibbonBarMenuItemClickEventArgs e)
+        {
+            string url = e.Item.CommandName;
+            Response.Redirect(url);
+        }
+
+        protected void RadRibbonBarMenu_ButtonClick(object sender, RibbonBarButtonClickEventArgs e)
+        {
+
         }
     }
 }

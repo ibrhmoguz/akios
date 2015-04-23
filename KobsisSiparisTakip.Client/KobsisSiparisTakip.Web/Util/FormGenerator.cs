@@ -17,16 +17,12 @@ namespace KobsisSiparisTakip.Web.Util
 
         public FormIslemTipi IslemTipi { get; set; }
 
-        public WebControl Generate()
+        public WebControl Generate(WebControl wc)
         {
             string parentKontrolID = string.Empty;
-            WebControl wc = new WebControl(HtmlTextWriterTag.Div);
-            wc.ID = "SiparisFormKontrolleri";
-            wc.CssClass = "RadGrid_Current_Theme";
-            wc.Style.Add("width", "100%");
 
             List<Layout> layoutList = null;
-            if (SessionManager.SiparisFormLayout == null)
+            if (!string.IsNullOrWhiteSpace(SessionManager.MusteriId) && !string.IsNullOrWhiteSpace(this.KapiSeri) && SessionManager.SiparisFormLayout == null)
             {
                 layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, this.KapiSeri);
                 SessionManager.SiparisFormLayout = layoutList;
@@ -36,22 +32,25 @@ namespace KobsisSiparisTakip.Web.Util
                 layoutList = SessionManager.SiparisFormLayout;
             }
 
-            foreach (Layout layout in layoutList)
+            if (layoutList != null)
             {
-                WebControl wcTemp = KontrolOlustur(layout);
-                if (wcTemp == null)
-                    continue;
+                foreach (Layout layout in layoutList)
+                {
+                    WebControl wcTemp = KontrolOlustur(layout);
+                    if (wcTemp == null)
+                        continue;
 
-                if (layout.YerlesimParentID == null)
-                {
-                    wc.Controls.Add(wcTemp);
-                }
-                else
-                {
-                    parentKontrolID = ParentKontrolIDBul(layoutList, layout.YerlesimParentID.Value);
-                    WebControl wcParent = ParentKontrolBul(wc, parentKontrolID);
-                    if (wcParent != null)
-                        wcParent.Controls.Add(wcTemp);
+                    if (layout.YerlesimParentID == null)
+                    {
+                        wc.Controls.Add(wcTemp);
+                    }
+                    else
+                    {
+                        parentKontrolID = ParentKontrolIDBul(layoutList, layout.YerlesimParentID.Value);
+                        WebControl wcParent = ParentKontrolBul(wc, parentKontrolID);
+                        if (wcParent != null)
+                            wcParent.Controls.Add(wcTemp);
+                    }
                 }
             }
             return wc;
@@ -167,6 +166,15 @@ namespace KobsisSiparisTakip.Web.Util
             if (layout.PostBack) wc.AutoPostBack = true;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.SelectedDate = Convert.ToDateTime(layout.Text);
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    DateTime value;
+                    if (DateTime.TryParse(SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString(), out value))
+                        wc.SelectedDate = value;
+                }
+            }
             return wc;
         }
 
@@ -180,10 +188,19 @@ namespace KobsisSiparisTakip.Web.Util
             KontrolOzellikAyarla(layout, wc);
             if (layout.RefID.HasValue)
             {
-                wc.DataSource = new ReferansDataManager() { KapiSeri = this.KapiSeri }.ReferansVerisiGetir(layout.RefID.Value.ToString());
+                wc.DataSource = new ReferansDataManager() { KapiSeri = this.KapiSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
                 wc.DataBind();
                 if (wc.Items != null)
                     wc.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+            }
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    DropDownListItem ddli = wc.FindItemByValue(SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString());
+                    if (ddli != null && ddli.Selected == false)
+                        ddli.Selected = true;
+                }
             }
             return wc;
         }
@@ -203,6 +220,13 @@ namespace KobsisSiparisTakip.Web.Util
             KontrolOzellikAyarla(layout, wc);
             if (layout.KontrolAdi == "lblKapiSeri")
                 wc.ID = layout.KontrolAdi;
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                }
+            }
             return wc;
         }
 
@@ -223,6 +247,13 @@ namespace KobsisSiparisTakip.Web.Util
             if (!string.IsNullOrWhiteSpace(layout.TextMode)) wc.TextMode = (InputMode)Enum.Parse(typeof(InputMode), layout.TextMode);
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                }
+            }
             return wc;
         }
 
@@ -233,6 +264,13 @@ namespace KobsisSiparisTakip.Web.Util
             if (!string.IsNullOrWhiteSpace(layout.Mask)) wc.Mask = layout.Mask;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                }
+            }
             return wc;
         }
 
@@ -240,8 +278,16 @@ namespace KobsisSiparisTakip.Web.Util
         {
             var wc = new RadNumericTextBox();
             wc.RenderMode = RenderMode.Lightweight;
+            wc.CssClass = "NumericFieldClass";
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            {
+                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                {
+                    wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                }
+            }
             return wc;
         }
 

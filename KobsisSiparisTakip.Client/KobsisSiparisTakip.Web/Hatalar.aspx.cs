@@ -1,4 +1,5 @@
 ﻿using KobsisSiparisTakip.Business;
+using KobsisSiparisTakip.Business.DataTypes;
 using KobsisSiparisTakip.Web.Util;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace KobsisSiparisTakip.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["yetki"].ToString() == "Kullanici")
+            if (SessionManager.KullaniciBilgi.Rol == KullaniciRol.Kullanici)
             {
                 MessageBox.Hata(this, "Bu sayfaya erişim yetkiniz yoktur!");
                 return;

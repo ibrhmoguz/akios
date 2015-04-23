@@ -94,7 +94,7 @@ namespace KobsisSiparisTakip.Web
 
             DataRow rowMontaj = dtMontaj.Rows[0];
 
-            Musteri musteri = new Musteri();
+            Firma_Musteri musteri = new Firma_Musteri();
             Siparis siparis = new Siparis();
             Olcum olcum = new Olcum();
             Sozlesme sozlesme = new Sozlesme();
@@ -517,7 +517,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void btnGuncelle_Click(object sender, EventArgs e)
         {
-            Musteri musteri = new Musteri();
+            Firma_Musteri musteri = new Firma_Musteri();
             Siparis siparis = new Siparis();
             Olcum olcum = new Olcum();
             Sozlesme sozlesme = new Sozlesme();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KobsisSiparisTakip.Business.DataTypes
 {
-    public class Musteri
+    public class Firma_Musteri
     {
         public string MusteriAd { get; set; }
         public string MusteriSoyad { get; set; }
@@ -18,7 +18,7 @@ namespace KobsisSiparisTakip.Business.DataTypes
         public string MusteriCepTel { get; set; }
         public string MusteriSemt { get; set; }
 
-        public Musteri()
+        public Firma_Musteri()
         {
             this.MusteriAd = null;
             this.MusteriSoyad = null;

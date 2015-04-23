@@ -5,11 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Business.DataTypes;
+using KobsisSiparisTakip.Business;
+using System.Data;
 
 namespace KobsisSiparisTakip.Web
 {
     public partial class Test : System.Web.UI.Page
     {
+        string ANKARA_IL_KODU = "6";
         public string KapiSeri
         {
             get
@@ -27,24 +31,19 @@ namespace KobsisSiparisTakip.Web
         {
             if (!Page.IsPostBack)
             {
-                SessionManager.MusteriId = "1";
-                GenerateForm();
-                KapiSeriFormaYazdir();
+                if (!string.IsNullOrWhiteSpace(this.KapiSeri))
+                {
+                    SessionManager.MusteriId = "1";
+                    IlleriGetir();
+                    GenerateForm();
+                }
             }
         }
 
         private void GenerateForm()
         {
-            this.form1.Controls.Add(new ScriptManager());
-            this.form1.Controls.Add(new FormGenerator() { KapiSeri = this.KapiSeri }.Generate());
-        }
-
-        private void KapiSeriFormaYazdir()
-        {
-            Control c = this.form1.FindControl("SiparisFormKontrolleri");
-            Control clabel = KontrolBul(c, "lblKapiSeri");
-            if (clabel is Label)
-                ((Label)clabel).Text = Request.QueryString["KapiSeri"].ToString();
+            var generator = new FormGenerator() { KapiSeri = this.KapiSeri, IslemTipi = FormIslemTipi.Kaydet };
+            generator.Generate(this.divSiparisFormKontrolleri);
         }
 
         Control c1;
@@ -61,6 +60,89 @@ namespace KobsisSiparisTakip.Web
                 }
             }
             return c1;
+        }
+
+        protected void btnKaydet_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void IlleriGetir()
+        {
+            DataTable dt = new SiparisIslemleriBS().IlleriGetir();
+            if (dt.Rows.Count > 0)
+            {
+                ddlMusteriIl.DataSource = dt;
+                ddlMusteriIl.DataTextField = "ILAD";
+                ddlMusteriIl.DataValueField = "ILKOD";
+                ddlMusteriIl.DataBind();
+
+                ddlMusteriIl.FindItemByValue(ANKARA_IL_KODU).Selected = true;
+                IlceleriGetir(ANKARA_IL_KODU);
+            }
+            else
+            {
+                ddlMusteriIl.DataSource = null;
+                ddlMusteriIl.DataBind();
+            }
+        }
+
+        protected void IlceleriGetir(string ilKod)
+        {
+            Dictionary<string, object> prms = new Dictionary<string, object>();
+            prms.Add("ILKOD", ilKod);
+
+            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(prms);
+
+            if (dt.Rows.Count > 0)
+            {
+                ddlMusteriIlce.DataSource = dt;
+                ddlMusteriIlce.DataTextField = "ILCEAD";
+                ddlMusteriIlce.DataValueField = "ILCEKOD";
+                ddlMusteriIlce.DataBind();
+            }
+            else
+            {
+                ddlMusteriIlce.DataSource = null;
+                ddlMusteriIlce.DataBind();
+            }
+        }
+
+        protected void SemtleriGetir(string ilceKod)
+        {
+            Dictionary<string, object> prms = new Dictionary<string, object>();
+            prms.Add("ILCEKOD", ilceKod);
+
+            DataTable dt = new SiparisIslemleriBS().SemtleriGetir(prms);
+
+            if (dt.Rows.Count > 0)
+            {
+                ddlMusteriSemt.DataSource = dt;
+                ddlMusteriSemt.DataTextField = "SEMTAD";
+                ddlMusteriSemt.DataValueField = "SEMTKOD";
+                ddlMusteriSemt.DataBind();
+            }
+            else
+            {
+                ddlMusteriSemt.DataSource = null;
+                ddlMusteriSemt.DataBind();
+            }
+        }
+
+        protected void ddlMusteriIl_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            ddlMusteriIlce.Text = "";
+            ddlMusteriIlce.Items.Clear();
+            ddlMusteriSemt.Items.Clear();
+            ddlMusteriSemt.Text = "";
+            IlceleriGetir(e.Value);
+        }
+
+        protected void ddlMusteriIlce_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            ddlMusteriSemt.Items.Clear();
+            ddlMusteriSemt.Text = "";
+            SemtleriGetir(e.Value);
         }
     }
 }

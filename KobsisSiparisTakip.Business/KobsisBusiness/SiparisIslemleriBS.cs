@@ -552,12 +552,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable IlleriGetir()
         {
-            return pIlleriGetir();
-
-        }
-
-        private DataTable pIlleriGetir()
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -567,12 +561,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public DataTable IlceleriGetir(Dictionary<string, object> prms)
-        {
-            return pIlceleriGetir(prms);
-
-        }
-
-        private DataTable pIlceleriGetir(Dictionary<string, object> prms)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -586,12 +574,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable IlceleriGetir(string ilAdi)
         {
-            return pIlceleriGetir(ilAdi);
-
-        }
-
-        private DataTable pIlceleriGetir(string ilAdi)
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -603,12 +585,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public DataTable SemtleriGetir(Dictionary<string, object> prms)
-        {
-            return pSemtleriGetir(prms);
-
-        }
-
-        private DataTable pSemtleriGetir(Dictionary<string, object> prms)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -622,12 +598,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable SemtleriGetir(string ilceAdi)
         {
-            return pSemtleriGetir(ilceAdi);
-
-        }
-
-        private DataTable pSemtleriGetir(string ilceAdi)
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -638,12 +608,7 @@ namespace KobsisSiparisTakip.Business
             return dt;
         }
 
-        public string SiparisKaydet(Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
-        {
-            return pSiparisKaydet(musteri, siparis, olcum, sozlesme);
-        }
-
-        private string pSiparisKaydet(Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
+        public string SiparisKaydet(Firma_Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
         {
             IData data = GetDataObject();
 
@@ -998,12 +963,7 @@ namespace KobsisSiparisTakip.Business
             }
         }
 
-        public bool SiparisGuncelle(Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
-        {
-            return pSiparisGuncelle(musteri, siparis, olcum, sozlesme);
-        }
-
-        private bool pSiparisGuncelle(Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
+        public bool SiparisGuncelle(Firma_Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
         {
             IData data = GetDataObject();
 
@@ -1233,12 +1193,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable SiparisBilgileriniGetir(Dictionary<string, object> prms)
         {
-            return pSiparisBilgileriniGetir(prms);
-
-        }
-
-        private DataTable pSiparisBilgileriniGetir(Dictionary<string, object> prms)
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -1254,11 +1208,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public DataTable SiparisSorgula(Dictionary<string, object> prms)
-        {
-            return pSiparisSorgula(prms);
-        }
-
-        private DataTable pSiparisSorgula(Dictionary<string, object> prms)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KobsisSiparisTakip.Business.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using WebFrame.Business;
@@ -11,31 +12,37 @@ namespace KobsisSiparisTakip.Business
     [ServiceConnectionNameAttribute("KobsisConnectionString")]
     public class KullaniciBS : BusinessBase
     {
-        public DataTable KullaniciBilgisiGetir(Dictionary<string, object> prms)
-        {
-            return pKullaniciBilgisiGetir(prms);
-        }
-
-        private DataTable pKullaniciBilgisiGetir(Dictionary<string, object> prms)
+        public Kullanici KullaniciBilgisiGetir(string pKullaniciAdi, string pSifre)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
-            string sqlText = @"SELECT * FROM KULLANICIBILGI WHERE KULLANICIADI=@KULLANICIADI and SIFRE=@SIFRE";
+            string sqlText = @"SELECT * FROM KULLANICI WHERE KullaniciAdi=@KullaniciAdi and Sifre=@Sifre";
 
-            data.AddSqlParameter("KULLANICIADI", prms["KULLANICIADI"], SqlDbType.VarChar, 50);
-            data.AddSqlParameter("SIFRE", prms["SIFRE"], SqlDbType.VarChar, 50);
+            data.AddSqlParameter("KullaniciAdi", pKullaniciAdi, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("Sifre", pSifre, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
 
-            return dt;
+            Kullanici k = new Kullanici();
+            if (dt.Rows.Count > 0)
+            {
+                DataRow row = dt.Rows[0];
+                if (row["KullaniciID"] != DBNull.Value)
+                    k.KullaniciID = Convert.ToInt32(row["KullaniciID"].ToString());
+                if (row["MusteriID"] != DBNull.Value)
+                    k.MusteriID = Convert.ToInt32(row["MusteriID"].ToString());
+                if (row["KullaniciAdi"] != DBNull.Value)
+                    k.KullaniciAdi = row["KullaniciAdi"].ToString();
+                if (row["RolID"] != DBNull.Value)
+                {
+                    KullaniciRol kullaniciRol;
+                    if (Enum.TryParse(row["RolID"].ToString(), out kullaniciRol))
+                        k.Rol = kullaniciRol;
+                }
+            }
+            return k;
         }
 
         public DataTable KullanicilariGetir()
-        {
-            return pKullanicilariGetir();
-
-        }
-
-        private DataTable pKullanicilariGetir()
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -44,12 +51,8 @@ namespace KobsisSiparisTakip.Business
             data.GetRecords(dt, sqlText);
             return dt;
         }
-        public bool KullaniciTanimla(Dictionary<string, object> prms)
-        {
-            return pKullaniciTanimla(prms);
-        }
 
-        private bool pKullaniciTanimla(Dictionary<string, object> prms)
+        public bool KullaniciTanimla(Dictionary<string, object> prms)
         {
             try
             {
@@ -73,11 +76,6 @@ namespace KobsisSiparisTakip.Business
 
         public bool KullaniciSil(Dictionary<string, object> prms)
         {
-            return pKullaniciSil(prms);
-        }
-
-        private bool pKullaniciSil(Dictionary<string, object> prms)
-        {
             try
             {
                 IData data = GetDataObject();
@@ -97,11 +95,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable KullaniciSifreBilgisiGetir(Dictionary<string, object> prms)
         {
-            return pKullaniciSifreBilgisiGetir(prms);
-        }
-
-        private DataTable pKullaniciSifreBilgisiGetir(Dictionary<string, object> prms)
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -114,11 +107,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public bool KullaniciSifreGuncelle(Dictionary<string, object> prms)
-        {
-            return pKullaniciSifreGuncelle(prms);
-        }
-
-        private bool pKullaniciSifreGuncelle(Dictionary<string, object> prms)
         {
             try
             {

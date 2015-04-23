@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KobsisSiparisTakip.Business.DataTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,11 +10,11 @@ namespace KobsisSiparisTakip.Web.Util
     {
         protected override void OnLoad(EventArgs e)
         {
-            if (Session["yetki"] == null)
+            if (SessionManager.KullaniciBilgi == null || !SessionManager.KullaniciBilgi.KullaniciID.HasValue)
             {
                 Response.Redirect("Login.aspx");
             }
-            else if (Session["yetki"].ToString() == "Kullanici")
+            else if (SessionManager.KullaniciBilgi.Rol == KullaniciRol.Kullanici)
             {
                 string pageUrl = this.Request.Url.AbsoluteUri;
 

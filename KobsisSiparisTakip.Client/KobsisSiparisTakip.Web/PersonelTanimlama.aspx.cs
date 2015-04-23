@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Business.DataTypes;
 
 namespace KobsisSiparisTakip.Web
 {
@@ -14,7 +15,7 @@ namespace KobsisSiparisTakip.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["yetki"].ToString() == "Kullanici")
+            if (SessionManager.KullaniciBilgi.Rol == KullaniciRol.Kullanici)
             {
                 MessageBox.Hata(this, "Bu sayfaya erişim yetkiniz yoktur!");
                 return;

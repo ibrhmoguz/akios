@@ -124,6 +124,7 @@
     <Content Include="IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="ImageForm.aspx" />
     <Content Include="KapiTipineGoreSatilanAdet.aspx" />
+    <Content Include="AdminLogin.aspx" />
     <Content Include="Manage.aspx" />
     <Content Include="MontajKotaTanimla.aspx" />
     <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
@@ -147,6 +148,7 @@
     <Content Include="SiparisFormYanginGoruntule.aspx" />
     <Content Include="SiparisFormYanginGuncelle.aspx" />
     <Content Include="SiparisFormYanginKayit.aspx" />
+    <Content Include="SiparisKayit.aspx" />
     <Content Include="SiparisSorgula.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="UygulamaAyarlari.aspx" />
@@ -161,6 +163,20 @@
     </Compile>
     <Compile Include="ImageForm.aspx.designer.cs">
       <DependentUpon>ImageForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminLogin.aspx.designer.cs">
+      <DependentUpon>AdminLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiparisKayit.aspx.cs">
+      <DependentUpon>SiparisKayit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiparisKayit.aspx.designer.cs">
+      <DependentUpon>SiparisKayit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test.aspx.cs">
       <DependentUpon>Test.aspx</DependentUpon>

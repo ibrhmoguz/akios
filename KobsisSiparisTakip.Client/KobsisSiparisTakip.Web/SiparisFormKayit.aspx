@@ -13,7 +13,6 @@
                     <asp:Image ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" src=""/>
                 </td>
                 <td colspan="2" rowspan="3" style="width: 45%; font-size: x-large; text-align: center; font-weight:700">
-
                     <b>
                         <asp:Label ID="lblKapiTur" runat="server"></asp:Label></b>
                 </td>

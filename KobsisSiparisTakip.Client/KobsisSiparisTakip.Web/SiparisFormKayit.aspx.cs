@@ -246,7 +246,7 @@ namespace KobsisSiparisTakip.Web
                 return;
             }
 
-            Musteri musteri = new Musteri();
+            Firma_Musteri musteri = new Firma_Musteri();
             Siparis siparis = new Siparis();
             Olcum olcum = new Olcum();
             Sozlesme sozlesme = new Sozlesme();
@@ -331,7 +331,7 @@ namespace KobsisSiparisTakip.Web
                 siparis.CekKalan = null;
             siparis.CekOdemeNot = string.IsNullOrWhiteSpace(txtCekOdemeNotu.Text) ? null : txtCekOdemeNotu.Text;
 
-            siparis.CreatedBy = Session["user"].ToString();
+            siparis.CreatedBy = SessionManager.KullaniciBilgi.KullaniciAdi;
             siparis.CreatedTime = DateTime.Now;
             if (!string.IsNullOrEmpty(txtMontajdaTakilacaklar.Text)) olcum.MontajdaTakilacak = txtMontajdaTakilacaklar.Text;
             if (DropDownCheck(ddlMontajSekli)) olcum.MontajSekli = ddlMontajSekli.SelectedText;

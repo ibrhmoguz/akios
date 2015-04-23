@@ -76,49 +76,22 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadRibbonBar RadRibbonBarMenu;
         
         /// <summary>
-        /// rbbSiparisEkleNova control.
+        /// SiparisBarGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisEkleNova;
+        protected global::Telerik.Web.UI.RibbonBarGroup SiparisBarGroup;
         
         /// <summary>
-        /// rbbSiparisEkleKroma control.
+        /// rbbSiparisSeriMenu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisEkleKroma;
-        
-        /// <summary>
-        /// rbbSiparisEkleGuard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisEkleGuard;
-        
-        /// <summary>
-        /// rbbSiparisEklePorte control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisEklePorte;
-        
-        /// <summary>
-        /// rbbSiparisEkleYangin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisEkleYangin;
+        protected global::Telerik.Web.UI.RibbonBarMenu rbbSiparisSeriMenu;
         
         /// <summary>
         /// rbbSiparisSorgula control.

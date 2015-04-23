@@ -233,7 +233,7 @@ namespace KobsisSiparisTakip.Web
                 return;
             }
 
-            Musteri musteri = new Musteri();
+            Firma_Musteri musteri = new Firma_Musteri();
             Siparis siparis = new Siparis();
             Olcum olcum = new Olcum();
             Sozlesme sozlesme = new Sozlesme();

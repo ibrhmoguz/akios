@@ -40,11 +40,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTypes\FormIslemTipi.cs" />
+    <Compile Include="DataTypes\Kullanici.cs" />
+    <Compile Include="DataTypes\KullaniciRol.cs" />
+    <Compile Include="DataTypes\Musteri.cs" />
     <Compile Include="DataTypes\Layout.cs" />
     <Compile Include="FormLayoutBS.cs" />
     <Compile Include="ConfigBS.cs" />
     <Compile Include="DataTypes\KapiTipi.cs" />
     <Compile Include="DataTypes\SiparisTipi.cs" />
+    <Compile Include="SiparisSeriBS.cs" />
+    <Compile Include="MusteriBS.cs" />
     <Compile Include="RaporBS.cs" />
     <Compile Include="KullaniciBS.cs" />
     <Compile Include="MontajBS.cs" />

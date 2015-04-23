@@ -20,7 +20,7 @@ namespace KobsisSiparisTakip.Web
 
         private void SifreBilgisiDoldur()
         {
-            if (Session["user"] == null || Session["yetki"] == null)
+            if (SessionManager.KullaniciBilgi == null || SessionManager.KullaniciBilgi.Rol == null)
             {
                 Response.Redirect("Login.aspx");
                 return;
@@ -29,7 +29,7 @@ namespace KobsisSiparisTakip.Web
             string user, yetki;
 
             user = Session["user"].ToString();
-            yetki = Session["yetki"].ToString();
+            yetki = SessionManager.KullaniciBilgi.Rol.ToString();
             lblKullanici.Text = user;
 
             Dictionary<string, object> prms = new Dictionary<string, object>();
@@ -45,7 +45,7 @@ namespace KobsisSiparisTakip.Web
             string sifre, user, yetki, yeniSifre;
             sifre = Session["sifre"].ToString();
             user = Session["user"].ToString();
-            yetki = Session["yetki"].ToString();
+            yetki = SessionManager.KullaniciBilgi.Rol.ToString();
 
             yeniSifre = txtSifre.Text;
             bool sonuc = false;

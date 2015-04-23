@@ -14,11 +14,6 @@ namespace KobsisSiparisTakip.Business
     {
         public DataTable MontajlariListele(DateTime dtBaslangic, DateTime dtBitis)
         {
-            return pMontajlariListele(dtBaslangic, dtBitis);
-        }
-
-        private DataTable pMontajlariListele(DateTime dtBaslangic, DateTime dtBitis)
-        {
             IData data = GetDataObject();
             DataTable dt = new DataTable();
 
@@ -47,11 +42,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public bool MontajGuncelle(string montajID, DateTime teslimTarihi, List<string> personelListesi, string montajDurumu, string updatedBy, DateTime updatedTime)
-        {
-            return pMontajGuncelle(montajID, teslimTarihi, personelListesi, montajDurumu, updatedBy, updatedTime);
-        }
-
-        private bool pMontajGuncelle(string montajID, DateTime teslimTarihi, List<string> personelListesi, string montajDurumu, string updatedBy, DateTime updatedTime)
         {
             IData data = GetDataObject();
 
@@ -112,12 +102,6 @@ namespace KobsisSiparisTakip.Business
 
         public DataTable MontajBilgisiGetir(string siparisID)
         {
-            return pMontajBilgisiGetir(siparisID);
-
-        }
-
-        private DataTable pMontajBilgisiGetir(string siparisID)
-        {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
@@ -129,11 +113,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public DataTable MontajKotaListele()
-        {
-            return pMontajKotaListele();
-        }
-
-        private DataTable pMontajKotaListele()
         {
             IData data = GetDataObject();
             DataTable dt = new DataTable();
@@ -151,11 +130,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public bool MontajKotaKaydet(DateTime dtMontaj, int montajKota, bool montajKabul)
-        {
-            return pMontajKotaKaydet(dtMontaj, montajKota, montajKabul);
-        }
-
-        private bool pMontajKotaKaydet(DateTime dtMontaj, int montajKota, bool montajKabul)
         {
             DataTable dtKotaToplam = GunlukMontajKotaBilgisiGetir(dtMontaj);
             if (dtKotaToplam.Rows.Count > 0)
@@ -179,11 +153,6 @@ namespace KobsisSiparisTakip.Business
 
         public int GunlukMontajSayisiniGetir(DateTime dt)
         {
-            return pGunlukMontajSayisiniGetir(dt);
-        }
-
-        private int pGunlukMontajSayisiniGetir(DateTime dt)
-        {
             IData data = GetDataObject();
             data.AddSqlParameter("TESLIMTARIH", dt.ToShortDateString(), SqlDbType.DateTime, 50);
 
@@ -195,11 +164,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public DataTable GunlukMontajKotaBilgisiGetir(DateTime dtMontajTarihi)
-        {
-            return pGunlukMontajKotaBilgisiGetir(dtMontajTarihi);
-        }
-
-        private DataTable pGunlukMontajKotaBilgisiGetir(DateTime dtMontajTarihi)
         {
             IData data = GetDataObject();
             DataTable dt = new DataTable();
@@ -218,11 +182,6 @@ namespace KobsisSiparisTakip.Business
         }
 
         public bool MontajKotaSil(string p)
-        {
-            return pMontajKotaSil(p);
-        }
-
-        private bool pMontajKotaSil(string p)
         {
             IData data = GetDataObject();
             data.AddSqlParameter("ID", p, SqlDbType.Int, 50);
