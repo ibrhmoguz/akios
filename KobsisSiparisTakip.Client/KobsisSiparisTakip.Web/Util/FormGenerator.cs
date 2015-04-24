@@ -13,7 +13,7 @@ namespace KobsisSiparisTakip.Web.Util
 {
     public class FormGenerator
     {
-        public string KapiSeri { get; set; }
+        public string SiparisSeri { get; set; }
 
         public FormIslemTipi IslemTipi { get; set; }
 
@@ -21,20 +21,20 @@ namespace KobsisSiparisTakip.Web.Util
         {
             string parentKontrolID = string.Empty;
 
-            List<Layout> layoutList = null;
-            if (!string.IsNullOrWhiteSpace(SessionManager.MusteriId) && !string.IsNullOrWhiteSpace(this.KapiSeri) && SessionManager.SiparisFormLayout == null)
+            List<Layout> seriLayoutList = null;
+            if (SessionManager.KullaniciBilgi.MusteriID.HasValue && SessionManager.SiparisFormLayout == null)
             {
-                layoutList = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.MusteriId, this.KapiSeri);
-                SessionManager.SiparisFormLayout = layoutList;
-            }
-            else
-            {
-                layoutList = SessionManager.SiparisFormLayout;
+                SessionManager.SiparisFormLayout = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.KullaniciBilgi.MusteriID.Value);
             }
 
-            if (layoutList != null)
+            if (SessionManager.SiparisFormLayout != null)
             {
-                foreach (Layout layout in layoutList)
+                seriLayoutList = SessionManager.SiparisFormLayout.Where(q => q.SeriID == Convert.ToInt32(this.SiparisSeri)).ToList();
+            }
+
+            if (seriLayoutList != null)
+            {
+                foreach (Layout layout in seriLayoutList)
                 {
                     WebControl wcTemp = KontrolOlustur(layout);
                     if (wcTemp == null)
@@ -46,7 +46,7 @@ namespace KobsisSiparisTakip.Web.Util
                     }
                     else
                     {
-                        parentKontrolID = ParentKontrolIDBul(layoutList, layout.YerlesimParentID.Value);
+                        parentKontrolID = ParentKontrolIDBul(seriLayoutList, layout.YerlesimParentID.Value);
                         WebControl wcParent = ParentKontrolBul(wc, parentKontrolID);
                         if (wcParent != null)
                             wcParent.Controls.Add(wcTemp);
@@ -188,7 +188,7 @@ namespace KobsisSiparisTakip.Web.Util
             KontrolOzellikAyarla(layout, wc);
             if (layout.RefID.HasValue)
             {
-                wc.DataSource = new ReferansDataManager() { KapiSeri = this.KapiSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
+                wc.DataSource = new ReferansDataManager() { SiparisSeri = this.SiparisSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
                 wc.DataBind();
                 if (wc.Items != null)
                     wc.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
@@ -218,7 +218,7 @@ namespace KobsisSiparisTakip.Web.Util
             var wc = new Label();
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (layout.KontrolAdi == "lblKapiSeri")
+            if (layout.KontrolAdi == "lblSiparisSeri")
                 wc.ID = layout.KontrolAdi;
             if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {

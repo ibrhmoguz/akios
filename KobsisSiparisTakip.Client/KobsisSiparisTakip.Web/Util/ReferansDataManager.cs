@@ -9,16 +9,13 @@ namespace KobsisSiparisTakip.Web.Util
 {
     public class ReferansDataManager
     {
-        public string KapiSeri { get; set; }
+        public string SiparisSeri { get; set; }
 
         public string RefID { get; set; }
 
         public void ReferansVerileriniYukle()
         {
-            if (SessionManager.ReferansData != null)
-                return;
-
-            SessionManager.ReferansData = new ReferansDataBS().ReferansVerileriniGetir(SessionManager.MusteriId, this.KapiSeri);
+            SessionManager.ReferansData = new ReferansDataBS().ReferansVerileriniGetir(SessionManager.KullaniciBilgi.MusteriID.Value, this.SiparisSeri);
         }
 
         public DataTable ReferansVerisiGetir()
@@ -28,7 +25,7 @@ namespace KobsisSiparisTakip.Web.Util
 
             if (SessionManager.ReferansData != null)
             {
-                DataRow[] rows = SessionManager.ReferansData.Select("RefID=" + this.RefID + " AND KapiSeriID=" + this.KapiSeri);
+                DataRow[] rows = SessionManager.ReferansData.Select("RefID=" + this.RefID + " AND SiparisSeriID=" + this.SiparisSeri);
                 if (rows != null && rows.Count() > 0)
                     return rows.CopyToDataTable();
                 else

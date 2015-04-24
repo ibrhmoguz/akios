@@ -22,23 +22,6 @@ namespace KobsisSiparisTakip.Web.Util
             HttpContext.Current.Session.Clear();
         }
 
-        public static string MusteriId
-        {
-            get
-            {
-                if (HttpContext.Current.Session["MusteriID"] != null)
-                {
-                    return HttpContext.Current.Session["MusteriID"].ToString();
-                }
-                else
-                    return String.Empty;
-            }
-            set
-            {
-                HttpContext.Current.Session["MusteriID"] = value;
-            }
-        }
-
         public static DataTable ReferansData
         {
             get
@@ -160,12 +143,12 @@ namespace KobsisSiparisTakip.Web.Util
             }
         }
 
-        public static DataTable SiparisSeri
+        public static List<SiparisSeri> SiparisSeri
         {
             get
             {
                 if (HttpContext.Current.Session["SiparisSeri"] != null)
-                    return (DataTable)HttpContext.Current.Session["SiparisSeri"];
+                    return (List<SiparisSeri>)HttpContext.Current.Session["SiparisSeri"];
                 else
                     return null;
             }

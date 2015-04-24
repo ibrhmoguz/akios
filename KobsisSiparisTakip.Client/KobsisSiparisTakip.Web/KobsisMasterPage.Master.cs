@@ -33,20 +33,24 @@ namespace KobsisSiparisTakip.Web
         private void SiparisSeriYukle()
         {
             rbbSiparisSeriMenu.Items.Clear();
-            DataTable dt = null;
+            List<SiparisSeri> seriList = null;
             if (SessionManager.SiparisSeri == null)
             {
-                dt = new SiparisSeriBS().SeriGetirMusteriIDGore(SessionManager.MusteriBilgi.MusteriID.Value);
-                SessionManager.SiparisSeri = dt;
+                seriList = new SiparisSeriBS().SeriGetirMusteriIDGore(SessionManager.MusteriBilgi.MusteriID.Value);
+                SessionManager.SiparisSeri = seriList;
             }
             else
-                dt = SessionManager.SiparisSeri;
+                seriList = SessionManager.SiparisSeri;
 
-            foreach (DataRow row in dt.Rows)
+            foreach (SiparisSeri seri in seriList)
             {
-                var seriAdi = row["SeriAdi"].ToString();
-                var seriID = row["KapiSeriID"].ToString();
-                var item = new RibbonBarMenuItem() { ID = seriID, Text = seriAdi, Value = seriID, CommandName = "SiparisKayit.aspx?SiparisSeri=" + seriID };
+                var item = new RibbonBarMenuItem()
+                {
+                    ID = seri.SiparisSeriID.ToString(),
+                    Text = seri.SeriAdi,
+                    Value = seri.SiparisSeriID.ToString(),
+                    CommandName = "SiparisKayit.aspx?SiparisSeri=" + seri.SiparisSeriID.ToString()
+                };
                 rbbSiparisSeriMenu.Items.Add(item);
             }
         }
@@ -100,12 +104,6 @@ namespace KobsisSiparisTakip.Web
             }
         }
 
-        protected void RadRibbonBarMenu_Command(object sender, CommandEventArgs e)
-        {
-            string url = e.CommandName;
-            Response.Redirect(url);
-        }
-
         protected void LB_Logout_Click(object sender, EventArgs e)
         {
             Session.Clear();
@@ -116,9 +114,18 @@ namespace KobsisSiparisTakip.Web
             FormsAuthentication.RedirectToLoginPage();
         }
 
+        protected void RadRibbonBarMenu_Command(object sender, CommandEventArgs e)
+        {
+            NavigateURL(e.CommandName);
+        }
+
         protected void RadRibbonBarMenu_MenuItemClick(object sender, RibbonBarMenuItemClickEventArgs e)
         {
-            string url = e.Item.CommandName;
+            NavigateURL(e.Item.CommandName);
+        }
+
+        private void NavigateURL(string url)
+        {
             Response.Redirect(url);
         }
     }

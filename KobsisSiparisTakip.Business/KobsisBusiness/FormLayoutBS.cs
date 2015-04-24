@@ -14,7 +14,7 @@ namespace KobsisSiparisTakip.Business
     [ServiceConnectionNameAttribute("KobsisConnectionString")]
     public class FormLayoutBS : BusinessBase
     {
-        public List<Layout> FormKontrolleriniGetir(string musteriID, string kapiSeri)
+        public List<Layout> FormKontrolleriniGetir(int musteriID)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -43,15 +43,15 @@ namespace KobsisSiparisTakip.Business
                                 ,K.ImajID
                                 ,SM.KolonAdi
 	                            ,VT.VeriTipAdi
+                                ,Y.SiparisSeriID
                             FROM dbo.YERLESIM AS Y
 	                            INNER JOIN dbo.KONTROL AS K ON K.KontrolID=Y.KontrolID
 	                            LEFT JOIN dbo.KONTROL_DEGER AS KD ON K.KontrolDegerID=KD.KontrolDegerID
 	                            LEFT JOIN dbo.IMAJ AS I ON K.ImajID=I.ImajID
                                 LEFT JOIN dbo.SIPARIS_METADATA AS SM ON SM.MetadataID=K.MetadataID
 	                            LEFT JOIN dbo.VERI_TIP AS VT ON VT.VeriTipID=SM.VeriTipID
-                            WHERE Y.KapiSeriID=@KapiSeriID AND Y.MusteriID=@MusteriID
+                            WHERE Y.MusteriID=@MusteriID
                             ORDER BY Y.YerlesimTabloID";
-            data.AddSqlParameter("KapiSeriID", kapiSeri, SqlDbType.VarChar, 50);
             data.AddSqlParameter("MusteriID", musteriID, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
 
@@ -61,6 +61,7 @@ namespace KobsisSiparisTakip.Business
                 var layout = new Layout();
                 layout.YerlesimTabloID = Convert.ToInt32(row["YerlesimTabloID"]);
                 layout.YerlesimID = Convert.ToInt32(row["YerlesimID"]);
+                layout.SeriID = Convert.ToInt32(row["SiparisSeriID"]);
                 if (row["YerlesimParentID"] != DBNull.Value)
                     layout.YerlesimParentID = Convert.ToInt32(row["YerlesimParentID"]);
                 layout.KontrolTipID = Convert.ToInt32(row["KontrolTipID"]);

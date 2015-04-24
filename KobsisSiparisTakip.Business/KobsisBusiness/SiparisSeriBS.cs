@@ -12,16 +12,27 @@ namespace KobsisSiparisTakip.Business
     [ServiceConnectionNameAttribute("KobsisConnectionString")]
     public class SiparisSeriBS : BusinessBase
     {
-        public DataTable SeriGetirMusteriIDGore(int pMusteriID)
+        public List<SiparisSeri> SeriGetirMusteriIDGore(int pMusteriID)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
-            string sqlText = @"SELECT * FROM KAPI_SERI WHERE MusteriID=@MusteriID";
+            string sqlText = @"SELECT * FROM SIPARIS_SERI WHERE MusteriID=@MusteriID";
 
             data.AddSqlParameter("MusteriID", pMusteriID, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
-            return dt;
+            var seriList = new List<SiparisSeri>();
+            foreach (DataRow row in dt.Rows)
+            {
+                var seri = new SiparisSeri();
+                if (row["SiparisSeriID"] != DBNull.Value)
+                    seri.SiparisSeriID = Convert.ToInt32(row["SiparisSeriID"]);
+                seri.SeriAdi = row["SeriAdi"].ToString();
+
+                seriList.Add(seri);
+            }
+
+            return seriList;
         }
     }
 }

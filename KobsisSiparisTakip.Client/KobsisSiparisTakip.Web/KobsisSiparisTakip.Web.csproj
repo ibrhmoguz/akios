@@ -150,7 +150,6 @@
     <Content Include="SiparisFormYanginKayit.aspx" />
     <Content Include="SiparisKayit.aspx" />
     <Content Include="SiparisSorgula.aspx" />
-    <Content Include="Test.aspx" />
     <Content Include="UygulamaAyarlari.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -177,13 +176,6 @@
     </Compile>
     <Compile Include="SiparisKayit.aspx.designer.cs">
       <DependentUpon>SiparisKayit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
     <Compile Include="Util\FormGenerator.cs" />
     <Compile Include="Util\KobsisBasePage.cs">

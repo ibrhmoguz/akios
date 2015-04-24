@@ -44,6 +44,7 @@
     <Compile Include="DataTypes\KullaniciRol.cs" />
     <Compile Include="DataTypes\Musteri.cs" />
     <Compile Include="DataTypes\Layout.cs" />
+    <Compile Include="DataTypes\SiparisSeri.cs" />
     <Compile Include="FormLayoutBS.cs" />
     <Compile Include="ConfigBS.cs" />
     <Compile Include="DataTypes\KapiTipi.cs" />

@@ -10,6 +10,7 @@ namespace KobsisSiparisTakip.Business.DataTypes
     {
         public int YerlesimTabloID { get; set; }
         public int YerlesimID { get; set; }
+        public int SeriID { get; set; }
         public int? YerlesimParentID { get; set; }
         public int KontrolTipID { get; set; }
         public string KontrolAdi { get; set; }
