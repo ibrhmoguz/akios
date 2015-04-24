@@ -15,11 +15,16 @@ namespace KobsisSiparisTakip.Web
 {
     public partial class KobsisMasterPage : System.Web.UI.MasterPage
     {
+        protected override void OnInit(EventArgs e)
+        {
+            SiparisSeriYukle();
+            base.OnInit(e);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                SiparisSeriYukle();
                 SeciliMenuAyarla();
                 YetkiyeGoreMenuAyarla();
             }
@@ -27,7 +32,7 @@ namespace KobsisSiparisTakip.Web
 
         private void SiparisSeriYukle()
         {
-            SiparisBarGroup.Items.Clear();
+            rbbSiparisSeriMenu.Items.Clear();
             DataTable dt = null;
             if (SessionManager.SiparisSeri == null)
             {
@@ -41,14 +46,8 @@ namespace KobsisSiparisTakip.Web
             {
                 var seriAdi = row["SeriAdi"].ToString();
                 var seriID = row["KapiSeriID"].ToString();
-                var item = new RibbonBarButton()
-                {
-                    Text = seriAdi,
-                    Size = RibbonBarItemSize.Large,
-                    ImageUrlLarge = "App_Themes/Theme/Raster/porte.png",
-                    CommandName = "SiparisKayit.aspx?SiparisSeri=" + seriID
-                };
-                SiparisBarGroup.Items.Add(item);
+                var item = new RibbonBarMenuItem() { ID = seriID, Text = seriAdi, Value = seriID, CommandName = "SiparisKayit.aspx?SiparisSeri=" + seriID };
+                rbbSiparisSeriMenu.Items.Add(item);
             }
         }
 
@@ -121,11 +120,6 @@ namespace KobsisSiparisTakip.Web
         {
             string url = e.Item.CommandName;
             Response.Redirect(url);
-        }
-
-        protected void RadRibbonBarMenu_ButtonClick(object sender, RibbonBarButtonClickEventArgs e)
-        {
-
         }
     }
 }

@@ -66,13 +66,12 @@
                 </td>
             </tr>
         </table>
-        <telerik:RadRibbonBar ID="RadRibbonBarMenu" runat="server" Width="100%" OnCommand="RadRibbonBarMenu_Command" OnButtonClick="RadRibbonBarMenu_ButtonClick">
+        <telerik:RadRibbonBar ID="RadRibbonBarMenu" runat="server" Width="100%" OnCommand="RadRibbonBarMenu_Command" OnMenuItemClick="RadRibbonBarMenu_MenuItemClick">
             <telerik:RibbonBarTab Text="SİPARİŞ">
                 <telerik:RibbonBarGroup ID="SiparisBarGroup" runat="server" Text="Sipariş Ekle">
                     <Items>
                         <telerik:RibbonBarMenu ID="rbbSiparisSeriMenu" runat="server" Size="Large" Text="SİPARİŞ SERİ" ImageUrlLarge="App_Themes/Theme/Raster/porte.png">
                         </telerik:RibbonBarMenu>
-
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Value="Sorgula" Text="Sorgula">
