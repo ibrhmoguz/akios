@@ -85,22 +85,13 @@ namespace KobsisSiparisTakip.Web {
         protected global::System.Web.UI.WebControls.Label lblFirmaMail;
         
         /// <summary>
-        /// txtMusteriFirmaAdi control.
+        /// txtSiparisNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtMusteriFirmaAdi;
-        
-        /// <summary>
-        /// txtSiparisAdedi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtSiparisAdedi;
+        protected global::Telerik.Web.UI.RadTextBox txtSiparisNo;
         
         /// <summary>
         /// txtMusteriAd control.
@@ -121,31 +112,13 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadTextBox txtMusteriAdres;
         
         /// <summary>
-        /// ddlMusteriIl control.
+        /// txtSiparisAdeti control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox ddlMusteriIl;
-        
-        /// <summary>
-        /// ddlMusteriIlce control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox ddlMusteriIlce;
-        
-        /// <summary>
-        /// ddlMusteriSemt control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox ddlMusteriSemt;
+        protected global::Telerik.Web.UI.RadTextBox txtSiparisAdeti;
         
         /// <summary>
         /// txtMusteriSoyad control.
@@ -157,6 +130,15 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadTextBox txtMusteriSoyad;
         
         /// <summary>
+        /// rdtOlcuSiparisTarih control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker rdtOlcuSiparisTarih;
+        
+        /// <summary>
         /// txtMusteriEvTel control.
         /// </summary>
         /// <remarks>
@@ -164,6 +146,24 @@ namespace KobsisSiparisTakip.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadMaskedTextBox txtMusteriEvTel;
+        
+        /// <summary>
+        /// ddlMusteriIl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox ddlMusteriIl;
+        
+        /// <summary>
+        /// rdtOlcuTeslimTarih control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDatePicker rdtOlcuTeslimTarih;
         
         /// <summary>
         /// txtMusteriIsTel control.
@@ -175,6 +175,24 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadMaskedTextBox txtMusteriIsTel;
         
         /// <summary>
+        /// ddlMusteriIlce control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox ddlMusteriIlce;
+        
+        /// <summary>
+        /// txtMusteriFirmaAdi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox txtMusteriFirmaAdi;
+        
+        /// <summary>
         /// txtMusteriCepTel control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace KobsisSiparisTakip.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadMaskedTextBox txtMusteriCepTel;
+        
+        /// <summary>
+        /// ddlMusteriSemt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox ddlMusteriSemt;
         
         /// <summary>
         /// divSiparisFormKontrolleri control.

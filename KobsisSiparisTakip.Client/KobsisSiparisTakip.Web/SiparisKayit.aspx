@@ -60,78 +60,73 @@
     <br />
     <table class="AnaTablo" style="width: 100%">
         <tr>
-            <th colspan="4">MÜŞTERİ/FİRMA BİLGİLERİ </th>
-        </tr>
-        <tr>
-            <th style="width: 15%">Firma Adı:
-            </th>
-            <td style="width: 35%">
-                <telerik:RadTextBox ID="txtMusteriFirmaAdi" runat="server" RenderMode="Lightweight"></telerik:RadTextBox>
+            <th style="width: 12%">Sipariş No : </th>
+            <td style="width: 20%">
+                <telerik:RadTextBox ID="txtSiparisNo" runat="server" Enabled="False" Text="Sistem otomatik verir" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
             </td>
-            <th style="width: 10%">Sipariş Adedi: </th>
-            <td>
-                <telerik:RadTextBox ID="txtSiparisAdedi" runat="server" Text="1" RenderMode="Lightweight"></telerik:RadTextBox>
-            </td>
-        </tr>
-        <tr>
-            <th>Adı : </th>
-            <td>
+            <th style="width: 10%">Adı : </th>
+            <td style="width: 20%">
                 <telerik:RadTextBox ID="txtMusteriAd" runat="server" RenderMode="Lightweight"></telerik:RadTextBox>
             </td>
-            <th rowspan="5">Adresi : </th>
-            <td rowspan="5">
-                <table style="width: 100%">
-                    <tr>
-                        <td colspan="2">
-                            <telerik:RadTextBox ID="txtMusteriAdres" runat="server" TextMode="MultiLine" Height="50px" Width="250px" RenderMode="Lightweight"></telerik:RadTextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>İl :</th>
-                        <td>
-                            <telerik:RadComboBox ID="ddlMusteriIl" runat="server" AutoPostBack="true" EmptyMessage="İl Seçiniz" Skin="Telerik" OnSelectedIndexChanged="ddlMusteriIl_SelectedIndexChanged">
-                            </telerik:RadComboBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>İlçe :</th>
-                        <td>
-                            <telerik:RadComboBox ID="ddlMusteriIlce" runat="server" AutoPostBack="True" EmptyMessage="İlçe Seçiniz" RenderMode="Lightweight" OnSelectedIndexChanged="ddlMusteriIlce_SelectedIndexChanged">
-                            </telerik:RadComboBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Semt :</th>
-                        <td>
-                            <telerik:RadComboBox ID="ddlMusteriSemt" runat="server" AutoPostBack="false" EmptyMessage="Semt Seçiniz" RenderMode="Lightweight">
-                            </telerik:RadComboBox>
-                        </td>
-                    </tr>
-                </table>
+            <th rowspan="2" style="width: 10%">Adres : </th>
+            <td rowspan="2">
+                <telerik:RadTextBox ID="txtMusteriAdres" runat="server" TextMode="MultiLine" Height="50px" Width="250px" RenderMode="Lightweight"></telerik:RadTextBox>
             </td>
         </tr>
         <tr>
+            <th>Sipariş Adeti : </th>
+            <td>
+                <telerik:RadTextBox ID="txtSiparisAdeti" runat="server" Text="1" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
+            </td>
             <th style="width: 10%">Soyadı </th>
             <td>
                 <telerik:RadTextBox ID="txtMusteriSoyad" runat="server" RenderMode="Lightweight"></telerik:RadTextBox>
             </td>
         </tr>
         <tr>
+            <th>Sipariş Tarihi : </th>
+            <td>
+                <telerik:RadDatePicker ID="rdtOlcuSiparisTarih" runat="server"></telerik:RadDatePicker>
+            </td>
             <th>Ev Tel : </th>
             <td>
                 <telerik:RadMaskedTextBox ID="txtMusteriEvTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
             </td>
+            <th>İl :</th>
+            <td>
+                <telerik:RadComboBox ID="ddlMusteriIl" runat="server" AutoPostBack="true" EmptyMessage="İl Seçiniz" Skin="Telerik" OnSelectedIndexChanged="ddlMusteriIl_SelectedIndexChanged">
+                </telerik:RadComboBox>
+            </td>
         </tr>
         <tr>
+            <th>Teslim Tarihi : </th>
+            <td>
+                <telerik:RadDatePicker ID="rdtOlcuTeslimTarih" runat="server"></telerik:RadDatePicker>
+            </td>
             <th>iş Tel : </th>
             <td>
                 <telerik:RadMaskedTextBox ID="txtMusteriIsTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
             </td>
+            <th>İlçe :</th>
+            <td>
+                <telerik:RadComboBox ID="ddlMusteriIlce" runat="server" AutoPostBack="True" EmptyMessage="İlçe Seçiniz" RenderMode="Lightweight" OnSelectedIndexChanged="ddlMusteriIlce_SelectedIndexChanged">
+                </telerik:RadComboBox>
+            </td>
         </tr>
         <tr>
+            <th>Firma Adı:
+            </th>
+            <td>
+                <telerik:RadTextBox ID="txtMusteriFirmaAdi" runat="server" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
+            </td>
             <th>Cep Tel : </th>
             <td>
                 <telerik:RadMaskedTextBox ID="txtMusteriCepTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
+            </td>
+            <th>Semt :</th>
+            <td>
+                <telerik:RadComboBox ID="ddlMusteriSemt" runat="server" AutoPostBack="false" EmptyMessage="Semt Seçiniz" RenderMode="Lightweight">
+                </telerik:RadComboBox>
             </td>
         </tr>
     </table>
