@@ -52,8 +52,8 @@ namespace WebFrame.DataAccess
         /// <param name="connectionStringName">Veritabanına bağlanmak için kullanılacak bağlantı adı.</param>
         public OracleData(string connectionStringName)
         {
-            if(string.IsNullOrEmpty(connectionStringName))
-                throw new ArgumentNullException("connectionStringName","Bağlantı adı boş olamaz.");
+            if (string.IsNullOrEmpty(connectionStringName))
+                throw new ArgumentNullException("connectionStringName", "Bağlantı adı boş olamaz.");
 
             mConnection = new OracleConnection(ConnectionStringHelper.GetConnectionString(connectionStringName));
 
@@ -188,8 +188,8 @@ namespace WebFrame.DataAccess
         /// <returns>İşlem sonucu.</returns>
         public int ExecuteStatement(string ssql)
         {
-            if(string.IsNullOrEmpty(ssql))
-                throw new ArgumentNullException("ssql","Boş string değer verilemez.");
+            if (string.IsNullOrEmpty(ssql))
+                throw new ArgumentNullException("ssql", "Boş string değer verilemez.");
             return ExecuteStatement(ssql, CommandType.Text);
         }
 
@@ -357,7 +357,7 @@ namespace WebFrame.DataAccess
         public void GetRecords(DataSet ds, string ssql)
         {
             if (ds == null)
-                throw new ArgumentNullException("ds","Dataset null olamaz");
+                throw new ArgumentNullException("ds", "Dataset null olamaz");
 
             if (string.IsNullOrEmpty(ssql))
                 throw new ArgumentNullException("ssql", "Boş parametre verilemez.");
@@ -568,7 +568,7 @@ namespace WebFrame.DataAccess
 
                 dt.Clear();
                 mDataAdapter.Fill(dt);
-            }            
+            }
             finally
             {
                 this.CloseConnection();
@@ -612,7 +612,7 @@ namespace WebFrame.DataAccess
                 mDataAdapter.Update(ds.Tables[0].Select(null, null, DataViewRowState.Added));
                 mDataAdapter.Update(ds.Tables[0].Select(null, null, DataViewRowState.ModifiedCurrent));
 
-            }          
+            }
             finally
             {
                 this.CloseConnection();
@@ -622,7 +622,7 @@ namespace WebFrame.DataAccess
                 {
                     mDataAdapter.InsertCommand.Transaction = null;
                     mDataAdapter.UpdateCommand.Transaction = null;
-                   // mDataAdapter.DeleteCommand.Transaction = null;
+                    // mDataAdapter.DeleteCommand.Transaction = null;
                 }
             }
         }
@@ -753,7 +753,7 @@ namespace WebFrame.DataAccess
         /// <param name="dbType">SqlServer'a özel parametre tipi.</param>
         /// <param name="direction">Parametre yönü.</param>
         /// <param name="parameterSize">Parametre boyutu.</param>
-        public void AddSqlParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, int parameterSize)
+        public void AddSqlParameter(string parameterName, object parameterValue, SqlDbType dbType, ParameterDirection direction, int parameterSize)
         {
             throw new NotImplementedException();
         }
@@ -780,10 +780,10 @@ namespace WebFrame.DataAccess
         /// <param name="parameterSize">Parametren boyutu.</param>
         public void AddOracleParameter(string parameterName, OracleDbType dbType, ParameterDirection direction, int parameterSize)
         {
-            if(string.IsNullOrEmpty(parameterName))
+            if (string.IsNullOrEmpty(parameterName))
                 throw new ArgumentNullException("parameterName", "Parametre adı boş olamaz.");
 
-            if(parameterSize<0)
+            if (parameterSize < 0)
                 throw new ArgumentNullException("parameterSize", "parameterSize negatif değer olamaz.");
 
             OracleParameter p = new OracleParameter();

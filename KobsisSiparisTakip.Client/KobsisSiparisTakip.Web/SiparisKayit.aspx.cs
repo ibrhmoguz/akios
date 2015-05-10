@@ -52,6 +52,10 @@ namespace KobsisSiparisTakip.Web
                     GenerateForm();
                 }
             }
+            if (Page.IsPostBack)
+            {
+                GenerateForm();
+            }
         }
 
         private void MusteriBilgileriDoldur()
@@ -127,7 +131,8 @@ namespace KobsisSiparisTakip.Web
             int? siparisID = null;
             if (this.SiparisID != string.Empty) { siparisID = Convert.ToInt32(this.SiparisID); }
             var parametreler = new List<DbParametre>();
-            var paramID = new DbParametre() { ParametreAdi = "ID", ParametreDegeri = siparisID, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
+            var paramError = new DbParametre() { ParametreAdi = "ErrorMessage", ParametreYonu = ParameterDirection.Output, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 4000 };
+            var paramID = new DbParametre() { ParametreAdi = "ID", ParametreYonu = ParameterDirection.InputOutput, ParametreDegeri = siparisID, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
             var paramSeriID = new DbParametre() { ParametreAdi = "SeriID", ParametreDegeri = this.SiparisSeri, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
             var paramSiparisTarih = new DbParametre() { ParametreAdi = "SiparisTarih", ParametreDegeri = rdtSiparisTarih.SelectedDate, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramTeslimTarihi = new DbParametre() { ParametreAdi = "TeslimTarih", ParametreDegeri = rdtTeslimTarih.SelectedDate, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
@@ -146,8 +151,9 @@ namespace KobsisSiparisTakip.Web
             var paramCreatedTime = new DbParametre() { ParametreAdi = "CreatedTime", ParametreDegeri = DateTime.Now, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramUpdatedBy = new DbParametre() { ParametreAdi = "UpdatedBy", ParametreDegeri = SessionManager.KullaniciBilgi.KullaniciID, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
             var paramUpdatedTime = new DbParametre() { ParametreAdi = "UpdatedTime", ParametreDegeri = DateTime.Now, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
-            var paramDurum = new DbParametre() { ParametreAdi = "Durum", ParametreDegeri = 1, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
+            var paramDurum = new DbParametre() { ParametreAdi = "DurumID", ParametreDegeri = 1, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
 
+            parametreler.Add(paramError);
             parametreler.Add(paramID);
             parametreler.Add(paramSeriID);
             parametreler.Add(paramSiparisTarih);
@@ -193,53 +199,54 @@ namespace KobsisSiparisTakip.Web
             else
                 MessageBox.Hata(this, "Sipariş eklenemedi.");
         }
-        
+
         private object KontrolDegeriBul(string kontrolAdi, string yerlesimTabloID)
         {
             object kontrolDegeri = null;
             var control = KontrolBul(divSiparisFormKontrolleri, kontrolAdi.Replace(" ", string.Empty) + yerlesimTabloID);
 
-            if (control is RadTextBox || control is RadMaskedTextBox || control is RadNumericTextBox)
+            if (control is RadTextBox)
             {
-                kontrolDegeri = ((RadTextBox)control).Text;
+                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadTextBox)control).Text) ? ((RadTextBox)control).Text : null;
+            }
+            if (control is RadMaskedTextBox)
+            {
+                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadMaskedTextBox)control).Text) ? ((RadMaskedTextBox)control).Text : null;
+            }
+            else if (control is RadNumericTextBox)
+            {
+                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadNumericTextBox)control).Text) ? ((RadNumericTextBox)control).Text : null;
             }
             else if (control is CheckBox)
             {
-                kontrolDegeri = ((CheckBox)control).Checked;
+                kontrolDegeri = ((CheckBox)control).Checked == true ? ((CheckBox)control).Checked : false;
             }
             else if (control is RadDateTimePicker)
             {
-                kontrolDegeri = ((RadDateTimePicker)control).SelectedDate;
+                kontrolDegeri = ((RadDateTimePicker)control).SelectedDate != null ? ((RadDateTimePicker)control).SelectedDate : null;
             }
             else if (control is RadDropDownList)
             {
-                if (((RadDropDownList)control).SelectedItem != null)
-                    kontrolDegeri = ((RadDropDownList)control).SelectedValue;
-                else
-                    kontrolDegeri = null;
+                kontrolDegeri = ((RadDropDownList)control).SelectedValue != null && ((RadDropDownList)control).SelectedValue != "0" ? ((RadDropDownList)control).SelectedValue : null;
             }
             else if (control is Label)
             {
-                kontrolDegeri = ((Label)control).Text;
+                kontrolDegeri = !string.IsNullOrWhiteSpace(((Label)control).Text) ? ((Label)control).Text : null;
             }
 
             return kontrolDegeri;
         }
 
-        WebControl wc1;
-        private WebControl KontrolBul(WebControl wc, string kontrolID)
+        private Control KontrolBul(Control rootControl, string controlID)
         {
-            if (wc.ID == kontrolID)
-                wc1 = wc;
-            else
+            if (rootControl.ID == controlID) return rootControl;
+
+            foreach (Control controlToSearch in rootControl.Controls)
             {
-                for (int i = 0; i < wc.Controls.Count; i++)
-                {
-                    WebControl wcChild = (WebControl)wc.Controls[i];
-                    KontrolBul(wcChild, kontrolID);
-                }
+                Control controlToReturn = KontrolBul(controlToSearch, controlID);
+                if (controlToReturn != null) return controlToReturn;
             }
-            return wc1;
+            return null;
         }
 
         private SqlDbType VeriTipiBelirle(string veriTipAdi)

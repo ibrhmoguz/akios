@@ -78,8 +78,11 @@ namespace KobsisSiparisTakip.Web.Util
             {
                 for (int i = 0; i < wc.Controls.Count; i++)
                 {
-                    WebControl wcChild = (WebControl)wc.Controls[i];
-                    ParentKontrolBul(wcChild, kontrolID);
+                    if (wc.Controls[i] is WebControl)
+                    {
+                        WebControl wcChild = (WebControl)wc.Controls[i];
+                        ParentKontrolBul(wcChild, kontrolID);
+                    }
                 }
             }
             return wc1;

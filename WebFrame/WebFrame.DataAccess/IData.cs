@@ -22,7 +22,7 @@ namespace WebFrame.DataAccess
         /// Veritabanına bağlanılırken kullanılan bağlantı cümlesinin adı. 
         /// </summary>
         string ConnectionName { get; }
-       
+
         #endregion
 
 
@@ -178,7 +178,7 @@ namespace WebFrame.DataAccess
         /// <param name="dbType">SqlServer'a özel parametre tipi.</param>
         /// <param name="direction">Parametre yönü.</param>
         /// <param name="parameterSize">Parametre boyutu.</param>
-        void AddSqlParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, int parameterSize);
+        void AddSqlParameter(string parameterName, object parameterValue, SqlDbType dbType, ParameterDirection direction, int parameterSize);
         /// <summary>
         /// Input tipindeki SqlServer parametreleri eklemek için kullanılır.
         /// </summary>
@@ -203,9 +203,9 @@ namespace WebFrame.DataAccess
         /// <param name="parameterValue">Parametrenin değeri.</param>
         /// <param name="dbType">Oracle'a özel parametre tipi.</param>
         /// <param name="parameterSize">Parametren boyutu.</param>
-        void AddOracleParameter(string parameterName, object parameterValue,OracleDbType dbType, int parameterSize);
+        void AddOracleParameter(string parameterName, object parameterValue, OracleDbType dbType, int parameterSize);
 
-      
+
 
         #endregion
     }

@@ -13,5 +13,11 @@ namespace KobsisSiparisTakip.Business.DataTypes
         public object ParametreDegeri { get; set; }
         public SqlDbType VeriTipi { get; set; }
         public int ParametreBoyutu { get; set; }
+        public ParameterDirection? ParametreYonu { get; set; }
+
+        public DbParametre()
+        {
+            this.ParametreYonu = null;
+        }
     }
 }

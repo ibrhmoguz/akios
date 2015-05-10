@@ -739,7 +739,7 @@ namespace WebFrame.DataAccess
         /// <param name="dbType">SqlServer'a özel parametre tipi.</param>
         /// <param name="direction">Parametre yönü.</param>
         /// <param name="parameterSize">Parametre boyutu.</param>
-        public void AddSqlParameter(string parameterName, SqlDbType dbType, ParameterDirection direction, int parameterSize)
+        public void AddSqlParameter(string parameterName, object parameterValue, SqlDbType dbType, ParameterDirection direction, int parameterSize)
         {
             if (string.IsNullOrEmpty(parameterName))
                 throw new ArgumentNullException("parameterName", "Parametre adý boþ olamaz.");
@@ -750,6 +750,7 @@ namespace WebFrame.DataAccess
             SqlParameter p = new SqlParameter();
             p.SqlDbType = dbType;
             p.ParameterName = parameterName;
+            p.Value = parameterValue ?? DBNull.Value;
             p.Direction = direction;
             p.Size = parameterSize;
             parameters.Add(p);

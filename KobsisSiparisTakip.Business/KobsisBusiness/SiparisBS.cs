@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
+using WebFrame.DataType.Common.Logging;
 
 namespace KobsisSiparisTakip.Business
 {
@@ -20,11 +21,19 @@ namespace KobsisSiparisTakip.Business
 
             foreach (DbParametre param in parametreler)
             {
-                data.AddSqlParameter(param.ParametreAdi, param.ParametreDegeri, param.VeriTipi, param.ParametreBoyutu);
+                if (param.ParametreYonu.HasValue)
+                    data.AddSqlParameter(param.ParametreAdi, param.ParametreDegeri, param.VeriTipi, param.ParametreYonu.Value, param.ParametreBoyutu);
+                else
+                    data.AddSqlParameter(param.ParametreAdi, param.ParametreDegeri, param.VeriTipi, param.ParametreBoyutu);
             }
 
             Dictionary<string, object> output = data.ExecuteStatementUDI("dbo.InsertUpdateSiparis" + musteriKodu);
-            if (output["ID"] != null && output["ID"].ToString() != string.Empty)
+            if (output["ErrorMessage"] != null && output["ErrorMessage"].ToString() != string.Empty)
+            {
+                new LogWriter().Write(AppModules.Siparis, System.Diagnostics.EventLogEntryType.Error, new Exception(output["ErrorMessage"].ToString()), "ServerSide", "SiparisKaydet", "", null);
+                return null;
+            }
+            else if (output["ID"] != null && output["ID"].ToString() != string.Empty)
                 return Convert.ToInt32(output["ID"].ToString());
             else
                 return null;
