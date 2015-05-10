@@ -25,32 +25,7 @@ namespace KobsisSiparisTakip.Business
             data.AddSqlParameter("KullaniciID", pKullaniciID, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
-            Musteri m = new Musteri();
-            if (dt.Rows.Count > 0)
-            {
-                DataRow row = dt.Rows[0];
-                if (row["MusteriID"] != DBNull.Value)
-                    m.MusteriID = Convert.ToInt32(row["MusteriID"].ToString());
-                if (row["YetkiliKisi"] != DBNull.Value)
-                    m.YetkiliKisi = row["YetkiliKisi"].ToString();
-                if (row["Adi"] != DBNull.Value)
-                    m.Adi = row["Adi"].ToString();
-                if (row["Adres"] != DBNull.Value)
-                    m.Adres = row["Adres"].ToString();
-                if (row["Tel"] != DBNull.Value)
-                    m.Tel = row["Tel"].ToString();
-                if (row["Mobil"] != DBNull.Value)
-                    m.Mobil = row["Mobil"].ToString();
-                if (row["Faks"] != DBNull.Value)
-                    m.Faks = row["Faks"].ToString();
-                if (row["Web"] != DBNull.Value)
-                    m.Web = row["Web"].ToString();
-                if (row["Mail"] != DBNull.Value)
-                    m.Mail = row["Mail"].ToString();
-                if (row["LogoID"] != DBNull.Value)
-                    m.LogoID = Convert.ToInt32(row["LogoID"].ToString().ToString());
-            }
-            return m;
+            return ConvertToMusteri(dt);
         }
 
         public Musteri MusteriBilgiGetirMusteriIDGore(int pMusteriID)
@@ -62,12 +37,19 @@ namespace KobsisSiparisTakip.Business
             data.AddSqlParameter("MusteriID", pMusteriID, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
+            return ConvertToMusteri(dt);
+        }
+
+        private Musteri ConvertToMusteri(DataTable dt)
+        {
             Musteri m = new Musteri();
             if (dt.Rows.Count > 0)
             {
                 DataRow row = dt.Rows[0];
                 if (row["MusteriID"] != DBNull.Value)
                     m.MusteriID = Convert.ToInt32(row["MusteriID"].ToString());
+                if (row["Kod"] != DBNull.Value)
+                    m.Kod = row["Kod"].ToString();
                 if (row["YetkiliKisi"] != DBNull.Value)
                     m.YetkiliKisi = row["YetkiliKisi"].ToString();
                 if (row["Adi"] != DBNull.Value)

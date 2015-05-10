@@ -24,7 +24,7 @@ namespace KobsisSiparisTakip.Web
 
         private void MontajKotalariListele()
         {
-            DataTable dt = new MontajBS().MontajKotaListele();
+            DataTable dt = new MontajBS().MontajKotaListele(SessionManager.MusteriBilgi.MusteriID.Value);
             if (dt != null && dt.Rows.Count > 0)
             {
                 grdMontajKota.DataSource = dt;
@@ -52,7 +52,7 @@ namespace KobsisSiparisTakip.Web
                 return;
             }
 
-            bool islemDurumu = new MontajBS().MontajKotaKaydet(rdtMontajTarih.SelectedDate.Value, kota, !chcBoxMontajKabul.Checked);
+            bool islemDurumu = new MontajBS().MontajKotaKaydet(rdtMontajTarih.SelectedDate.Value, kota, !chcBoxMontajKabul.Checked, SessionManager.MusteriBilgi.MusteriID.Value);
             MontajKotalariListele();
             if (islemDurumu)
             {

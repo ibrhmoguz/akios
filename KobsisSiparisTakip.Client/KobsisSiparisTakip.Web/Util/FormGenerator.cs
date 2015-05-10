@@ -218,8 +218,6 @@ namespace KobsisSiparisTakip.Web.Util
             var wc = new Label();
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (layout.KontrolAdi == "lblSiparisSeri")
-                wc.ID = layout.KontrolAdi;
             if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)

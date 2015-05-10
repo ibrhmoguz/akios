@@ -86,7 +86,7 @@
         <tr>
             <th>Sipariş Tarihi : </th>
             <td>
-                <telerik:RadDatePicker ID="rdtOlcuSiparisTarih" runat="server"></telerik:RadDatePicker>
+                <telerik:RadDatePicker ID="rdtSiparisTarih" runat="server"></telerik:RadDatePicker>
             </td>
             <th>Ev Tel : </th>
             <td>
@@ -101,7 +101,7 @@
         <tr>
             <th>Teslim Tarihi : </th>
             <td>
-                <telerik:RadDatePicker ID="rdtOlcuTeslimTarih" runat="server"></telerik:RadDatePicker>
+                <telerik:RadDatePicker ID="rdtTeslimTarih" runat="server"></telerik:RadDatePicker>
             </td>
             <th>iş Tel : </th>
             <td>

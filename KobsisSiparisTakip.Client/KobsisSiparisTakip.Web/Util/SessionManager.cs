@@ -157,5 +157,28 @@ namespace KobsisSiparisTakip.Web.Util
                 HttpContext.Current.Session["SiparisSeri"] = value;
             }
         }
+
+        public static string MontajKotaKontrolu
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"] != null)
+                    return HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"].ToString();
+                else
+                    return string.Empty;
+            }
+        }
+
+        public static int MontajKotaVarsayilan
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] != null && !string.IsNullOrWhiteSpace(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString()))
+                    return Convert.ToInt32(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString());
+                else
+                    return 0;
+            }
+        }
+
     }
 }

@@ -18,5 +18,6 @@ namespace KobsisSiparisTakip.Business.DataTypes
         public string Web { get; set; }
         public string Mail { get; set; }
         public int? LogoID { get; set; }
+        public string Kod { get; set; }
     }
 }

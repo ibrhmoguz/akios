@@ -130,13 +130,13 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadTextBox txtMusteriSoyad;
         
         /// <summary>
-        /// rdtOlcuSiparisTarih control.
+        /// rdtSiparisTarih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker rdtOlcuSiparisTarih;
+        protected global::Telerik.Web.UI.RadDatePicker rdtSiparisTarih;
         
         /// <summary>
         /// txtMusteriEvTel control.
@@ -157,13 +157,13 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadComboBox ddlMusteriIl;
         
         /// <summary>
-        /// rdtOlcuTeslimTarih control.
+        /// rdtTeslimTarih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker rdtOlcuTeslimTarih;
+        protected global::Telerik.Web.UI.RadDatePicker rdtTeslimTarih;
         
         /// <summary>
         /// txtMusteriIsTel control.

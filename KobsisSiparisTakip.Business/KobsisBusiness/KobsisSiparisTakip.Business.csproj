@@ -39,16 +39,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTypes\DbParametre.cs" />
     <Compile Include="DataTypes\FormIslemTipi.cs" />
     <Compile Include="DataTypes\Kullanici.cs" />
     <Compile Include="DataTypes\KullaniciRol.cs" />
     <Compile Include="DataTypes\Musteri.cs" />
     <Compile Include="DataTypes\Layout.cs" />
+    <Compile Include="DataTypes\SiparisMetadata.cs" />
     <Compile Include="DataTypes\SiparisSeri.cs" />
+    <Compile Include="DataTypes\VeriTipi.cs" />
     <Compile Include="FormLayoutBS.cs" />
     <Compile Include="ConfigBS.cs" />
     <Compile Include="DataTypes\KapiTipi.cs" />
     <Compile Include="DataTypes\SiparisTipi.cs" />
+    <Compile Include="SiparisBS.cs" />
     <Compile Include="SiparisSeriBS.cs" />
     <Compile Include="MusteriBS.cs" />
     <Compile Include="RaporBS.cs" />
