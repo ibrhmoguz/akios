@@ -148,9 +148,7 @@ namespace KobsisSiparisTakip.Web
             var paramMusteriFirmaAdi = new DbParametre() { ParametreAdi = "FirmaAdi", ParametreDegeri = !string.IsNullOrWhiteSpace(txtMusteriFirmaAdi.Text) ? txtMusteriFirmaAdi.Text : null, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 250 };
             var paramAdet = new DbParametre() { ParametreAdi = "Adet", ParametreDegeri = !string.IsNullOrWhiteSpace(txtSiparisAdeti.Text) ? txtSiparisAdeti.Text : null, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
             var paramCreatedBy = new DbParametre() { ParametreAdi = "CreatedBy", ParametreDegeri = SessionManager.KullaniciBilgi.KullaniciID, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
-            var paramCreatedTime = new DbParametre() { ParametreAdi = "CreatedTime", ParametreDegeri = DateTime.Now, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramUpdatedBy = new DbParametre() { ParametreAdi = "UpdatedBy", ParametreDegeri = SessionManager.KullaniciBilgi.KullaniciID, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
-            var paramUpdatedTime = new DbParametre() { ParametreAdi = "UpdatedTime", ParametreDegeri = DateTime.Now, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramDurum = new DbParametre() { ParametreAdi = "DurumID", ParametreDegeri = 1, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
 
             parametreler.Add(paramError);
@@ -170,9 +168,7 @@ namespace KobsisSiparisTakip.Web
             parametreler.Add(paramMusteriFirmaAdi);
             parametreler.Add(paramAdet);
             parametreler.Add(paramCreatedBy);
-            parametreler.Add(paramCreatedTime);
             parametreler.Add(paramUpdatedBy);
-            parametreler.Add(paramUpdatedTime);
             parametreler.Add(paramDurum);
 
 
@@ -221,9 +217,9 @@ namespace KobsisSiparisTakip.Web
             {
                 kontrolDegeri = ((CheckBox)control).Checked == true ? ((CheckBox)control).Checked : false;
             }
-            else if (control is RadDateTimePicker)
+            else if (control is RadDatePicker)
             {
-                kontrolDegeri = ((RadDateTimePicker)control).SelectedDate != null ? ((RadDateTimePicker)control).SelectedDate : null;
+                kontrolDegeri = ((RadDatePicker)control).SelectedDate != null ? ((RadDatePicker)control).SelectedDate : null;
             }
             else if (control is RadDropDownList)
             {

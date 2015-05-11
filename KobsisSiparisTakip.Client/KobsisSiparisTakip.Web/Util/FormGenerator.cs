@@ -107,13 +107,22 @@ namespace KobsisSiparisTakip.Web.Util
                     wc = TableHeaderCellOlustur(layout);
                     break;
                 case KontrolTipEnum.TextBox:
-                    wc = TextBoxOlustur(layout);
+                    if (this.IslemTipi == FormIslemTipi.Goruntule)
+                        wc = LabelOlustur(layout);
+                    else
+                        wc = TextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.NumericTextBox:
-                    wc = NumericTextBoxOlustur(layout);
+                    if (this.IslemTipi == FormIslemTipi.Goruntule)
+                        wc = LabelOlustur(layout);
+                    else
+                        wc = NumericTextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.MaskedTextBox:
-                    wc = MaskedTextBoxOlustur(layout);
+                    if (this.IslemTipi == FormIslemTipi.Goruntule)
+                        wc = LabelOlustur(layout);
+                    else
+                        wc = MaskedTextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.Literal:
                     wc = LiteralOlustur(layout);
@@ -125,10 +134,16 @@ namespace KobsisSiparisTakip.Web.Util
                     wc = ImageOlustur(layout);
                     break;
                 case KontrolTipEnum.DropDownList:
-                    wc = DropDownListOlustur(layout);
+                    if (this.IslemTipi == FormIslemTipi.Goruntule)
+                        wc = LabelOlustur(layout);
+                    else
+                        wc = DropDownListOlustur(layout);
                     break;
                 case KontrolTipEnum.DatePicker:
-                    wc = DateTimePickerOlustur(layout);
+                    if (this.IslemTipi == FormIslemTipi.Goruntule)
+                        wc = LabelOlustur(layout);
+                    else
+                        wc = DateTimePickerOlustur(layout);
                     break;
                 case KontrolTipEnum.CheckBox:
                     wc = CheckBoxOlustur(layout);
@@ -151,7 +166,7 @@ namespace KobsisSiparisTakip.Web.Util
             if (layout.PostBack) wc.AutoPostBack = true;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
@@ -165,11 +180,11 @@ namespace KobsisSiparisTakip.Web.Util
 
         private WebControl DateTimePickerOlustur(Layout layout)
         {
-            var wc = new RadDateTimePicker();
+            var wc = new RadDatePicker();
             if (layout.PostBack) wc.AutoPostBack = true;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.SelectedDate = Convert.ToDateTime(layout.Text);
             KontrolOzellikAyarla(layout, wc);
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
@@ -196,7 +211,7 @@ namespace KobsisSiparisTakip.Web.Util
                 if (wc.Items != null)
                     wc.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
             }
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
@@ -223,7 +238,19 @@ namespace KobsisSiparisTakip.Web.Util
             KontrolOzellikAyarla(layout, wc);
             if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
-                if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                if (layout.RefID.HasValue)
+                {
+                    DataTable dt = new ReferansDataManager() { SiparisSeri = this.SiparisSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
+                    if (dt != null && dt.Rows.Count > 0)
+                    {
+                        if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
+                        {
+                            DataRow dr = dt.AsEnumerable().SingleOrDefault(p => p.Field<int>("RefDetayID") == Convert.ToInt32(SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString()));
+                            wc.Text = (dr != null && dr["RefDetayAdi"] != DBNull.Value) ? dr["RefDetayAdi"].ToString() : string.Empty;
+                        }
+                    }
+                }
+                else if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
                     wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
                 }
@@ -248,7 +275,7 @@ namespace KobsisSiparisTakip.Web.Util
             if (!string.IsNullOrWhiteSpace(layout.TextMode)) wc.TextMode = (InputMode)Enum.Parse(typeof(InputMode), layout.TextMode);
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
@@ -265,7 +292,7 @@ namespace KobsisSiparisTakip.Web.Util
             if (!string.IsNullOrWhiteSpace(layout.Mask)) wc.Mask = layout.Mask;
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
@@ -282,7 +309,7 @@ namespace KobsisSiparisTakip.Web.Util
             wc.CssClass = "NumericFieldClass";
             if (!string.IsNullOrWhiteSpace(layout.Text)) wc.Text = layout.Text;
             KontrolOzellikAyarla(layout, wc);
-            if (this.IslemTipi != FormIslemTipi.Kaydet && !string.IsNullOrWhiteSpace(layout.KolonAdi))
+            if (this.IslemTipi == FormIslemTipi.Guncelle && !string.IsNullOrWhiteSpace(layout.KolonAdi))
             {
                 if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {

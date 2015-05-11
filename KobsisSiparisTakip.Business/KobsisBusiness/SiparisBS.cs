@@ -74,5 +74,26 @@ namespace KobsisSiparisTakip.Business
 
             return metadataList;
         }
+
+        public DataTable SiparisGetir(string siparisID)
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            string sqlText = @"SELECT 
+                                S.*
+                                ,RIL.ILAD
+                                ,RILCE.ILCEAD
+                                ,SM.SEMTAD
+                                ,(SELECT TeslimTarih FROM [dbo].[MONTAJ] WHERE SiparisID = S.ID) AS TESLIMTARIH
+                            FROM SIPARIS_ABC AS S
+	                            INNER JOIN dbo.REF_ILLER AS RIL ON S.MusteriIlKod = RIL.ILKOD
+	                            INNER JOIN dbo.REF_ILCELER AS RILCE ON S.MusteriIlceKod = RILCE.ILCEKOD
+	                            INNER JOIN dbo.SEMTLER AS SM ON S.MusteriSemtKod = SM.SEMTKOD
+                            WHERE ID=@ID";
+            data.AddSqlParameter("ID", siparisID, SqlDbType.Int, 50);
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
     }
 }
