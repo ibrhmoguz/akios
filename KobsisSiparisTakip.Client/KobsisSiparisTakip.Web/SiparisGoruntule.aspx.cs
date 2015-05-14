@@ -48,6 +48,7 @@ namespace KobsisSiparisTakip.Web
                     MusteriBilgileriDoldur();
                     SiparisBilgileriniGetir();
                     GenerateForm();
+                    PopupPageHelper.OpenPopUp(btnYazdir, "Print/Print.aspx?SiparisSeri=" + this.SiparisSeri, "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
                 }
             }
             if (Page.IsPostBack)
@@ -61,7 +62,24 @@ namespace KobsisSiparisTakip.Web
             DataTable dt = new SiparisBS().SiparisGetir(this.SiparisID);
             SessionManager.SiparisBilgi = dt;
 
+            if (dt == null || dt.Rows.Count == 0)
+                return;
 
+            DataRow row = dt.Rows[0];
+            lblSiparisNo.Text = row["SiparisNo"] != DBNull.Value ? row["SiparisNo"].ToString() : string.Empty;
+            lblSiparisAdeti.Text = row["Adet"] != DBNull.Value ? row["Adet"].ToString() : string.Empty;
+            lblSiparisTarih.Text = row["SiparisTarih"] != DBNull.Value ? Convert.ToDateTime(row["SiparisTarih"].ToString()).ToShortDateString() : string.Empty;
+            lblTeslimTarih.Text = row["TeslimTarih"] != DBNull.Value ? Convert.ToDateTime(row["TeslimTarih"].ToString()).ToShortDateString() : string.Empty;
+            lblMusteriFirmaAdi.Text = row["FirmaAdi"] != DBNull.Value ? row["FirmaAdi"].ToString() : string.Empty;
+            lblMusteriAd.Text = row["MusteriAd"] != DBNull.Value ? row["MusteriAd"].ToString() : string.Empty;
+            lblMusteriSoyad.Text = row["MusteriSoyad"] != DBNull.Value ? row["MusteriSoyad"].ToString() : string.Empty;
+            lblMusteriEvTel.Text = row["MusteriEvTel"] != DBNull.Value ? row["MusteriEvTel"].ToString() : string.Empty;
+            lblMusteriCepTel.Text = row["MusteriCepTel"] != DBNull.Value ? row["MusteriCepTel"].ToString() : string.Empty;
+            lblMusteriIsTel.Text = row["MusteriIsTel"] != DBNull.Value ? row["MusteriIsTel"].ToString() : string.Empty;
+            lblMusteriAdres.Text = row["MusteriAdres"] != DBNull.Value ? row["MusteriAdres"].ToString() : string.Empty;
+            lblMusteriIl.Text = row["MusteriIl"] != DBNull.Value ? row["MusteriIl"].ToString() : string.Empty;
+            lblMusteriIlce.Text = row["MusteriIlce"] != DBNull.Value ? row["MusteriIlce"].ToString() : string.Empty;
+            lblMusteriSemt.Text = row["MusteriSemt"] != DBNull.Value ? row["MusteriSemt"].ToString() : string.Empty;
         }
 
         private void MusteriBilgileriDoldur()
@@ -89,6 +107,11 @@ namespace KobsisSiparisTakip.Web
                 IslemTipi = FormIslemTipi.Goruntule
             };
             generator.Generate(this.divSiparisFormKontrolleri);
+        }
+
+        protected void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/SiparisGuncelle.aspx?SiparisID=" + this.SiparisID + "&SiparisSeri=" + this.SiparisSeri);
         }
     }
 }

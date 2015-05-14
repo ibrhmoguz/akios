@@ -128,4 +128,18 @@
         </tr>
     </table>
     <asp:Panel ID="divSiparisFormKontrolleri" runat="server" Width="100%"></asp:Panel>
+    <table style="width: 100%">
+        <tr>
+            <td style="text-align: center">
+                <br />
+                <telerik:RadButton ID="btnGuncelle" runat="server" Text="Güncelle" OnClick="btnGuncelle_Click">
+                    <Icon PrimaryIconCssClass="rbOk" PrimaryIconLeft="4" PrimaryIconTop="3" />
+                </telerik:RadButton>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <telerik:RadButton ID="btnYazdir" runat="server" Text="Yazdır">
+                        <Icon PrimaryIconCssClass="rbPrint" PrimaryIconLeft="4" PrimaryIconTop="3" />
+                    </telerik:RadButton>
+            </td>
+        </tr>
+    </table>
 </asp:Content>

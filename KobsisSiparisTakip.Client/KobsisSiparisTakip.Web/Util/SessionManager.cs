@@ -167,6 +167,10 @@ namespace KobsisSiparisTakip.Web.Util
                 else
                     return string.Empty;
             }
+            set
+            {
+                HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"] = value;
+            }
         }
 
         public static int MontajKotaVarsayilan
@@ -178,7 +182,10 @@ namespace KobsisSiparisTakip.Web.Util
                 else
                     return 0;
             }
+            set
+            {
+                HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] = value;
+            }
         }
-
     }
 }

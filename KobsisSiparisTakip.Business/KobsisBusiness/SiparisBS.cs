@@ -82,9 +82,9 @@ namespace KobsisSiparisTakip.Business
 
             string sqlText = @"SELECT 
                                 S.*
-                                ,RIL.ILAD
-                                ,RILCE.ILCEAD
-                                ,SM.SEMTAD
+                                ,RIL.ILAD as MusteriIl
+                                ,RILCE.ILCEAD as MusteriIlce
+                                ,SM.SEMTAD as MusteriSemt
                                 ,(SELECT TeslimTarih FROM [dbo].[MONTAJ] WHERE SiparisID = S.ID) AS TESLIMTARIH
                             FROM SIPARIS_ABC AS S
 	                            INNER JOIN dbo.REF_ILLER AS RIL ON S.MusteriIlKod = RIL.ILKOD

@@ -56,14 +56,14 @@ namespace KobsisSiparisTakip.Web
                 }
                 varsayilan = txtMontajKotaVarsayilan.Text;
 
-                Session["MONTAJ_KOTA_KONTROLU"] = "1";
-                Session["MONTAJ_KOTA_VARSAYILAN"] = varsayilan;
+                SessionManager.MontajKotaKontrolu = "1";
+                SessionManager.MontajKotaVarsayilan = Convert.ToInt32(varsayilan);
             }
             else
             {
                 varsayilan = "0";
-                Session["MONTAJ_KOTA_KONTROLU"] = "0";
-                Session["MONTAJ_KOTA_VARSAYILAN"] = "0";
+                SessionManager.MontajKotaKontrolu = "0";
+                SessionManager.MontajKotaVarsayilan = 0;
             }
 
             bool islemDurumu = new ConfigBS().ConfigDegerleriniKaydet(chcBoxMontajKotaKontrolu.Checked, varsayilan);
