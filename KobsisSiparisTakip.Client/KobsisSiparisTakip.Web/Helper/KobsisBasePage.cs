@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace KobsisSiparisTakip.Web.Util
+namespace KobsisSiparisTakip.Web.Helper
 {
     public class KobsisBasePage : System.Web.UI.Page
     {

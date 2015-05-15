@@ -116,42 +116,35 @@
     <Content Include="DBScripts\AppUserDBScript.sql" />
     <Content Include="DBScripts\Drop All Tables.sql" />
     <Content Include="DBScripts\VersiyonBilgisi.txt" />
-    <Content Include="FormOgeGuncelleme.aspx" />
+    <Content Include="YonetimKonsolu\FormOgeGuncelleme.aspx" />
     <Content Include="Global.asax" />
-    <Content Include="GunlukIsTakipFormu.aspx" />
-    <Content Include="Hata.aspx" />
-    <Content Include="Hatalar.aspx" />
-    <Content Include="IlIlceyeGoreSatilanAdet.aspx" />
+    <Content Include="Raporlar\GunlukIsTakipFormu.aspx" />
+    <Content Include="YonetimKonsolu\Hatalar.aspx" />
+    <Content Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="ImageForm.aspx" />
-    <Content Include="KapiTipineGoreSatilanAdet.aspx" />
+    <Content Include="Raporlar\KapiTipineGoreSatilanAdet.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="Manage.aspx" />
-    <Content Include="MontajKotaTanimla.aspx" />
+    <Content Include="YonetimKonsolu\MontajKotaTanimla.aspx" />
     <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="Print\KapiTipineGoreSatilanAdet.aspx" />
     <Content Include="Print\PrintYangin.aspx" />
     <Content Include="Script\jquery.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="IsTakvimi.aspx" />
-    <Content Include="KullaniciTanimlama.aspx" />
+    <Content Include="Takvim\IsTakvimi.aspx" />
+    <Content Include="YonetimKonsolu\KullaniciTanimlama.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="PersonelTanimlama.aspx" />
+    <Content Include="YonetimKonsolu\PersonelTanimlama.aspx" />
     <Content Include="Print\GunlukIsTakip.aspx" />
     <Content Include="Print\Print.aspx" />
     <Content Include="Print\PrinterFriendly.css" />
     <Content Include="Script\NumberFormat.js" />
-    <Content Include="SiparisFormKayit.aspx" />
-    <Content Include="SiparisFormGoruntule.aspx" />
-    <Content Include="SiparisFormGuncelle.aspx" />
     <Content Include="SifreGuncelleme.aspx" />
-    <Content Include="SiparisFormYanginGoruntule.aspx" />
-    <Content Include="SiparisFormYanginGuncelle.aspx" />
-    <Content Include="SiparisFormYanginKayit.aspx" />
-    <Content Include="SiparisGoruntule.aspx" />
-    <Content Include="SiparisKayit.aspx" />
-    <Content Include="SiparisSorgula.aspx" />
-    <Content Include="UygulamaAyarlari.aspx" />
+    <Content Include="Siparis\SiparisGoruntule.aspx" />
+    <Content Include="Siparis\SiparisKayit.aspx" />
+    <Content Include="Siparis\SiparisSorgula.aspx" />
+    <Content Include="YonetimKonsolu\UygulamaAyarlari.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -171,22 +164,22 @@
     <Compile Include="AdminLogin.aspx.designer.cs">
       <DependentUpon>AdminLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SiparisGoruntule.aspx.cs">
+    <Compile Include="Siparis\SiparisGoruntule.aspx.cs">
       <DependentUpon>SiparisGoruntule.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SiparisGoruntule.aspx.designer.cs">
+    <Compile Include="Siparis\SiparisGoruntule.aspx.designer.cs">
       <DependentUpon>SiparisGoruntule.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SiparisKayit.aspx.cs">
+    <Compile Include="Siparis\SiparisKayit.aspx.cs">
       <DependentUpon>SiparisKayit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SiparisKayit.aspx.designer.cs">
+    <Compile Include="Siparis\SiparisKayit.aspx.designer.cs">
       <DependentUpon>SiparisKayit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Util\FormGenerator.cs" />
-    <Compile Include="Util\KobsisBasePage.cs">
+    <Compile Include="Helper\FormGenerator.cs" />
+    <Compile Include="Helper\KobsisBasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Captcha.aspx.cs">
@@ -196,59 +189,52 @@
     <Compile Include="Captcha.aspx.designer.cs">
       <DependentUpon>Captcha.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Util\CaptchaImage.cs" />
-    <Compile Include="GunlukIsTakipFormu.aspx.cs">
+    <Compile Include="Helper\CaptchaImage.cs" />
+    <Compile Include="Raporlar\GunlukIsTakipFormu.aspx.cs">
       <DependentUpon>GunlukIsTakipFormu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="GunlukIsTakipFormu.aspx.designer.cs">
+    <Compile Include="Raporlar\GunlukIsTakipFormu.aspx.designer.cs">
       <DependentUpon>GunlukIsTakipFormu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Hata.aspx.cs">
-      <DependentUpon>Hata.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Hata.aspx.designer.cs">
-      <DependentUpon>Hata.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Hatalar.aspx.cs">
+    <Compile Include="YonetimKonsolu\Hatalar.aspx.cs">
       <DependentUpon>Hatalar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Hatalar.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\Hatalar.aspx.designer.cs">
       <DependentUpon>Hatalar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FormOgeGuncelleme.aspx.cs">
+    <Compile Include="YonetimKonsolu\FormOgeGuncelleme.aspx.cs">
       <DependentUpon>FormOgeGuncelleme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FormOgeGuncelleme.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\FormOgeGuncelleme.aspx.designer.cs">
       <DependentUpon>FormOgeGuncelleme.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Util\JavascriptHelper.cs" />
-    <Compile Include="Util\KontrolTipEnum.cs" />
-    <Compile Include="Util\LiteralWebControl.cs" />
-    <Compile Include="Util\MessageBox.cs" />
-    <Compile Include="Util\PopupPageHelper.cs" />
-    <Compile Include="IlIlceyeGoreSatilanAdet.aspx.cs">
+    <Compile Include="Helper\JavascriptHelper.cs" />
+    <Compile Include="Helper\KontrolTipEnum.cs" />
+    <Compile Include="Helper\LiteralWebControl.cs" />
+    <Compile Include="Helper\MessageBox.cs" />
+    <Compile Include="Helper\PopupPageHelper.cs" />
+    <Compile Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx.cs">
       <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="IlIlceyeGoreSatilanAdet.aspx.designer.cs">
+    <Compile Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx.designer.cs">
       <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
-    <Compile Include="IsTakvimi.aspx.cs">
+    <Compile Include="Takvim\IsTakvimi.aspx.cs">
       <DependentUpon>IsTakvimi.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="IsTakvimi.aspx.designer.cs">
+    <Compile Include="Takvim\IsTakvimi.aspx.designer.cs">
       <DependentUpon>IsTakvimi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="KapiTipineGoreSatilanAdet.aspx.cs">
+    <Compile Include="Raporlar\KapiTipineGoreSatilanAdet.aspx.cs">
       <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="KapiTipineGoreSatilanAdet.aspx.designer.cs">
+    <Compile Include="Raporlar\KapiTipineGoreSatilanAdet.aspx.designer.cs">
       <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
     <Compile Include="KobsisMasterPage.Master.cs">
@@ -258,11 +244,11 @@
     <Compile Include="KobsisMasterPage.Master.designer.cs">
       <DependentUpon>KobsisMasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="KullaniciTanimlama.aspx.cs">
+    <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.cs">
       <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="KullaniciTanimlama.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.designer.cs">
       <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manage.aspx.cs">
@@ -272,18 +258,18 @@
     <Compile Include="Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MontajKotaTanimla.aspx.cs">
+    <Compile Include="YonetimKonsolu\MontajKotaTanimla.aspx.cs">
       <DependentUpon>MontajKotaTanimla.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MontajKotaTanimla.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\MontajKotaTanimla.aspx.designer.cs">
       <DependentUpon>MontajKotaTanimla.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PersonelTanimlama.aspx.cs">
+    <Compile Include="YonetimKonsolu\PersonelTanimlama.aspx.cs">
       <DependentUpon>PersonelTanimlama.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PersonelTanimlama.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\PersonelTanimlama.aspx.designer.cs">
       <DependentUpon>PersonelTanimlama.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print\GunlukIsTakip.aspx.cs">
@@ -328,19 +314,12 @@
     <Compile Include="Print\PrinterFriendly.Master.designer.cs">
       <DependentUpon>PrinterFriendly.Master</DependentUpon>
     </Compile>
-    <Compile Include="SiparisFormKayit.aspx.cs">
-      <DependentUpon>SiparisFormKayit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="SifreGuncelleme.aspx.cs">
       <DependentUpon>SifreGuncelleme.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SifreGuncelleme.aspx.designer.cs">
       <DependentUpon>SifreGuncelleme.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisFormKayit.aspx.designer.cs">
-      <DependentUpon>SiparisFormKayit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -353,55 +332,20 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiparisFormGoruntule.aspx.cs">
-      <DependentUpon>SiparisFormGoruntule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiparisFormGoruntule.aspx.designer.cs">
-      <DependentUpon>SiparisFormGoruntule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisFormGuncelle.aspx.cs">
-      <DependentUpon>SiparisFormGuncelle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiparisFormGuncelle.aspx.designer.cs">
-      <DependentUpon>SiparisFormGuncelle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisFormYanginGoruntule.aspx.cs">
-      <DependentUpon>SiparisFormYanginGoruntule.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiparisFormYanginGoruntule.aspx.designer.cs">
-      <DependentUpon>SiparisFormYanginGoruntule.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisFormYanginGuncelle.aspx.cs">
-      <DependentUpon>SiparisFormYanginGuncelle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiparisFormYanginGuncelle.aspx.designer.cs">
-      <DependentUpon>SiparisFormYanginGuncelle.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisFormYanginKayit.aspx.cs">
-      <DependentUpon>SiparisFormYanginKayit.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SiparisFormYanginKayit.aspx.designer.cs">
-      <DependentUpon>SiparisFormYanginKayit.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="SiparisSorgula.aspx.cs">
+    <Compile Include="Siparis\SiparisSorgula.aspx.cs">
       <DependentUpon>SiparisSorgula.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SiparisSorgula.aspx.designer.cs">
+    <Compile Include="Siparis\SiparisSorgula.aspx.designer.cs">
       <DependentUpon>SiparisSorgula.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Util\ReferansDataManager.cs" />
-    <Compile Include="Util\SessionManager.cs" />
-    <Compile Include="UygulamaAyarlari.aspx.cs">
+    <Compile Include="Helper\ReferansDataManager.cs" />
+    <Compile Include="Helper\SessionManager.cs" />
+    <Compile Include="YonetimKonsolu\UygulamaAyarlari.aspx.cs">
       <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UygulamaAyarlari.aspx.designer.cs">
+    <Compile Include="YonetimKonsolu\UygulamaAyarlari.aspx.designer.cs">
       <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

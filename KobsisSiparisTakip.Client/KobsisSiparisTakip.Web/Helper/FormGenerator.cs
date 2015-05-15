@@ -9,7 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
-namespace KobsisSiparisTakip.Web.Util
+namespace KobsisSiparisTakip.Web.Helper
 {
     public class FormGenerator
     {
@@ -47,7 +47,7 @@ namespace KobsisSiparisTakip.Web.Util
                     else
                     {
                         parentKontrolID = ParentKontrolIDBul(seriLayoutList, layout.YerlesimParentID.Value);
-                        WebControl wcParent = ParentKontrolBul(wc, parentKontrolID);
+                        WebControl wcParent = KontrolBul(wc, parentKontrolID);
                         if (wcParent != null)
                             wcParent.Controls.Add(wcTemp);
                     }
@@ -69,23 +69,17 @@ namespace KobsisSiparisTakip.Web.Util
             }
             return parentKontrolID;
         }
-        WebControl wc1;
-        private WebControl ParentKontrolBul(WebControl wc, string kontrolID)
+
+        private WebControl KontrolBul(WebControl rootControl, string controlID)
         {
-            if (wc.ID == kontrolID)
-                wc1 = wc;
-            else
+            if (rootControl.ID == controlID) return rootControl;
+
+            foreach (WebControl controlToSearch in rootControl.Controls)
             {
-                for (int i = 0; i < wc.Controls.Count; i++)
-                {
-                    if (wc.Controls[i] is WebControl)
-                    {
-                        WebControl wcChild = (WebControl)wc.Controls[i];
-                        ParentKontrolBul(wcChild, kontrolID);
-                    }
-                }
+                WebControl controlToReturn = KontrolBul(controlToSearch, controlID);
+                if (controlToReturn != null) return controlToReturn;
             }
-            return wc1;
+            return null;
         }
 
         private WebControl KontrolOlustur(Layout layout)

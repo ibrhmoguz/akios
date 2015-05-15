@@ -316,7 +316,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void IlceleriGetirIlAdinaGore(string ilAd)
         {
-            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(ilAd);
+            DataTable dt = new ReferansDataBS().IlceleriGetir(ilAd);
 
             if (dt.Rows.Count > 0)
             {
@@ -335,7 +335,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void SemtleriGetirIlceAdinaGore(string ilceAd)
         {
-            DataTable dt = new SiparisIslemleriBS().SemtleriGetir(ilceAd);
+            DataTable dt = new ReferansDataBS().SemtleriGetir(ilceAd);
 
             if (dt.Rows.Count > 0)
             {
@@ -439,7 +439,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void IlleriGetir()
         {
-            DataTable dt = new SiparisIslemleriBS().IlleriGetir();
+            DataTable dt = new ReferansDataBS().IlleriGetir();
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIl.DataSource = dt;
@@ -459,10 +459,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void IlceleriGetir(string ilKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILKOD", ilKod);
-
-            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(prms);
+            DataTable dt = new ReferansDataBS().IlceleriGetir(ilKod);
 
             if (dt.Rows.Count > 0)
             {
@@ -480,10 +477,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void SemtleriGetir(string ilceKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILCEKOD", ilceKod);
-
-            DataTable dt = new SiparisIslemleriBS().SemtleriGetir(prms);
+            DataTable dt = new ReferansDataBS().SemtleriGetir(ilceKod);
 
             if (dt.Rows.Count > 0)
             {

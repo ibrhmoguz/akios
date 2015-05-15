@@ -7,7 +7,7 @@
     <br />
     <table class="AnaTablo" style="width: 100%">
         <tr>
-            <th class="TdRenkAciklama" colspan="2" style="text-align: center; font-size:  11pt;">KULLANICI LİSTESİ<br />
+            <th class="TdRenkAciklama" colspan="2" style="text-align: center; font-size: 11pt;">KULLANICI LİSTESİ<br />
             </th>
         </tr>
         <tr>
@@ -24,12 +24,7 @@
                             <td>
                                 <telerik:RadTextBox ID="txtKullaniciAdi" runat="server"></telerik:RadTextBox></td>
                             <td>
-                                <telerik:RadDropDownList ID="ddlYetki" runat="server" SelectedText="Seçiniz" SelectedValue="S">
-                                    <Items>
-                                        <telerik:DropDownListItem runat="server" Selected="True" Text="Seçiniz" Value="S" />
-                                        <telerik:DropDownListItem runat="server" Text="Yönetici" Value="admin" />
-                                        <telerik:DropDownListItem runat="server" Text="Kullanıcı" Value="user" />
-                                    </Items>
+                                <telerik:RadDropDownList ID="ddlKullaniciRol" runat="server">
                                 </telerik:RadDropDownList>
                             </td>
                         </tr>
@@ -50,18 +45,18 @@
                                 <tr>
                                     <th></th>
                                     <th>Kullanıcı Adı</th>
-                                    <th>Yetki</th>
+                                    <th>Rolü</th>
                                 </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %>' type="hidden" />
-                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "YETKI") %>' type="hidden" />
+                                    <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %>' type="hidden" />
+                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolAdi") %>' type="hidden" />
                                     <asp:LinkButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %>' runat="server">Sil</asp:LinkButton>
                                 </td>
-                                <td><%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %></td>
-                                <td><%# DataBinder.Eval(Container.DataItem, "YETKI") %></td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %></td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "RolAdi") %></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate></table></FooterTemplate>

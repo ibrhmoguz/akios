@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace KobsisSiparisTakip.Web.Util
+namespace KobsisSiparisTakip.Web.Helper
 {
     public class LiteralWebControl : WebControl
     {

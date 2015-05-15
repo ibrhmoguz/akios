@@ -548,65 +548,7 @@ namespace KobsisSiparisTakip.Business
             data.GetRecords(dt, sqlText);
 
             return dt;
-        }
-
-        public DataTable IlleriGetir()
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            string sqlText = @"SELECT ILKOD,ILAD FROM REF_ILLER ORDER BY 2";
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
-
-        public DataTable IlceleriGetir(Dictionary<string, object> prms)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            data.AddSqlParameter("ILKOD", prms["ILKOD"], SqlDbType.VarChar, 50);
-
-            string sqlText = @"SELECT * FROM REF_ILCELER WHERE ILKOD=@ILKOD ORDER BY ILCEAD";
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
-
-        public DataTable IlceleriGetir(string ilAdi)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            data.AddSqlParameter("ILAD", ilAdi, SqlDbType.VarChar, 50);
-
-            string sqlText = @"SELECT * FROM REF_ILCELER WHERE ILAD=@ILAD ORDER BY ILCEAD";
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
-
-        public DataTable SemtleriGetir(Dictionary<string, object> prms)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            data.AddSqlParameter("ILCEKOD", prms["ILCEKOD"], SqlDbType.VarChar, 50);
-
-            string sqlText = @"SELECT * FROM REF_SEMTLER WHERE ILCEKOD=@ILCEKOD ORDER BY SEMTAD";
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
-
-        public DataTable SemtleriGetir(string ilceAdi)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            data.AddSqlParameter("ILCEAD", ilceAdi, SqlDbType.VarChar, 50);
-
-            string sqlText = @"SELECT * FROM REF_SEMTLER WHERE ILCEAD=@ILCEAD ORDER BY SEMTAD";
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
+        }        
 
         public string SiparisKaydet(Firma_Musteri musteri, Siparis siparis, Olcum olcum, Sozlesme sozlesme)
         {

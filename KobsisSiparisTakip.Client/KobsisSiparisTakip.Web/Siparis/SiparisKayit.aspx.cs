@@ -1,6 +1,6 @@
 ﻿using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -47,8 +47,14 @@ namespace KobsisSiparisTakip.Web
             {
                 if (!string.IsNullOrWhiteSpace(this.SiparisSeri))
                 {
-                    MusteriBilgileriDoldur();
                     IlleriGetir();
+
+                    if (this.SiparisID != string.Empty)
+                    {
+                        SiparisBilgileriniGetir();
+                    }
+
+                    MusteriBilgileriDoldur();
                     GenerateForm();
                 }
             }
@@ -80,9 +86,58 @@ namespace KobsisSiparisTakip.Web
             var generator = new FormGenerator()
             {
                 SiparisSeri = this.SiparisSeri,
-                IslemTipi = FormIslemTipi.Kaydet
+                IslemTipi = (this.SiparisID != string.Empty) ? FormIslemTipi.Guncelle : FormIslemTipi.Kaydet
             };
             generator.Generate(this.divSiparisFormKontrolleri);
+        }
+
+        private void SiparisBilgileriniGetir()
+        {
+            DataTable dt = new SiparisBS().SiparisGetir(this.SiparisID);
+            SessionManager.SiparisBilgi = dt;
+
+            if (dt == null || dt.Rows.Count == 0)
+                return;
+
+            DataRow row = dt.Rows[0];
+            txtSiparisNo.Text = row["SiparisNo"] != DBNull.Value ? row["SiparisNo"].ToString() : string.Empty;
+            txtSiparisAdeti.Text = row["Adet"] != DBNull.Value ? row["Adet"].ToString() : string.Empty;
+            if (row["SiparisTarih"] != DBNull.Value)
+                rdtSiparisTarih.SelectedDate = Convert.ToDateTime(row["SiparisTarih"].ToString());
+            if (row["TeslimTarih"] != DBNull.Value)
+                rdtTeslimTarih.SelectedDate = Convert.ToDateTime(row["TeslimTarih"].ToString());
+            txtMusteriFirmaAdi.Text = row["FirmaAdi"] != DBNull.Value ? row["FirmaAdi"].ToString() : string.Empty;
+            txtMusteriAd.Text = row["MusteriAd"] != DBNull.Value ? row["MusteriAd"].ToString() : string.Empty;
+            txtMusteriSoyad.Text = row["MusteriSoyad"] != DBNull.Value ? row["MusteriSoyad"].ToString() : string.Empty;
+            txtMusteriEvTel.Text = row["MusteriEvTel"] != DBNull.Value ? row["MusteriEvTel"].ToString() : string.Empty;
+            txtMusteriCepTel.Text = row["MusteriCepTel"] != DBNull.Value ? row["MusteriCepTel"].ToString() : string.Empty;
+            txtMusteriIsTel.Text = row["MusteriIsTel"] != DBNull.Value ? row["MusteriIsTel"].ToString() : string.Empty;
+            txtMusteriAdres.Text = row["MusteriAdres"] != DBNull.Value ? row["MusteriAdres"].ToString() : string.Empty;
+            if (row["MusteriIlKod"] != DBNull.Value)
+            {
+                DropDownSelectedIndexAyarla(ddlMusteriIl, row["MusteriIlKod"].ToString());
+                IlceleriGetir(ddlMusteriIl.SelectedValue);
+            }
+            if (row["MusteriIlceKod"] != DBNull.Value)
+            {
+                DropDownSelectedIndexAyarla(ddlMusteriIlce, row["MusteriIlceKod"].ToString());
+                SemtleriGetir(ddlMusteriIlce.SelectedValue);
+            }
+            if (row["MusteriSemtKod"] != DBNull.Value)
+                DropDownSelectedIndexAyarla(ddlMusteriSemt, row["MusteriSemtKod"].ToString());
+        }
+
+        private void DropDownSelectedIndexAyarla(RadComboBox dp, string selectedValue)
+        {
+            dp.ClearSelection();
+            if (!String.IsNullOrWhiteSpace(selectedValue))
+            {
+                RadComboBoxItem lidp = dp.FindItemByValue(selectedValue);
+                if (lidp != null && lidp.Selected == false)
+                    lidp.Selected = true;
+            }
+            else
+                dp.SelectedIndex = 0;
         }
 
         protected void btnKaydet_Click(object sender, EventArgs e)
@@ -102,7 +157,7 @@ namespace KobsisSiparisTakip.Web
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
-                    bool montajKabul = Convert.ToBoolean(row["MONTAJKABUL"]);
+                    bool montajKabul = Convert.ToBoolean(row["MontajKabul"]);
                     if (!montajKabul)
                     {
                         MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için montaj alınamaz!");
@@ -110,7 +165,7 @@ namespace KobsisSiparisTakip.Web
                     }
                     else
                     {
-                        int gunlukMontakKotaDegeri = Convert.ToInt32(row["MAXMONTAJSAYI"]);
+                        int gunlukMontakKotaDegeri = Convert.ToInt32(row["MaxMontajSayi"]);
                         if (yapilanMontajSayisi >= gunlukMontakKotaDegeri)
                         {
                             MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için montaj kotası (" + gunlukMontakKotaDegeri.ToString() + ") değerine ulaşılmıştır.");
@@ -257,6 +312,9 @@ namespace KobsisSiparisTakip.Web
                 case VeriTipi.DATETIME:
                     sqlType = SqlDbType.DateTime;
                     break;
+                case VeriTipi.DATE:
+                    sqlType = SqlDbType.Date;
+                    break;
                 case VeriTipi.DECIMAL:
                     sqlType = SqlDbType.Decimal;
                     break;
@@ -272,16 +330,13 @@ namespace KobsisSiparisTakip.Web
 
         protected void IlleriGetir()
         {
-            DataTable dt = new SiparisIslemleriBS().IlleriGetir();
+            DataTable dt = new ReferansDataBS().IlleriGetir();
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIl.DataSource = dt;
-                ddlMusteriIl.DataTextField = "ILAD";
-                ddlMusteriIl.DataValueField = "ILKOD";
+                ddlMusteriIl.DataTextField = "IlAd";
+                ddlMusteriIl.DataValueField = "IlKod";
                 ddlMusteriIl.DataBind();
-
-                ddlMusteriIl.FindItemByValue(ANKARA_IL_KODU).Selected = true;
-                IlceleriGetir(ANKARA_IL_KODU);
             }
             else
             {
@@ -292,10 +347,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void IlceleriGetir(string ilKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILKOD", ilKod);
-
-            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(prms);
+            DataTable dt = new ReferansDataBS().IlceleriGetir(ilKod);
 
             if (dt.Rows.Count > 0)
             {
@@ -313,10 +365,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void SemtleriGetir(string ilceKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILCEKOD", ilceKod);
-
-            DataTable dt = new SiparisIslemleriBS().SemtleriGetir(prms);
+            DataTable dt = new ReferansDataBS().SemtleriGetir(ilceKod);
 
             if (dt.Rows.Count > 0)
             {

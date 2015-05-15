@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Business;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using Telerik.Web.UI;
 
 namespace KobsisSiparisTakip.Web

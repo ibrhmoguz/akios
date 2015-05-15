@@ -76,66 +76,66 @@
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Value="Sorgula" Text="Sorgula">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="SiparisSorgula.aspx" />
+                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="Siparis/SiparisSorgula.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="İŞ TAKVİMİ">
                 <telerik:RibbonBarGroup Text="Takvim Görünümü">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbIsTakvimiTakvimGorunumu" Size="Large" Text="TAKVİM" ToolTip="İş Takvimini görüntülemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/calendar.jpg" CommandName="IsTakvimi.aspx" />
+                        <telerik:RibbonBarButton ID="rbbIsTakvimiTakvimGorunumu" Size="Large" Text="TAKVİM" ToolTip="İş Takvimini görüntülemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/calendar.jpg" CommandName="~/Takvim/IsTakvimi.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="YÖNETİM KONSOLU">
                 <telerik:RibbonBarGroup Text="Kullanıcı İşlemleri">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbKullaniciEkle" Size="Large" Text="KULLANICI" ToolTip="Kullanıcı eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/kullaniciEkle.png" CommandName="KullaniciTanimlama.aspx" />
-                        <telerik:RibbonBarButton ID="rbbPersonelEkle" Size="Large" Text="PERSONEL" ToolTip="Personel eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/personelEkle.png" CommandName="PersonelTanimlama.aspx" />
+                        <telerik:RibbonBarButton ID="rbbKullaniciEkle" Size="Large" Text="KULLANICI" ToolTip="Kullanıcı eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/kullaniciEkle.png" CommandName="~/YonetimKonsolu/KullaniciTanimlama.aspx" />
+                        <telerik:RibbonBarButton ID="rbbPersonelEkle" Size="Large" Text="PERSONEL" ToolTip="Personel eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/personelEkle.png" CommandName="~/YonetimKonsolu/PersonelTanimlama.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Form Öğelerini Güncelleme">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE DÜZENLE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="FormOgeGuncelleme.aspx" />
+                        <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE DÜZENLE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/YonetimKonsolu/FormOgeGuncelleme.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Günlük Montaj Kota Tanımlama">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbMontajKota" Size="Large" Text="MONTAJ KOTA TANIMLA" ToolTip="Günlük montaj kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/montajKota.png" CommandName="MontajKotaTanimla.aspx" />
+                        <telerik:RibbonBarButton ID="rbbMontajKota" Size="Large" Text="MONTAJ KOTA TANIMLA" ToolTip="Günlük montaj kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/montajKota.png" CommandName="~/YonetimKonsolu/MontajKotaTanimla.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Uygulama Ayarları">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbUygulamaAyar" Size="Large" Text="UYGULAMA AYARLARI" ToolTip="Uygulama ayarlarını belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/Settings.png" CommandName="UygulamaAyarlari.aspx" />
+                        <telerik:RibbonBarButton ID="rbbUygulamaAyar" Size="Large" Text="UYGULAMA AYARLARI" ToolTip="Uygulama ayarlarını belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/Settings.png" CommandName="~/YonetimKonsolu/UygulamaAyarlari.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Hatalar">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbHatalar" Size="Large" Text="HATA LOG" ToolTip="Uygulamada alınan hataları görmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/hataLog.png" CommandName="Hatalar.aspx" />
+                        <telerik:RibbonBarButton ID="rbbHatalar" Size="Large" Text="HATA LOG" ToolTip="Uygulamada alınan hataları görmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/hataLog.png" CommandName="~/YonetimKonsolu/Hatalar.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="ŞİFRE GÜNCELLEME">
                 <telerik:RibbonBarGroup Text="Şifre Güncelleme">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbSifreGuncelle" Size="Large" Text="GÜNCELLEME" ToolTip="Şifrenizi güncellemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="SifreGuncelleme.aspx" />
+                        <telerik:RibbonBarButton ID="rbbSifreGuncelle" Size="Large" Text="GÜNCELLEME" ToolTip="Şifrenizi güncellemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/SifreGuncelleme.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="RAPORLAR">
                 <telerik:RibbonBarGroup Text="Takip Formu">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbGunlukIsTakipFormu" Size="Large" Text="GÜNLÜK İŞ TAKİP FORMU" ToolTip="Günlük iş takip formu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/gunlukRapor.png" CommandName="GunlukIsTakipFormu.aspx" />
+                        <telerik:RibbonBarButton ID="rbbGunlukIsTakipFormu" Size="Large" Text="GÜNLÜK İŞ TAKİP FORMU" ToolTip="Günlük iş takip formu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/gunlukRapor.png" CommandName="~/Raporlar/GunlukIsTakipFormu.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Kapı Tipine Göre Satış Raporu">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbKapiTipineGoreSatilanAdet" Size="Large" Text="KAPI TİPİNE GÖRE SATIŞ RAPORU" ToolTip="Kapı tipine göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="KapiTipineGoreSatilanAdet.aspx" />
+                        <telerik:RibbonBarButton ID="rbbKapiTipineGoreSatilanAdet" Size="Large" Text="KAPI TİPİNE GÖRE SATIŞ RAPORU" ToolTip="Kapı tipine göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="~/Raporlar/KapiTipineGoreSatilanAdet.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="İl İlçe Bazlı Satış Raporu">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbIlIlceyeGoreSatilanAdet" Size="Large" Text="İL İLÇEYE GÖRE SATIŞ RAPORU" ToolTip="İl İlçeye göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report2.png" CommandName="IlIlceyeGoreSatilanAdet.aspx" />
+                        <telerik:RibbonBarButton ID="rbbIlIlceyeGoreSatilanAdet" Size="Large" Text="İL İLÇEYE GÖRE SATIŞ RAPORU" ToolTip="İl İlçeye göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report2.png" CommandName="~/Raporlar/IlIlceyeGoreSatilanAdet.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>

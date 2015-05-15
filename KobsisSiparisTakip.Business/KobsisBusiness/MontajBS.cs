@@ -24,6 +24,7 @@ namespace KobsisSiparisTakip.Business
 	                                M.ID
                                     , M.TeslimTarih
                                     , S.ID AS SiparisID
+                                    , S.SeriID
 	                                , S.SiparisNo
                                     , S.Adet
 	                                , S.MusteriAd + ' ' + S.MusteriSoyad AS Musteri
@@ -35,8 +36,8 @@ namespace KobsisSiparisTakip.Business
                                     , M.Durum
                                 FROM MONTAJ AS M
 	                                INNER JOIN SIPARIS_ABC as S ON M.SiparisID = S.ID
-	                                INNER JOIN REF_ILLER AS RIL ON RIL.ILKOD = S.MusteriIlKod
-	                                INNER JOIN REF_ILCELER AS RILCE ON RILCE.ILCEKOD = S.MusteriIlceKod
+	                                INNER JOIN REF_IL AS RIL ON RIL.IlKod = S.MusteriIlKod
+	                                INNER JOIN REF_ILCE AS RILCE ON RILCE.IlceKod = S.MusteriIlceKod
                                 WHERE M.TeslimTarih >=@BasTar AND M.TeslimTarih <=@BitTar
                                 ORDER BY M.TeslimTarih, S.SiparisNo";
             data.GetRecords(dt, sqlKaydet);

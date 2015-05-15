@@ -1,6 +1,6 @@
 ﻿using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -111,7 +111,7 @@ namespace KobsisSiparisTakip.Web
 
         protected void btnGuncelle_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/SiparisGuncelle.aspx?SiparisID=" + this.SiparisID + "&SiparisSeri=" + this.SiparisSeri);
+            Response.Redirect("~/SiparisKayit.aspx?SiparisID=" + this.SiparisID + "&SiparisSeri=" + this.SiparisSeri);
         }
     }
 }

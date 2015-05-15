@@ -22,13 +22,13 @@ namespace KobsisSiparisTakip.Web {
         protected global::Telerik.Web.UI.RadTextBox txtKullaniciAdi;
         
         /// <summary>
-        /// ddlYetki control.
+        /// ddlKullaniciRol control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDropDownList ddlYetki;
+        protected global::Telerik.Web.UI.RadDropDownList ddlKullaniciRol;
         
         /// <summary>
         /// btnEkle control.

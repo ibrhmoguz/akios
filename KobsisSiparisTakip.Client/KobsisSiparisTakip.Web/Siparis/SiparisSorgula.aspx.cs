@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using Telerik.Web.UI;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 
 namespace KobsisSiparisTakip.Web
 {
@@ -308,7 +308,7 @@ namespace KobsisSiparisTakip.Web
 
         private void IlleriGetir()
         {
-            DataTable dt = new SiparisIslemleriBS().IlleriGetir();
+            DataTable dt = new ReferansDataBS().IlleriGetir();
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIl.DataSource = dt;
@@ -328,10 +328,7 @@ namespace KobsisSiparisTakip.Web
 
         private void IlceleriGetir(string ilKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILKOD", ilKod);
-
-            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(prms);
+            DataTable dt = new ReferansDataBS().IlceleriGetir(ilKod);
 
             if (dt.Rows.Count > 0)
             {
@@ -353,10 +350,7 @@ namespace KobsisSiparisTakip.Web
 
         private void SemtleriGetir(string ilceKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILCEKOD", ilceKod);
-
-            DataTable dt = new SiparisIslemleriBS().SemtleriGetir(prms);
+            DataTable dt = new ReferansDataBS().SemtleriGetir(ilceKod);
 
             if (dt.Rows.Count > 0)
             {

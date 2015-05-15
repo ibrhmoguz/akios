@@ -1,6 +1,6 @@
 ﻿using KobsisSiparisTakip.Business;
 using KobsisSiparisTakip.Business.DataTypes;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;

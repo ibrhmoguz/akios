@@ -1,5 +1,5 @@
 ﻿using KobsisSiparisTakip.Business;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -159,16 +159,16 @@ namespace KobsisSiparisTakip.Web
                     continue;
 
                 int montajID = Convert.ToInt32(row[0]);
-                string siparisNo = row["SIPARISNO"].ToString();
+                string siparisNo = row["SiparisNo"].ToString();
                 int siparisAdedi;
-                if (Int32.TryParse(row["ADET"].ToString(), out siparisAdedi))
+                if (Int32.TryParse(row["Adet"].ToString(), out siparisAdedi))
                 {
                     if (siparisAdedi > 1)
                     {
                         siparisNo += " ADT:" + siparisAdedi.ToString();
                     }
                 }
-                DateTime montajTarihi = Convert.ToDateTime(row["TESLIMTARIH"]);
+                DateTime montajTarihi = Convert.ToDateTime(row["TeslimTarih"]);
                 if (tempDate.Date == montajTarihi.Date)
                 {
                     tempDate = tempDate.AddHours(0.5);
@@ -278,18 +278,15 @@ namespace KobsisSiparisTakip.Web
             if (rows.Length == 0)
                 return;
             DataRow row = rows[0];
-            lblAdres.Text = (row["ADRES"] != DBNull.Value) ? row["ADRES"].ToString() : String.Empty;
-            lblMontajEkibi.Text = (row["PERSONEL"] != DBNull.Value) ? row["PERSONEL"].ToString() : String.Empty;
-            lblMusteriAdSoyad.Text = (row["MUSTERI"] != DBNull.Value) ? row["MUSTERI"].ToString() : String.Empty;
-            lblAdresIlIlce.Text = (row["ILILCE"] != DBNull.Value) ? row["ILILCE"].ToString() : String.Empty;
-            lblTelefon.Text = (row["TEL"] != DBNull.Value) ? row["TEL"].ToString() : String.Empty;
-            string siparisID = (row["SIPARISID"] != DBNull.Value) ? row["SIPARISID"].ToString() : String.Empty;
-            string siparisNo = (row["SIPARISNO"] != DBNull.Value) ? row["SIPARISNO"].ToString() : String.Empty;
+            lblAdres.Text = (row["Adres"] != DBNull.Value) ? row["Adres"].ToString() : String.Empty;
+            lblMontajEkibi.Text = (row["Personel"] != DBNull.Value) ? row["Personel"].ToString() : String.Empty;
+            lblMusteriAdSoyad.Text = (row["Musteri"] != DBNull.Value) ? row["Musteri"].ToString() : String.Empty;
+            lblAdresIlIlce.Text = (row["IlIlce"] != DBNull.Value) ? row["IlIlce"].ToString() : String.Empty;
+            lblTelefon.Text = (row["Tel"] != DBNull.Value) ? row["Tel"].ToString() : String.Empty;
+            string siparisID = (row["SiparisID"] != DBNull.Value) ? row["SiparisID"].ToString() : String.Empty;
+            string siparisSeri = (row["SeriID"] != DBNull.Value) ? row["SeriID"].ToString() : String.Empty;
 
-            if (siparisNo[0].ToString() != "P" && siparisNo[0].ToString() != "Y")
-                linkSiparisNo.PostBackUrl = "SiparisFormGoruntule.aspx?SiparisID=" + siparisID;
-            else
-                linkSiparisNo.PostBackUrl = "SiparisFormYanginGoruntule.aspx?SiparisID=" + siparisID;
+            linkSiparisNo.PostBackUrl = "SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + siparisSeri;
 
             if (row["DURUM"].ToString() == "A")
                 lblMontajDurum.BackColor = Color.Red;
@@ -320,24 +317,24 @@ namespace KobsisSiparisTakip.Web
                 if (rows.Length == 0)
                     return;
                 DataRow row = rows[0];
-                string ilIlce = (row["ILILCE"] != DBNull.Value) ? row["ILILCE"].ToString() : String.Empty;
-                string adres = (row["ADRES"] != DBNull.Value) ? row["ADRES"].ToString() : String.Empty;
+                string ilIlce = (row["IlIlce"] != DBNull.Value) ? row["IlIlce"].ToString() : String.Empty;
+                string adres = (row["Adres"] != DBNull.Value) ? row["Adres"].ToString() : String.Empty;
 
                 lblAdres.Text = adres + " " + ilIlce;
                 lblMontajID.Text = (row["ID"] != DBNull.Value) ? row["ID"].ToString() : String.Empty;
-                lblSiparisNo.Text = (row["SIPARISNO"] != DBNull.Value) ? row["SIPARISNO"].ToString() : String.Empty;
-                lblMusteriAdSoyad.Text = (row["MUSTERI"] != DBNull.Value) ? row["MUSTERI"].ToString() : String.Empty;
-                lblTelefon.Text = (row["TEL"] != DBNull.Value) ? row["TEL"].ToString() : String.Empty;
-                chcMontajDurumu.Checked = (row["DURUM"].ToString() == "K") ? true : false;
-                if (row["TESLIMTARIH"] != DBNull.Value)
-                    dtTeslimTarihi.SelectedDate = Convert.ToDateTime(row["TESLIMTARIH"]);
+                lblSiparisNo.Text = (row["SiparisNo"] != DBNull.Value) ? row["SiparisNo"].ToString() : String.Empty;
+                lblMusteriAdSoyad.Text = (row["Musteri"] != DBNull.Value) ? row["Musteri"].ToString() : String.Empty;
+                lblTelefon.Text = (row["Tel"] != DBNull.Value) ? row["Tel"].ToString() : String.Empty;
+                chcMontajDurumu.Checked = (row["Durum"].ToString() == "K") ? true : false;
+                if (row["TeslimTarih"] != DBNull.Value)
+                    dtTeslimTarihi.SelectedDate = Convert.ToDateTime(row["TeslimTarih"]);
 
                 lstBoxPersonelListesi.DataSource = this.PersonelListesi;
                 lstBoxPersonelListesi.DataBind();
 
-                if (row["PERSONELID"] != DBNull.Value)
+                if (row["PersonelID"] != DBNull.Value)
                 {
-                    string[] personeller = row["PERSONELID"].ToString().Split(new char[] { ',' });
+                    string[] personeller = row["PersonelID"].ToString().Split(new char[] { ',' });
                     foreach (var item in personeller)
                     {
                         RadListBoxItem listItem = lstBoxPersonelListesi.FindItemByValue(item);

@@ -87,9 +87,9 @@ namespace KobsisSiparisTakip.Business
                                 ,SM.SEMTAD as MusteriSemt
                                 ,(SELECT TeslimTarih FROM [dbo].[MONTAJ] WHERE SiparisID = S.ID) AS TESLIMTARIH
                             FROM SIPARIS_ABC AS S
-	                            INNER JOIN dbo.REF_ILLER AS RIL ON S.MusteriIlKod = RIL.ILKOD
-	                            INNER JOIN dbo.REF_ILCELER AS RILCE ON S.MusteriIlceKod = RILCE.ILCEKOD
-	                            INNER JOIN dbo.SEMTLER AS SM ON S.MusteriSemtKod = SM.SEMTKOD
+	                           INNER JOIN dbo.REF_IL AS RIL ON S.MusteriIlKod = RIL.IlKod
+	                           INNER JOIN dbo.REF_ILCE AS RILCE ON S.MusteriIlceKod = RILCE.IlceKod
+	                           INNER JOIN dbo.REF_SEMT AS SM ON S.MusteriSemtKod = SM.SemtKod
                             WHERE ID=@ID";
             data.AddSqlParameter("ID", siparisID, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);

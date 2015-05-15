@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Security;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System.Data;
 using KobsisSiparisTakip.Business;
 using Telerik.Web.UI;
@@ -49,7 +49,7 @@ namespace KobsisSiparisTakip.Web
                     ID = seri.SiparisSeriID.ToString(),
                     Text = seri.SeriAdi,
                     Value = seri.SiparisSeriID.ToString(),
-                    CommandName = "SiparisKayit.aspx?SiparisSeri=" + seri.SiparisSeriID.ToString()
+                    CommandName = "~/Siparis/SiparisKayit.aspx?SiparisSeri=" + seri.SiparisSeriID.ToString()
                 };
                 rbbSiparisSeriMenu.Items.Add(item);
             }

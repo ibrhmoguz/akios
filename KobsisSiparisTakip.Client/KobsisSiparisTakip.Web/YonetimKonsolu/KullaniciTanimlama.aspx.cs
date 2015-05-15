@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Business;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 
 namespace KobsisSiparisTakip.Web
 {
@@ -16,7 +16,27 @@ namespace KobsisSiparisTakip.Web
         {
             if (!Page.IsPostBack)
             {
+                RolleriDoldur();
                 KullaniciDoldur();
+            }
+        }
+
+        private void RolleriDoldur()
+        {
+            DataTable dt = new ReferansDataBS().KullaniciRolleriGetir();
+
+            if (dt.Rows.Count > 0)
+            {
+                ddlKullaniciRol.DataSource = dt;
+                ddlKullaniciRol.DataTextField = "RolAdi";
+                ddlKullaniciRol.DataValueField = "RolID";
+                ddlKullaniciRol.DataBind();
+                ddlKullaniciRol.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+            }
+            else
+            {
+                ddlKullaniciRol.DataSource = null;
+                ddlKullaniciRol.DataBind();
             }
         }
 
@@ -33,21 +53,22 @@ namespace KobsisSiparisTakip.Web
                 MessageBox.Uyari(this, "Kullanıcı adı giriniz");
                 return;
             }
-            if (ddlYetki.SelectedIndex == 0)
+            if (ddlKullaniciRol.SelectedIndex == 0)
             {
-                MessageBox.Uyari(this, "Kullanıcı yetkisi seçiniz");
+                MessageBox.Uyari(this, "Kullanıcı rolü seçiniz");
                 return;
             }
 
             string kullanici = txtKullaniciAdi.Text.Trim();
-            string yetki = ddlYetki.SelectedText;
+            string yetki = ddlKullaniciRol.SelectedValue;
             string sifre = "12345";
             bool sonuc = false;
 
             Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("KULLANICIADI", kullanici);
-            prms.Add("YETKI", yetki);
-            prms.Add("SIFRE", sifre);
+            prms.Add("KullaniciAdi", kullanici);
+            prms.Add("RolID", yetki);
+            prms.Add("Sifre", sifre);
+            prms.Add("MusteriID", SessionManager.KullaniciBilgi.MusteriID);
 
             sonuc = new KullaniciBS().KullaniciTanimla(prms);
 
@@ -68,11 +89,7 @@ namespace KobsisSiparisTakip.Web
 
             if (e.CommandName == "Delete")
             {
-                string kullanici = e.CommandArgument.ToString();
-
-                Dictionary<string, object> prms = new Dictionary<string, object>();
-                prms.Add("KULLANICIADI", kullanici);
-                sonuc = new KullaniciBS().KullaniciSil(prms);
+                sonuc = new KullaniciBS().KullaniciSil(e.CommandArgument.ToString());
 
                 if (sonuc)
                 {

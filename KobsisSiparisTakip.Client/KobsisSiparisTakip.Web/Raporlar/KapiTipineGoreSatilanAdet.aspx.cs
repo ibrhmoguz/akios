@@ -1,5 +1,5 @@
 ﻿using KobsisSiparisTakip.Business;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -79,7 +79,7 @@ namespace KobsisSiparisTakip.Web
 
         private void IlleriGetir()
         {
-            DataTable dt = new SiparisIslemleriBS().IlleriGetir();
+            DataTable dt = new ReferansDataBS().IlleriGetir();
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIl.DataSource = dt;
@@ -100,10 +100,7 @@ namespace KobsisSiparisTakip.Web
 
         private void IlceleriGetir(string ilKod)
         {
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("ILKOD", ilKod);
-
-            DataTable dt = new SiparisIslemleriBS().IlceleriGetir(prms);
+            DataTable dt = new ReferansDataBS().IlceleriGetir(ilKod);
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIlce.DataSource = dt;

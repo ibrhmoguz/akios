@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" %>
 
 <%@ Import Namespace="System.Drawing.Imaging" %>
-<%@ Import Namespace="KobsisSiparisTakip.Web.Util" %>
+<%@ Import Namespace="KobsisSiparisTakip.Web.Helper" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
     private void Page_Load(object sender, System.EventArgs e)

@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using KobsisSiparisTakip.Business;
-using KobsisSiparisTakip.Web.Util;
+using KobsisSiparisTakip.Web.Helper;
 
 
 namespace KobsisSiparisTakip.Web
@@ -20,47 +20,32 @@ namespace KobsisSiparisTakip.Web
 
         private void SifreBilgisiDoldur()
         {
-            if (SessionManager.KullaniciBilgi == null || SessionManager.KullaniciBilgi.Rol == null)
+            if (SessionManager.KullaniciBilgi == null)
             {
                 Response.Redirect("Login.aspx");
                 return;
             }
 
-            string user, yetki;
-
-            user = Session["user"].ToString();
-            yetki = SessionManager.KullaniciBilgi.Rol.ToString();
-            lblKullanici.Text = user;
-
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("KULLANICIADI", user);
-            prms.Add("YETKI", yetki);
-
-            RP_Sifre.DataSource = new KullaniciBS().KullaniciSifreBilgisiGetir(prms);
+            lblKullanici.Text = SessionManager.KullaniciBilgi.KullaniciAdi;
+            RP_Sifre.DataSource = new KullaniciBS().KullaniciSifreBilgisiGetir(SessionManager.KullaniciBilgi.KullaniciAdi, SessionManager.KullaniciBilgi.RolID);
             RP_Sifre.DataBind();
         }
 
         protected void BTN_Guncelle_Click(object sender, EventArgs e)
         {
-            string sifre, user, yetki, yeniSifre;
-            sifre = Session["sifre"].ToString();
-            user = Session["user"].ToString();
-            yetki = SessionManager.KullaniciBilgi.Rol.ToString();
-
-            yeniSifre = txtSifre.Text;
             bool sonuc = false;
 
             Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("KULLANICIADI", user);
-            prms.Add("SIFRE", sifre);
-            prms.Add("YETKI", yetki);
-            prms.Add("YENISIFRE", yeniSifre);
-
+            prms.Add("KullaniciAdi", SessionManager.KullaniciBilgi.KullaniciAdi);
+            prms.Add("Sifre", SessionManager.KullaniciBilgi.Sifre);
+            prms.Add("RolID", SessionManager.KullaniciBilgi.RolID);
+            prms.Add("YeniSifre", txtSifre.Text);
 
             sonuc = new KullaniciBS().KullaniciSifreGuncelle(prms);
 
             if (sonuc)
             {
+                SessionManager.KullaniciBilgi.Sifre = txtSifre.Text;
                 SifreBilgisiDoldur();
                 MessageBox.Basari(this, "Şifre güncellendi.");
             }

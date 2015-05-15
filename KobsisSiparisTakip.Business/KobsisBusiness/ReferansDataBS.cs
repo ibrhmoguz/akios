@@ -34,5 +34,49 @@ namespace KobsisSiparisTakip.Business
             data.GetRecords(dt, sqlText);
             return dt;
         }
+
+        public DataTable IlleriGetir()
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            string sqlText = @"SELECT IlKod,IlAd FROM REF_IL ORDER BY 2";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
+
+        public DataTable IlceleriGetir(string ilKodu)
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            data.AddSqlParameter("IlKod", ilKodu, SqlDbType.Int, 50);
+
+            string sqlText = @"SELECT * FROM REF_ILCE WHERE IlKod=@IlKod ORDER BY IlceAd";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
+
+        public DataTable SemtleriGetir(string ilceKod)
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            data.AddSqlParameter("IlceKod", ilceKod, SqlDbType.Int, 50);
+
+            string sqlText = @"SELECT * FROM REF_SEMT WHERE IlceKod=@IlceKod ORDER BY SemtAd";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
+
+        public DataTable KullaniciRolleriGetir()
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            string sqlText = @"SELECT RolID, RolAdi FROM KULLANICI_ROL ORDER BY 1";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
     }
 }
