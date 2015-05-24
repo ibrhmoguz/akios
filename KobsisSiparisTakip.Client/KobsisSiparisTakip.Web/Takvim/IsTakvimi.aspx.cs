@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Web.UI;
+using System.Linq;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Calendar;
@@ -159,7 +160,8 @@ namespace KobsisSiparisTakip.Web
                     continue;
 
                 int montajID = Convert.ToInt32(row[0]);
-                string siparisNo = row["SiparisNo"].ToString();
+                string seriKodu = SessionManager.SiparisSeri.FirstOrDefault(q => q.SiparisSeriID == Convert.ToInt32(row["SeriID"].ToString())).SeriKodu;
+                string siparisNo = seriKodu + "-" + row["SiparisNo"].ToString();
                 int siparisAdedi;
                 if (Int32.TryParse(row["Adet"].ToString(), out siparisAdedi))
                 {
@@ -186,7 +188,8 @@ namespace KobsisSiparisTakip.Web
 
         private void PersonelListesiYukle()
         {
-            this.PersonelListesi = new PersonelBS().PersonelListesiGetir();
+            if (SessionManager.MusteriBilgi.MusteriID != null)
+                this.PersonelListesi = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
         }
 
         protected void RadSchedulerIsTakvimi_AppointmentCommand(object sender, AppointmentCommandEventArgs e)

@@ -30,5 +30,6 @@ namespace KobsisSiparisTakip.Business.DataTypes
         public int? ImajID { get; set; }
         public string KolonAdi { get; set; }
         public string VeriTipi { get; set; }
+        public bool SorgulanacakMi { get; set; }
     }
 }

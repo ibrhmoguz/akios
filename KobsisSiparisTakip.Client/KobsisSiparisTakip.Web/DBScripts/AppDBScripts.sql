@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [KOBSISAppDB]    Script Date: 05/15/2015 23:52:53 ******/
+/****** Object:  Database [KOBSISAppDB]    Script Date: 05/24/2015 19:07:08 ******/
 IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N'KOBSISAppDB')
 BEGIN
 CREATE DATABASE [KOBSISAppDB] ON  PRIMARY 
@@ -76,33 +76,7 @@ EXEC sys.sp_db_vardecimal_storage_format N'KOBSISAppDB', N'ON'
 GO
 USE [KOBSISAppDB]
 GO
-/****** Object:  Table [dbo].[SIPARIS_DURUM]    Script Date: 05/15/2015 23:52:56 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-SET ANSI_PADDING ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SIPARIS_DURUM]') AND type in (N'U'))
-BEGIN
-CREATE TABLE [dbo].[SIPARIS_DURUM](
-	[DurumID] [int] IDENTITY(1,1) NOT NULL,
-	[Durum] [varchar](50) NOT NULL,
- CONSTRAINT [PK_SIPARIS_DURUM] PRIMARY KEY CLUSTERED 
-(
-	[DurumID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-END
-GO
-SET ANSI_PADDING OFF
-GO
-SET IDENTITY_INSERT [dbo].[SIPARIS_DURUM] ON
-INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (1, N'BEKLEYEN')
-INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (2, N'ÝMALATTA')
-INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (3, N'TAMAMLANDI')
-SET IDENTITY_INSERT [dbo].[SIPARIS_DURUM] OFF
-/****** Object:  Table [dbo].[VERI_TIP]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[VERI_TIP]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +105,7 @@ INSERT [dbo].[VERI_TIP] ([VeriTipID], [VeriTipAdi]) VALUES (4, N'Decimal')
 INSERT [dbo].[VERI_TIP] ([VeriTipID], [VeriTipAdi]) VALUES (5, N'Boolean')
 INSERT [dbo].[VERI_TIP] ([VeriTipID], [VeriTipAdi]) VALUES (6, N'Date')
 SET IDENTITY_INSERT [dbo].[VERI_TIP] OFF
-/****** Object:  Table [dbo].[SIPARIS]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[SIPARIS]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -270,66 +244,33 @@ INSERT [dbo].[SIPARIS] ([ID], [SIPARISNO], [SIPARISTARIH], [BAYIADI], [MUSTERIAD
 INSERT [dbo].[SIPARIS] ([ID], [SIPARISNO], [SIPARISTARIH], [BAYIADI], [MUSTERIAD], [MUSTERISOYAD], [MUSTERIADRES], [MUSTERIIL], [MUSTERIILCE], [MUSTERIEVTEL], [MUSTERIISTEL], [MUSTERICEPTEL], [ICKAPIMODEL], [DISKAPIMODEL], [DISKAPIRENK], [ICKAPIRENK], [KILITSISTEM], [CITA], [ESIK], [ALUMINYUMRENK], [AKSESUARRENK], [CONTARENK], [TACTIP], [PERVAZTIP], [CEKMEKOLU], [KAPINO], [BARELTIP], [BABA], [DURBUN], [TAKTAK], [MONTAJDATAKILACAK], [OLCUMBILGI], [OLCUMTARIH], [OLCUMALANKISI], [MONTAJSEKLI], [TESLIMSEKLI], [PESINAT], [KALANODEME], [FIYAT], [VERGIDAIRESI], [VERGINUMARASI], [DURUM], [KAYITSIZKAMERA], [KAYITYAPANKAMERA], [ALARM], [OTOKILIT], [MUSTERISEMT], [FIRMAADI], [ADET], [NAKITPESIN], [NAKITKALAN], [NAKITODEMENOTU], [KKARTPESIN], [KKARTKALAN], [KKARTODEMENOTU], [CEKPESIN], [CEKKALAN], [CEKODEMENOTU], [SIPARISNOT], [ICPERVAZRENK], [DISPERVAZRENK], [APLIKERENK], [KANAT], [KASACITARENK], [ZIRHTIP], [ZIRHRENK], [CEKMEKOLTAKILMASEKLI], [CEKMEKOLRENK], [BOLMEKAYITSAYI], [CAMTIP], [FERFORJE], [FERFORJERENK], [YANGINKAPICINS], [MUDAHALEKOL], [PANIKBAR], [MENTESE], [KASATIP], [HIDROLIKKAPATICI], [METALRENK], [KASAKAPLAMA], [CUMBA], [ICKASAGENISLIK], [ICKASAYUKSEKLIK], [DISKASAICPERVAZFARK], [DUVARKALINLIK], [DISSOLPERVAZ], [DISUSTPERVAZ], [DISSAGPERVAZ], [ICSOLPERVAZ], [ICUSTPERVAZ], [ICSAGPERVAZ], [CREATEDBY], [CREATEDTIME], [UPDATEDBY], [UPDATEDTIME], [OLCU_TARIH], [BAYI_ADI], [KILIT_SISTEMI], [MENTESE_TIPI], [EV_TEL], [NAKIT_PESIN], [FATURA]) VALUES (18, N'N-1', CAST(0x0000A41F00000000 AS DateTime), N'23423 we wer', NULL, NULL, N'erterter e ter', N'ANKARA', N'YENÝMAHALLE', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, CAST(0x75390B00 AS Date), NULL, NULL, N'Montajli', NULL, NULL, N'2500', NULL, NULL, N'BEKLEYEN', NULL, NULL, NULL, NULL, N'BATIKENT', NULL, 1, CAST(500.00 AS Numeric(10, 2)), CAST(1000.00 AS Numeric(10, 2)), NULL, NULL, CAST(1000.00 AS Numeric(10, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'12342345', N'34534', N'5675', N'567', N'3453', N'234', N'werw2', N'234', N'2342', N'wer', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 INSERT [dbo].[SIPARIS] ([ID], [SIPARISNO], [SIPARISTARIH], [BAYIADI], [MUSTERIAD], [MUSTERISOYAD], [MUSTERIADRES], [MUSTERIIL], [MUSTERIILCE], [MUSTERIEVTEL], [MUSTERIISTEL], [MUSTERICEPTEL], [ICKAPIMODEL], [DISKAPIMODEL], [DISKAPIRENK], [ICKAPIRENK], [KILITSISTEM], [CITA], [ESIK], [ALUMINYUMRENK], [AKSESUARRENK], [CONTARENK], [TACTIP], [PERVAZTIP], [CEKMEKOLU], [KAPINO], [BARELTIP], [BABA], [DURBUN], [TAKTAK], [MONTAJDATAKILACAK], [OLCUMBILGI], [OLCUMTARIH], [OLCUMALANKISI], [MONTAJSEKLI], [TESLIMSEKLI], [PESINAT], [KALANODEME], [FIYAT], [VERGIDAIRESI], [VERGINUMARASI], [DURUM], [KAYITSIZKAMERA], [KAYITYAPANKAMERA], [ALARM], [OTOKILIT], [MUSTERISEMT], [FIRMAADI], [ADET], [NAKITPESIN], [NAKITKALAN], [NAKITODEMENOTU], [KKARTPESIN], [KKARTKALAN], [KKARTODEMENOTU], [CEKPESIN], [CEKKALAN], [CEKODEMENOTU], [SIPARISNOT], [ICPERVAZRENK], [DISPERVAZRENK], [APLIKERENK], [KANAT], [KASACITARENK], [ZIRHTIP], [ZIRHRENK], [CEKMEKOLTAKILMASEKLI], [CEKMEKOLRENK], [BOLMEKAYITSAYI], [CAMTIP], [FERFORJE], [FERFORJERENK], [YANGINKAPICINS], [MUDAHALEKOL], [PANIKBAR], [MENTESE], [KASATIP], [HIDROLIKKAPATICI], [METALRENK], [KASAKAPLAMA], [CUMBA], [ICKASAGENISLIK], [ICKASAYUKSEKLIK], [DISKASAICPERVAZFARK], [DUVARKALINLIK], [DISSOLPERVAZ], [DISUSTPERVAZ], [DISSAGPERVAZ], [ICSOLPERVAZ], [ICUSTPERVAZ], [ICSAGPERVAZ], [CREATEDBY], [CREATEDTIME], [UPDATEDBY], [UPDATEDTIME], [OLCU_TARIH], [BAYI_ADI], [KILIT_SISTEMI], [MENTESE_TIPI], [EV_TEL], [NAKIT_PESIN], [FATURA]) VALUES (19, N'Y-1', CAST(0x0000A42200000000 AS DateTime), N'werwer', N'wwwwwww', N'eeeee', N'dfgsdfgsd sdfg sdfg', N'ANKARA', N'ÇANKAYA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'asdf asdf', CAST(0x83390B00 AS Date), NULL, NULL, NULL, NULL, NULL, N'3500', NULL, NULL, N'BEKLEYEN', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, CAST(1000.00 AS Numeric(10, 2)), NULL, CAST(2000.00 AS Numeric(10, 2)), CAST(4.00 AS Numeric(10, 2)), NULL, CAST(1000.00 AS Numeric(10, 2)), CAST(500.00 AS Numeric(10, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'YANGIN', N'müdahale', NULL, NULL, NULL, N'yale', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, N'nejibo', CAST(0x0000A41501729DD8 AS DateTime), N'nejibo', CAST(0x0000A41600053BE2 AS DateTime), NULL, NULL, NULL, NULL, NULL, NULL, NULL)
 SET IDENTITY_INSERT [dbo].[SIPARIS] OFF
-/****** Object:  Table [dbo].[KULLANICI_ROL]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[SIPARIS_DURUM]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[KULLANICI_ROL]') AND type in (N'U'))
+SET ANSI_PADDING ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SIPARIS_DURUM]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[KULLANICI_ROL](
-	[RolID] [int] IDENTITY(1,1) NOT NULL,
-	[RolAdi] [nvarchar](50) NOT NULL,
- CONSTRAINT [PK_KULLANICI_ROL] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[SIPARIS_DURUM](
+	[DurumID] [int] IDENTITY(1,1) NOT NULL,
+	[Durum] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_SIPARIS_DURUM] PRIMARY KEY CLUSTERED 
 (
-	[RolID] ASC
+	[DurumID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 END
 GO
-SET IDENTITY_INSERT [dbo].[KULLANICI_ROL] ON
-INSERT [dbo].[KULLANICI_ROL] ([RolID], [RolAdi]) VALUES (1, N'Yönetici')
-INSERT [dbo].[KULLANICI_ROL] ([RolID], [RolAdi]) VALUES (2, N'Kullanici')
-SET IDENTITY_INSERT [dbo].[KULLANICI_ROL] OFF
-/****** Object:  Table [dbo].[MONTAJ_PERSONEL]    Script Date: 05/15/2015 23:52:56 ******/
-SET ANSI_NULLS ON
+SET ANSI_PADDING OFF
 GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_PERSONEL]') AND type in (N'U'))
-BEGIN
-CREATE TABLE [dbo].[MONTAJ_PERSONEL](
-	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[MontajID] [int] NOT NULL,
-	[PersonelID] [int] NOT NULL,
- CONSTRAINT [PK_MONTAJ_PERSONEL] PRIMARY KEY CLUSTERED 
-(
-	[ID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-END
-GO
-SET IDENTITY_INSERT [dbo].[MONTAJ_PERSONEL] ON
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (3, 1, 7)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (4, 1, 8)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (11, 3, 4)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (12, 3, 7)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (15, 2, 4)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (16, 2, 6)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (23, 21, 7)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (24, 21, 10)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (25, 4, 7)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (26, 4, 10)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (31, 5, 5)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (32, 5, 7)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (33, 5, 10)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (34, 24, 8)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (35, 26, 8)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (36, 26, 9)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (37, 22, 5)
-INSERT [dbo].[MONTAJ_PERSONEL] ([ID], [MontajID], [PersonelID]) VALUES (38, 22, 9)
-SET IDENTITY_INSERT [dbo].[MONTAJ_PERSONEL] OFF
-/****** Object:  Table [dbo].[REF_IL]    Script Date: 05/15/2015 23:52:56 ******/
+SET IDENTITY_INSERT [dbo].[SIPARIS_DURUM] ON
+INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (1, N'BEKLEYEN')
+INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (2, N'ÝMALATTA')
+INSERT [dbo].[SIPARIS_DURUM] ([DurumID], [Durum]) VALUES (3, N'TAMAMLANDI')
+SET IDENTITY_INSERT [dbo].[SIPARIS_DURUM] OFF
+/****** Object:  Table [dbo].[REF_IL]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -431,7 +372,7 @@ INSERT [dbo].[REF_IL] ([IlKod], [IlAd]) VALUES (78, N'KARABÜK')
 INSERT [dbo].[REF_IL] ([IlKod], [IlAd]) VALUES (79, N'KILIS')
 INSERT [dbo].[REF_IL] ([IlKod], [IlAd]) VALUES (80, N'OSMANIYE')
 INSERT [dbo].[REF_IL] ([IlKod], [IlAd]) VALUES (81, N'DÜZCE')
-/****** Object:  Table [dbo].[IMAJ]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[IMAJ]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -455,7 +396,7 @@ GO
 SET IDENTITY_INSERT [dbo].[IMAJ] ON
 INSERT [dbo].[IMAJ] ([ImajID], [ImajData]) VALUES (1, NULL)
 SET IDENTITY_INSERT [dbo].[IMAJ] OFF
-/****** Object:  Table [dbo].[HATA]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[HATA]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -676,7 +617,7 @@ INSERT [dbo].[HATA] ([ID], [MODULEID], [EVENTLOGENTRYTYPEID], [EXCEPTION], [PAGE
    at WebFrame.DataAccess.SqlData.ExecuteStatement(String ssql) in c:\Projects\KobsisSiparisTakip\WebFrame\WebFrame.DataAccess\SqlData.cs:line 187
    at KobsisSiparisTakip.Business.KullaniciBS.KullaniciSifreGuncelle(Dictionary`2 prms) in c:\Projects\KobsisSiparisTakip\KobsisSiparisTakip.Business\KobsisBusiness\KullaniciBS.cs:line 124 Source: .Net SqlClient Data Provider', N'ServerSide', N'KullaniciSifreGuncelle', N'', N'', N'', N'', N'', NULL, CAST(0x0000A499017F1ED6 AS DateTime))
 SET IDENTITY_INSERT [dbo].[HATA] OFF
-/****** Object:  Table [dbo].[CONFIG]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[CONFIG]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -698,7 +639,7 @@ SET IDENTITY_INSERT [dbo].[CONFIG] ON
 INSERT [dbo].[CONFIG] ([ID], [ConfigName], [ConfigValue]) VALUES (1, N'MONTAJ_KOTA_KONTROLU', N'1')
 INSERT [dbo].[CONFIG] ([ID], [ConfigName], [ConfigValue]) VALUES (2, N'MONTAJ_KOTA_VARSAYILAN', N'12')
 SET IDENTITY_INSERT [dbo].[CONFIG] OFF
-/****** Object:  Table [dbo].[KONTROL_TIP]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[KONTROL_TIP]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -730,36 +671,75 @@ INSERT [dbo].[KONTROL_TIP] ([KontrolTipID], [KontrolTipAdi]) VALUES (11, N'DropD
 INSERT [dbo].[KONTROL_TIP] ([KontrolTipID], [KontrolTipAdi]) VALUES (12, N'CheckBox')
 INSERT [dbo].[KONTROL_TIP] ([KontrolTipID], [KontrolTipAdi]) VALUES (13, N'Image')
 SET IDENTITY_INSERT [dbo].[KONTROL_TIP] OFF
-/****** Object:  Table [dbo].[PERSONELBILGI]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[MONTAJ_PERSONEL]    Script Date: 05/24/2015 19:07:11 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-SET ANSI_PADDING ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PERSONELBILGI]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_PERSONEL]') AND type in (N'U'))
 BEGIN
-CREATE TABLE [dbo].[PERSONELBILGI](
+CREATE TABLE [dbo].[MONTAJ_PERSONEL](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[AD] [char](50) NOT NULL,
-	[SOYAD] [char](100) NOT NULL,
- CONSTRAINT [PK_PERSONELBILGI] PRIMARY KEY CLUSTERED 
+	[MontajID] [int] NOT NULL,
+	[PersonelID] [int] NOT NULL,
+ CONSTRAINT [PK_MONTAJ_PERSONEL] PRIMARY KEY CLUSTERED 
 (
 	[ID] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 END
 GO
-SET ANSI_PADDING OFF
+/****** Object:  Table [dbo].[KULLANICI_ROL]    Script Date: 05/24/2015 19:07:11 ******/
+SET ANSI_NULLS ON
 GO
-SET IDENTITY_INSERT [dbo].[PERSONELBILGI] ON
-INSERT [dbo].[PERSONELBILGI] ([ID], [AD], [SOYAD]) VALUES (4, N'IBRAHIM                                           ', N'OGUZ                                                                                                ')
-INSERT [dbo].[PERSONELBILGI] ([ID], [AD], [SOYAD]) VALUES (5, N'NEJLA                                             ', N'GÜNER                                                                                               ')
-INSERT [dbo].[PERSONELBILGI] ([ID], [AD], [SOYAD]) VALUES (6, N'DERIN                                             ', N'GEÇMEZ                                                                                              ')
-INSERT [dbo].[PERSONELBILGI] ([ID], [AD], [SOYAD]) VALUES (7, N'ALI                                               ', N'USTA                                                                                                ')
-INSERT [dbo].[PERSONELBILGI] ([ID], [AD], [SOYAD]) VALUES (10, N'Ahmet                                             ', N'Usta                                                                                                ')
-SET IDENTITY_INSERT [dbo].[PERSONELBILGI] OFF
-/****** Object:  Table [dbo].[MUSTERI]    Script Date: 05/15/2015 23:52:56 ******/
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[KULLANICI_ROL]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[KULLANICI_ROL](
+	[RolID] [int] IDENTITY(1,1) NOT NULL,
+	[RolAdi] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_KULLANICI_ROL] PRIMARY KEY CLUSTERED 
+(
+	[RolID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET IDENTITY_INSERT [dbo].[KULLANICI_ROL] ON
+INSERT [dbo].[KULLANICI_ROL] ([RolID], [RolAdi]) VALUES (1, N'Yönetici')
+INSERT [dbo].[KULLANICI_ROL] ([RolID], [RolAdi]) VALUES (2, N'Kullanici')
+SET IDENTITY_INSERT [dbo].[KULLANICI_ROL] OFF
+/****** Object:  UserDefinedFunction [dbo].[MONTAJ_EKIP_ID_LISTESI]    Script Date: 05/24/2015 19:07:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_EKIP_ID_LISTESI]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+BEGIN
+execute dbo.sp_executesql @statement = N'
+CREATE FUNCTION [dbo].[MONTAJ_EKIP_ID_LISTESI]
+(
+	@MontajID int
+)
+RETURNS VARCHAR(1000)
+AS
+BEGIN
+	DECLARE @PersonelIDListesi VARCHAR(1000) 
+
+	SELECT 
+		@PersonelIDListesi = (STUFF((SELECT '',''+CAST(MP.PERSONELID AS varchar(5)) AS [text()]
+									FROM [dbo].[MONTAJ_PERSONEL] AS MP
+									WHERE MP.MONTAJID = @MontajID
+									FOR XML PATH('''')), 1, 1,''''))
+
+	RETURN @PersonelIDListesi
+
+END
+' 
+END
+GO
+/****** Object:  Table [dbo].[MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -792,7 +772,7 @@ GO
 SET IDENTITY_INSERT [dbo].[MUSTERI] ON
 INSERT [dbo].[MUSTERI] ([MusteriID], [Kod], [YetkiliKisi], [Adi], [Adres], [Tel], [Mobil], [Faks], [Web], [Mail], [LogoID]) VALUES (1, N'ABC', N'Ýbrahim OÐUZ', N'ABC ÇELÝK KAPI SAN. TÝC. LTD. ÞTÝ.', N'Alýnteri Bulvarý No:210 Ostim/ANKARA', N'(0 312) 385 37 83 - 84', N'(0506) 521 45 87', N'(0 312) 354 61 81', N'www.abccelikkapi.com.tr', N'abc@celikkapi.com', NULL)
 SET IDENTITY_INSERT [dbo].[MUSTERI] OFF
-/****** Object:  Table [dbo].[REF_ILCE]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Table [dbo].[REF_ILCE]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1790,66 +1770,7 @@ INSERT [dbo].[REF_ILCE] ([IlceKod], [IlceAd], [IlKod]) VALUES (955, N'GÖLYAKA', 
 INSERT [dbo].[REF_ILCE] ([IlceKod], [IlceAd], [IlKod]) VALUES (956, N'GÜMÜÞOVA', 81)
 INSERT [dbo].[REF_ILCE] ([IlceKod], [IlceAd], [IlKod]) VALUES (957, N'KAYNAÞLI', 81)
 INSERT [dbo].[REF_ILCE] ([IlceKod], [IlceAd], [IlKod]) VALUES (958, N'YIÐILCA', 81)
-/****** Object:  UserDefinedFunction [dbo].[MONTAJ_EKIP_LISTESI]    Script Date: 05/15/2015 23:52:58 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_EKIP_LISTESI]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-BEGIN
-execute dbo.sp_executesql @statement = N'
-CREATE FUNCTION [dbo].[MONTAJ_EKIP_LISTESI]
-(
-	@MontajID int
-)
-RETURNS VARCHAR(1000)
-AS
-BEGIN
-	DECLARE @PersonelListesi VARCHAR(1000) 
-
-	SELECT 
-		@PersonelListesi = (STUFF((SELECT '', ''+RTRIM(P.AD) +'' ''+RTRIM(P.SOYAD) AS [text()]
-									FROM [dbo].[MONTAJ_PERSONEL] AS MP
-										INNER JOIN [dbo].[PERSONELBILGI] AS P ON MP.PERSONELID = P.ID
-									WHERE MP.MONTAJID = @MontajID
-									FOR XML PATH('''')), 1, 1,''''))
-
-	RETURN @PersonelListesi
-
-END
-' 
-END
-GO
-/****** Object:  UserDefinedFunction [dbo].[MONTAJ_EKIP_ID_LISTESI]    Script Date: 05/15/2015 23:52:58 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_EKIP_ID_LISTESI]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-BEGIN
-execute dbo.sp_executesql @statement = N'
-CREATE FUNCTION [dbo].[MONTAJ_EKIP_ID_LISTESI]
-(
-	@MontajID int
-)
-RETURNS VARCHAR(1000)
-AS
-BEGIN
-	DECLARE @PersonelIDListesi VARCHAR(1000) 
-
-	SELECT 
-		@PersonelIDListesi = (STUFF((SELECT '',''+CAST(MP.PERSONELID AS varchar(5)) AS [text()]
-									FROM [dbo].[MONTAJ_PERSONEL] AS MP
-									WHERE MP.MONTAJID = @MontajID
-									FOR XML PATH('''')), 1, 1,''''))
-
-	RETURN @PersonelIDListesi
-
-END
-' 
-END
-GO
-/****** Object:  Table [dbo].[REF_SEMT]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[REF_SEMT]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6076,10 +5997,12 @@ INSERT [dbo].[REF_SEMT] ([SemtKod], [IlKod], [IlceKod], [SemtAd]) VALUES (4121, 
 INSERT [dbo].[REF_SEMT] ([SemtKod], [IlKod], [IlceKod], [SemtAd]) VALUES (4122, 81, 957, N'KÖYLER')
 INSERT [dbo].[REF_SEMT] ([SemtKod], [IlKod], [IlceKod], [SemtAd]) VALUES (4123, 81, 958, N'YIÐILCA')
 INSERT [dbo].[REF_SEMT] ([SemtKod], [IlKod], [IlceKod], [SemtAd]) VALUES (4124, 81, 958, N'KÖYLER')
-/****** Object:  Table [dbo].[SIPARIS_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[SIPARIS_SERI]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SIPARIS_SERI]') AND type in (N'U'))
 BEGIN
@@ -6087,6 +6010,7 @@ CREATE TABLE [dbo].[SIPARIS_SERI](
 	[SiparisSeriID] [int] IDENTITY(1,1) NOT NULL,
 	[MusteriID] [int] NOT NULL,
 	[SeriAdi] [nvarchar](250) NOT NULL,
+	[SeriKodu] [varchar](50) NULL,
  CONSTRAINT [PK_KAPI_SERI] PRIMARY KEY CLUSTERED 
 (
 	[SiparisSeriID] ASC
@@ -6094,16 +6018,18 @@ CREATE TABLE [dbo].[SIPARIS_SERI](
 ) ON [PRIMARY]
 END
 GO
+SET ANSI_PADDING OFF
+GO
 SET IDENTITY_INSERT [dbo].[SIPARIS_SERI] ON
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (1, 1, N'Ottimo')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (3, 1, N'Ricco')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (4, 1, N'Alto')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (5, 1, N'Prego')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (6, 1, N'Solido')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (7, 1, N'Lusso')
-INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi]) VALUES (8, 1, N'Caldo')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (1, 1, N'Ottimo', N'O')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (3, 1, N'Ricco', N'R')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (4, 1, N'Alto', N'A')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (5, 1, N'Prego', N'P')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (6, 1, N'Solido', N'S')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (7, 1, N'Lusso', N'L')
+INSERT [dbo].[SIPARIS_SERI] ([SiparisSeriID], [MusteriID], [SeriAdi], [SeriKodu]) VALUES (8, 1, N'Caldo', N'C')
 SET IDENTITY_INSERT [dbo].[SIPARIS_SERI] OFF
-/****** Object:  Table [dbo].[SIPARIS_METADATA]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[SIPARIS_METADATA]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6117,6 +6043,7 @@ CREATE TABLE [dbo].[SIPARIS_METADATA](
 	[MusteriID] [int] NOT NULL,
 	[KolonAdi] [varchar](50) NOT NULL,
 	[VeriTipID] [int] NOT NULL,
+	[SorgulanacakMi] [bit] NOT NULL,
  CONSTRAINT [PK_SIPARIS_METADATA] PRIMARY KEY CLUSTERED 
 (
 	[MetadataID] ASC
@@ -6127,61 +6054,15 @@ GO
 SET ANSI_PADDING OFF
 GO
 SET IDENTITY_INSERT [dbo].[SIPARIS_METADATA] ON
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (1, 1, N'OlcuTarih', 3)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (2, 1, N'BayiAdi', 1)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (3, 1, N'KilitSistemi', 2)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (4, 1, N'MenteseTipi', 2)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (5, 1, N'EvTel', 1)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (6, 1, N'NakitPesin', 4)
-INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID]) VALUES (7, 1, N'Fatura', 5)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (1, 1, N'OlcuTarih', 3, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (2, 1, N'BayiAdi', 1, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (3, 1, N'KilitSistemi', 2, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (4, 1, N'MenteseTipi', 2, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (5, 1, N'EvTel', 1, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (6, 1, N'NakitPesin', 4, 1)
+INSERT [dbo].[SIPARIS_METADATA] ([MetadataID], [MusteriID], [KolonAdi], [VeriTipID], [SorgulanacakMi]) VALUES (7, 1, N'Fatura', 5, 1)
 SET IDENTITY_INSERT [dbo].[SIPARIS_METADATA] OFF
-/****** Object:  Table [dbo].[REF]    Script Date: 05/15/2015 23:52:58 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[REF]') AND type in (N'U'))
-BEGIN
-CREATE TABLE [dbo].[REF](
-	[RefID] [int] IDENTITY(1,1) NOT NULL,
-	[MusteriID] [int] NOT NULL,
-	[RefAdi] [nvarchar](500) NOT NULL,
- CONSTRAINT [PK_REF] PRIMARY KEY CLUSTERED 
-(
-	[RefID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-END
-GO
-SET IDENTITY_INSERT [dbo].[REF] ON
-INSERT [dbo].[REF] ([RefID], [MusteriID], [RefAdi]) VALUES (1, 1, N'Kilit Sistemi')
-INSERT [dbo].[REF] ([RefID], [MusteriID], [RefAdi]) VALUES (2, 1, N'Montaj Þekli')
-SET IDENTITY_INSERT [dbo].[REF] OFF
-/****** Object:  Table [dbo].[KULLANICI]    Script Date: 05/15/2015 23:52:58 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[KULLANICI]') AND type in (N'U'))
-BEGIN
-CREATE TABLE [dbo].[KULLANICI](
-	[KullaniciID] [int] IDENTITY(1,1) NOT NULL,
-	[MusteriID] [int] NOT NULL,
-	[KullaniciAdi] [nvarchar](50) NOT NULL,
-	[Sifre] [nvarchar](50) NOT NULL,
-	[RolID] [int] NOT NULL,
- CONSTRAINT [PK_KULLANICI] PRIMARY KEY CLUSTERED 
-(
-	[KullaniciID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
-END
-GO
-SET IDENTITY_INSERT [dbo].[KULLANICI] ON
-INSERT [dbo].[KULLANICI] ([KullaniciID], [MusteriID], [KullaniciAdi], [Sifre], [RolID]) VALUES (1, 1, N'nej', N'12345', 1)
-INSERT [dbo].[KULLANICI] ([KullaniciID], [MusteriID], [KullaniciAdi], [Sifre], [RolID]) VALUES (2, 1, N'ibo', N'12345', 2)
-SET IDENTITY_INSERT [dbo].[KULLANICI] OFF
-/****** Object:  Table [dbo].[MONTAJKOTA]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[MONTAJKOTA]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6209,7 +6090,83 @@ INSERT [dbo].[MONTAJKOTA] ([ID], [MusteriID], [MontajTarihi], [MaxMontajSayi], [
 INSERT [dbo].[MONTAJKOTA] ([ID], [MusteriID], [MontajTarihi], [MaxMontajSayi], [MontajKabul]) VALUES (6, 1, CAST(0x0000A40700000000 AS DateTime), 3, 0)
 INSERT [dbo].[MONTAJKOTA] ([ID], [MusteriID], [MontajTarihi], [MaxMontajSayi], [MontajKabul]) VALUES (7, 1, CAST(0x0000A40D00000000 AS DateTime), 1, 1)
 SET IDENTITY_INSERT [dbo].[MONTAJKOTA] OFF
-/****** Object:  Table [dbo].[KONTROL_DEGER]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[REF]    Script Date: 05/24/2015 19:07:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[REF]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[REF](
+	[RefID] [int] IDENTITY(1,1) NOT NULL,
+	[MusteriID] [int] NOT NULL,
+	[RefAdi] [nvarchar](500) NOT NULL,
+ CONSTRAINT [PK_REF] PRIMARY KEY CLUSTERED 
+(
+	[RefID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET IDENTITY_INSERT [dbo].[REF] ON
+INSERT [dbo].[REF] ([RefID], [MusteriID], [RefAdi]) VALUES (1, 1, N'Kilit Sistemi')
+INSERT [dbo].[REF] ([RefID], [MusteriID], [RefAdi]) VALUES (2, 1, N'Montaj Þekli')
+SET IDENTITY_INSERT [dbo].[REF] OFF
+/****** Object:  Table [dbo].[PERSONEL]    Script Date: 05/24/2015 19:07:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[PERSONEL]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[PERSONEL](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[MusteriID] [int] NULL,
+	[Ad] [varchar](50) NOT NULL,
+	[Soyad] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_PERSONELBILGI] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET ANSI_PADDING OFF
+GO
+SET IDENTITY_INSERT [dbo].[PERSONEL] ON
+INSERT [dbo].[PERSONEL] ([ID], [MusteriID], [Ad], [Soyad]) VALUES (4, 1, N'IBRAHIM                                           ', N'OGUZ                                              ')
+INSERT [dbo].[PERSONEL] ([ID], [MusteriID], [Ad], [Soyad]) VALUES (5, 1, N'NEJLA                                             ', N'GÜNER                                             ')
+INSERT [dbo].[PERSONEL] ([ID], [MusteriID], [Ad], [Soyad]) VALUES (6, 1, N'DERIN                                             ', N'GEÇMEZ                                            ')
+INSERT [dbo].[PERSONEL] ([ID], [MusteriID], [Ad], [Soyad]) VALUES (7, 1, N'ALI                                               ', N'USTA                                              ')
+INSERT [dbo].[PERSONEL] ([ID], [MusteriID], [Ad], [Soyad]) VALUES (10, 1, N'Ahmet                                             ', N'Usta                                              ')
+SET IDENTITY_INSERT [dbo].[PERSONEL] OFF
+/****** Object:  Table [dbo].[KULLANICI]    Script Date: 05/24/2015 19:07:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[KULLANICI]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[KULLANICI](
+	[KullaniciID] [int] IDENTITY(1,1) NOT NULL,
+	[MusteriID] [int] NOT NULL,
+	[KullaniciAdi] [nvarchar](50) NOT NULL,
+	[Sifre] [nvarchar](50) NOT NULL,
+	[RolID] [int] NOT NULL,
+ CONSTRAINT [PK_KULLANICI] PRIMARY KEY CLUSTERED 
+(
+	[KullaniciID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET IDENTITY_INSERT [dbo].[KULLANICI] ON
+INSERT [dbo].[KULLANICI] ([KullaniciID], [MusteriID], [KullaniciAdi], [Sifre], [RolID]) VALUES (1, 1, N'nej', N'12345', 1)
+INSERT [dbo].[KULLANICI] ([KullaniciID], [MusteriID], [KullaniciAdi], [Sifre], [RolID]) VALUES (2, 1, N'ibo', N'12345', 2)
+SET IDENTITY_INSERT [dbo].[KULLANICI] OFF
+/****** Object:  Table [dbo].[KONTROL_DEGER]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6237,7 +6194,7 @@ INSERT [dbo].[KONTROL_DEGER] ([KontrolDegerID], [MusteriID], [KontrolDegerAdi], 
 INSERT [dbo].[KONTROL_DEGER] ([KontrolDegerID], [MusteriID], [KontrolDegerAdi], [KontrolDegeri]) VALUES (7, 1, N'MusteriWeb', N' <b>Web : </b>www.ankaracelikkapi.com.tr')
 INSERT [dbo].[KONTROL_DEGER] ([KontrolDegerID], [MusteriID], [KontrolDegerAdi], [KontrolDegeri]) VALUES (8, 1, N'MusteriMail', N' <b>e-posta : </b>ankara@celikkapi.net')
 SET IDENTITY_INSERT [dbo].[KONTROL_DEGER] OFF
-/****** Object:  Table [dbo].[KONTROL]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[KONTROL]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6294,35 +6251,37 @@ INSERT [dbo].[KONTROL] ([KontrolID], [MusteriID], [KontrolTipID], [KontrolAdi], 
 INSERT [dbo].[KONTROL] ([KontrolID], [MusteriID], [KontrolTipID], [KontrolAdi], [Mask], [TextMode], [Yukseklik], [Genislik], [Enabled], [PostBack], [CssClass], [Style], [RowSpan], [ColSpan], [Text], [ImajID], [KontrolDegerID], [RefID], [MetadataID]) VALUES (42, 1, 9, N'br', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, NULL, NULL, N'<br />', NULL, NULL, NULL, NULL)
 INSERT [dbo].[KONTROL] ([KontrolID], [MusteriID], [KontrolTipID], [KontrolAdi], [Mask], [TextMode], [Yukseklik], [Genislik], [Enabled], [PostBack], [CssClass], [Style], [RowSpan], [ColSpan], [Text], [ImajID], [KontrolDegerID], [RefID], [MetadataID]) VALUES (43, 1, 4, N'thImgOlcu', NULL, NULL, NULL, NULL, 1, 0, NULL, N'width: 12%', NULL, NULL, N'Ölçü imaj :', NULL, NULL, NULL, NULL)
 SET IDENTITY_INSERT [dbo].[KONTROL] OFF
-/****** Object:  Table [dbo].[REF_DETAY]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  UserDefinedFunction [dbo].[MONTAJ_EKIP_LISTESI]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[REF_DETAY]') AND type in (N'U'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[MONTAJ_EKIP_LISTESI]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
 BEGIN
-CREATE TABLE [dbo].[REF_DETAY](
-	[RefDetayID] [int] IDENTITY(1,1) NOT NULL,
-	[RefID] [int] NOT NULL,
-	[RefDetayAdi] [nvarchar](500) NOT NULL,
- CONSTRAINT [PK_REF_DETAY] PRIMARY KEY CLUSTERED 
+execute dbo.sp_executesql @statement = N'
+CREATE FUNCTION [dbo].[MONTAJ_EKIP_LISTESI]
 (
-	[RefDetayID] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY]
+	@MontajID int
+)
+RETURNS VARCHAR(1000)
+AS
+BEGIN
+	DECLARE @PersonelListesi VARCHAR(1000) 
+
+	SELECT 
+		@PersonelListesi = (STUFF((SELECT '', ''+RTRIM(P.AD) +'' ''+RTRIM(P.SOYAD) AS [text()]
+									FROM [dbo].[MONTAJ_PERSONEL] AS MP
+										INNER JOIN [dbo].[PERSONEL] AS P ON MP.PERSONELID = P.ID
+									WHERE MP.MONTAJID = @MontajID
+									FOR XML PATH('''')), 1, 1,''''))
+
+	RETURN @PersonelListesi
+
+END
+' 
 END
 GO
-SET IDENTITY_INSERT [dbo].[REF_DETAY] ON
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (1, 1, N'Kale 6''li')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (2, 1, N'Kale 14''lü')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (3, 1, N'Multlock 15''li')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (4, 1, N'Mottura 17''li')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (5, 1, N'Moturra 21''li')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (6, 2, N'Betonlu')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (7, 2, N'Vidali')
-INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (8, 2, N'Köpüklü')
-SET IDENTITY_INSERT [dbo].[REF_DETAY] OFF
-/****** Object:  Table [dbo].[SIPARIS_ABC]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[SIPARIS_ABC]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6379,7 +6338,35 @@ INSERT [dbo].[SIPARIS_ABC] ([ID], [SeriID], [SiparisNo], [SiparisTarih], [Teslim
 INSERT [dbo].[SIPARIS_ABC] ([ID], [SeriID], [SiparisNo], [SiparisTarih], [TeslimTarih], [MusteriAd], [MusteriSoyad], [MusteriAdres], [MusteriIlKod], [MusteriIlceKod], [MusteriSemtKod], [MusteriEvTel], [MusteriIsTel], [MusteriCepTel], [FirmaAdi], [Adet], [CreatedBy], [CreatedTime], [UpdatedBy], [UpdatedTime], [DurumID], [OlcuTarih], [BayiAdi], [KilitSistemi], [MenteseTipi], [EvTel], [NakitPesin], [Fatura]) VALUES (9, 1, N'7', CAST(0x0000A49100000000 AS DateTime), CAST(0x0000A4A700000000 AS DateTime), N'Muzaffer', N'KILIÇ', NULL, 6, 62, 352, N'1111111111', N'2222222222', N'3333333333', N'ADS', 1, 1, CAST(0x0000A4950173B565 AS DateTime), 1, CAST(0x0000A49901710AFF AS DateTime), 1, NULL, N'asdasdasd ', 3, NULL, N'6666666666', CAST(12311200.00 AS Decimal(10, 2)), 1)
 INSERT [dbo].[SIPARIS_ABC] ([ID], [SeriID], [SiparisNo], [SiparisTarih], [TeslimTarih], [MusteriAd], [MusteriSoyad], [MusteriAdres], [MusteriIlKod], [MusteriIlceKod], [MusteriSemtKod], [MusteriEvTel], [MusteriIsTel], [MusteriCepTel], [FirmaAdi], [Adet], [CreatedBy], [CreatedTime], [UpdatedBy], [UpdatedTime], [DurumID], [OlcuTarih], [BayiAdi], [KilitSistemi], [MenteseTipi], [EvTel], [NakitPesin], [Fatura]) VALUES (10, 1, N'8', CAST(0x0000A49800000000 AS DateTime), CAST(0x0000A49A00000000 AS DateTime), N'Muzaffer', N'KILIÇ', N'asdas asd asda sd', 1, 6, 76, N'2222222222', N'1111111111', N'4444444444', N'XCV', 1, 1, CAST(0x0000A499015D70A3 AS DateTime), 1, CAST(0x0000A499015E4AAE AS DateTime), 1, CAST(0x0000A49900000000 AS DateTime), N'qwerqwe rqwe rqwe', 1, NULL, NULL, CAST(54321.00 AS Decimal(10, 2)), 0)
 SET IDENTITY_INSERT [dbo].[SIPARIS_ABC] OFF
-/****** Object:  Table [dbo].[SIPARISNO_SAYAC]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[REF_DETAY]    Script Date: 05/24/2015 19:07:13 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[REF_DETAY]') AND type in (N'U'))
+BEGIN
+CREATE TABLE [dbo].[REF_DETAY](
+	[RefDetayID] [int] IDENTITY(1,1) NOT NULL,
+	[RefID] [int] NOT NULL,
+	[RefDetayAdi] [nvarchar](500) NOT NULL,
+ CONSTRAINT [PK_REF_DETAY] PRIMARY KEY CLUSTERED 
+(
+	[RefDetayID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+END
+GO
+SET IDENTITY_INSERT [dbo].[REF_DETAY] ON
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (1, 1, N'Kale 6''li')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (2, 1, N'Kale 14''lü')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (3, 1, N'Multlock 15''li')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (4, 1, N'Mottura 17''li')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (5, 1, N'Moturra 21''li')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (6, 2, N'Betonlu')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (7, 2, N'Vidali')
+INSERT [dbo].[REF_DETAY] ([RefDetayID], [RefID], [RefDetayAdi]) VALUES (8, 2, N'Köpüklü')
+SET IDENTITY_INSERT [dbo].[REF_DETAY] OFF
+/****** Object:  Table [dbo].[SIPARISNO_SAYAC]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6394,7 +6381,7 @@ CREATE TABLE [dbo].[SIPARISNO_SAYAC](
 END
 GO
 INSERT [dbo].[SIPARISNO_SAYAC] ([Yil], [SiparisSeriID], [SiraNo]) VALUES (2015, 1, 8)
-/****** Object:  Table [dbo].[YERLESIM]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[YERLESIM]    Script Date: 05/24/2015 19:07:13 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6405,6 +6392,7 @@ CREATE TABLE [dbo].[YERLESIM](
 	[YerlesimTabloID] [int] IDENTITY(1,1) NOT NULL,
 	[YerlesimID] [int] NOT NULL,
 	[YerlesimParentID] [int] NULL,
+	[KompositKontrolID] [int] NULL,
 	[SiparisSeriID] [int] NOT NULL,
 	[KontrolID] [int] NOT NULL,
 	[MusteriID] [int] NOT NULL,
@@ -6416,37 +6404,114 @@ CREATE TABLE [dbo].[YERLESIM](
 END
 GO
 SET IDENTITY_INSERT [dbo].[YERLESIM] ON
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (44, 1, NULL, 1, 42, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (45, 2, NULL, 1, 1, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (46, 3, 2, 1, 2, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (47, 4, 3, 1, 20, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (48, 5, 3, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (49, 6, 5, 1, 22, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (52, 7, 3, 1, 26, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (53, 8, 3, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (54, 9, 8, 1, 27, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (56, 10, 3, 1, 33, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (57, 11, 3, 1, 24, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (58, 12, 11, 1, 31, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (59, 13, 2, 1, 2, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (60, 14, 13, 1, 34, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (61, 15, 13, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (62, 16, 15, 1, 32, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (63, 17, 13, 1, 36, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (64, 18, 13, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (65, 19, 18, 1, 35, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (66, 20, 13, 1, 38, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (67, 21, 13, 1, 24, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (68, 22, 21, 1, 37, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (69, 23, 2, 1, 2, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (70, 24, 23, 1, 40, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (71, 25, 23, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (72, 26, 25, 1, 39, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (73, 27, 23, 1, 43, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (74, 28, 23, 1, 21, 1)
-INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (76, 29, 28, 1, 41, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (44, 1, NULL, NULL, 1, 42, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (45, 2, NULL, NULL, 1, 1, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (46, 3, 2, NULL, 1, 2, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (47, 4, 3, 1, 1, 20, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (48, 5, 3, 1, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (49, 6, 5, 1, 1, 22, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (52, 7, 3, 2, 1, 26, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (53, 8, 3, 2, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (54, 9, 8, 2, 1, 27, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (56, 10, 3, 3, 1, 33, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (57, 11, 3, 3, 1, 24, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (58, 12, 11, 3, 1, 31, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (59, 13, 2, NULL, 1, 2, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (60, 14, 13, 4, 1, 34, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (61, 15, 13, 4, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (62, 16, 15, 4, 1, 32, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (63, 17, 13, 5, 1, 36, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (64, 18, 13, 5, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (65, 19, 18, 5, 1, 35, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (66, 20, 13, 6, 1, 38, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (67, 21, 13, 6, 1, 24, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (68, 22, 21, 6, 1, 37, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (69, 23, 2, NULL, 1, 2, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (70, 24, 23, 7, 1, 40, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (71, 25, 23, 7, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (72, 26, 25, 7, 1, 39, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (73, 27, 23, 8, 1, 43, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (74, 28, 23, 8, 1, 21, 1)
+INSERT [dbo].[YERLESIM] ([YerlesimTabloID], [YerlesimID], [YerlesimParentID], [KompositKontrolID], [SiparisSeriID], [KontrolID], [MusteriID]) VALUES (76, 29, 28, 8, 1, 41, 1)
 SET IDENTITY_INSERT [dbo].[YERLESIM] OFF
-/****** Object:  Table [dbo].[REF_DETAY_SIPARIS_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  StoredProcedure [dbo].[SorgulaSiparisABC]    Script Date: 05/24/2015 19:07:15 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[SorgulaSiparisABC]') AND type in (N'P', N'PC'))
+BEGIN
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[SorgulaSiparisABC]
+	@SiparisNo as varchar(50)
+	,@SeriID as int
+	,@Adet as int
+	,@SiparisTarihBas as datetime
+	,@SiparisTarihBit as datetime
+	,@TeslimTarihBas as datetime
+	,@TeslimTarihBit as datetime
+	,@FirmaAdi as varchar(250)
+	,@MusteriAdi as varchar(100)
+	,@MusteriSoyad as varchar(100)
+	,@MusteriEvTel as varchar(50)
+	,@MusteriIsTel as varchar(50)
+	,@MusteriCepTel as varchar(50)
+	,@MusteriAdres as varchar(500)
+	,@MusteriIlKod as int
+	,@MusteriIlceKod as int
+	,@MusteriSemtKod as int
+	,@OlcuTarih as datetime
+    ,@BayiAdi as varchar(50)
+    ,@KilitSistemi as int
+    ,@MenteseTipi as int
+    ,@EvTel as varchar(50)
+    ,@NakitPesin as decimal(10,2)
+    ,@Fatura as bit
+AS
+
+SELECT 
+	S.ID
+	,SS.SeriAdi
+	,S.SiparisNo
+	,S.Adet
+	,CONVERT(VARCHAR(10), S.SiparisTarih,104) AS SiparisTarih
+	,CONVERT(VARCHAR(10), S.TeslimTarih,104) AS TeslimTarih
+	,S.MusteriAd +'' ''+ S.MusteriSoyad + '' '' + ISNULL(S.FirmaAdi,'''') AS Musteri
+	,S.MusteriAdres
+	,RIL.IlAd
+	,RIC.IlceAd
+	,RIS.SemtAd
+FROM dbo.SIPARIS_ABC AS S
+	INNER JOIN dbo.SIPARIS_SERI AS SS ON SS.SiparisSeriID=S.SeriID
+    LEFT OUTER JOIN dbo.REF_IL AS RIL ON RIL.IlKod=S.MusteriIlKod
+	LEFT OUTER JOIN dbo.REF_ILCE AS RIC ON RIC.IlceKod=S.MusteriIlceKod
+	LEFT OUTER JOIN dbo.REF_SEMT AS RIS ON RIS.SemtKod=S.MusteriSemtKod
+WHERE 
+	(@SiparisNo IS NULL OR S.SiparisNo = @SiparisNo) AND
+	(@Adet IS NULL OR S.Adet = @Adet) AND
+	(@SiparisTarihBas IS NULL OR S.SiparisTarih >= @SiparisTarihBas) AND
+	(@SiparisTarihBit IS NULL OR S.SiparisTarih <= @SiparisTarihBit) AND
+	(@TeslimTarihBas IS NULL OR S.TeslimTarih >= @TeslimTarihBas) AND
+	(@TeslimTarihBit IS NULL OR S.TeslimTarih <= @TeslimTarihBit) AND
+	(@FirmaAdi IS NULL OR S.FirmaAdi LIKE ''%'' + @FirmaAdi + ''%'') AND
+	(@MusteriAdi IS NULL OR S.MusteriAd LIKE ''%'' + @MusteriAdi  + ''%'') AND
+	(@MusteriSoyad IS NULL OR S.MusteriSoyad LIKE ''%'' + @MusteriSoyad  + ''%'') AND
+	(@MusteriEvTel IS NULL OR S.MusteriEvTel LIKE ''%'' + @MusteriEvTel  + ''%'') AND
+	(@MusteriIsTel IS NULL OR S.MusteriIsTel LIKE ''%'' + @MusteriIsTel  + ''%'') AND
+	(@MusteriCepTel IS NULL OR S.MusteriCepTel LIKE ''%'' + @MusteriCepTel  + ''%'') AND
+	(@MusteriAdres IS NULL OR S.MusteriAdres LIKE ''%'' + @MusteriAdres  + ''%'') AND
+	(@MusteriIlKod IS NULL OR S.MusteriIlKod = @MusteriIlKod) AND
+	(@MusteriIlceKod IS NULL OR S.MusteriIlceKod = @MusteriIlceKod) AND
+	(@MusteriSemtKod IS NULL OR S.MusteriSemtKod = @MusteriSemtKod) AND
+	(@OlcuTarih IS NULL OR S.OlcuTarih = @OlcuTarih) AND
+	(@BayiAdi IS NULL OR S.BayiAdi LIKE ''%'' + @BayiAdi  + ''%'') AND
+	(@KilitSistemi IS NULL OR S.KilitSistemi = @KilitSistemi) AND
+	(@MenteseTipi IS NULL OR S.MenteseTipi = @MenteseTipi) AND
+	(@EvTel IS NULL OR S.EvTel LIKE ''%'' + @EvTel  + ''%'') AND
+	(@NakitPesin IS NULL OR S.NakitPesin = @NakitPesin) AND
+	(@Fatura IS NULL OR S.Fatura = @Fatura)' 
+END
+GO
+/****** Object:  Table [dbo].[REF_DETAY_SIPARIS_SERI]    Script Date: 05/24/2015 19:07:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6478,7 +6543,7 @@ INSERT [dbo].[REF_DETAY_SIPARIS_SERI] ([RefDetaySiparisSeriID], [SiparisSeriID],
 INSERT [dbo].[REF_DETAY_SIPARIS_SERI] ([RefDetaySiparisSeriID], [SiparisSeriID], [RefDetayID]) VALUES (13, 5, 2)
 INSERT [dbo].[REF_DETAY_SIPARIS_SERI] ([RefDetaySiparisSeriID], [SiparisSeriID], [RefDetayID]) VALUES (14, 5, 3)
 SET IDENTITY_INSERT [dbo].[REF_DETAY_SIPARIS_SERI] OFF
-/****** Object:  Table [dbo].[MONTAJ]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Table [dbo].[MONTAJ]    Script Date: 05/24/2015 19:07:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -6522,14 +6587,14 @@ INSERT [dbo].[MONTAJ] ([ID], [TeslimTarih], [PersonelListeID], [Durum], [Created
 INSERT [dbo].[MONTAJ] ([ID], [TeslimTarih], [PersonelListeID], [Durum], [CreatedBy], [CreatedTime], [UpdatedBy], [UpdatedTime], [SiparisID]) VALUES (43, CAST(0x0000A4A700000000 AS DateTime), NULL, N'A', N'1', CAST(0x0000A4950173B565 AS DateTime), N'1', CAST(0x0000A49901710AFF AS DateTime), 9)
 INSERT [dbo].[MONTAJ] ([ID], [TeslimTarih], [PersonelListeID], [Durum], [CreatedBy], [CreatedTime], [UpdatedBy], [UpdatedTime], [SiparisID]) VALUES (44, CAST(0x0000A49A00000000 AS DateTime), NULL, N'A', N'1', CAST(0x0000A499015D70A3 AS DateTime), N'1', CAST(0x0000A499015E4AAE AS DateTime), 10)
 SET IDENTITY_INSERT [dbo].[MONTAJ] OFF
-/****** Object:  StoredProcedure [dbo].[InsertUpdateSiparisABC]    Script Date: 05/15/2015 23:53:01 ******/
+/****** Object:  StoredProcedure [dbo].[KaydetGuncelleSiparisABC]    Script Date: 05/24/2015 19:07:15 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[InsertUpdateSiparisABC]') AND type in (N'P', N'PC'))
+IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[KaydetGuncelleSiparisABC]') AND type in (N'P', N'PC'))
 BEGIN
-EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[InsertUpdateSiparisABC]
+EXEC dbo.sp_executesql @statement = N'CREATE PROCEDURE [dbo].[KaydetGuncelleSiparisABC]
 	@ErrorMessage as varchar(4000) out
 	,@ID as int out
 	,@SeriID as int
@@ -6697,7 +6762,7 @@ END
 ' 
 END
 GO
-/****** Object:  Default [DF_SIPARIS_ADET]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  Default [DF_SIPARIS_ADET]    Script Date: 05/24/2015 19:07:11 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_SIPARIS_ADET]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_SIPARIS_ADET]') AND type = 'D')
@@ -6708,7 +6773,18 @@ END
 
 End
 GO
-/****** Object:  Default [DF_MONTAJKOTA_MONTAJKABUL]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Default [DF_SIPARIS_METADATA_SorgulanacakMi]    Script Date: 05/24/2015 19:07:13 ******/
+IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_SIPARIS_METADATA_SorgulanacakMi]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_METADATA]'))
+Begin
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_SIPARIS_METADATA_SorgulanacakMi]') AND type = 'D')
+BEGIN
+ALTER TABLE [dbo].[SIPARIS_METADATA] ADD  CONSTRAINT [DF_SIPARIS_METADATA_SorgulanacakMi]  DEFAULT ((0)) FOR [SorgulanacakMi]
+END
+
+
+End
+GO
+/****** Object:  Default [DF_MONTAJKOTA_MONTAJKABUL]    Script Date: 05/24/2015 19:07:13 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_MONTAJKOTA_MONTAJKABUL]') AND parent_object_id = OBJECT_ID(N'[dbo].[MONTAJKOTA]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_MONTAJKOTA_MONTAJKABUL]') AND type = 'D')
@@ -6719,7 +6795,7 @@ END
 
 End
 GO
-/****** Object:  Default [DF_Table_1_Aktif]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Default [DF_Table_1_Aktif]    Script Date: 05/24/2015 19:07:13 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_Table_1_Aktif]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_Table_1_Aktif]') AND type = 'D')
@@ -6730,7 +6806,7 @@ END
 
 End
 GO
-/****** Object:  Default [DF_KONTROL_PostBack]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Default [DF_KONTROL_PostBack]    Script Date: 05/24/2015 19:07:13 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_KONTROL_PostBack]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_KONTROL_PostBack]') AND type = 'D')
@@ -6741,7 +6817,7 @@ END
 
 End
 GO
-/****** Object:  Default [DF_SIPARIS_ABC_ADET]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  Default [DF_SIPARIS_ABC_ADET]    Script Date: 05/24/2015 19:07:13 ******/
 IF Not EXISTS (SELECT * FROM sys.default_constraints WHERE object_id = OBJECT_ID(N'[dbo].[DF_SIPARIS_ABC_ADET]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_ABC]'))
 Begin
 IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'[DF_SIPARIS_ABC_ADET]') AND type = 'D')
@@ -6752,7 +6828,7 @@ END
 
 End
 GO
-/****** Object:  ForeignKey [FK_MUSTERI_IMAJ]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  ForeignKey [FK_MUSTERI_IMAJ]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_MUSTERI_IMAJ]') AND parent_object_id = OBJECT_ID(N'[dbo].[MUSTERI]'))
 ALTER TABLE [dbo].[MUSTERI]  WITH CHECK ADD  CONSTRAINT [FK_MUSTERI_IMAJ] FOREIGN KEY([LogoID])
 REFERENCES [dbo].[IMAJ] ([ImajID])
@@ -6760,7 +6836,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_MUSTERI_IMAJ]') AND parent_object_id = OBJECT_ID(N'[dbo].[MUSTERI]'))
 ALTER TABLE [dbo].[MUSTERI] CHECK CONSTRAINT [FK_MUSTERI_IMAJ]
 GO
-/****** Object:  ForeignKey [FK_REF_ILCE_REF_IL]    Script Date: 05/15/2015 23:52:56 ******/
+/****** Object:  ForeignKey [FK_REF_ILCE_REF_IL]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_ILCE_REF_IL]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_ILCE]'))
 ALTER TABLE [dbo].[REF_ILCE]  WITH CHECK ADD  CONSTRAINT [FK_REF_ILCE_REF_IL] FOREIGN KEY([IlKod])
 REFERENCES [dbo].[REF_IL] ([IlKod])
@@ -6768,7 +6844,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_ILCE_REF_IL]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_ILCE]'))
 ALTER TABLE [dbo].[REF_ILCE] CHECK CONSTRAINT [FK_REF_ILCE_REF_IL]
 GO
-/****** Object:  ForeignKey [FK_REF_SEMT_REF_IL]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_SEMT_REF_IL]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_SEMT_REF_IL]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_SEMT]'))
 ALTER TABLE [dbo].[REF_SEMT]  WITH CHECK ADD  CONSTRAINT [FK_REF_SEMT_REF_IL] FOREIGN KEY([IlKod])
 REFERENCES [dbo].[REF_IL] ([IlKod])
@@ -6776,7 +6852,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_SEMT_REF_IL]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_SEMT]'))
 ALTER TABLE [dbo].[REF_SEMT] CHECK CONSTRAINT [FK_REF_SEMT_REF_IL]
 GO
-/****** Object:  ForeignKey [FK_REF_SEMT_REF_ILCE]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_SEMT_REF_ILCE]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_SEMT_REF_ILCE]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_SEMT]'))
 ALTER TABLE [dbo].[REF_SEMT]  WITH CHECK ADD  CONSTRAINT [FK_REF_SEMT_REF_ILCE] FOREIGN KEY([IlceKod])
 REFERENCES [dbo].[REF_ILCE] ([IlceKod])
@@ -6784,7 +6860,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_SEMT_REF_ILCE]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_SEMT]'))
 ALTER TABLE [dbo].[REF_SEMT] CHECK CONSTRAINT [FK_REF_SEMT_REF_ILCE]
 GO
-/****** Object:  ForeignKey [FK_SIPARIS_SERI_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_SIPARIS_SERI_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_SERI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_SERI]'))
 ALTER TABLE [dbo].[SIPARIS_SERI]  WITH CHECK ADD  CONSTRAINT [FK_SIPARIS_SERI_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6792,7 +6868,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_SERI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_SERI]'))
 ALTER TABLE [dbo].[SIPARIS_SERI] CHECK CONSTRAINT [FK_SIPARIS_SERI_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_SIPARIS_METADATA_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_SIPARIS_METADATA_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_METADATA_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_METADATA]'))
 ALTER TABLE [dbo].[SIPARIS_METADATA]  WITH CHECK ADD  CONSTRAINT [FK_SIPARIS_METADATA_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6800,7 +6876,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_METADATA_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_METADATA]'))
 ALTER TABLE [dbo].[SIPARIS_METADATA] CHECK CONSTRAINT [FK_SIPARIS_METADATA_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_SIPARIS_METADATA_VERI_TIP]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_SIPARIS_METADATA_VERI_TIP]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_METADATA_VERI_TIP]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_METADATA]'))
 ALTER TABLE [dbo].[SIPARIS_METADATA]  WITH CHECK ADD  CONSTRAINT [FK_SIPARIS_METADATA_VERI_TIP] FOREIGN KEY([VeriTipID])
 REFERENCES [dbo].[VERI_TIP] ([VeriTipID])
@@ -6808,31 +6884,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_METADATA_VERI_TIP]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_METADATA]'))
 ALTER TABLE [dbo].[SIPARIS_METADATA] CHECK CONSTRAINT [FK_SIPARIS_METADATA_VERI_TIP]
 GO
-/****** Object:  ForeignKey [FK_REF_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF]'))
-ALTER TABLE [dbo].[REF]  WITH CHECK ADD  CONSTRAINT [FK_REF_MUSTERI] FOREIGN KEY([MusteriID])
-REFERENCES [dbo].[MUSTERI] ([MusteriID])
-GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF]'))
-ALTER TABLE [dbo].[REF] CHECK CONSTRAINT [FK_REF_MUSTERI]
-GO
-/****** Object:  ForeignKey [FK_KULLANICI_KULLANICI_ROL]    Script Date: 05/15/2015 23:52:58 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_KULLANICI_ROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
-ALTER TABLE [dbo].[KULLANICI]  WITH CHECK ADD  CONSTRAINT [FK_KULLANICI_KULLANICI_ROL] FOREIGN KEY([RolID])
-REFERENCES [dbo].[KULLANICI_ROL] ([RolID])
-GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_KULLANICI_ROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
-ALTER TABLE [dbo].[KULLANICI] CHECK CONSTRAINT [FK_KULLANICI_KULLANICI_ROL]
-GO
-/****** Object:  ForeignKey [FK_KULLANICI_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
-ALTER TABLE [dbo].[KULLANICI]  WITH CHECK ADD  CONSTRAINT [FK_KULLANICI_MUSTERI] FOREIGN KEY([MusteriID])
-REFERENCES [dbo].[MUSTERI] ([MusteriID])
-GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
-ALTER TABLE [dbo].[KULLANICI] CHECK CONSTRAINT [FK_KULLANICI_MUSTERI]
-GO
-/****** Object:  ForeignKey [FK_MONTAJKOTA_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_MONTAJKOTA_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_MONTAJKOTA_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[MONTAJKOTA]'))
 ALTER TABLE [dbo].[MONTAJKOTA]  WITH CHECK ADD  CONSTRAINT [FK_MONTAJKOTA_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6840,7 +6892,39 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_MONTAJKOTA_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[MONTAJKOTA]'))
 ALTER TABLE [dbo].[MONTAJKOTA] CHECK CONSTRAINT [FK_MONTAJKOTA_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_DEGER_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF]'))
+ALTER TABLE [dbo].[REF]  WITH CHECK ADD  CONSTRAINT [FK_REF_MUSTERI] FOREIGN KEY([MusteriID])
+REFERENCES [dbo].[MUSTERI] ([MusteriID])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF]'))
+ALTER TABLE [dbo].[REF] CHECK CONSTRAINT [FK_REF_MUSTERI]
+GO
+/****** Object:  ForeignKey [FK_PERSONEL_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_PERSONEL_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[PERSONEL]'))
+ALTER TABLE [dbo].[PERSONEL]  WITH CHECK ADD  CONSTRAINT [FK_PERSONEL_MUSTERI] FOREIGN KEY([MusteriID])
+REFERENCES [dbo].[MUSTERI] ([MusteriID])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_PERSONEL_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[PERSONEL]'))
+ALTER TABLE [dbo].[PERSONEL] CHECK CONSTRAINT [FK_PERSONEL_MUSTERI]
+GO
+/****** Object:  ForeignKey [FK_KULLANICI_KULLANICI_ROL]    Script Date: 05/24/2015 19:07:13 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_KULLANICI_ROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
+ALTER TABLE [dbo].[KULLANICI]  WITH CHECK ADD  CONSTRAINT [FK_KULLANICI_KULLANICI_ROL] FOREIGN KEY([RolID])
+REFERENCES [dbo].[KULLANICI_ROL] ([RolID])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_KULLANICI_ROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
+ALTER TABLE [dbo].[KULLANICI] CHECK CONSTRAINT [FK_KULLANICI_KULLANICI_ROL]
+GO
+/****** Object:  ForeignKey [FK_KULLANICI_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
+ALTER TABLE [dbo].[KULLANICI]  WITH CHECK ADD  CONSTRAINT [FK_KULLANICI_MUSTERI] FOREIGN KEY([MusteriID])
+REFERENCES [dbo].[MUSTERI] ([MusteriID])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KULLANICI_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KULLANICI]'))
+ALTER TABLE [dbo].[KULLANICI] CHECK CONSTRAINT [FK_KULLANICI_MUSTERI]
+GO
+/****** Object:  ForeignKey [FK_KONTROL_DEGER_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_DEGER_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL_DEGER]'))
 ALTER TABLE [dbo].[KONTROL_DEGER]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_DEGER_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6848,7 +6932,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_DEGER_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL_DEGER]'))
 ALTER TABLE [dbo].[KONTROL_DEGER] CHECK CONSTRAINT [FK_KONTROL_DEGER_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_IMAJ]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_IMAJ]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_IMAJ]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_IMAJ] FOREIGN KEY([ImajID])
 REFERENCES [dbo].[IMAJ] ([ImajID])
@@ -6856,7 +6940,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_IMAJ]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_IMAJ]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_KONTROL_DEGER]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_KONTROL_DEGER]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_KONTROL_DEGER]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_KONTROL_DEGER] FOREIGN KEY([KontrolDegerID])
 REFERENCES [dbo].[KONTROL_DEGER] ([KontrolDegerID])
@@ -6864,7 +6948,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_KONTROL_DEGER]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_KONTROL_DEGER]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_KONTROL_TIP]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_KONTROL_TIP]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_KONTROL_TIP]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_KONTROL_TIP] FOREIGN KEY([KontrolTipID])
 REFERENCES [dbo].[KONTROL_TIP] ([KontrolTipID])
@@ -6872,7 +6956,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_KONTROL_TIP]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_KONTROL_TIP]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6880,7 +6964,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_REF]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_REF]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_REF] FOREIGN KEY([RefID])
 REFERENCES [dbo].[REF] ([RefID])
@@ -6888,7 +6972,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_REF]
 GO
-/****** Object:  ForeignKey [FK_KONTROL_SIPARIS_METADATA]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_KONTROL_SIPARIS_METADATA]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_SIPARIS_METADATA]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL]  WITH CHECK ADD  CONSTRAINT [FK_KONTROL_SIPARIS_METADATA] FOREIGN KEY([MetadataID])
 REFERENCES [dbo].[SIPARIS_METADATA] ([MetadataID])
@@ -6896,15 +6980,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_KONTROL_SIPARIS_METADATA]') AND parent_object_id = OBJECT_ID(N'[dbo].[KONTROL]'))
 ALTER TABLE [dbo].[KONTROL] CHECK CONSTRAINT [FK_KONTROL_SIPARIS_METADATA]
 GO
-/****** Object:  ForeignKey [FK_REF_DETAY_REF]    Script Date: 05/15/2015 23:52:58 ******/
-IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY]'))
-ALTER TABLE [dbo].[REF_DETAY]  WITH CHECK ADD  CONSTRAINT [FK_REF_DETAY_REF] FOREIGN KEY([RefID])
-REFERENCES [dbo].[REF] ([RefID])
-GO
-IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY]'))
-ALTER TABLE [dbo].[REF_DETAY] CHECK CONSTRAINT [FK_REF_DETAY_REF]
-GO
-/****** Object:  ForeignKey [FK_SIPARIS_ABC_SIPARIS_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_SIPARIS_ABC_SIPARIS_SERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_ABC_SIPARIS_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_ABC]'))
 ALTER TABLE [dbo].[SIPARIS_ABC]  WITH CHECK ADD  CONSTRAINT [FK_SIPARIS_ABC_SIPARIS_SERI] FOREIGN KEY([SeriID])
 REFERENCES [dbo].[SIPARIS_SERI] ([SiparisSeriID])
@@ -6912,7 +6988,15 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARIS_ABC_SIPARIS_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARIS_ABC]'))
 ALTER TABLE [dbo].[SIPARIS_ABC] CHECK CONSTRAINT [FK_SIPARIS_ABC_SIPARIS_SERI]
 GO
-/****** Object:  ForeignKey [FK_SIPARISNOSAYAC_SIPARIS_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_DETAY_REF]    Script Date: 05/24/2015 19:07:13 ******/
+IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY]'))
+ALTER TABLE [dbo].[REF_DETAY]  WITH CHECK ADD  CONSTRAINT [FK_REF_DETAY_REF] FOREIGN KEY([RefID])
+REFERENCES [dbo].[REF] ([RefID])
+GO
+IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_REF]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY]'))
+ALTER TABLE [dbo].[REF_DETAY] CHECK CONSTRAINT [FK_REF_DETAY_REF]
+GO
+/****** Object:  ForeignKey [FK_SIPARISNOSAYAC_SIPARIS_SERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARISNOSAYAC_SIPARIS_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARISNO_SAYAC]'))
 ALTER TABLE [dbo].[SIPARISNO_SAYAC]  WITH CHECK ADD  CONSTRAINT [FK_SIPARISNOSAYAC_SIPARIS_SERI] FOREIGN KEY([SiparisSeriID])
 REFERENCES [dbo].[SIPARIS_SERI] ([SiparisSeriID])
@@ -6920,7 +7004,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_SIPARISNOSAYAC_SIPARIS_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[SIPARISNO_SAYAC]'))
 ALTER TABLE [dbo].[SIPARISNO_SAYAC] CHECK CONSTRAINT [FK_SIPARISNOSAYAC_SIPARIS_SERI]
 GO
-/****** Object:  ForeignKey [FK_YERLESIM_KAPI_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_YERLESIM_KAPI_SERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_KAPI_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM]  WITH CHECK ADD  CONSTRAINT [FK_YERLESIM_KAPI_SERI] FOREIGN KEY([SiparisSeriID])
 REFERENCES [dbo].[SIPARIS_SERI] ([SiparisSeriID])
@@ -6928,7 +7012,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_KAPI_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM] CHECK CONSTRAINT [FK_YERLESIM_KAPI_SERI]
 GO
-/****** Object:  ForeignKey [FK_YERLESIM_KONTROL]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_YERLESIM_KONTROL]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_KONTROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM]  WITH CHECK ADD  CONSTRAINT [FK_YERLESIM_KONTROL] FOREIGN KEY([KontrolID])
 REFERENCES [dbo].[KONTROL] ([KontrolID])
@@ -6936,7 +7020,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_KONTROL]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM] CHECK CONSTRAINT [FK_YERLESIM_KONTROL]
 GO
-/****** Object:  ForeignKey [FK_YERLESIM_MUSTERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_YERLESIM_MUSTERI]    Script Date: 05/24/2015 19:07:13 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM]  WITH CHECK ADD  CONSTRAINT [FK_YERLESIM_MUSTERI] FOREIGN KEY([MusteriID])
 REFERENCES [dbo].[MUSTERI] ([MusteriID])
@@ -6944,7 +7028,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_YERLESIM_MUSTERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[YERLESIM]'))
 ALTER TABLE [dbo].[YERLESIM] CHECK CONSTRAINT [FK_YERLESIM_MUSTERI]
 GO
-/****** Object:  ForeignKey [FK_REF_DETAY_KAPI_SERI_KAPI_SERI]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_DETAY_KAPI_SERI_KAPI_SERI]    Script Date: 05/24/2015 19:07:15 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_KAPI_SERI_KAPI_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY_SIPARIS_SERI]'))
 ALTER TABLE [dbo].[REF_DETAY_SIPARIS_SERI]  WITH CHECK ADD  CONSTRAINT [FK_REF_DETAY_KAPI_SERI_KAPI_SERI] FOREIGN KEY([SiparisSeriID])
 REFERENCES [dbo].[SIPARIS_SERI] ([SiparisSeriID])
@@ -6952,7 +7036,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_KAPI_SERI_KAPI_SERI]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY_SIPARIS_SERI]'))
 ALTER TABLE [dbo].[REF_DETAY_SIPARIS_SERI] CHECK CONSTRAINT [FK_REF_DETAY_KAPI_SERI_KAPI_SERI]
 GO
-/****** Object:  ForeignKey [FK_REF_DETAY_KAPI_SERI_REF_DETAY]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_REF_DETAY_KAPI_SERI_REF_DETAY]    Script Date: 05/24/2015 19:07:15 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_KAPI_SERI_REF_DETAY]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY_SIPARIS_SERI]'))
 ALTER TABLE [dbo].[REF_DETAY_SIPARIS_SERI]  WITH CHECK ADD  CONSTRAINT [FK_REF_DETAY_KAPI_SERI_REF_DETAY] FOREIGN KEY([RefDetayID])
 REFERENCES [dbo].[REF_DETAY] ([RefDetayID])
@@ -6960,7 +7044,7 @@ GO
 IF  EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_REF_DETAY_KAPI_SERI_REF_DETAY]') AND parent_object_id = OBJECT_ID(N'[dbo].[REF_DETAY_SIPARIS_SERI]'))
 ALTER TABLE [dbo].[REF_DETAY_SIPARIS_SERI] CHECK CONSTRAINT [FK_REF_DETAY_KAPI_SERI_REF_DETAY]
 GO
-/****** Object:  ForeignKey [FK_MONTAJ_SIPARIS_ABC]    Script Date: 05/15/2015 23:52:58 ******/
+/****** Object:  ForeignKey [FK_MONTAJ_SIPARIS_ABC]    Script Date: 05/24/2015 19:07:15 ******/
 IF NOT EXISTS (SELECT * FROM sys.foreign_keys WHERE object_id = OBJECT_ID(N'[dbo].[FK_MONTAJ_SIPARIS_ABC]') AND parent_object_id = OBJECT_ID(N'[dbo].[MONTAJ]'))
 ALTER TABLE [dbo].[MONTAJ]  WITH CHECK ADD  CONSTRAINT [FK_MONTAJ_SIPARIS_ABC] FOREIGN KEY([SiparisID])
 REFERENCES [dbo].[SIPARIS_ABC] ([ID])

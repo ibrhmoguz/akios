@@ -53,7 +53,6 @@
     <Compile Include="DataTypes\KapiTipi.cs" />
     <Compile Include="DataTypes\SiparisTipi.cs" />
     <Compile Include="SiparisBS.cs" />
-    <Compile Include="SiparisSeriBS.cs" />
     <Compile Include="MusteriBS.cs" />
     <Compile Include="RaporBS.cs" />
     <Compile Include="KullaniciBS.cs" />

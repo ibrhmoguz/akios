@@ -8,115 +8,56 @@ using System.Web.UI.WebControls;
 using System.Data;
 using Telerik.Web.UI;
 using KobsisSiparisTakip.Web.Helper;
+using KobsisSiparisTakip.Business.DataTypes;
 
 namespace KobsisSiparisTakip.Web
 {
     public partial class SiparisSorgula : KobsisBasePage
     {
-        private DataTable PersonelListesi
-        {
-            get
-            {
-                if (Session["SiparisSorgula_PersonelListesi"] != null)
-                    return Session["SiparisSorgula_PersonelListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["SiparisSorgula_PersonelListesi"] = value;
-            }
-        }
-
-        private DataTable SorguSonucListesi
-        {
-            get
-            {
-                if (Session["SiparisSorgula_SorguSonucListesi"] != null)
-                    return Session["SiparisSorgula_SorguSonucListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["SiparisSorgula_SorguSonucListesi"] = value;
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                VarsayilanDegerleriAyarla();
+                Yukle();
             }
+            if (Page.IsPostBack) { GenerateForm(); }
         }
 
-        private void VarsayilanDegerleriAyarla()
+        private void Yukle()
         {
             PersonelListesiYukle();
-            DropDownlariDoldur();
-            //KapiSeriDoldur();
+            IlleriGetir();
+            SiparisSeriYukle();
+        }
+
+        private void SiparisSeriYukle()
+        {
+            ddlSiparisSeri.DataSource = SessionManager.SiparisSeri;
+            ddlSiparisSeri.DataBind();
+            ddlSiparisSeri.Items.Insert(0, new DropDownListItem("Seçiniz", "0"));
         }
 
         private void PersonelListesiYukle()
         {
-            DataTable dt = new PersonelBS().PersonelListesiGetir();
+            if (SessionManager.MusteriBilgi.MusteriID == null) return;
+            DataTable dt = null;
+            if (SessionManager.PersonelListesi == null || SessionManager.PersonelListesi.Rows.Count == 0)
+            {
+                dt = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+                SessionManager.PersonelListesi = dt;
+            }
+            else
+                dt = SessionManager.PersonelListesi;
+
             ListBoxMontajEkibi.DataSource = dt;
             ListBoxMontajEkibi.DataBind();
-            this.PersonelListesi = dt;
-        }
-
-        private void DropDownlariDoldur()
-        {
-            DataSet ds = new YonetimKonsoluBS().RefTablolariGetir();
-            if (ds.Tables.Count == 0)
-                return;
-
-            DataTable dtKapiModeli = ds.Tables["REF_TUMKAPIMODELLERI"];
-            DataTable dtKapiRenk = ds.Tables["REF_KAPIRENK"];
-            DataTable dtKilitSistem = ds.Tables["REF_KILITSISTEM"];
-            DataTable dtCita = ds.Tables["REF_CITA"];
-            DataTable dtEsik = ds.Tables["REF_ESIK"];
-            DataTable dtAksesuarRenk = ds.Tables["REF_AKSESUARRENK"];
-            DataTable dtMontajSekli = ds.Tables["REF_MONTAJSEKLI"];
-            DataTable dtTeslimSekli = ds.Tables["REF_TESLIMSEKLI"];
-            DataTable dtAluminyumRenk = ds.Tables["REF_ALUMINYUMRENK"];
-            DataTable dtTacTip = ds.Tables["REF_TACTIP"];
-            DataTable dtPervazTip = ds.Tables["REF_PERVAZTIP"];
-            DataTable dtContaRenk = ds.Tables["REF_CONTARENK"];
-            DataTable dtPersonel = ds.Tables["REF_PERSONEL"];
-
-
-            DropDownBindEt(ddlIcKapiModeli, dtKapiModeli);
-            DropDownBindEt(ddlDisKapiModeli, dtKapiModeli);
-            DropDownBindEt(ddlIcKapiRengi, dtKapiRenk);
-            DropDownBindEt(ddlDisKapiRengi, dtKapiRenk);
-            DropDownBindEt(ddlKilitSistemi, dtKilitSistem);
-            DropDownBindEt(ddlCita, dtCita);
-            DropDownBindEt(ddlEsik, dtEsik);
-            DropDownBindEt(ddlAksesuarRengi, dtAksesuarRenk);
-            DropDownBindEt(ddlMontajSekli, dtMontajSekli);
-            DropDownBindEt(ddlAluminyumRengi, dtAluminyumRenk);
-            DropDownBindEt(ddlTacTipi, dtTacTip);
-            DropDownBindEt(ddlPervazTipi, dtPervazTip);
-            DropDownBindEt(ddlContaRengi, dtContaRenk);
-
-            IlleriGetir();
-        }
-
-        private void DropDownBindEt(RadDropDownList ddl, DataTable dt)
-        {
-            ddl.DataSource = dt;
-            ddl.DataTextField = "AD";
-            ddl.DataValueField = "ID";
-            ddl.DataBind();
-            ddl.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
         }
 
         protected void btnSorgula_Click(object sender, EventArgs e)
         {
             Dictionary<string, object> prms = new Dictionary<string, object>();
 
+            /*
             if (String.IsNullOrWhiteSpace(txtSiparisNo.Text))
                 prms.Add("SiparisNo", null);
             else
@@ -267,19 +208,19 @@ namespace KobsisSiparisTakip.Web
                 prms.Add("Tel", null);
             else
                 prms.Add("Tel", txtTel.Text);
-
+            */
             DataTable dt = new SiparisIslemleriBS().SiparisSorgula(prms);
 
             grdSiparisler.DataSource = dt;
             grdSiparisler.DataBind();
-            this.SorguSonucListesi = dt;
+            SessionManager.SiparisSorguListesi = dt;
             ToplamSiparisDegerHesapla();
             tblSonuc.Visible = true;
         }
 
         private void ToplamSiparisDegerHesapla()
         {
-            DataTable dt = (DataTable)this.SorguSonucListesi;
+            DataTable dt = SessionManager.SiparisSorguListesi;
             if (dt == null)
                 return;
 
@@ -294,26 +235,39 @@ namespace KobsisSiparisTakip.Web
             lblToplamKapi.Text = temp.ToString();
         }
 
-        protected void ddlMusteriIl_SelectedIndexChanged(object sender, DropDownListEventArgs e)
+        protected void grdSiparisler_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            ddlMusteriIlce.Items.Clear();
-            ddlMusteriSemt.Items.Clear();
-            IlceleriGetir(e.Value);
+            grdSiparisler.PageIndex = e.NewPageIndex;
+            grdSiparisler.DataSource = SessionManager.SiparisSorguListesi;
+            grdSiparisler.DataBind();
         }
 
-        protected void ddlMusteriIlce_SelectedIndexChanged(object sender, DropDownListEventArgs e)
+        protected void grdSiparisler_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            SemtleriGetir(e.Value);
+            HyperLink link = (HyperLink)e.Row.FindControl("lnkGoruntule");
+            if (link != null)
+            {
+                DataRowView view = (DataRowView)e.Row.DataItem;
+                string siparisID = view.Row.ItemArray[0].ToString();
+                string siparisSeri = view.Row.ItemArray[1].ToString();
+                link.NavigateUrl = "~/SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + siparisSeri;
+            }
         }
 
-        private void IlleriGetir()
+        protected void btnTemizle_Click(object sender, EventArgs e)
+        {
+            foreach (RadListBoxItem item in ListBoxMontajEkibi.Items)
+                if (item.Checked) item.Checked = false;
+        }
+
+        protected void IlleriGetir()
         {
             DataTable dt = new ReferansDataBS().IlleriGetir();
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIl.DataSource = dt;
-                ddlMusteriIl.DataTextField = "ILAD";
-                ddlMusteriIl.DataValueField = "ILKOD";
+                ddlMusteriIl.DataTextField = "IlAd";
+                ddlMusteriIl.DataValueField = "IlKod";
                 ddlMusteriIl.DataBind();
             }
             else
@@ -321,20 +275,21 @@ namespace KobsisSiparisTakip.Web
                 ddlMusteriIl.DataSource = null;
                 ddlMusteriIl.DataBind();
             }
-            ddlMusteriIl.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
-            ddlMusteriIlce.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
-            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+
+            ddlMusteriIl.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
+            ddlMusteriIlce.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
+            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
         }
 
-        private void IlceleriGetir(string ilKod)
+        protected void IlceleriGetir(string ilKod)
         {
             DataTable dt = new ReferansDataBS().IlceleriGetir(ilKod);
 
             if (dt.Rows.Count > 0)
             {
                 ddlMusteriIlce.DataSource = dt;
-                ddlMusteriIlce.DataTextField = "ILCEAD";
-                ddlMusteriIlce.DataValueField = "ILCEKOD";
+                ddlMusteriIlce.DataTextField = "IlceAd";
+                ddlMusteriIlce.DataValueField = "IlceKod";
                 ddlMusteriIlce.DataBind();
             }
             else
@@ -342,13 +297,13 @@ namespace KobsisSiparisTakip.Web
                 ddlMusteriIlce.DataSource = null;
                 ddlMusteriIlce.DataBind();
             }
-            ddlMusteriIlce.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
-            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+            ddlMusteriIlce.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
+            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
             ddlMusteriIlce.SelectedIndex = 0;
             ddlMusteriSemt.SelectedIndex = 0;
         }
 
-        private void SemtleriGetir(string ilceKod)
+        protected void SemtleriGetir(string ilceKod)
         {
             DataTable dt = new ReferansDataBS().SemtleriGetir(ilceKod);
 
@@ -364,87 +319,37 @@ namespace KobsisSiparisTakip.Web
                 ddlMusteriSemt.DataSource = null;
                 ddlMusteriSemt.DataBind();
             }
-            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+
+            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("Seçiniz", "0"));
             ddlMusteriSemt.SelectedIndex = 0;
         }
 
-        protected void grdSiparisler_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void ddlMusteriIl_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            grdSiparisler.PageIndex = e.NewPageIndex;
-            grdSiparisler.DataSource = this.SorguSonucListesi;
-            grdSiparisler.DataBind();
-        }
-
-        protected void grdSiparisler_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            HyperLink link = (HyperLink)e.Row.FindControl("lnkGoruntule");
-            if (link != null)
-            {
-                DataRowView view = (DataRowView)e.Row.DataItem;
-                string url = string.Empty;
-                string kapiCinsi = view.Row.ItemArray[1].ToString();
-
-                if (kapiCinsi[0] == 'Y' || kapiCinsi[0] == 'P')
-                    url = "~/SiparisFormYanginGoruntule.aspx";
-                else
-                    url = "~/SiparisFormGoruntule.aspx";
-
-                link.NavigateUrl = url + "?SiparisID=" + view.Row.ItemArray[0].ToString();
-            }
-        }
-        private void KapiSeriDoldur()
-        {
-            DataTable dt = new YonetimKonsoluBS().KapiSeriGetir();
-            if (dt.Rows.Count > 0)
-            {
-                ddlKapiSeri.DataSource = dt;
-                ddlKapiSeri.DataTextField = "AD";
-                ddlKapiSeri.DataValueField = "VALUE";
-                ddlKapiSeri.DataBind();
-                ddlKapiSeri.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
-
-            }
-            else
-            {
-                ddlKapiSeri.DataSource = null;
-                ddlKapiSeri.DataBind();
-            }
-        }
-
-        protected void btnTemizle_Click(object sender, EventArgs e)
-        {
-            ddlKapiSeri.SelectedIndex = 0;
-            ddlPervazTipi.SelectedIndex = 0;
-            ddlTacTipi.SelectedIndex = 0;
-            ddlAksesuarRengi.SelectedIndex = 0;
-            ddlEsik.SelectedIndex = 0;
-            ddlMusteriSemt.Items.Clear();
-            ddlMusteriSemt.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+            ddlMusteriIlce.Text = "";
             ddlMusteriIlce.Items.Clear();
-            ddlMusteriIlce.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
-            ddlKilitSistemi.SelectedIndex = 0;
-            ddlMusteriIl.SelectedIndex = 0;
-            ddlContaRengi.SelectedIndex = 0;
-            ddlIcKapiRengi.SelectedIndex = 0;
-            ddlDisKapiModeli.SelectedIndex = 0;
-            ddlAluminyumRengi.SelectedIndex = 0;
-            ddlDisKapiRengi.SelectedIndex = 0;
-            ddlIcKapiModeli.SelectedIndex = 0;
-            ddlMusteriSemt.SelectedIndex = 0;
-            ddlMontajSekli.SelectedIndex = 0;
-            ddlCita.SelectedIndex = 0;
-            ddlSiparisDurumu.SelectedIndex = 0;
-            txtMusteriSoyad.Text = string.Empty;
-            txtMusteriAd.Text = string.Empty;
-            txtSiparisNo.Text = string.Empty;
-            txtAdres.Text = string.Empty;
-            txtTel.Text = string.Empty;
-            rdpTeslimTarihiBit.SelectedDate = null;
-            rdpTeslimTarihiBas.SelectedDate = null;
-            rdtSiparisTarihiBit.SelectedDate = null;
-            rdtSiparisTarihiBas.SelectedDate = null;
-            foreach (RadListBoxItem item in ListBoxMontajEkibi.Items)
-                if (item.Checked) item.Checked = false;
+            ddlMusteriSemt.Items.Clear();
+            ddlMusteriSemt.Text = "";
+            IlceleriGetir(e.Value);
+        }
+
+        protected void ddlMusteriIlce_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            ddlMusteriSemt.Items.Clear();
+            ddlMusteriSemt.Text = "";
+            SemtleriGetir(e.Value);
+        }
+
+        private void GenerateForm()
+        {
+            if (ddlSiparisSeri.SelectedIndex == 0) return;
+
+            var generator = new FormGenerator()
+            {
+                SiparisSeri = ddlSiparisSeri.SelectedValue,
+                IslemTipi = FormIslemTipi.Sorgula
+            };
+            generator.Generate(this.divSiparisFormKontrolleri);
         }
     }
 }

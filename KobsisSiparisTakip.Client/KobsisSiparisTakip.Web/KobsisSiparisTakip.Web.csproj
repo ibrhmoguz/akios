@@ -112,7 +112,6 @@
     <Content Include="App_Themes\Theme\Template\Template.css" />
     <Content Include="Captcha.aspx" />
     <Content Include="DBScripts\AppDBScripts.sql" />
-    <Content Include="DBScripts\AppDBTemizle.sql" />
     <Content Include="DBScripts\AppUserDBScript.sql" />
     <Content Include="DBScripts\Drop All Tables.sql" />
     <Content Include="DBScripts\VersiyonBilgisi.txt" />

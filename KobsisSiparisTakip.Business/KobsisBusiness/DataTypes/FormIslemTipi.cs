@@ -10,6 +10,7 @@ namespace KobsisSiparisTakip.Business.DataTypes
     {
         Kaydet = 1,
         Guncelle = 2,
-        Goruntule = 3
+        Goruntule = 3,
+        Sorgula = 4
     }
 }

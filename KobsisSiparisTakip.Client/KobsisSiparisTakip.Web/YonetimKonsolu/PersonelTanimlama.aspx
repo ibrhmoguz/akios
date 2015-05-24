@@ -13,9 +13,7 @@
         <tr>
             <td>
                 <div style="padding-top: 25px; text-align: center; width: 45%;">
-
-                    <table class="AnaTablo">
-
+                    <table class="AnaTablo" >
                         <tr>
                             <th>Ad</th>
                             <th>Soyad</th>
@@ -37,26 +35,21 @@
                         </tr>
                     </table>
                     <br />
-                    <asp:Repeater ID="RP_Personel" runat="server"
-                        OnItemCommand="RP_Personel_ItemCommand">
+                    <asp:Repeater ID="RP_Personel" runat="server" OnItemCommand="RP_Personel_ItemCommand">
                         <HeaderTemplate>
                             <table class="AnaTablo">
                                 <tr>
                                     <th></th>
-                                    <th>Ad</th>
-                                    <th>Soyad</th>
+                                    <th>Personel</th>
                                 </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td>
                                     <input id="Ad" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "AD") %>' type="hidden" />
-                                    <input id="Soyad" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "SOYAD") %>' type="hidden" />
                                     <asp:LinkButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID") %>' runat="server">Sil</asp:LinkButton>
-
                                 </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "AD") %></td>
-                                <td><%# DataBinder.Eval(Container.DataItem, "SOYAD") %></td>
                             </tr>
                         </ItemTemplate>
                         <FooterTemplate></table></FooterTemplate>

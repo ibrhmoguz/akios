@@ -65,8 +65,9 @@ namespace KobsisSiparisTakip.Web
             if (dt == null || dt.Rows.Count == 0)
                 return;
 
+            string seriKodu = SessionManager.SiparisSeri.FirstOrDefault(q => q.SiparisSeriID == Convert.ToInt32(this.SiparisSeri)).SeriKodu;
             DataRow row = dt.Rows[0];
-            lblSiparisNo.Text = row["SiparisNo"] != DBNull.Value ? row["SiparisNo"].ToString() : string.Empty;
+            lblSiparisNo.Text = row["SiparisNo"] != DBNull.Value ? seriKodu + "-" + row["SiparisNo"].ToString() : string.Empty;
             lblSiparisAdeti.Text = row["Adet"] != DBNull.Value ? row["Adet"].ToString() : string.Empty;
             lblSiparisTarih.Text = row["SiparisTarih"] != DBNull.Value ? Convert.ToDateTime(row["SiparisTarih"].ToString()).ToShortDateString() : string.Empty;
             lblTeslimTarih.Text = row["TeslimTarih"] != DBNull.Value ? Convert.ToDateTime(row["TeslimTarih"].ToString()).ToShortDateString() : string.Empty;

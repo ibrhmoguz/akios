@@ -19,17 +19,33 @@ namespace KobsisSiparisTakip.Web.Helper
 
         public WebControl Generate(WebControl wc)
         {
+            if (!SessionManager.KullaniciBilgi.MusteriID.HasValue) return wc;
+
             string parentKontrolID = string.Empty;
-
             List<Layout> seriLayoutList = null;
-            if (SessionManager.KullaniciBilgi.MusteriID.HasValue && SessionManager.SiparisFormLayout == null)
+            if (this.IslemTipi == FormIslemTipi.Sorgula)
             {
-                SessionManager.SiparisFormLayout = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.KullaniciBilgi.MusteriID.Value);
-            }
+                if (SessionManager.SiparisSorgulaFormLayout == null)
+                {
+                    SessionManager.SiparisSorgulaFormLayout = new FormLayoutBS().SorgulamaFormKontrolleriniGetir(SessionManager.KullaniciBilgi.MusteriID.Value);
+                }
 
-            if (SessionManager.SiparisFormLayout != null)
+                if (SessionManager.SiparisSorgulaFormLayout != null)
+                {
+                    seriLayoutList = SessionManager.SiparisSorgulaFormLayout.Where(q => q.SeriID == Convert.ToInt32(this.SiparisSeri)).ToList();
+                }
+            }
+            else
             {
-                seriLayoutList = SessionManager.SiparisFormLayout.Where(q => q.SeriID == Convert.ToInt32(this.SiparisSeri)).ToList();
+                if (SessionManager.SiparisFormLayout == null)
+                {
+                    SessionManager.SiparisFormLayout = new FormLayoutBS().FormKontrolleriniGetir(SessionManager.KullaniciBilgi.MusteriID.Value);
+                }
+
+                if (SessionManager.SiparisFormLayout != null)
+                {
+                    seriLayoutList = SessionManager.SiparisFormLayout.Where(q => q.SeriID == Convert.ToInt32(this.SiparisSeri)).ToList();
+                }
             }
 
             if (seriLayoutList != null)

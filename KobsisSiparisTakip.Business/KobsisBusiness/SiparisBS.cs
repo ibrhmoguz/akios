@@ -27,7 +27,7 @@ namespace KobsisSiparisTakip.Business
                     data.AddSqlParameter(param.ParametreAdi, param.ParametreDegeri, param.VeriTipi, param.ParametreBoyutu);
             }
 
-            Dictionary<string, object> output = data.ExecuteStatementUDI("dbo.InsertUpdateSiparis" + musteriKodu);
+            Dictionary<string, object> output = data.ExecuteStatementUDI("dbo.KaydetGuncelleSiparis" + musteriKodu);
             if (output["ErrorMessage"] != null && output["ErrorMessage"].ToString() != string.Empty)
             {
                 new LogWriter().Write(AppModules.Siparis, System.Diagnostics.EventLogEntryType.Error, new Exception(output["ErrorMessage"].ToString()), "ServerSide", "SiparisKaydet", "", null);

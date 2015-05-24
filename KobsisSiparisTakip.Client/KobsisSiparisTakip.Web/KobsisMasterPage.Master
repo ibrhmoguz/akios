@@ -76,7 +76,7 @@
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Value="Sorgula" Text="Sorgula">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="Siparis/SiparisSorgula.aspx" />
+                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="~/Siparis/SiparisSorgula.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>

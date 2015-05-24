@@ -16,149 +16,95 @@
                 <td>
                     <table style="width: 100%">
                         <tr>
-                            <th style="width: 8%">Sipariş No: </th>
-                            <td style="width: 15%">
-                                <telerik:RadTextBox ID="txtSiparisNo" runat="server"></telerik:RadTextBox>
-                            </td>
-                            <th style="width: 8%">Sipariş Durumu : </th>
-                            <td style="width: 15%">
-                                <telerik:RadDropDownList ID="ddlSiparisDurumu" runat="server">
-                                    <Items>
-                                        <telerik:DropDownListItem Text="Seçiniz" Value="Seçiniz" />
-                                        <telerik:DropDownListItem Text="BEKLEYEN" Value="BEKLEYEN" />
-                                        <telerik:DropDownListItem Text="İMALATTA" Value="İMALATTA" />
-                                        <telerik:DropDownListItem Text="TAMAMLANDI" Value="TAMAMLANDI" />
-                                    </Items>
-                                </telerik:RadDropDownList>
-                            </td>
-                            <th>Adres: </th>
+                            <th style="width: 8%">Sipariş No : </th>
                             <td>
-                                <telerik:RadTextBox ID="txtAdres" runat="server"></telerik:RadTextBox>
+                                <telerik:RadTextBox ID="txtSiparisNo" runat="server" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
                             </td>
-                            <th>Sipariş Tarihi:</th>
+                            <th>Sipariş Seri: </th>
                             <td>
-                                <telerik:RadDatePicker ID="rdtSiparisTarihiBas" runat="server"></telerik:RadDatePicker>
-                                <telerik:RadDatePicker ID="rdtSiparisTarihiBit" runat="server"></telerik:RadDatePicker>
+                                <telerik:RadDropDownList ID="ddlSiparisSeri" runat="server" DataValueField="SiparisSeriID" DataTextField="SeriAdi" AutoPostBack="true"></telerik:RadDropDownList>
+                            </td>
+                            <th style="width: 8%">Adres : </th>
+                            <td>
+                                <telerik:RadTextBox ID="txtMusteriAdres" runat="server" Width="250px" RenderMode="Lightweight"></telerik:RadTextBox>
+                            </td>
+
+                            <th rowspan="5" style="width: 8%">Montaj Ekibi</th>
+                            <td rowspan="5">
+                                <telerik:RadListBox ID="ListBoxMontajEkibi" runat="server" Width="160" Height="100%" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
+                                </telerik:RadListBox>
                             </td>
                         </tr>
                         <tr>
-                            <th>İç Kapı Modeli :</th>
+                            <th>Sipariş Adeti : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlIcKapiModeli" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                                <telerik:RadTextBox ID="txtSiparisAdeti" runat="server" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
                             </td>
-                            <th>Dış Kapı Modeli :</th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlDisKapiModeli" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                            <th style="width: 8%">Adı : </th>
+                            <td style="width: 18%">
+                                <telerik:RadTextBox ID="txtMusteriAd" runat="server" RenderMode="Lightweight"></telerik:RadTextBox>
                             </td>
-                            <th>Tel:</th>
+                            <th>Soyadı </th>
                             <td>
-                                <telerik:RadTextBox ID="txtTel" runat="server"></telerik:RadTextBox></td>
-                            <th>Teslim Tarihi</th>
-                            <td>
-                                <telerik:RadDatePicker ID="rdpTeslimTarihiBas" runat="server"></telerik:RadDatePicker>
-                                <telerik:RadDatePicker ID="rdpTeslimTarihiBit" runat="server"></telerik:RadDatePicker>
+                                <telerik:RadTextBox ID="txtMusteriSoyad" runat="server" RenderMode="Lightweight"></telerik:RadTextBox>
                             </td>
                         </tr>
                         <tr>
-                            <th>İç Kapı Rengi :</th>
+                            <th>Sipariş Tarihi : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlIcKapiRengi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                                <telerik:RadDatePicker ID="rdtSiparisTarihBas" runat="server" Width="105"></telerik:RadDatePicker>
+                                <telerik:RadDatePicker ID="rdtSiparisTarihBit" runat="server" Width="105"></telerik:RadDatePicker>
                             </td>
-                            <th>Dış Kapı Rengi :</th>
+                            <th>Ev Tel : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlDisKapiRengi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                            <th>Müşteri Ad:</th>
-                            <td>
-                                <telerik:RadTextBox ID="txtMusteriAd" runat="server"></telerik:RadTextBox>
+                                <telerik:RadMaskedTextBox ID="txtMusteriEvTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
                             </td>
                             <th>İl :</th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlMusteriIl" runat="server" AutoPostBack="true" RenderMode="Lightweight" OnSelectedIndexChanged="ddlMusteriIl_SelectedIndexChanged">
-                                </telerik:RadDropDownList>
+                                <telerik:RadComboBox ID="ddlMusteriIl" runat="server" AutoPostBack="true" EmptyMessage="İl Seçiniz" Skin="Telerik" OnSelectedIndexChanged="ddlMusteriIl_SelectedIndexChanged">
+                                </telerik:RadComboBox>
                             </td>
                         </tr>
                         <tr>
-                            <th>Kilit Sistemi :</th>
+                            <th>Teslim Tarihi : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlKilitSistemi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                                <telerik:RadDatePicker ID="rdtTeslimTarihBas" runat="server" Width="105"></telerik:RadDatePicker>
+                                <telerik:RadDatePicker ID="rdtTeslimTarihBit" runat="server" Width="105"></telerik:RadDatePicker>
                             </td>
-                            <th>Çıta :</th>
+                            <th>iş Tel : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlCita" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                            <th>Müşteri Soyad:</th>
-                            <td>
-                                <telerik:RadTextBox ID="txtMusteriSoyad" runat="server"></telerik:RadTextBox>
+                                <telerik:RadMaskedTextBox ID="txtMusteriIsTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
                             </td>
                             <th>İlçe :</th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlMusteriIlce" runat="server" AutoPostBack="True" RenderMode="Lightweight" OnSelectedIndexChanged="ddlMusteriIlce_SelectedIndexChanged">
-                                </telerik:RadDropDownList>
+                                <telerik:RadComboBox ID="ddlMusteriIlce" runat="server" AutoPostBack="True" EmptyMessage="İlçe Seçiniz" RenderMode="Lightweight" OnSelectedIndexChanged="ddlMusteriIlce_SelectedIndexChanged">
+                                </telerik:RadComboBox>
                             </td>
                         </tr>
                         <tr>
-                            <th>Eşik :</th>
+                            <th>Firma Adı:
+                            </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlEsik" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                                <telerik:RadTextBox ID="txtMusteriFirmaAdi" runat="server" RenderMode="Lightweight" Width="155"></telerik:RadTextBox>
                             </td>
-                            <th>Aksesuar Rengi :</th>
+                            <th>Cep Tel : </th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlAksesuarRengi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                            <th>Montaj Şekli </th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlMontajSekli" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
+                                <telerik:RadMaskedTextBox ID="txtMusteriCepTel" runat="server" Mask="(###) ### ## ##" RenderMode="Lightweight"></telerik:RadMaskedTextBox>
                             </td>
                             <th>Semt :</th>
                             <td>
-                                <telerik:RadDropDownList ID="ddlMusteriSemt" runat="server" AutoPostBack="false" EmptyMessage="Semt Seçiniz" RenderMode="Lightweight">
-                                </telerik:RadDropDownList>
-                            </td>
-                        </tr>
-                        <tr runat="server" id="trGuard1" visible="false">
-                            <th>Aluminyum Rengi :</th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlAluminyumRengi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                            <th>Conta Rengi :</th>
-                            <td colspan="3">
-                                <telerik:RadDropDownList ID="ddlContaRengi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                        </tr>
-                        <tr runat="server" id="trGuard2" visible="false">
-                            <th>Taç Tipi :</th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlTacTipi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                            <th>Pervaz Tipi :</th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlPervazTipi" runat="server" RenderMode="Lightweight"></telerik:RadDropDownList>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Montaj Ekibi</th>
-                            <td>
-                                <telerik:RadListBox ID="ListBoxMontajEkibi" runat="server" Width="160" Height="70" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
-                                </telerik:RadListBox>
-                            </td>
-                            <th>Kapı Tipi :</th>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlKapiSeri" runat="server" RenderMode="Lightweight">
-                                    <Items>
-                                        <telerik:DropDownListItem Text="Seçiniz" Value="Seçiniz" />
-                                        <telerik:DropDownListItem Text="GUARD" Value="G" />
-                                        <telerik:DropDownListItem Text="KROMA" Value="K" />
-                                        <telerik:DropDownListItem Text="NOVA" Value="N" />
-                                        <telerik:DropDownListItem Text="YANGIN" Value="Y" />
-                                        <telerik:DropDownListItem Text="PORTE" Value="P" />
-                                    </Items>
-                                </telerik:RadDropDownList>
+                                <telerik:RadComboBox ID="ddlMusteriSemt" runat="server" AutoPostBack="false" EmptyMessage="Semt Seçiniz" RenderMode="Lightweight">
+                                </telerik:RadComboBox>
                             </td>
                         </tr>
                     </table>
+
                 </td>
             </tr>
+        </table>
+        <br />
+        <asp:Panel ID="divSiparisFormKontrolleri" runat="server" Width="100%"></asp:Panel>
+        <table style="width: 100%">
             <tr>
                 <td style="text-align: center">
                     <telerik:RadButton ID="btnSorgula" runat="server" Text="Sorgula" OnClick="btnSorgula_Click">
@@ -195,15 +141,16 @@
                     EmptyDataRowStyle-CssClass="TdRenkAciklama">
                     <Columns>
                         <asp:BoundField DataField="ID" HeaderText="ID" />
-                        <asp:BoundField DataField="SIPARISNO" HeaderText="SİPARİŞ NO" />
-                        <asp:BoundField DataField="ADET" HeaderText="SİPARİŞ ADEDİ" />
-                        <asp:BoundField DataField="SIPARISTARIH" HeaderText="SİPARİŞ TARİHİ" />
-                        <asp:BoundField DataField="MONTAJTARIHI" HeaderText="MONTAJ TARİHİ" />
-                        <asp:BoundField DataField="MUSTERI" HeaderText="MÜŞTERİ/FİRMA" />
-                        <asp:BoundField DataField="MUSTERIADRES" HeaderText="MÜŞTERİ ADRES" />
-                        <asp:BoundField DataField="MUSTERIIL" HeaderText="İL" />
-                        <asp:BoundField DataField="MUSTERIILCE" HeaderText="İLÇE" />
-                        <asp:BoundField DataField="MUSTERISEMT" HeaderText="SEMT" />
+                        <asp:BoundField DataField="SeriAdi" HeaderText="SERİ ADI" />
+                        <asp:BoundField DataField="SiparisNo" HeaderText="SİPARİŞ NO" />
+                        <asp:BoundField DataField="Adet" HeaderText="SİPARİŞ ADEDİ" />
+                        <asp:BoundField DataField="SiparisTarih" HeaderText="SİPARİŞ TARİHİ" />
+                        <asp:BoundField DataField="TeslimTarih" HeaderText="MONTAJ TARİHİ" />
+                        <asp:BoundField DataField="Musteri" HeaderText="MÜŞTERİ/FİRMA" />
+                        <asp:BoundField DataField="MusteriAdres" HeaderText="MÜŞTERİ ADRES" />
+                        <asp:BoundField DataField="IlAd" HeaderText="İL" />
+                        <asp:BoundField DataField="IlceAd" HeaderText="İLÇE" />
+                        <asp:BoundField DataField="SemtAd" HeaderText="SEMT" />
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <asp:HyperLink ID="lnkGoruntule" runat="server" Text="Siparişi Görüntüle" ForeColor="Blue" Font-Underline="true" />

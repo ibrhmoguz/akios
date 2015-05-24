@@ -51,7 +51,7 @@ namespace KobsisSiparisTakip.Business
             ds.Tables.Add(MetalRenkGetir(prms));
             ds.Tables.Add(CekmeKoluGetir(prms));
             ds.Tables.Add(BarelTipGetir(prms));
-            ds.Tables.Add(new PersonelBS().PersonelListesiGetir());
+            //ds.Tables.Add(new PersonelBS().PersonelListesiGetir());
             ds.Tables.Add(CumbaGetir(prms));
             return ds;
         }

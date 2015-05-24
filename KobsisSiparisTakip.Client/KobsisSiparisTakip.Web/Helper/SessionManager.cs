@@ -53,6 +53,21 @@ namespace KobsisSiparisTakip.Web.Helper
             }
         }
 
+        public static List<Layout> SiparisSorgulaFormLayout
+        {
+            get
+            {
+                if (HttpContext.Current.Session["SiparisSorgulaFormLayout"] != null)
+                    return (List<Layout>)HttpContext.Current.Session["SiparisSorgulaFormLayout"];
+                else
+                    return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SiparisSorgulaFormLayout"] = value;
+            }
+        }
+
         public static DataTable SiparisBilgi
         {
             get
@@ -185,6 +200,36 @@ namespace KobsisSiparisTakip.Web.Helper
             set
             {
                 HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] = value;
+            }
+        }
+
+        public static DataTable PersonelListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["PersonelListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["PersonelListesi"];
+                else
+                    return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["PersonelListesi"] = value;
+            }
+        }
+
+        public static DataTable SiparisSorguListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["SiparisSorguListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["SiparisSorguListesi"];
+                else
+                    return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SiparisSorguListesi"] = value;
             }
         }
     }

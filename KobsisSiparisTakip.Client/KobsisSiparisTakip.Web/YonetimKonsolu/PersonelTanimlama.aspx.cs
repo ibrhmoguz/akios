@@ -29,8 +29,10 @@ namespace KobsisSiparisTakip.Web
 
         private void PersonelDoldur()
         {
-            RP_Personel.DataSource = new PersonelBS().PersonelListesiGetirGenel();
+            DataTable dt = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+            RP_Personel.DataSource = dt;
             RP_Personel.DataBind();
+            SessionManager.PersonelListesi = dt;
         }
 
         protected void btnEkle_Click(object sender, EventArgs e)
@@ -40,11 +42,7 @@ namespace KobsisSiparisTakip.Web
 
             bool sonuc = false;
 
-            Dictionary<string, object> prms = new Dictionary<string, object>();
-            prms.Add("AD", ad);
-            prms.Add("SOYAD", soyad);
-
-            sonuc = new PersonelBS().PersonelTanimla(prms);
+            sonuc = new PersonelBS().PersonelTanimla(SessionManager.MusteriBilgi.MusteriID.Value, ad, soyad);
 
             if (sonuc)
             {
@@ -64,12 +62,9 @@ namespace KobsisSiparisTakip.Web
             if (e.CommandName == "Delete")
             {
                 string id = e.CommandArgument.ToString();
+                if (string.IsNullOrWhiteSpace(id)) return;
 
-                Dictionary<string, object> prms = new Dictionary<string, object>();
-                prms.Add("ID", id);
-                //prms.Add("SOYAD", soyad);
-
-                sonuc = new PersonelBS().PersonelSil(prms);
+                sonuc = new PersonelBS().PersonelSil(Convert.ToInt32(id));
 
                 if (sonuc)
                 {
