@@ -1,0 +1,114 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kobsis.Client", "Kobsis.Client", "{800E7633-0746-4812-8A70-9E9E7A7A45EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebFrame", "WebFrame", "{92394C52-A256-402D-8DFB-D09BC975B3F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.Business", "WebFrame\WebFrame.Business\WebFrame.Business.csproj", "{4B93F83B-E6D9-4151-9DD4-7DDD456AA400}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.DataAccess", "WebFrame\WebFrame.DataAccess\WebFrame.DataAccess.csproj", "{7BA625A4-2074-4E52-B065-F1909B7BD4DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.DataType.Common", "WebFrame\WebFrame.Datatype.Common\WebFrame.DataType.Common.csproj", "{BCE5B574-97AD-4BB6-A906-39812EA4F007}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.Logging", "WebFrame\WebFrame.Logging\WebFrame.Logging.csproj", "{A0F66706-9049-473D-B00A-3067B67E9D5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{F8283655-5505-4F8C-9E36-140F476429E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.Utils.ConnectionStringCryptoHelper", "WebFrame\WebFrame.Utils\WebFrame.Utils.ConnectionStringCryptoHelper\WebFrame.Utils.ConnectionStringCryptoHelper.csproj", "{612C0304-8D2C-44CF-8D88-EA2BD2A50098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFrame.Utils.HashManagerGUIHelper", "WebFrame\WebFrame.Utils\WebFrame.Utils.HashManagerGUIHelper\WebFrame.Utils.HashManagerGUIHelper.csproj", "{A336E055-479A-4691-A394-0C4D50DEEDE2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebFrame.DLL", "WebFrame.DLL", "{00A0908D-68EC-4AD6-88E9-6C8D7EEF303E}"
+	ProjectSection(SolutionItems) = preProject
+		WebFrame\DLL\NLog.dll = WebFrame\DLL\NLog.dll
+		WebFrame\DLL\NLog.xml = WebFrame\DLL\NLog.xml
+		WebFrame\DLL\Oracle.DataAccess.dll = WebFrame\DLL\Oracle.DataAccess.dll
+		WebFrame\DLL\Telerik.Web.Design.dll = WebFrame\DLL\Telerik.Web.Design.dll
+		WebFrame\DLL\Telerik.Web.UI.dll = WebFrame\DLL\Telerik.Web.UI.dll
+		WebFrame\DLL\Telerik.Web.UI.Skins.dll = WebFrame\DLL\Telerik.Web.UI.Skins.dll
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.Web", "Kobsis.Client\Kobsis.Web\Kobsis.Web.csproj", "{5D267216-3EAC-43E3-B769-993DACD08737}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kobsis.Server", "Kobsis.Server", "{B85D12F1-9703-47B7-BD9F-FB445C184DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.Generation", "Kobsis.Server\Kobsis.Generation\Kobsis.Generation.csproj", "{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.Business", "Kobsis.Server\Kobsis.Business\Kobsis.Business.csproj", "{9E4898F1-CA14-4C1E-A71F-8288847F0781}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.DataType", "Kobsis.Server\Kobsis.DataType\Kobsis.DataType.csproj", "{F5859796-4B0F-4BE8-9760-698DC6352639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.Util", "Kobsis.Server\Kobsis.Util\Kobsis.Util.csproj", "{576AAAF0-3A56-49F9-8A70-D8C93947A776}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B93F83B-E6D9-4151-9DD4-7DDD456AA400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B93F83B-E6D9-4151-9DD4-7DDD456AA400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B93F83B-E6D9-4151-9DD4-7DDD456AA400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B93F83B-E6D9-4151-9DD4-7DDD456AA400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA625A4-2074-4E52-B065-F1909B7BD4DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA625A4-2074-4E52-B065-F1909B7BD4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA625A4-2074-4E52-B065-F1909B7BD4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA625A4-2074-4E52-B065-F1909B7BD4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE5B574-97AD-4BB6-A906-39812EA4F007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE5B574-97AD-4BB6-A906-39812EA4F007}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE5B574-97AD-4BB6-A906-39812EA4F007}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE5B574-97AD-4BB6-A906-39812EA4F007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0F66706-9049-473D-B00A-3067B67E9D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0F66706-9049-473D-B00A-3067B67E9D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0F66706-9049-473D-B00A-3067B67E9D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0F66706-9049-473D-B00A-3067B67E9D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612C0304-8D2C-44CF-8D88-EA2BD2A50098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612C0304-8D2C-44CF-8D88-EA2BD2A50098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612C0304-8D2C-44CF-8D88-EA2BD2A50098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612C0304-8D2C-44CF-8D88-EA2BD2A50098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A336E055-479A-4691-A394-0C4D50DEEDE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A336E055-479A-4691-A394-0C4D50DEEDE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A336E055-479A-4691-A394-0C4D50DEEDE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A336E055-479A-4691-A394-0C4D50DEEDE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D267216-3EAC-43E3-B769-993DACD08737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D267216-3EAC-43E3-B769-993DACD08737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D267216-3EAC-43E3-B769-993DACD08737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D267216-3EAC-43E3-B769-993DACD08737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E4898F1-CA14-4C1E-A71F-8288847F0781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4898F1-CA14-4C1E-A71F-8288847F0781}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4898F1-CA14-4C1E-A71F-8288847F0781}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4898F1-CA14-4C1E-A71F-8288847F0781}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5859796-4B0F-4BE8-9760-698DC6352639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5859796-4B0F-4BE8-9760-698DC6352639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5859796-4B0F-4BE8-9760-698DC6352639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5859796-4B0F-4BE8-9760-698DC6352639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D267216-3EAC-43E3-B769-993DACD08737} = {800E7633-0746-4812-8A70-9E9E7A7A45EE}
+		{4B93F83B-E6D9-4151-9DD4-7DDD456AA400} = {92394C52-A256-402D-8DFB-D09BC975B3F4}
+		{7BA625A4-2074-4E52-B065-F1909B7BD4DA} = {92394C52-A256-402D-8DFB-D09BC975B3F4}
+		{BCE5B574-97AD-4BB6-A906-39812EA4F007} = {92394C52-A256-402D-8DFB-D09BC975B3F4}
+		{A0F66706-9049-473D-B00A-3067B67E9D5B} = {92394C52-A256-402D-8DFB-D09BC975B3F4}
+		{F8283655-5505-4F8C-9E36-140F476429E5} = {92394C52-A256-402D-8DFB-D09BC975B3F4}
+		{612C0304-8D2C-44CF-8D88-EA2BD2A50098} = {F8283655-5505-4F8C-9E36-140F476429E5}
+		{A336E055-479A-4691-A394-0C4D50DEEDE2} = {F8283655-5505-4F8C-9E36-140F476429E5}
+		{47B48915-1EA7-4E0F-9CB8-7E57891DDB90} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
+		{9E4898F1-CA14-4C1E-A71F-8288847F0781} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
+		{F5859796-4B0F-4BE8-9760-698DC6352639} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
+		{576AAAF0-3A56-49F9-8A70-D8C93947A776} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
+	EndGlobalSection
+EndGlobal
