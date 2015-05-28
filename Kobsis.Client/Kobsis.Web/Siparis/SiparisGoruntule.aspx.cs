@@ -46,7 +46,7 @@ namespace Kobsis.Web.Siparis
                     MusteriBilgileriDoldur();
                     SiparisBilgileriniGetir();
                     GenerateForm();
-                    PopupPageHelper.OpenPopUp(btnYazdir, "Print/Print.aspx?SiparisSeri=" + this.SiparisSeri, "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
+                    PopupPageHelper.OpenPopUp(btnYazdir, "~/Print/Print.aspx?SiparisSeri=" + this.SiparisSeri, "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
                 }
             }
             if (Page.IsPostBack)

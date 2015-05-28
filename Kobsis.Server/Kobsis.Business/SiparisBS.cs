@@ -36,7 +36,7 @@ namespace Kobsis.Business
                 return null;
         }
 
-        public List<SiparisMetadata> SiparisMetdataGetir(string musteriID)
+        public List<SiparisMetadata> SiparisMetdataGetir(string musteriId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -52,7 +52,7 @@ namespace Kobsis.Business
 	                            INNER JOIN dbo.KONTROL AS K ON K.MetadataID = SM.MetadataID
 	                            INNER JOIN dbo.YERLESIM AS Y ON Y.KontrolID = K.KontrolID AND Y.MusteriID=SM.MusteriID
                             WHERE SM.MusteriID=@MusteriID";
-            data.AddSqlParameter("MusteriID", musteriID, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("MusteriID", musteriId, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
 
             var metadataList = new List<SiparisMetadata>();
@@ -74,7 +74,7 @@ namespace Kobsis.Business
             return metadataList;
         }
 
-        public DataTable SiparisGetir(string siparisID)
+        public DataTable SiparisGetir(string siparisId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -90,7 +90,7 @@ namespace Kobsis.Business
 	                           INNER JOIN dbo.REF_ILCE AS RILCE ON S.MusteriIlceKod = RILCE.IlceKod
 	                           INNER JOIN dbo.REF_SEMT AS SM ON S.MusteriSemtKod = SM.SemtKod
                             WHERE ID=@ID";
-            data.AddSqlParameter("ID", siparisID, SqlDbType.Int, 50);
+            data.AddSqlParameter("ID", siparisId, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
             return dt;
         }
@@ -106,8 +106,11 @@ namespace Kobsis.Business
                 else
                     data.AddSqlParameter(param.ParametreAdi, param.ParametreDegeri, param.VeriTipi, param.ParametreBoyutu);
             }
-
-            Dictionary<string, object> output = data.ExecuteStatementUDI("dbo.SorgulaSiparis" + musteriKodu);
+            
+            var ds = new DataSet();
+            data.ExecuteStatement("dbo.SorgulaSiparis" + musteriKodu, ds);
+            if (ds.Tables.Count > 0)
+                return ds.Tables[0];
 
             return null;
         }

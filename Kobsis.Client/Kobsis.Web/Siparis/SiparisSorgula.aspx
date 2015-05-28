@@ -129,10 +129,10 @@
                             <asp:Label ID="lblToplamSiparis" runat="server" ForeColor="Red" Font-Bold="true" Font-Size="Medium"></asp:Label>
                         </th>
                         <th>
-                            <h5>TOPLAM KAPI ADEDİ:</h5>
+                            <h5>TOPLAM ÜRÜN ADEDİ:</h5>
                         </th>
                         <th>
-                            <asp:Label ID="lblToplamKapi" runat="server" ForeColor="Red" Font-Bold="true" Font-Size="Medium"></asp:Label></th>
+                            <asp:Label ID="lblToplamUrun" runat="server" ForeColor="Red" Font-Bold="true" Font-Size="Medium"></asp:Label></th>
                     </tr>
                 </table>
                 <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="30" OnPageIndexChanging="grdSiparisler_PageIndexChanging"
@@ -145,7 +145,7 @@
                         <asp:BoundField DataField="SiparisNo" HeaderText="SİPARİŞ NO" />
                         <asp:BoundField DataField="Adet" HeaderText="SİPARİŞ ADEDİ" />
                         <asp:BoundField DataField="SiparisTarih" HeaderText="SİPARİŞ TARİHİ" />
-                        <asp:BoundField DataField="TeslimTarih" HeaderText="MONTAJ TARİHİ" />
+                        <asp:BoundField DataField="TeslimTarih" HeaderText="TESLİM TARİHİ" />
                         <asp:BoundField DataField="Musteri" HeaderText="MÜŞTERİ/FİRMA" />
                         <asp:BoundField DataField="MusteriAdres" HeaderText="MÜŞTERİ ADRES" />
                         <asp:BoundField DataField="IlAd" HeaderText="İL" />

@@ -58,8 +58,8 @@ namespace Kobsis.Web.Siparis
             var parametreler = new List<DbParametre>();
 
             var paramSiparisNo = new DbParametre() { ParametreAdi = "SiparisNo", ParametreDegeri = string.IsNullOrWhiteSpace(txtSiparisNo.Text) ? null : txtSiparisNo.Text, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
-            var paramSeriID = new DbParametre() { ParametreAdi = "SeriID", ParametreDegeri = ddlSiparisSeri.SelectedIndex == 0 ? null : ddlSiparisSeri.SelectedValue, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
-            var paramAdet = new DbParametre() { ParametreAdi = "Adet", ParametreDegeri = string.IsNullOrWhiteSpace(txtSiparisAdeti.Text) ? null : txtSiparisAdeti.Text, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
+            var paramSeriID = new DbParametre() { ParametreAdi = "SeriID", ParametreDegeri = ddlSiparisSeri.SelectedIndex <= 0 ? null : ddlSiparisSeri.SelectedValue, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
+            var paramAdet = new DbParametre() { ParametreAdi = "Adet", ParametreDegeri = string.IsNullOrWhiteSpace(txtSiparisAdeti.Text) ? null : txtSiparisAdeti.Text, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
             var paramSiparisTarihBas = new DbParametre() { ParametreAdi = "SiparisTarihBas", ParametreDegeri = rdtSiparisTarihBas.SelectedDate, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramSiparisTarihBit = new DbParametre() { ParametreAdi = "SiparisTarihBit", ParametreDegeri = rdtSiparisTarihBit.SelectedDate, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
             var paramTeslimTarihBas = new DbParametre() { ParametreAdi = "TeslimTarihBas", ParametreDegeri = rdtTeslimTarihBas.SelectedDate, VeriTipi = SqlDbType.DateTime, ParametreBoyutu = 50 };
@@ -71,9 +71,9 @@ namespace Kobsis.Web.Siparis
             var paramMusteriIsTel = new DbParametre() { ParametreAdi = "MusteriIsTel", ParametreDegeri = string.IsNullOrWhiteSpace(txtMusteriIsTel.Text) ? null : txtMusteriIsTel.Text, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
             var paramMusteriCepTel = new DbParametre() { ParametreAdi = "MusteriCepTel", ParametreDegeri = string.IsNullOrWhiteSpace(txtMusteriCepTel.Text) ? null : txtMusteriCepTel.Text, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
             var paramMusteriAdres = new DbParametre() { ParametreAdi = "MusteriAdres", ParametreDegeri = string.IsNullOrWhiteSpace(txtMusteriAdres.Text) ? null : txtMusteriAdres.Text, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 500 };
-            var paramMusteriIlKod = new DbParametre() { ParametreAdi = "MusteriIlKod", ParametreDegeri = ddlMusteriIl.SelectedIndex == 0 ? null : ddlMusteriIl.SelectedValue, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
-            var paramMusteriIlceKod = new DbParametre() { ParametreAdi = "MusteriIlceKod", ParametreDegeri = ddlMusteriIlce.SelectedIndex == 0 ? null : ddlMusteriIlce.SelectedValue, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
-            var paramMusteriSemtKod = new DbParametre() { ParametreAdi = "MusteriSemtKod", ParametreDegeri = ddlMusteriSemt.SelectedIndex == 0 ? null : ddlMusteriSemt.SelectedValue, VeriTipi = SqlDbType.Int, ParametreBoyutu = 50 };
+            var paramMusteriIlKod = new DbParametre() { ParametreAdi = "MusteriIlKod", ParametreDegeri = ddlMusteriIl.SelectedIndex <= 0 ? null : ddlMusteriIl.SelectedValue, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
+            var paramMusteriIlceKod = new DbParametre() { ParametreAdi = "MusteriIlceKod", ParametreDegeri = ddlMusteriIlce.SelectedIndex <= 0 ? null : ddlMusteriIlce.SelectedValue, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
+            var paramMusteriSemtKod = new DbParametre() { ParametreAdi = "MusteriSemtKod", ParametreDegeri = ddlMusteriSemt.SelectedIndex <= 0 ? null : ddlMusteriSemt.SelectedValue, VeriTipi = SqlDbType.VarChar, ParametreBoyutu = 50 };
 
             parametreler.Add(paramSiparisNo);
             parametreler.Add(paramSeriID);
@@ -109,7 +109,7 @@ namespace Kobsis.Web.Siparis
                 parametreler.Add(paramMetadata);
             }
 
-            DataTable dt = new SiparisBS().SiparisSorgula(parametreler, SessionManager.MusteriBilgi.Kod);
+            DataTable dt = siparisBS.SiparisSorgula(parametreler, SessionManager.MusteriBilgi.Kod);
 
             grdSiparisler.DataSource = dt;
             grdSiparisler.DataBind();
@@ -125,7 +125,7 @@ namespace Kobsis.Web.Siparis
                 return;
 
             lblToplamSiparis.Text = dt.Rows.Count.ToString();
-            lblToplamKapi.Text = (from DataRow row in dt.Rows
+            lblToplamUrun.Text = (from DataRow row in dt.Rows
                                   where row["Adet"] != DBNull.Value
                                   select Convert.ToInt32(row["Adet"])).Sum().ToString();
         }
@@ -145,7 +145,7 @@ namespace Kobsis.Web.Siparis
                 DataRowView view = (DataRowView)e.Row.DataItem;
                 string siparisID = view.Row.ItemArray[0].ToString();
                 string siparisSeri = view.Row.ItemArray[1].ToString();
-                link.NavigateUrl = "~/SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + siparisSeri;
+                link.NavigateUrl = "~/Siparis/SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + siparisSeri;
             }
         }
 

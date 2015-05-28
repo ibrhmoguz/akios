@@ -21,7 +21,6 @@ namespace Kobsis.Generation
         {
             if (!SessionManager.KullaniciBilgi.MusteriID.HasValue) return wc;
 
-            string parentKontrolID = string.Empty;
             List<Layout> seriLayoutList = null;
             if (this.IslemTipi == FormIslemTipi.Sorgula)
             {
@@ -62,8 +61,8 @@ namespace Kobsis.Generation
                     }
                     else
                     {
-                        parentKontrolID = ParentKontrolIDBul(seriLayoutList, layout.YerlesimParentID.Value);
-                        WebControl wcParent = KontrolBul(wc, parentKontrolID);
+                        var parentKontrolId = ParentKontrolIdBul(seriLayoutList, layout.YerlesimParentID.Value);
+                        WebControl wcParent = KontrolBul(wc, parentKontrolId);
                         if (wcParent != null)
                             wcParent.Controls.Add(wcTemp);
                     }
@@ -72,10 +71,10 @@ namespace Kobsis.Generation
             return wc;
         }
 
-        public object KontrolDegeriBul(Panel divPanel, string kontrolAdi, string yerlesimTabloID)
+        public object KontrolDegeriBul(Panel divPanel, string kontrolAdi, string yerlesimTabloId)
         {
             object kontrolDegeri = null;
-            var control = KontrolBul(divPanel, kontrolAdi.Replace(" ", string.Empty) + yerlesimTabloID);
+            var control = KontrolBul(divPanel, kontrolAdi.Replace(" ", string.Empty) + yerlesimTabloId);
 
             if (control is RadTextBox)
             {
@@ -137,27 +136,27 @@ namespace Kobsis.Generation
             return sqlType;
         }
 
-        private string ParentKontrolIDBul(List<Layout> layoutList, int parentID)
+        private string ParentKontrolIdBul(List<Layout> layoutList, int parentId)
         {
-            string parentKontrolID = string.Empty;
+            string parentKontrolId = string.Empty;
             foreach (Layout layout in layoutList)
             {
-                if (layout.YerlesimID == parentID)
+                if (layout.YerlesimID == parentId)
                 {
-                    parentKontrolID = KontrolIDGetir(layout);
+                    parentKontrolId = KontrolIDGetir(layout);
                     break;
                 }
             }
-            return parentKontrolID;
+            return parentKontrolId;
         }
 
-        private WebControl KontrolBul(WebControl rootControl, string controlID)
+        private WebControl KontrolBul(WebControl rootControl, string controlId)
         {
-            if (rootControl.ID == controlID) return rootControl;
+            if (rootControl.ID == controlId) return rootControl;
 
             foreach (WebControl controlToSearch in rootControl.Controls)
             {
-                WebControl controlToReturn = KontrolBul(controlToSearch, controlID);
+                WebControl controlToReturn = KontrolBul(controlToSearch, controlId);
                 if (controlToReturn != null) return controlToReturn;
             }
             return null;
