@@ -24,125 +24,20 @@
             <tr>
                 <th style="width: 20%">Düzenlemek istediğiniz öğeyi seçiniz : </th>
                 <td>
-                    <telerik:RadDropDownList ID="ddlOge" runat="server" OnSelectedIndexChanged="ddlOge_SelectedIndexChanged" AutoPostBack="True"></telerik:RadDropDownList>
+                    <telerik:RadDropDownList ID="ddlReferanslar" runat="server" OnSelectedIndexChanged="ddlReferanslar_SelectedIndexChanged" AutoPostBack="True" RenderMode="Lightweight"></telerik:RadDropDownList>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-                    <telerik:RadGrid ID="rgOgeler1" runat="server" AllowPaging="True" OnItemCommand="rgOgeler1_ItemCommand" OnPageIndexChanged="rgOgeler1_PageIndexChanged">
-                        <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID">
-                            <Columns>
-                                <telerik:GridBoundColumn DataField="ID" HeaderText="ID" SortExpression="ID"
-                                    UniqueName="ID" Visible="false">
-                                </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="AD" HeaderText="AD" SortExpression="AD"
-                                    UniqueName="AD">
-                                </telerik:GridBoundColumn>
-                                <telerik:GridCheckBoxColumn DataField="NOVA" HeaderText="NOVA"
-                                    UniqueName="NOVA">
-                                </telerik:GridCheckBoxColumn>
-                                <telerik:GridCheckBoxColumn DataField="KROMA" HeaderText="KROMA"
-                                    UniqueName="KROMA">
-                                </telerik:GridCheckBoxColumn>
-                                <telerik:GridCheckBoxColumn DataField="GUARD" HeaderText="GUARD"
-                                    UniqueName="GUARD">
-                                </telerik:GridCheckBoxColumn>
-                                <telerik:GridCheckBoxColumn DataField="YANGIN" HeaderText="YANGIN/PORTE"
-                                    UniqueName="YANGIN">
-                                </telerik:GridCheckBoxColumn>
-                                <telerik:GridButtonColumn Text="Sil" CommandName="Delete" ButtonType="ImageButton" />
-                            </Columns>
-                            <EditFormSettings>
-                                <EditColumn ButtonType="ImageButton" />
-                            </EditFormSettings>
-                        </MasterTableView>
-                    </telerik:RadGrid>
-                </td>
-            </tr>
-            <tr id="trKayitEkle1" runat="server" visible="false">
                 <td colspan="2">
                     <br />
-                    <asp:LinkButton ID="lbYeniKayit" runat="server" OnClick="lbYeniKayit_Click"> Yeni Kayıt İçin Tıklayınız </asp:LinkButton>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <table runat="server" id="tbKayitEkle1" visible="false">
-                        <tr>
-                            <th style="width: 10%;">Ad :</th>
-                            <td style="width: 30%;">
-                                <telerik:RadTextBox ID="txtAd" runat="server"></telerik:RadTextBox>
-                            </td>
-                            <th style="width: 15%;">Kapı Türü :</th>
-                            <td>
-                                <asp:CheckBoxList ID="cbxKapiTuru" runat="server" AutoPostBack="True" RepeatDirection="Horizontal">
-                                    <asp:ListItem>Nova</asp:ListItem>
-                                    <asp:ListItem>Kroma</asp:ListItem>
-                                    <asp:ListItem>Guard</asp:ListItem>
-                                    <asp:ListItem>Yangin/Porte</asp:ListItem>
-                                </asp:CheckBoxList>
-                            </td>
-                            <td>
-                                <telerik:RadButton ID="rbKayitEkle" runat="server" Text="Ekle" OnClick="btnEkle_Click">
-                                    <Icon PrimaryIconCssClass="rbAdd" PrimaryIconLeft="4" PrimaryIconTop="3" />
-                                </telerik:RadButton>
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr id="trKapiModel" runat="server" visible="false">
-                <th>Kapı serisini seçiniz : </th>
-                <td>
-                    <telerik:RadDropDownList ID="ddlKapiSeri" runat="server" OnSelectedIndexChanged="ddlKapiSeri_SelectedIndexChanged" AutoPostBack="True"></telerik:RadDropDownList>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-
-                    <telerik:RadGrid ID="rgOgeler2" runat="server" AllowPaging="True" OnItemCommand="rgOgeler1_ItemCommand" OnPageIndexChanged="rgOgeler2_PageIndexChanged">
-
-                        <MasterTableView AutoGenerateColumns="False" DataKeyNames="ID">
-                            <Columns>
-                                <telerik:GridBoundColumn DataField="ID" HeaderText="ID"
-                                    UniqueName="ID" Visible="false">
-                                </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="AD" HeaderText="AD"
-                                    UniqueName="AD">
-                                </telerik:GridBoundColumn>
-                                <telerik:GridButtonColumn Text="Sil" CommandName="Delete" ButtonType="ImageButton" />
-                            </Columns>
-                            <EditFormSettings>
-                                <EditColumn ButtonType="ImageButton" />
-                            </EditFormSettings>
-                        </MasterTableView>
-                    </telerik:RadGrid>
-                </td>
-            </tr>
-            <tr id="trKayitEkle2" runat="server" visible="false">
-                <td colspan="2">
-                    <br />
-                    <asp:LinkButton ID="lbYeniKayit2" runat="server" OnClick="lbYeniKayit2_Click"> Yeni Kayıt İçin Tıklayınız </asp:LinkButton>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <table runat="server" id="tbKayitEkle2" visible="false">
-                        <tr>
-                            <th style="width: 10%;">Ad :</th>
-                            <td style="width: 30%;">
-                                <telerik:RadTextBox ID="txtAd2" runat="server"></telerik:RadTextBox>
-                            </td>
-                            <td>
-                                <telerik:RadButton ID="RadButton1" runat="server" Text="Ekle" OnClick="btnEkle2_Click">
-                                    <Icon PrimaryIconCssClass="rbAdd" PrimaryIconLeft="4" PrimaryIconTop="3" />
-                                </telerik:RadButton>
-                            </td>
-                        </tr>
-                    </table>
+                    <asp:GridView ID="gvReferansDetay" runat="server" AutoGenerateColumns="true" Width="100%" CssClass="AnaTablo" ShowFooter="True"
+                        AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2" EmptyDataText="Form öğe detayı tanımlanmamıştır!"
+                        EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
+                        EmptyDataRowStyle-CssClass="TdRenkAciklama" FooterStyle="ThBaslikRenk2" OnRowDeleting="gvReferansDetay_RowDeleting" OnRowDataBound="gvReferansDetay_RowDataBound">
+                        <Columns>
+                            <asp:CommandField HeaderText="SİL" DeleteText="Sil" DeleteImageUrl="~/App_Themes/Theme/Raster/clear.png" ShowDeleteButton="true" ButtonType="Image" />
+                        </Columns>
+                    </asp:GridView>
                 </td>
             </tr>
         </table>

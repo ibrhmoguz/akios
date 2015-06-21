@@ -29,36 +29,6 @@ namespace Kobsis.Web.Takvim
             }
         }
 
-        private DataTable MontajListesi
-        {
-            get
-            {
-                if (Session["Takvim_MontajListesi"] != null)
-                    return Session["Takvim_MontajListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["Takvim_MontajListesi"] = value;
-            }
-        }
-
-        private DataTable PersonelListesi
-        {
-            get
-            {
-                if (Session["Takvim_PersonelListesi"] != null)
-                    return Session["Takvim_PersonelListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["Takvim_PersonelListesi"] = value;
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -125,7 +95,7 @@ namespace Kobsis.Web.Takvim
 
         private void MontajlariListele(DateTime dtBaslangic, DateTime dtBitis)
         {
-            this.MontajListesi = new MontajBS().MontajlariListele(dtBaslangic, dtBitis);
+            SessionManager.MontajListesi = new MontajBS().MontajlariListele(dtBaslangic, dtBitis);
         }
 
         public DateTime HaftaBaslangicGunu(DateTime dtStart)
@@ -146,7 +116,7 @@ namespace Kobsis.Web.Takvim
 
         private void MontajlariAppointmenteCevir()
         {
-            DataTable dtMontajlar = this.MontajListesi;
+            DataTable dtMontajlar = SessionManager.MontajListesi;
             if (dtMontajlar == null)
                 return;
 
@@ -188,8 +158,8 @@ namespace Kobsis.Web.Takvim
 
         private void PersonelListesiYukle()
         {
-            if (SessionManager.MusteriBilgi.MusteriID != null)
-                this.PersonelListesi = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+            if (SessionManager.MusteriBilgi.MusteriID != null && (SessionManager.PersonelListesi == null || SessionManager.PersonelListesi.Rows.Count == 0))
+                SessionManager.PersonelListesi = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
         }
 
         protected void RadSchedulerIsTakvimi_AppointmentCommand(object sender, AppointmentCommandEventArgs e)
@@ -273,7 +243,7 @@ namespace Kobsis.Web.Takvim
                     break;
             }
 
-            DataTable dtMontajlar = this.MontajListesi;
+            DataTable dtMontajlar = SessionManager.MontajListesi;
             if (dtMontajlar == null)
                 return;
 
@@ -299,7 +269,7 @@ namespace Kobsis.Web.Takvim
 
         protected void RadSchedulerIsTakvimi_FormCreated(object sender, SchedulerFormCreatedEventArgs e)
         {
-            DataTable dtMontajlar = this.MontajListesi;
+            DataTable dtMontajlar = SessionManager.MontajListesi;
             if (dtMontajlar == null)
                 return;
 
@@ -332,7 +302,7 @@ namespace Kobsis.Web.Takvim
                 if (row["TeslimTarih"] != DBNull.Value)
                     dtTeslimTarihi.SelectedDate = Convert.ToDateTime(row["TeslimTarih"]);
 
-                lstBoxPersonelListesi.DataSource = this.PersonelListesi;
+                lstBoxPersonelListesi.DataSource = SessionManager.PersonelListesi;
                 lstBoxPersonelListesi.DataBind();
 
                 if (row["PersonelID"] != DBNull.Value)

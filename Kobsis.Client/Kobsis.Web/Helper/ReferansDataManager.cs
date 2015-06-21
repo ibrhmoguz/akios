@@ -32,5 +32,18 @@ namespace Kobsis.Web.Helper
             else
                 return null;
         }
+
+        public static DataTable MusteriReferanslariYukle()
+        {
+            DataTable dt = SessionManager.MusteriReferansDegerleri;
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                dt = new ReferansDataBS().MusteriReferanslariniGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+                SessionManager.MusteriReferansDegerleri = dt;
+            }
+
+            return dt;
+        }
     }
 }

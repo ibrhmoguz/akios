@@ -11,233 +11,75 @@ namespace Kobsis.Business
     [ServiceConnectionName("KobsisConnectionString")]
     public class YonetimKonsoluBS : BusinessBase
     {
-        public DataSet RefTablolariGetir()
-        {
-            return pRefTablolariGetir();
-        }
-
-        private DataSet pRefTablolariGetir()
-        {
-            DataSet ds = new DataSet();
-
-            ds.Tables.Add(KapiRenkGetir());
-            ds.Tables.Add(KilitSistemiGetir());
-            ds.Tables.Add(CitaGetir());
-            ds.Tables.Add(EsikGetir());
-            ds.Tables.Add(AksesuarRenkGetir());
-            ds.Tables.Add(AluminyumRenkGetir());
-            ds.Tables.Add(ContaRenkGetir());
-            ds.Tables.Add(TacTipiGetir());
-            ds.Tables.Add(PervazTipiGetir());
-            ds.Tables.Add(MontajSekliGetir());
-            ds.Tables.Add(TeslimSekliGetir());
-            ds.Tables.Add(TumKapiModelGetir());
-            ds.Tables.Add(BarelTipGetir());
-            ds.Tables.Add(CekmeKoluGetir());
-            ds.Tables.Add(KapiSeriGetir());
-            ds.Tables.Add(PanikBarGetir());
-            ds.Tables.Add(MudahaleKolGetir());
-            ds.Tables.Add(YanginKasaTipGetir());
-            ds.Tables.Add(YanginKapiCinsGetir());
-            ds.Tables.Add(MenteseTipGetir());
-            ds.Tables.Add(HidrolikKapaticiGetir());
-            ds.Tables.Add(CekmeKolTakmaSekliGetir());
-            ds.Tables.Add(ZirhTipiGetir());
-            ds.Tables.Add(ZirhRengiGetir());
-            ds.Tables.Add(BolmeCamTipiGetir());
-            ds.Tables.Add(FerforjeGetir());
-            ds.Tables.Add(FerforjeRenkGetir());
-            ds.Tables.Add(AplikeRenkGetir());
-            ds.Tables.Add(PervazRenkGetir());
-            ds.Tables.Add(MetalRenkGetir());
-            ds.Tables.Add(CumbaGetir());
-
-            return ds;
-        }
-
-        private DataTable TabloGetir(string tabloAdi)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-            dt.TableName = tabloAdi;
-            string sqlText = @"SELECT * FROM " + tabloAdi;
-            data.GetRecords(dt, sqlText);
-            return dt;
-        }
-
-        private DataTable CumbaGetir()
-        {
-            return TabloGetir("REF_CUMBA");
-        }
-
-        private DataTable AplikeRenkGetir()
-        {
-            return TabloGetir("REF_APLIKE");
-        }
-        private DataTable PervazRenkGetir()
-        {
-            return TabloGetir("REF_PERVAZRENK");
-        }
-        private DataTable MetalRenkGetir()
-        {
-            return TabloGetir("REF_METALRENK");
-        }
-
-        private DataTable FerforjeRenkGetir()
-        {
-            return TabloGetir("REF_FERFORJERENK");
-        }
-
-        private DataTable BolmeCamTipiGetir()
-        {
-            return TabloGetir("REF_CAMTIP");
-        }
-
-        private DataTable FerforjeGetir()
-        {
-            return TabloGetir("REF_FERFORJE");
-        }
-
-        private DataTable ZirhRengiGetir()
-        {
-            return TabloGetir("REF_ZIRHRENK");
-        }
-
-        private DataTable ZirhTipiGetir()
-        {
-            return TabloGetir("REF_ZIRHTIP");
-        }
-
-        private DataTable CekmeKolTakmaSekliGetir()
-        {
-            return TabloGetir("REF_CEKMEKOLUTAKILMASEKLI");
-        }
-
-        private DataTable HidrolikKapaticiGetir()
-        {
-            return TabloGetir("REF_HIDROLIKKAPATICI");
-        }
-
-        private DataTable MenteseTipGetir()
-        {
-            return TabloGetir("REF_MENTESETIP");
-        }
-
-        private DataTable YanginKapiCinsGetir()
-        {
-            return TabloGetir("REF_KAPICINSI");
-        }
-
-        private DataTable YanginKasaTipGetir()
-        {
-            return TabloGetir("REF_KASATIP");
-        }
-
-        private DataTable MudahaleKolGetir()
-        {
-            return TabloGetir("REF_MUDAHALEKOL");
-        }
-
-        private DataTable PanikBarGetir()
-        {
-            return TabloGetir("REF_PANIKBAR");
-        }
-
-        private DataTable KapiRenkGetir()
-        {
-            return TabloGetir("REF_KAPIRENK");
-        }
-
-        private DataTable KilitSistemiGetir()
-        {
-            return TabloGetir("REF_KILITSISTEM");
-        }
-
-        private DataTable CitaGetir()
-        {
-            return TabloGetir("REF_CITA");
-        }
-
-        private DataTable BarelTipGetir()
-        {
-            return TabloGetir("REF_BARELTIP");
-        }
-        private DataTable CekmeKoluGetir()
-        {
-            return TabloGetir("REF_CEKMEKOLU");
-        }
-
-        private DataTable EsikGetir()
-        {
-            return TabloGetir("REF_ESIK");
-        }
-
-        private DataTable AksesuarRenkGetir()
-        {
-            return TabloGetir("REF_AKSESUARRENK");
-        }
-
-        private DataTable AluminyumRenkGetir()
-        {
-            return TabloGetir("REF_ALUMINYUMRENK");
-        }
-
-        private DataTable ContaRenkGetir()
-        {
-            return TabloGetir("REF_CONTARENK");
-        }
-
-        private DataTable TacTipiGetir()
-        {
-            return TabloGetir("REF_TACTIP");
-        }
-
-        private DataTable PervazTipiGetir()
-        {
-            return TabloGetir("REF_PERVAZTIP");
-        }
-
-        private DataTable MontajSekliGetir()
-        {
-            return TabloGetir("REF_MONTAJSEKLI");
-        }
-
-        private DataTable TeslimSekliGetir()
-        {
-            return TabloGetir("REF_TESLIMSEKLI");
-        }
-
-        public DataTable TabloAdlariGetir()
-        {
-            return pTabloAdlariGetir();
-        }
-
-        private DataTable pTabloAdlariGetir()
+        public DataTable FormOgeDetayGetir(int musteriId, string refId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
 
-            string sqlText = @"SELECT AD,TABLO FROM REF_TABLOLAR ORDER BY 1 ";
-            data.GetRecords(dt, sqlText);
+            data.AddSqlParameter("MusteriID", musteriId, SqlDbType.Int, 50);
+            data.AddSqlParameter("RefID", refId, SqlDbType.Int, 50);
 
+            string sqlText = @"DECLARE @DynamicQuery AS NVARCHAR(MAX)
+                                DECLARE @ColumnName AS NVARCHAR(MAX);
+ 
+                                SELECT @ColumnName= COALESCE(@ColumnName + ',','') + QUOTENAME(SeriAdi)
+                                FROM (SELECT SeriAdi FROM dbo.SIPARIS_SERI WHERE MusteriID=@MusteriID) AS SiparisSeri;
+
+                                WITH REF_DETAY AS
+                                (
+	                                SELECT
+		                                R.MusteriID
+		                                ,R.RefID
+		                                ,RD.RefDetayID
+		                                ,RDK.SiparisSeriID
+		                                ,RD.RefDetayAdi
+	                                FROM dbo.REF AS R
+		                                INNER JOIN dbo.REF_DETAY AS RD ON R.RefID=RD.RefID
+		                                INNER JOIN dbo.REF_DETAY_SIPARIS_SERI AS RDK ON RDK.RefDetayID=RD.RefDetayID
+	                                WHERE R.MusteriID=@MusteriID and R.RefID=@RefID
+                                )
+                                ,SIPARIS_SERI_REF_DETAY AS
+                                (
+	                                SELECT
+		                                SS.SeriAdi
+		                                ,RD.RefDetayID
+		                                ,RD.RefDetayAdi AS [Adı]
+	                                FROM dbo.SIPARIS_SERI AS SS
+	                                INNER JOIN REF_DETAY AS RD ON SS.SiparisSeriID=RD.SiparisSeriID
+                                )
+
+                                SELECT * INTO #SERI_REF FROM SIPARIS_SERI_REF_DETAY
+
+                                SET @DynamicQuery = N'SELECT * FROM #SERI_REF
+					                                   PIVOT (Max(RefDetayID) FOR SeriAdi
+					                                   IN ('+@ColumnName+')) pvt'
+                                EXEC sp_executesql @DynamicQuery
+
+                                DROP TABLE #SERI_REF;";
+            data.GetRecords(dt, sqlText);
             return dt;
         }
 
-        public bool OgeSil(Dictionary<string, object> prms)
-        {
-            return pOgeSil(prms);
-        }
-
-        private bool pOgeSil(Dictionary<string, object> prms)
+        public bool FormOgeDetaySil(int refDetayId)
         {
             try
             {
                 IData data = GetDataObject();
+                data.AddSqlParameter("RefID", refDetayId, SqlDbType.Int, 50);
 
-                data.AddSqlParameter("TABLOADI", prms["TABLOADI"], SqlDbType.VarChar, 50);
-                data.AddSqlParameter("ID", prms["ID"], SqlDbType.VarChar, 50);
-
-                string sqlSil = @"DELETE FROM " + prms["TABLOADI"].ToString() + " WHERE ID=@ID";
+                string sqlSil = @"BEGIN TRY
+                                    BEGIN TRANSACTION
+                                        DELETE FROM REF_DETAY_SIPARIS_SERI WHERE RefDetayID=@RefDetayID
+                                        DELETE FROM REF_DETAY WHERE RefDetayID=@RefDetayID
+                                    COMMIT TRANSACTION
+	                              END TRY
+	                              BEGIN CATCH
+		                            IF @@TRANCOUNT > 0
+			                            BEGIN 
+				                            ROLLBACK TRANSACTION
+				                            RAISERROR ('FormOgeDetaySil Hata: %d: %s', 16, 1, ERROR_NUMBER(), ERROR_MESSAGE())
+			                            END
+	                              END CATCH";
                 data.ExecuteStatement(sqlSil);
 
                 return true;
@@ -249,121 +91,7 @@ namespace Kobsis.Business
             }
         }
 
-        public bool OgeEkle(Dictionary<string, object> prms)
-        {
-            return pOgeEkle(prms);
-        }
-
-        private bool pOgeEkle(Dictionary<string, object> prms)
-        {
-            try
-            {
-                IData data = GetDataObject();
-
-                data.AddSqlParameter("TABLOADI", prms["TABLOADI"], SqlDbType.VarChar, 50);
-                data.AddSqlParameter("AD", prms["AD"], SqlDbType.VarChar, 50);
-                data.AddSqlParameter("NOVA", prms["NOVA"], SqlDbType.Bit, 1);
-                data.AddSqlParameter("KROMA", prms["KROMA"], SqlDbType.Bit, 1);
-                data.AddSqlParameter("GUARD", prms["GUARD"], SqlDbType.Bit, 1);
-                data.AddSqlParameter("YANGIN", prms["YANGIN"], SqlDbType.Bit, 1);
-
-                string sqlKaydet = @"INSERT INTO " + prms["TABLOADI"].ToString() + " (AD, NOVA, KROMA, GUARD,YANGIN) VALUES ( @AD, @NOVA, @KROMA, @GUARD, @YANGIN)";
-                data.ExecuteStatement(sqlKaydet);
-
-                return true;
-            }
-            catch (Exception exc)
-            {
-                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeEkle", "", null);
-                return false;
-            }
-        }
-
-        public bool KapiModelEkle(Dictionary<string, object> prms)
-        {
-            return pKapiModelEkle(prms);
-        }
-
-        private bool pKapiModelEkle(Dictionary<string, object> prms)
-        {
-            try
-            {
-                IData data = GetDataObject();
-
-                data.AddSqlParameter("TABLOADI", prms["TABLOADI"], SqlDbType.VarChar, 50);
-                data.AddSqlParameter("KAPISERIID", prms["KAPISERIID"], SqlDbType.VarChar, 50);
-                data.AddSqlParameter("AD", prms["AD"], SqlDbType.VarChar, 50);
-
-                string sqlKaydet = @"INSERT INTO " + prms["TABLOADI"].ToString() + " (KAPISERIID, AD) VALUES ( @KAPISERIID, @AD)";
-                data.ExecuteStatement(sqlKaydet);
-
-                return true;
-            }
-            catch (Exception exc)
-            {
-                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "KapiModelEkle", "", null);
-                return false;
-            }
-        }
-
-        public DataTable KapiSeriGetir()
-        {
-            return pKapiSeriGetir();
-        }
-
-        private DataTable pKapiSeriGetir()
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-            dt.TableName = "REF_KAPISERI";
-
-            string sqlText = @"SELECT ID,AD,VALUE FROM REF_KAPISERI ORDER BY 1 ";
-            data.GetRecords(dt, sqlText);
-
-            return dt;
-        }
-
-        public DataTable KapiModelGetir(Dictionary<string, object> prms)
-        {
-            return pKapiModelGetir(prms);
-        }
-
-        private DataTable pKapiModelGetir(Dictionary<string, object> prms)
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-
-            data.AddSqlParameter("KAPISERIID", prms["KAPISERIID"], SqlDbType.VarChar, 50);
-
-            string sqlText = @"SELECT ID,AD FROM REF_KAPIMODEL WHERE KAPISERIID=@KAPISERIID  ORDER BY 1 ";
-            data.GetRecords(dt, sqlText);
-
-            return dt;
-        }
-
-        public DataTable TumKapiModelGetir()
-        {
-            return pTumKapiModelGetir();
-        }
-
-        private DataTable pTumKapiModelGetir()
-        {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
-            dt.TableName = "REF_TUMKAPIMODELLERI";
-
-            string sqlText = @"SELECT DISTINCT ID,AD FROM REF_KAPIMODEL";
-            data.GetRecords(dt, sqlText);
-
-            return dt;
-        }
-
         public DataTable HatalariGetir()
-        {
-            return pHatalariGetir();
-        }
-
-        private DataTable pHatalariGetir()
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();

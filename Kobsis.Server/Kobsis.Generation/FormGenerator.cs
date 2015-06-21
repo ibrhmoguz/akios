@@ -76,33 +76,55 @@ namespace Kobsis.Generation
             object kontrolDegeri = null;
             var control = KontrolBul(divPanel, kontrolAdi.Replace(" ", string.Empty) + yerlesimTabloId);
 
-            if (control is RadTextBox)
+            var textBox = control as RadTextBox;
+            if (textBox != null)
             {
-                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadTextBox)control).Text) ? ((RadTextBox)control).Text : null;
+                kontrolDegeri = !string.IsNullOrWhiteSpace(textBox.Text) ? textBox.Text : null;
             }
-            if (control is RadMaskedTextBox)
+            var maskedTextBox = control as RadMaskedTextBox;
+            if (maskedTextBox != null)
             {
-                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadMaskedTextBox)control).Text) ? ((RadMaskedTextBox)control).Text : null;
+                kontrolDegeri = !string.IsNullOrWhiteSpace(maskedTextBox.Text) ? maskedTextBox.Text : null;
             }
-            else if (control is RadNumericTextBox)
+            else
             {
-                kontrolDegeri = !string.IsNullOrWhiteSpace(((RadNumericTextBox)control).Text) ? ((RadNumericTextBox)control).Text : null;
-            }
-            else if (control is CheckBox)
-            {
-                kontrolDegeri = ((CheckBox)control).Checked == true ? ((CheckBox)control).Checked : false;
-            }
-            else if (control is RadDatePicker)
-            {
-                kontrolDegeri = ((RadDatePicker)control).SelectedDate != null ? ((RadDatePicker)control).SelectedDate : null;
-            }
-            else if (control is RadDropDownList)
-            {
-                kontrolDegeri = ((RadDropDownList)control).SelectedValue != null && ((RadDropDownList)control).SelectedValue != "0" ? ((RadDropDownList)control).SelectedValue : null;
-            }
-            else if (control is Label)
-            {
-                kontrolDegeri = !string.IsNullOrWhiteSpace(((Label)control).Text) ? ((Label)control).Text : null;
+                var numericTextBox = control as RadNumericTextBox;
+                if (numericTextBox != null)
+                {
+                    kontrolDegeri = !string.IsNullOrWhiteSpace(numericTextBox.Text) ? numericTextBox.Text : null;
+                }
+                else
+                {
+                    var checkBox = control as CheckBox;
+                    if (checkBox != null)
+                    {
+                        kontrolDegeri = checkBox.Checked == true && checkBox.Checked;
+                    }
+                    else
+                    {
+                        var datePicker = control as RadDatePicker;
+                        if (datePicker != null)
+                        {
+                            kontrolDegeri = datePicker.SelectedDate;
+                        }
+                        else
+                        {
+                            var dropDownList = control as RadDropDownList;
+                            if (dropDownList != null)
+                            {
+                                kontrolDegeri = dropDownList.SelectedValue != null && dropDownList.SelectedValue != "0" ? dropDownList.SelectedValue : null;
+                            }
+                            else
+                            {
+                                var label = control as Label;
+                                if (label != null)
+                                {
+                                    kontrolDegeri = !string.IsNullOrWhiteSpace(label.Text) ? label.Text : null;
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             return kontrolDegeri;
@@ -181,13 +203,13 @@ namespace Kobsis.Generation
                     wc = TableHeaderCellOlustur(layout);
                     break;
                 case KontrolTipEnum.TextBox:
-                    wc = this.IslemTipi == FormIslemTipi.Goruntule ? LabelOlustur(layout) : TextBoxOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : TextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.NumericTextBox:
-                    wc = this.IslemTipi == FormIslemTipi.Goruntule ? LabelOlustur(layout) : NumericTextBoxOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : NumericTextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.MaskedTextBox:
-                    wc = this.IslemTipi == FormIslemTipi.Goruntule ? LabelOlustur(layout) : MaskedTextBoxOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : MaskedTextBoxOlustur(layout);
                     break;
                 case KontrolTipEnum.Literal:
                     wc = LiteralOlustur(layout);
@@ -199,13 +221,13 @@ namespace Kobsis.Generation
                     wc = ImageOlustur(layout);
                     break;
                 case KontrolTipEnum.DropDownList:
-                    wc = this.IslemTipi == FormIslemTipi.Goruntule ? LabelOlustur(layout) : DropDownListOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : DropDownListOlustur(layout);
                     break;
                 case KontrolTipEnum.DatePicker:
-                    wc = this.IslemTipi == FormIslemTipi.Goruntule ? LabelOlustur(layout) : DateTimePickerOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : DateTimePickerOlustur(layout);
                     break;
                 case KontrolTipEnum.CheckBox:
-                    wc = CheckBoxOlustur(layout);
+                    wc = (this.IslemTipi == FormIslemTipi.Goruntule || this.IslemTipi == FormIslemTipi.Print) ? LabelOlustur(layout) : CheckBoxOlustur(layout);
                     break;
             }
 
@@ -292,7 +314,7 @@ namespace Kobsis.Generation
             {
                 if (layout.RefID.HasValue)
                 {
-                    DataTable dt = new ReferansDataBS() { SiparisSeri = this.SiparisSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
+                    var dt = new ReferansDataBS() { SiparisSeri = this.SiparisSeri, RefID = layout.RefID.Value.ToString() }.ReferansVerisiGetir();
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
@@ -304,7 +326,16 @@ namespace Kobsis.Generation
                 }
                 else if (SessionManager.SiparisBilgi != null && SessionManager.SiparisBilgi.Rows.Count > 0 && SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi] != DBNull.Value)
                 {
-                    wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                    var kolonDegeri = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                    bool result;
+                    if (Boolean.TryParse(kolonDegeri, out result))
+                    {
+                        wc.Text = result ? "Evet" : "Hayır";
+                    }
+                    else
+                    {
+                        wc.Text = SessionManager.SiparisBilgi.Rows[0][layout.KolonAdi].ToString();
+                    }
                 }
             }
             return wc;
@@ -396,6 +427,8 @@ namespace Kobsis.Generation
         {
             var wc = new Table();
             KontrolOzellikAyarla(layout, wc);
+            if (this.IslemTipi == FormIslemTipi.Print && !string.IsNullOrWhiteSpace(layout.PrintCssClass))
+                wc.CssClass = layout.PrintCssClass;
             return wc;
         }
 

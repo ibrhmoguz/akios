@@ -28,6 +28,7 @@ namespace Kobsis.Business
 	                            ,K.[Enabled]
 	                            ,K.PostBack
 	                            ,K.CssClass
+                                ,K.PrintCssClass
 	                            ,K.Style
 	                            ,K.RowSpan
 	                            ,K.ColSpan
@@ -111,6 +112,7 @@ namespace Kobsis.Business
                                 ,K.[Enabled]
                                 ,K.PostBack
                                 ,K.CssClass
+                                ,K.PrintCssClass
                                 ,K.Style
                                 ,K.RowSpan
                                 ,K.ColSpan
@@ -166,6 +168,8 @@ namespace Kobsis.Business
                     layout.PostBack = Convert.ToBoolean(row["PostBack"]);
                 if (row["CssClass"] != DBNull.Value)
                     layout.CssClass = row["CssClass"].ToString();
+                if (row["PrintCssClass"] != DBNull.Value)
+                    layout.PrintCssClass = row["PrintCssClass"].ToString();
                 if (row["Style"] != DBNull.Value)
                     layout.Style = row["Style"].ToString();
                 if (row["RowSpan"] != DBNull.Value)

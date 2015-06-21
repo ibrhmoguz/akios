@@ -34,7 +34,7 @@ namespace Kobsis.Web
             List<SiparisSeri> seriList = null;
             if (SessionManager.SiparisSeri == null)
             {
-                seriList = new ReferansDataBS().SeriGetirMusteriIDGore(SessionManager.MusteriBilgi.MusteriID.Value);
+                seriList = new ReferansDataBS().SeriGetirMusteriIdGore(SessionManager.MusteriBilgi.MusteriID.Value);
                 SessionManager.SiparisSeri = seriList;
             }
             else

@@ -5,6 +5,7 @@
         Kaydet = 1,
         Guncelle = 2,
         Goruntule = 3,
-        Sorgula = 4
+        Sorgula = 4,
+        Print = 5
     }
 }

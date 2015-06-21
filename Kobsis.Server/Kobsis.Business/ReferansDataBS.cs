@@ -30,13 +30,13 @@ namespace Kobsis.Business
             if (SessionManager.ReferansData != null)
             {
                 DataRow[] rows = SessionManager.ReferansData.Select("RefID=" + this.RefID + " AND SiparisSeriID=" + this.SiparisSeri);
-                if (rows != null && rows.Any())
+                if (rows.Any())
                     return rows.CopyToDataTable();
-                else
-                    return null;
-            }
-            else
+
                 return null;
+            }
+
+            return null;
         }
 
         public DataTable ReferansVerileriniGetir(int musteriID, string siparisSeri)
@@ -60,6 +60,21 @@ namespace Kobsis.Business
             data.GetRecords(dt, sqlText);
             return dt;
         }
+
+        public DataTable MusteriReferanslariniGetir(int musteriId)
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+            string sqlText = @"SELECT
+	                            RefID
+	                            ,RefAdi
+                            FROM dbo.REF
+                            WHERE MusteriID=@MusteriID
+                            ORDER BY MusteriID,RefID";
+            data.AddSqlParameter("MusteriID", musteriId, SqlDbType.Int, 50);
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }  
 
         public DataTable IlleriGetir()
         {
@@ -105,13 +120,13 @@ namespace Kobsis.Business
             return dt;
         }
 
-        public List<SiparisSeri> SeriGetirMusteriIDGore(int pMusteriID)
+        public List<SiparisSeri> SeriGetirMusteriIdGore(int pMusteriId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
             string sqlText = @"SELECT * FROM SIPARIS_SERI WHERE MusteriID=@MusteriID";
 
-            data.AddSqlParameter("MusteriID", pMusteriID, SqlDbType.Int, 50);
+            data.AddSqlParameter("MusteriID", pMusteriId, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
             var seriList = new List<SiparisSeri>();

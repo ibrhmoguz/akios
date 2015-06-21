@@ -27,8 +27,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["ReferansData"] != null)
                     return (DataTable)HttpContext.Current.Session["ReferansData"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -43,8 +43,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["SiparisFormLayout"] != null)
                     return (List<Layout>)HttpContext.Current.Session["SiparisFormLayout"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -58,8 +58,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["SiparisSorgulaFormLayout"] != null)
                     return (List<Layout>)HttpContext.Current.Session["SiparisSorgulaFormLayout"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -73,8 +73,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["SiparisBilgi"] != null)
                     return (DataTable)HttpContext.Current.Session["SiparisBilgi"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -88,8 +88,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["MusteriBilgi"] != null)
                     return (Musteri)HttpContext.Current.Session["MusteriBilgi"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -103,8 +103,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["KullaniciBilgi"] != null)
                     return (Kullanici)HttpContext.Current.Session["KullaniciBilgi"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -118,8 +118,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["LoginAttemptUser"] != null)
                     return HttpContext.Current.Session["LoginAttemptUser"].ToString();
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -133,8 +133,8 @@ namespace Kobsis.Util
             {
                 if (!string.IsNullOrWhiteSpace(HttpContext.Current.Session["LoginAttemptCount"].ToString()))
                     return Convert.ToInt32(HttpContext.Current.Session["LoginAttemptCount"].ToString());
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -148,8 +148,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["CaptchaImageText"] != null)
                     return HttpContext.Current.Session["CaptchaImageText"].ToString();
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -163,8 +163,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["SiparisSeri"] != null)
                     return (List<SiparisSeri>)HttpContext.Current.Session["SiparisSeri"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -178,8 +178,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"] != null)
                     return HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"].ToString();
-                else
-                    return string.Empty;
+
+                return string.Empty;
             }
             set
             {
@@ -193,8 +193,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] != null && !string.IsNullOrWhiteSpace(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString()))
                     return Convert.ToInt32(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString());
-                else
-                    return 0;
+
+                return 0;
             }
             set
             {
@@ -208,8 +208,8 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["PersonelListesi"] != null)
                     return (DataTable)HttpContext.Current.Session["PersonelListesi"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
@@ -223,12 +223,42 @@ namespace Kobsis.Util
             {
                 if (HttpContext.Current.Session["SiparisSorguListesi"] != null)
                     return (DataTable)HttpContext.Current.Session["SiparisSorguListesi"];
-                else
-                    return null;
+
+                return null;
             }
             set
             {
                 HttpContext.Current.Session["SiparisSorguListesi"] = value;
+            }
+        }
+
+        public static DataTable MontajListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["Takvim_MontajListesi"] != null)
+                    return HttpContext.Current.Session["Takvim_MontajListesi"] as DataTable;
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["Takvim_MontajListesi"] = value;
+            }
+        }
+
+        public static DataTable MusteriReferansDegerleri
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MusteriReferansDegerleri"] != null)
+                    return HttpContext.Current.Session["MusteriReferansDegerleri"] as DataTable;
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["MusteriReferansDegerleri"] = value;
             }
         }
     }

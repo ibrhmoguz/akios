@@ -15,6 +15,7 @@
         public bool Enabled { get; set; }
         public bool PostBack { get; set; }
         public string CssClass { get; set; }
+        public string PrintCssClass { get; set; }
         public string Style { get; set; }
         public int? RowSpan { get; set; }
         public int? ColSpan { get; set; }
