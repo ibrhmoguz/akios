@@ -261,5 +261,20 @@ namespace Kobsis.Util
                 HttpContext.Current.Session["MusteriReferansDegerleri"] = value;
             }
         }
+
+        public static DataTable ReferansDetay
+        {
+            get
+            {
+                if (HttpContext.Current.Session["ReferansDetay"] != null)
+                    return (DataTable)HttpContext.Current.Session["ReferansDetay"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["ReferansDetay"] = value;
+            }
+        }
     }
 }

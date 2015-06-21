@@ -34,7 +34,8 @@
                     <asp:Repeater ID="RP_Sifre" runat="server"
                         OnItemCommand="RP_Sifre_ItemCommand">
                         <HeaderTemplate>
-                            <table class="AnaTablo">
+                            <div style="text-align: center; width: 70%;">
+                                <table class="grid" style="width: 100%">
                                 <tr>
                                     <th></th>
                                     <th>Kullanıcı Adı  </th>
@@ -52,10 +53,7 @@
                                 <td><%# DataBinder.Eval(Container.DataItem, "SIFRE") %></td>
                             </tr>
                         </ItemTemplate>
-                        <FooterTemplate>
-                            </table>
-
-                        </FooterTemplate>
+                        <FooterTemplate></table></div></FooterTemplate>
                     </asp:Repeater>
                 </div>
             </td>

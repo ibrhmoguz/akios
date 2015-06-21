@@ -7,7 +7,7 @@
     <br />
     <table class="AnaTablo" style="width: 100%">
         <tr>
-            <th class="TdRenkAciklama" colspan="7" style="text-align: center; font-size:  11pt;">MONTAJ KOTA TANIMLAMA<br />
+            <th class="TdRenkAciklama" colspan="7" style="text-align: center; font-size: 11pt;">MONTAJ KOTA TANIMLAMA<br />
             </th>
         </tr>
         <tr>
@@ -34,7 +34,6 @@
                     <Icon PrimaryIconCssClass="rbOk" PrimaryIconLeft="4" PrimaryIconTop="3" />
                 </telerik:RadButton>
             </td>
-
         </tr>
         <tr>
             <td colspan="7">
@@ -43,16 +42,16 @@
         </tr>
     </table>
     <br />
-    <asp:GridView ID="grdMontajKota" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="AnaTablo"
+    <asp:GridView ID="grdMontajKota" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="grid"
         AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2" EmptyDataText="Montaj kotası tanımlanmamıştır!"
         EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
         EmptyDataRowStyle-CssClass="TdRenkAciklama" DataKeyNames="MONTAJKOTAID" OnRowDeleting="grdMontajKota_RowDeleting">
         <Columns>
-            <asp:BoundField DataField="ID" HeaderText="ID" />
-            <asp:BoundField DataField="MONTAJTARIHI" HeaderText="MONTAJ TARİHİ" />
-            <asp:BoundField DataField="MAXMONTAJSAYI" HeaderText="MONTAJ KOTASI" />
-            <asp:BoundField DataField="MONTAJKABUL" HeaderText="DURUM" ItemStyle-Font-Size="12px" />
-            <asp:CommandField HeaderText="SİL" DeleteText="Sil" DeleteImageUrl="~/App_Themes/Theme/Raster/clear.png" ShowDeleteButton="true" ButtonType="Image" />
+            <asp:BoundField DataField="ID" HeaderText="ID" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="MONTAJTARIHI" HeaderText="MONTAJ TARİHİ" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="MAXMONTAJSAYI" HeaderText="MONTAJ KOTASI" ItemStyle-HorizontalAlign="Center" />
+            <asp:BoundField DataField="MONTAJKABUL" HeaderText="DURUM" ItemStyle-HorizontalAlign="Center" />
+            <asp:CommandField HeaderText="SİL" DeleteText="Sil" DeleteImageUrl="~/App_Themes/Theme/Raster/iptal.gif" ShowDeleteButton="true" ButtonType="Image" ItemStyle-HorizontalAlign="Center" />
         </Columns>
     </asp:GridView>
 </asp:Content>

@@ -9,7 +9,7 @@
         <asp:Label ID="lblhataSayisi" runat="server"></asp:Label>
 
         <asp:GridView ID="grdHatalar" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-            Width="100%" CssClass="AnaTablo" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+            Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
             EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
             EmptyDataRowStyle-CssClass="TdRenkAciklama">
             <Columns>

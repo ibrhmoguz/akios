@@ -38,28 +38,28 @@
                         </tr>
                     </table>
                     <br />
-                    <asp:Repeater ID="RP_Kullanici" runat="server"
-                        OnItemCommand="RP_Kullanici_ItemCommand">
+                    <asp:Repeater ID="RP_Kullanici" runat="server" OnItemCommand="RP_Kullanici_ItemCommand">
                         <HeaderTemplate>
-                            <table class="AnaTablo">
-                                <tr>
-                                    <th></th>
-                                    <th>Kullanıcı Adı</th>
-                                    <th>Rolü</th>
-                                </tr>
+                            <div style="text-align: center; width: 70%;">
+                                <table class="grid" style="width: 100%">
+                                    <tr>
+                                        <th></th>
+                                        <th>Kullanıcı Adı</th>
+                                        <th>Rolü</th>
+                                    </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td>
                                     <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %>' type="hidden" />
                                     <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolAdi") %>' type="hidden" />
-                                    <asp:LinkButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %>' runat="server">Sil</asp:LinkButton>
+                                    <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "RolAdi") %></td>
                             </tr>
                         </ItemTemplate>
-                        <FooterTemplate></table></FooterTemplate>
+                        <FooterTemplate></table></div></FooterTemplate>
                     </asp:Repeater>
                 </div>
             </td>

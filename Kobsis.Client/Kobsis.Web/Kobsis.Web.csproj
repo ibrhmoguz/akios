@@ -68,6 +68,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Theme\Buttons.css" />
+    <Content Include="App_Themes\Theme\GridView\empdatarowbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\footer.gif" />
+    <Content Include="App_Themes\Theme\GridView\gridviewfooterbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbghover.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbgsecili.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbg1.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbgAnasayfa.jpg" />
+    <Content Include="App_Themes\Theme\GridView\pager_bg.gif" />
     <Content Include="App_Themes\Theme\Raster\ackLogo.PNG" />
     <Content Include="App_Themes\Theme\Raster\BlankProfile.gif" />
     <Content Include="App_Themes\Theme\Raster\buton.jpg" />
@@ -75,12 +85,14 @@
     <Content Include="App_Themes\Theme\Raster\cancel.gif" />
     <Content Include="App_Themes\Theme\Raster\clear.png" />
     <Content Include="App_Themes\Theme\Raster\dl.png" />
+    <Content Include="App_Themes\Theme\Raster\ekle.gif" />
     <Content Include="App_Themes\Theme\Raster\error.png" />
     <Content Include="App_Themes\Theme\Raster\guard.png" />
     <Content Include="App_Themes\Theme\Raster\guardKapiOrta.png" />
     <Content Include="App_Themes\Theme\Raster\guncelle.png" />
     <Content Include="App_Themes\Theme\Raster\gunlukRapor.png" />
     <Content Include="App_Themes\Theme\Raster\hataLog.png" />
+    <Content Include="App_Themes\Theme\Raster\iptal.gif" />
     <Content Include="App_Themes\Theme\Raster\kroma.png" />
     <Content Include="App_Themes\Theme\Raster\KromaKapiOrta.png" />
     <Content Include="App_Themes\Theme\Raster\kullaniciEkle.png" />

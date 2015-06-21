@@ -136,7 +136,7 @@
                     </tr>
                 </table>
                 <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="30" OnPageIndexChanging="grdSiparisler_PageIndexChanging"
-                    OnRowDataBound="grdSiparisler_RowDataBound" Width="100%" CssClass="AnaTablo" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                    OnRowDataBound="grdSiparisler_RowDataBound" Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                     EmptyDataText="Sipariş bulunamamıştır!" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                     EmptyDataRowStyle-CssClass="TdRenkAciklama">
                     <Columns>

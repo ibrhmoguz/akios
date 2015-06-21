@@ -27,19 +27,15 @@
                     <telerik:RadDropDownList ID="ddlReferanslar" runat="server" OnSelectedIndexChanged="ddlReferanslar_SelectedIndexChanged" AutoPostBack="True" RenderMode="Lightweight"></telerik:RadDropDownList>
                 </td>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <br />
-                    <asp:GridView ID="gvReferansDetay" runat="server" AutoGenerateColumns="true" Width="100%" CssClass="AnaTablo" ShowFooter="True"
-                        AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2" EmptyDataText="Form öğe detayı tanımlanmamıştır!"
-                        EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
-                        EmptyDataRowStyle-CssClass="TdRenkAciklama" FooterStyle="ThBaslikRenk2" OnRowDeleting="gvReferansDetay_RowDeleting" OnRowDataBound="gvReferansDetay_RowDataBound">
-                        <Columns>
-                            <asp:CommandField HeaderText="SİL" DeleteText="Sil" DeleteImageUrl="~/App_Themes/Theme/Raster/clear.png" ShowDeleteButton="true" ButtonType="Image" />
-                        </Columns>
-                    </asp:GridView>
-                </td>
-            </tr>
         </table>
+        <br />
+        <asp:GridView ID="gvReferansDetay" runat="server" AutoGenerateColumns="true" Width="100%"
+            CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2" ShowFooter="True"
+            EmptyDataText="Form öğe detayı tanımlanmamıştır!" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
+            OnRowDeleting="gvReferansDetay_RowDeleting" OnRowDataBound="gvReferansDetay_RowDataBound">
+            <Columns>
+                <asp:CommandField HeaderText="Sil" DeleteText="Sil" DeleteImageUrl="~/App_Themes/Theme/Raster/iptal.gif" ShowDeleteButton="true" ButtonType="Image" />
+            </Columns>
+        </asp:GridView>
     </div>
 </asp:Content>

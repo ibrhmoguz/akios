@@ -13,7 +13,7 @@
         <tr>
             <td>
                 <div style="padding-top: 25px; text-align: center; width: 45%;">
-                    <table class="AnaTablo" >
+                    <table class="AnaTablo">
                         <tr>
                             <th>Ad</th>
                             <th>Soyad</th>
@@ -37,22 +37,23 @@
                     <br />
                     <asp:Repeater ID="RP_Personel" runat="server" OnItemCommand="RP_Personel_ItemCommand">
                         <HeaderTemplate>
-                            <table class="AnaTablo">
-                                <tr>
-                                    <th></th>
-                                    <th>Personel</th>
-                                </tr>
+                            <div style="text-align: center; width: 70%;">
+                                <table class="grid" style="width: 100%">
+                                    <tr>
+                                        <th style="width: 15%"></th>
+                                        <th>Personel</th>
+                                    </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td>
                                     <input id="Ad" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "AD") %>' type="hidden" />
-                                    <asp:LinkButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID") %>' runat="server">Sil</asp:LinkButton>
+                                    <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "AD") %></td>
                             </tr>
                         </ItemTemplate>
-                        <FooterTemplate></table></FooterTemplate>
+                        <FooterTemplate></table></div></FooterTemplate>
                     </asp:Repeater>
                 </div>
             </td>

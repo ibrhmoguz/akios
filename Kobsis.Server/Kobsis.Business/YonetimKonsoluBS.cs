@@ -13,13 +13,13 @@ namespace Kobsis.Business
     {
         public DataTable FormOgeDetayGetir(int musteriId, string refId)
         {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
+            var dt = new DataTable();
+            var data = GetDataObject();
 
             data.AddSqlParameter("MusteriID", musteriId, SqlDbType.Int, 50);
             data.AddSqlParameter("RefID", refId, SqlDbType.Int, 50);
 
-            string sqlText = @"DECLARE @DynamicQuery AS NVARCHAR(MAX)
+            const string sqlText = @"DECLARE @DynamicQuery AS NVARCHAR(MAX)
                                 DECLARE @ColumnName AS NVARCHAR(MAX);
  
                                 SELECT @ColumnName= COALESCE(@ColumnName + ',','') + QUOTENAME(SeriAdi)
@@ -64,10 +64,10 @@ namespace Kobsis.Business
         {
             try
             {
-                IData data = GetDataObject();
-                data.AddSqlParameter("RefID", refDetayId, SqlDbType.Int, 50);
+                var data = GetDataObject();
+                data.AddSqlParameter("RefDetayID", refDetayId, SqlDbType.Int, 50);
 
-                string sqlSil = @"BEGIN TRY
+                const string sqlSil = @"BEGIN TRY
                                     BEGIN TRANSACTION
                                         DELETE FROM REF_DETAY_SIPARIS_SERI WHERE RefDetayID=@RefDetayID
                                         DELETE FROM REF_DETAY WHERE RefDetayID=@RefDetayID
@@ -77,7 +77,9 @@ namespace Kobsis.Business
 		                            IF @@TRANCOUNT > 0
 			                            BEGIN 
 				                            ROLLBACK TRANSACTION
-				                            RAISERROR ('FormOgeDetaySil Hata: %d: %s', 16, 1, ERROR_NUMBER(), ERROR_MESSAGE())
+                                            DECLARE @error int, @message varchar(4000)
+				                            SELECT @error = ERROR_NUMBER(), @message = ERROR_MESSAGE()
+				                            RAISERROR ('FormOgeDetaySil Hata: %d: %s', 16, 1, @error, @message)
 			                            END
 	                              END CATCH";
                 data.ExecuteStatement(sqlSil);
@@ -91,12 +93,47 @@ namespace Kobsis.Business
             }
         }
 
+        public bool FormOgeDetayEkle(string refId, string refDetayAdi, List<string> seriIdList)
+        {
+            var data = GetDataObject();
+
+            try
+            {
+                data.BeginTransaction();
+
+                data.AddSqlParameter("RefID", refId, SqlDbType.Int, 50);
+                data.AddSqlParameter("RefDetayAdi", refDetayAdi, SqlDbType.VarChar, 150);
+
+                var sqlText = @"INSERT INTO REF_DETAY (RefID,RefDetayAdi) VALUES (@RefID,@RefDetayAdi)
+                                SELECT SCOPE_IDENTITY()";
+                var refDetayId = data.ExecuteScalar(sqlText, CommandType.Text);
+
+                foreach (var seriId in seriIdList)
+                {
+                    data.AddSqlParameter("SiparisSeriID", seriId, SqlDbType.Int, 50);
+                    data.AddSqlParameter("RefDetayID", refDetayId, SqlDbType.Int, 50);
+
+                    sqlText = @"INSERT INTO REF_DETAY_SIPARIS_SERI (SiparisSeriID,RefDetayID) VALUES (@SiparisSeriID,@RefDetayID)";
+                    data.ExecuteStatement(sqlText);
+                }
+
+                data.CommitTransaction();
+                return true;
+            }
+            catch (Exception exc)
+            {
+                data.RollbackTransaction();
+                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeEkle", "", null);
+                return false;
+            }
+        }
+
         public DataTable HatalariGetir()
         {
-            DataTable dt = new DataTable();
-            IData data = GetDataObject();
+            var dt = new DataTable();
+            var data = GetDataObject();
 
-            string sqlText = @"SELECT TOP 500
+            const string sqlText = @"SELECT TOP 500
                                   (CASE 
 			                            WHEN MODULEID = 0 THEN 'KobsisSiparisTakip'
 			                            WHEN MODULEID = 1 THEN 'Siparis'
@@ -121,8 +158,8 @@ namespace Kobsis.Business
                                   ,[EXTENDEDPROPERTIES]
                                   ,[USERNAME]
                                   ,[DATE]
-                              FROM [ACKAppDB].[dbo].[HATA]
-                              ORDER BY [DATE] DESC";
+                              FROM HATA
+                              ORDER BY DATE DESC";
             data.GetRecords(dt, sqlText);
             return dt;
         }
