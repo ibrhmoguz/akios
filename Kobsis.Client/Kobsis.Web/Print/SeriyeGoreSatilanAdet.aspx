@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Print/PrinterFriendly.Master" AutoEventWireup="true" CodeBehind="KapiTipineGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.Print.KapiTipineGoreSatilanAdet" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Print/PrinterFriendly.Master" AutoEventWireup="true" CodeBehind="SeriyeGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.Print.SeriyeGoreSatilanAdet" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -6,7 +6,7 @@
     <table style="width: 100%" class="normalTablo">
         <tr>
             <td rowspan="4" style="width: 70px; padding: 5px 5px 5px 5px">
-                <telerik:RadBinaryImage ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
+                <asp:Image ID="imgFirmaLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
             </td>
             <td rowspan="4" style="text-align: center; vertical-align: central">
                 <h3>Kapı Bazlı Satılan Adet/Tutar Raporu</h3>

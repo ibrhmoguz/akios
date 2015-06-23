@@ -5,24 +5,14 @@ using Kobsis.Util;
 
 namespace Kobsis.Web.Print
 {
-    public partial class GunlukIsTakip : System.Web.UI.Page
+    public partial class SeriyeGoreSatilanAdet : System.Web.UI.Page
     {
-        public string Tarih
-        {
-            get
-            {
-                return !String.IsNullOrEmpty(Request.QueryString["Tarih"]) ? Request.QueryString["Tarih"] : string.Empty;
-            }
-        }
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 MusteriLogoAyarla();
                 RaporOlustur();
-                lblTarih.Text = Tarih;
             }
         }
 
@@ -36,17 +26,21 @@ namespace Kobsis.Web.Print
 
         private void RaporOlustur()
         {
-            DataTable dt = SessionManager.GunlukIsTakipListesi;
+            GridDoldur(grdSatisAdetRapor, SessionManager.SatisAdetListesi);
+            GridDoldur(grdSatisTutarRapor, SessionManager.SatisTutarListesi);
+        }
 
-            if (dt.Rows.Count > 0)
+        private void GridDoldur(GridView gv, DataTable dtSatisAdet)
+        {
+            if (dtSatisAdet.Rows.Count > 0)
             {
-                grdSiparisler.DataSource = dt;
-                grdSiparisler.DataBind();
+                gv.DataSource = dtSatisAdet;
+                gv.DataBind();
             }
             else
             {
-                grdSiparisler.DataSource = null;
-                grdSiparisler.DataBind();
+                gv.DataSource = null;
+                gv.DataBind();
             }
         }
     }

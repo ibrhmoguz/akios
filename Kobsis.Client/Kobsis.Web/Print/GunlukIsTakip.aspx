@@ -1,13 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Print/PrinterFriendly.Master" AutoEventWireup="true" CodeBehind="GunlukIsTakip.aspx.cs" Inherits="Kobsis.Web.Print.GunlukIsTakip" %>
 
-<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
     <table style="width: 100%" class="normalTablo">
         <tr>
             <td rowspan="4" style="width: 70px; padding: 5px 5px 5px 5px">
-                <telerik:RadBinaryImage ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
+                <asp:Image ID="imgFirmaLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
             </td>
             <td rowspan="4" style="text-align: center; vertical-align: central">
                 <h3>Günlük İş Takip Formu</h3>
@@ -29,100 +27,18 @@
         </tr>
         <tr>
             <td colspan="3">
-                <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" Width="100%"
-                    AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2">
+                <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" Width="100%" AllowPaging="False">
                     <Columns>
-                        <asp:BoundField DataField="ID" HeaderText="ID" />
-                        <asp:BoundField DataField="SIPARISNO" HeaderText="SİPARİŞ NO" />
-                        <asp:BoundField DataField="MUSTERI" HeaderText="MÜŞTERİ/FİRMA" />
-                        <asp:BoundField DataField="TEL" HeaderText="TEL" />
-                        <%--<asp:BoundField DataField="ADRES" HeaderText="ADRES" />--%>
-                        <asp:BoundField DataField="SEMT" HeaderText="SEMT" />
-                        <%-- <asp:BoundField DataField="MONTAJEKIBI" HeaderText="MONTAJ EKİBİ" />--%>
-                        <asp:BoundField DataField="ACIKLAMA" HeaderText="AÇIKLAMA" />
-                        <%--<asp:BoundField DataField="KAPICINSI" HeaderText="KAPI CİNSİ" />--%>
+                        <asp:BoundField DataField="ID" HeaderText="SIRANO" />
+                        <asp:BoundField DataField="SiparisNo" HeaderText="SİPARİŞ NO" />
+                        <asp:BoundField DataField="Musteri" HeaderText="MÜŞTERİ/FİRMA" />
+                        <asp:BoundField DataField="Adres" HeaderText="ADRES" />
+                        <asp:BoundField DataField="Tel" HeaderText="TEL" ItemStyle-Font-Size="12px" />
+                        <asp:BoundField DataField="Semt" HeaderText="SEMT" />
+                        <asp:BoundField DataField="MontajEkibi" HeaderText="MONTAJ EKİBİ" />
                     </Columns>
                 </asp:GridView>
             </td>
-        </tr>
-    </table>
-    <br />
-    <table class="normalTablo" style="width: 100%; text-align: center">
-        <tr>
-            <td colspan="3">MONTAJ EKİBİ:
-                <br />
-                <br />
-                <br />
-            </td>
-            <td colspan="3">MONTAJ EKİBİ:</td>
-            <td colspan="3">MONTAJ EKİBİ:</td>
-        </tr>
-        <tr>
-            <td>SİPARİŞ NO</td>
-            <td>SEMT</td>
-            <td>KAPI CİNSİ</td>
-            <td>SİPARİŞ NO</td>
-            <td>SEMT</td>
-            <td>KAPI CİNSİ</td>
-            <td>SİPARİŞ NO</td>
-            <td>SEMT</td>
-            <td>KAPI CİNSİ</td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                <br />
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                <br />
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                <br />
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>
-                <br />
-                <br />
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
         </tr>
     </table>
 </asp:Content>

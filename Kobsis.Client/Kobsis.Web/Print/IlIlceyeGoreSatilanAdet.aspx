@@ -6,7 +6,7 @@
     <table style="width: 100%" class="normalTablo">
         <tr>
             <td rowspan="4" style="width: 70px; padding: 5px 5px 5px 5px">
-                <telerik:RadBinaryImage ID="imgLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
+               <asp:Image ID="imgFirmaLogo"  runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
             </td>
             <td rowspan="4" style="text-align: center; vertical-align: central">
                 <h3>İl/İlçe Bazlı Satılan Adet Raporu</h3>

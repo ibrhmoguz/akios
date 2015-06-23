@@ -95,7 +95,7 @@ namespace Kobsis.Web
                 RadRibbonBarMenu.SelectedTabIndex = 3;
             }
             else if (url.Contains("GunlukIsTakipFormu") ||
-                     url.Contains("KapiTipineGoreSatilanAdet") ||
+                     url.Contains("SeriyeGoreSatilanAdet") ||
                      url.Contains("IlIlceyeGoreSatilanAdet"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 4;

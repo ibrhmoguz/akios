@@ -60,19 +60,19 @@ ol          { list-style-type: decimal; }
 /* Tablolar
 -------------------------------------------------------------- */
 
-table.PrintTablo, table.PrintTablo td { font-size:8pt; border-collapse:collapse; margin-bottom: 0.5em; border:1px solid gray; padding-left: 5px;}
-table.PrintTablo th   		{ font-weight: bold; border:1px solid gray; text-align: left}
-table.PrintTablo th,td		{ padding: 5px 5px 5px 5px; vertical-align:central; }
-table.PrintTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
-table.PrintTablo tfoot		{ font-style: italic; }
-table.PrintTablo caption	{ background: #eee; }
+table.normalTablo, table.normalTablo td { font-size:8pt; border-collapse:collapse; margin-bottom: 0.5em; border:1px solid gray;}
+table.normalTablo th   		{ font-size:8pt;font-weight: bold; background: #e5f1fb; }
+table.normalTablo th,td		{ padding: 5px 5px 5px 5px; vertical-align:top; }
+table.normalTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
+table.normalTablo tfoot		{ font-style: italic; }
+table.normalTablo caption	{ background: #eee; }
 
-table.kucukPrintTablo, table.kucukPrintTablo td { font-size:8pt; font-weight:normal; margin-bottom: 0.5em; border-collapse:collapse; border:1px solid gray; padding-left: 5px}
-table.kucukPrintTablo th   		{ font-weight: bold; border:1px solid gray; text-align: left}
-table.kucukPrintTablo th,td		{ padding: 0px 0px 0px 5px; }
-table.kucukPrintTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
-table.kucukPrintTablo tfoot		{ font-style: italic; }
-table.kucukPrintTablo caption		{ background: #eee; }
+table.boldTablo, table.boldTablo td { font-size:8pt; font-weight:normal; margin-bottom: 0.5em; border-collapse:collapse; border:1px solid gray;}
+table.boldTablo th   		{ font-weight: bold; background: #e5f1fb; }
+table.boldTablo th,td		{ padding: 0px 0px 0px 0px; }
+table.boldTablo tr.AlternatifTabloSatiri td  { background: #E5ECF9; }
+table.boldTablo tfoot		{ font-style: italic; }
+table.boldTablo caption		{ background: #eee; }
 
 /* Cesitli
 -------------------------------------------------------------- */

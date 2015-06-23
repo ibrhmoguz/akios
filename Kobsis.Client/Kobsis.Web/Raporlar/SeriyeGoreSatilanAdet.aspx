@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="KapiTipineGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.KapiTipineGoreSatilanAdet" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="SeriyeGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.Raporlar.SeriyeGoreSatilanAdet" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -7,7 +7,7 @@
     <br />
     <table class="AnaTablo" style="width: 100%">
         <tr>
-            <th class="TdRenkAciklama" colspan="2" style="text-align: center; font-size: 11pt;">KAPI TİPİNE GÖRE SATILAN ADET/TUTAR<br />
+            <th class="TdRenkAciklama" colspan="2" style="text-align: center; font-size: 11pt;">SERİYE GÖRE SATILAN ADET/TUTAR<br />
             </th>
         </tr>
         <tr>

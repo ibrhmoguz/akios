@@ -37,7 +37,6 @@
         </tr>
         <tr>
             <td colspan="7">
-                <br />
             </td>
         </tr>
     </table>

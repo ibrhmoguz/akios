@@ -10,7 +10,7 @@
 namespace Kobsis.Web.Raporlar {
     
     
-    public partial class KapiTipineGoreSatilanAdet {
+    public partial class SeriyeGoreSatilanAdet {
         
         /// <summary>
         /// ddlYil control.

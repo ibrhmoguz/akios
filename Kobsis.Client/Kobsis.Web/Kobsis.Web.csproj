@@ -133,12 +133,12 @@
     <Content Include="YonetimKonsolu\Hatalar.aspx" />
     <Content Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="ImageForm.aspx" />
-    <Content Include="Raporlar\KapiTipineGoreSatilanAdet.aspx" />
+    <Content Include="Raporlar\SeriyeGoreSatilanAdet.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="Manage.aspx" />
     <Content Include="YonetimKonsolu\MontajKotaTanimla.aspx" />
     <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
-    <Content Include="Print\KapiTipineGoreSatilanAdet.aspx" />
+    <Content Include="Print\SeriyeGoreSatilanAdet.aspx" />
     <Content Include="Print\PrintYangin.aspx" />
     <Content Include="Script\jquery.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -235,12 +235,12 @@
     <Compile Include="Takvim\IsTakvimi.aspx.designer.cs">
       <DependentUpon>IsTakvimi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Raporlar\KapiTipineGoreSatilanAdet.aspx.cs">
-      <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
+    <Compile Include="Raporlar\SeriyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Raporlar\KapiTipineGoreSatilanAdet.aspx.designer.cs">
-      <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
+    <Compile Include="Raporlar\SeriyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
     <Compile Include="KobsisMasterPage.Master.cs">
       <DependentUpon>KobsisMasterPage.Master</DependentUpon>
@@ -291,12 +291,12 @@
     <Compile Include="Print\IlIlceyeGoreSatilanAdet.aspx.designer.cs">
       <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Print\KapiTipineGoreSatilanAdet.aspx.cs">
-      <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
+    <Compile Include="Print\SeriyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Print\KapiTipineGoreSatilanAdet.aspx.designer.cs">
-      <DependentUpon>KapiTipineGoreSatilanAdet.aspx</DependentUpon>
+    <Compile Include="Print\SeriyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print\PrintYangin.aspx.cs">
       <DependentUpon>PrintYangin.aspx</DependentUpon>

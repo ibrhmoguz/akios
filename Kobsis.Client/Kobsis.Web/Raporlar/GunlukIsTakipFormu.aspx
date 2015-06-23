@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="GunlukIsTakipFormu.aspx.cs" Inherits="Kobsis.Web.GunlukIsTakipFormu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="GunlukIsTakipFormu.aspx.cs" Inherits="Kobsis.Web.Raporlar.GunlukIsTakipFormu" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -22,27 +22,24 @@
                 </telerik:RadButton>
             </td>
         </tr>
-    </table>
-    <br />
-    <table style="width: 100%">
         <tr>
             <td>
-                <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="AnaTablo"
+                <br/>
+                <asp:GridView ID="grdSiparisler" runat="server" AutoGenerateColumns="false" Width="100%" CssClass="grid"
                     AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2" EmptyDataText="Bugün sipariş teslimatı yoktur!"
                     EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                     EmptyDataRowStyle-CssClass="TdRenkAciklama">
                     <Columns>
-                        <asp:BoundField DataField="ID" HeaderText="ID" />
-                        <asp:BoundField DataField="SIPARISNO" HeaderText="SİPARİŞ NO" />
-                        <asp:BoundField DataField="MUSTERI" HeaderText="MÜŞTERİ/FİRMA" />
-                        <asp:BoundField DataField="TEL" HeaderText="TEL" ItemStyle-Font-Size="12px" />
-                        <asp:BoundField DataField="SEMT" HeaderText="SEMT" />
-                        <asp:BoundField DataField="MONTAJEKIBI" HeaderText="MONTAJ EKİBİ" />
-                        <asp:BoundField DataField="ACIKLAMA" HeaderText="AÇIKLAMA" ItemStyle-Font-Size="10px" />
+                        <asp:BoundField DataField="ID" HeaderText="SIRANO" />
+                        <asp:BoundField DataField="SiparisNo" HeaderText="SİPARİŞ NO" />
+                        <asp:BoundField DataField="Musteri" HeaderText="MÜŞTERİ/FİRMA" />
+                        <asp:BoundField DataField="Adres" HeaderText="ADRES" />
+                        <asp:BoundField DataField="Tel" HeaderText="TEL" ItemStyle-Font-Size="12px" />
+                        <asp:BoundField DataField="Semt" HeaderText="SEMT" />
+                        <asp:BoundField DataField="MontajEkibi" HeaderText="MONTAJ EKİBİ" />
                     </Columns>
                 </asp:GridView>
             </td>
         </tr>
     </table>
-
 </asp:Content>

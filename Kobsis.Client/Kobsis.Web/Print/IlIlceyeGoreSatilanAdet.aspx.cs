@@ -3,37 +3,24 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
+using Kobsis.Util;
 
 namespace Kobsis.Web.Print
 {
     public partial class IlIlceyeGoreSatilanAdet : System.Web.UI.Page
     {
-        private DataSet SorguSonucListesi
-        {
-            get
-            {
-                if (Session["IlIlceyeGoreSatilanAdet"] != null)
-                    return Session["IlIlceyeGoreSatilanAdet"] as DataSet;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["IlIlceyeGoreSatilanAdet"] = value;
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
+                MusteriLogoAyarla();
                 RaporOlustur();
             }
         }
 
         private void RaporOlustur()
         {
-            DataSet ds = this.SorguSonucListesi;
+            DataSet ds = SessionManager.IlIlceyeGoreSatilanAdet;
 
             DataTable dt1 = YuzdeDegerleriHesapla(ds.Tables[0]);
             DataTable dt2 = YuzdeDegerleriHesapla(ds.Tables[1]);
@@ -58,17 +45,28 @@ namespace Kobsis.Web.Print
             }
         }
 
+        private void MusteriLogoAyarla()
+        {
+            if (SessionManager.MusteriBilgi.LogoID.HasValue)
+                imgFirmaLogo.ImageUrl = "ImageForm.aspx?ImageID=" + SessionManager.MusteriBilgi.LogoID.Value;
+            else
+                imgFirmaLogo.ImageUrl = "/App_Themes/Theme/Raster/BlankProfile.gif";
+        }
+
         private DataTable YuzdeDegerleriHesapla(DataTable dt)
         {
-            decimal toplamAdet = Convert.ToDecimal(dt.AsEnumerable().Sum(a => Convert.ToInt32(a.Field<string>("Yillik"))).ToString());
+            decimal toplamAdet = Convert.ToDecimal(dt.AsEnumerable().Where(q => !q.Field<string>("Yillik").Equals("")).Sum(a => Convert.ToInt32(a.Field<string>("Yillik"))).ToString());
             decimal yuzde;
 
-            foreach (DataRow row in dt.Rows)
+            if (toplamAdet != 0)
             {
-                if (row["Yillik"] != DBNull.Value)
+                foreach (DataRow row in dt.Rows)
                 {
-                    yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString()) / toplamAdet));
-                    row["Yuzde(%)"] = (yuzde * 100).ToString("0.00", CultureInfo.InvariantCulture);
+                    if (row["Yillik"] != DBNull.Value && row["Yillik"].ToString() != "0")
+                    {
+                        yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString()) / toplamAdet));
+                        row["Yuzde(%)"] = (yuzde * 100).ToString("0.00", CultureInfo.InvariantCulture);
+                    }
                 }
             }
 

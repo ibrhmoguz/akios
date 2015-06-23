@@ -12,22 +12,7 @@ namespace Kobsis.Web.Raporlar
     public partial class IlIlceyeGoreSatilanAdet : KobsisBasePage
     {
         private static string ANKARA_IL_KODU = "6";
-
-        private DataSet SorguSonucListesi
-        {
-            get
-            {
-                if (Session["IlIlceyeGoreSatilanAdet"] != null)
-                    return Session["IlIlceyeGoreSatilanAdet"] as DataSet;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["IlIlceyeGoreSatilanAdet"] = value;
-            }
-        }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -120,8 +105,8 @@ namespace Kobsis.Web.Raporlar
             GridDoldur(grdRaporIlce, dt2);
             GridDoldur(grdRaporSemt, dt3);
 
-            this.SorguSonucListesi = ds;
-            PopupPageHelper.OpenPopUp(btnYazdir, "Print/IlIlceyeGoreSatilanAdet.aspx", "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
+            SessionManager.IlIlceyeGoreSatilanAdet = ds;
+            PopupPageHelper.OpenPopUp(btnYazdir, "../Print/IlIlceyeGoreSatilanAdet.aspx", "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
             btnYazdir.Visible = true;
         }
 
@@ -144,12 +129,15 @@ namespace Kobsis.Web.Raporlar
             decimal toplamAdet = Convert.ToDecimal(dt.AsEnumerable().Sum(a => Convert.ToInt32(a.Field<string>("Yillik"))).ToString());
             decimal yuzde;
 
-            foreach (DataRow row in dt.Rows)
+            if (toplamAdet != 0)
             {
-                if (row["Yillik"] != DBNull.Value)
+                foreach (DataRow row in dt.Rows)
                 {
-                    yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString()) / toplamAdet));
-                    row["Yuzde(%)"] = (yuzde * 100).ToString("0.00", CultureInfo.InvariantCulture);
+                    if (row["Yillik"] != DBNull.Value)
+                    {
+                        yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString())/toplamAdet));
+                        row["Yuzde(%)"] = (yuzde*100).ToString("0.00", CultureInfo.InvariantCulture);
+                    }
                 }
             }
 

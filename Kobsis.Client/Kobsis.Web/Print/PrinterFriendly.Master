@@ -9,7 +9,6 @@
     <script src="../Script/NumberFormat.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="PrinterFriendly.css" rel="stylesheet" />
-    <link href="../App_Themes/Theme/Buttons.css" rel="stylesheet" />
     <script type="text/javascript">
         //Bu master'ı kullanan sayfanın içinde "PrintDiv" isminde bir Div tanımlandığında ve master üzerindeki Print butonuna tıklandığında
         //tanımlanan Div'in altı HiddenFieldInnerHtml'e aktarılır. Bu hidden field'den InnerHtml alınıp Utils Class'ı altındaki

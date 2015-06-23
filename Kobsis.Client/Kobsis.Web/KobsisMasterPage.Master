@@ -130,7 +130,7 @@
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Kapı Tipine Göre Satış Raporu">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbKapiTipineGoreSatilanAdet" Size="Large" Text="KAPI TİPİNE GÖRE SATIŞ RAPORU" ToolTip="Kapı tipine göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="~/Raporlar/KapiTipineGoreSatilanAdet.aspx" />
+                        <telerik:RibbonBarButton ID="rbbKapiTipineGoreSatilanAdet" Size="Large" Text="SERİYE GÖRE SATIŞ RAPORU" ToolTip="Kapı tipine göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="~/Raporlar/SeriyeGoreSatilanAdet.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="İl İlçe Bazlı Satış Raporu">

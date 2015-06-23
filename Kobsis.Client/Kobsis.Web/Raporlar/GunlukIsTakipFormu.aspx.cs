@@ -9,21 +9,6 @@ namespace Kobsis.Web.Raporlar
 {
     public partial class GunlukIsTakipFormu : KobsisBasePage
     {
-        private DataTable SorguSonucListesi
-        {
-            get
-            {
-                if (Session["GunlukIsTakipListesi"] != null)
-                    return Session["GunlukIsTakipListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["GunlukIsTakipListesi"] = value;
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -40,7 +25,13 @@ namespace Kobsis.Web.Raporlar
 
         private void RaporOlustur()
         {
-            DataTable dt = new RaporBS().GunlukIsTakipFormuListele(rdtTarih.SelectedDate.Value.Date);
+            if (rdtTarih.SelectedDate == null)
+            {
+                MessageBox.Uyari(this.Page, "Lütfen gün seçiniz!");
+                return;
+            }
+
+            DataTable dt = new RaporBS().GunlukIsTakipFormuListele(rdtTarih.SelectedDate.Value.Date, SessionManager.MusteriBilgi.Kod);
 
             if (dt.Rows.Count > 0)
             {
@@ -55,15 +46,15 @@ namespace Kobsis.Web.Raporlar
                 btnYazdir.Visible = false;
             }
 
-            this.SorguSonucListesi = dt;
+            SessionManager.GunlukIsTakipListesi = dt;
             string tarih = rdtTarih.SelectedDate.Value.ToShortDateString();
-            PopupPageHelper.OpenPopUp(btnYazdir, "Print/GunlukIsTakip.aspx?Tarih=" + tarih, "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
+            PopupPageHelper.OpenPopUp(btnYazdir, "../Print/GunlukIsTakip.aspx?Tarih=" + tarih, "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
         }
 
         protected void grdSiparisler_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdSiparisler.PageIndex = e.NewPageIndex;
-            grdSiparisler.DataSource = this.SorguSonucListesi;
+            grdSiparisler.DataSource = SessionManager.GunlukIsTakipListesi;
             grdSiparisler.DataBind();
         }
     }

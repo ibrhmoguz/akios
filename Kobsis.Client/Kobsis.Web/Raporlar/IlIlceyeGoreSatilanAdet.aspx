@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="IlIlceyeGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.IlIlceyeGoreSatilanAdet" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="IlIlceyeGoreSatilanAdet.aspx.cs" Inherits="Kobsis.Web.Raporlar.IlIlceyeGoreSatilanAdet" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -42,7 +42,7 @@
                         <td colspan="7">
                             <br />
                             <asp:GridView ID="grdRaporIl" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-                                Width="100%" CssClass="AnaTabloRapor" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                                Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                                 EmptyDataText="İl bulunamamıştır!" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                                 EmptyDataRowStyle-CssClass="TdRenkAciklama">
                                 <Columns>
@@ -65,7 +65,7 @@
                             </asp:GridView>
                             <br />
                             <asp:GridView ID="grdRaporIlce" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-                                Width="100%" CssClass="AnaTabloRapor" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                                Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                                 EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                                 EmptyDataRowStyle-CssClass="TdRenkAciklama">
                                 <Columns>
@@ -88,7 +88,7 @@
                             </asp:GridView>
                             <br />
                             <asp:GridView ID="grdRaporSemt" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-                                Width="100%" CssClass="AnaTabloRapor" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                                Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                                 EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                                 EmptyDataRowStyle-CssClass="TdRenkAciklama">
                                 <Columns>

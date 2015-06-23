@@ -8,39 +8,9 @@ using Kobsis.Web.Helper;
 
 namespace Kobsis.Web.Raporlar
 {
-    public partial class KapiTipineGoreSatilanAdet : KobsisBasePage
+    public partial class SeriyeGoreSatilanAdet : KobsisBasePage
     {
         private static string ANKARA_IL_KODU = "6";
-
-        private DataTable SatisAdetListesi
-        {
-            get
-            {
-                if (Session["SatisAdetListesi"] != null)
-                    return Session["SatisAdetListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["SatisAdetListesi"] = value;
-            }
-        }
-
-        private DataTable SatisTutarListesi
-        {
-            get
-            {
-                if (Session["SatisTutarListesi"] != null)
-                    return Session["SatisTutarListesi"] as DataTable;
-                else
-                    return null;
-            }
-            set
-            {
-                Session["SatisTutarListesi"] = value;
-            }
-        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -129,7 +99,7 @@ namespace Kobsis.Web.Raporlar
             if (ddlMusteriIlce.SelectedIndex != 0)
                 ilce = ddlMusteriIlce.SelectedText;
 
-            DataSet ds = new RaporBS().KapiTipineGoreSatilanAdet(il, ilce, ddlYil.SelectedValue);
+            DataSet ds = new RaporBS().SeriyeGoreSatilanAdet(il, ilce, ddlYil.SelectedValue, SessionManager.MusteriBilgi.Kod);
 
             DataTable dtSatisAdet = ds.Tables[0];
             DataTable dtSatisTutar = ds.Tables[1];
@@ -162,9 +132,9 @@ namespace Kobsis.Web.Raporlar
                 grdSatisTutarRapor.DataBind();
             }
 
-            this.SatisAdetListesi = dtSatisAdet;
-            this.SatisTutarListesi = dtSatisTutar;
-            PopupPageHelper.OpenPopUp(btnYazdir, "Print/KapiTipineGoreSatilanAdet.aspx", "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
+            SessionManager.SatisAdetListesi = dtSatisAdet;
+            SessionManager.SatisTutarListesi = dtSatisTutar;
+            PopupPageHelper.OpenPopUp(btnYazdir, "../Print/SeriyeGoreSatilanAdet.aspx", "", true, false, true, false, false, false, 1024, 800, true, false, "onclick");
         }
 
         private DataTable YuzdeDegerleriHesaplaAdet(DataTable dt)
@@ -234,15 +204,6 @@ namespace Kobsis.Web.Raporlar
                         row["Yuzde(%)"] = "0";
                 }
             }
-
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    for (int j = 0; j < dt.Columns.Count; j++)
-            //    {
-            //        if (dt.Rows[i][j] != DBNull.Value && dt.Rows[i][j].ToString() == "0,00")
-            //            dt.Rows[i][j] = string.Empty;
-            //    }
-            //}
 
             DataRow toplamRow = dt.NewRow();
             toplamRow[0] = "TOPLAM";

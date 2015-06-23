@@ -10,16 +10,16 @@
 namespace Kobsis.Web.Print {
     
     
-    public partial class KapiTipineGoreSatilanAdet {
+    public partial class SeriyeGoreSatilanAdet {
         
         /// <summary>
-        /// imgLogo control.
+        /// imgFirmaLogo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadBinaryImage imgLogo;
+        protected global::System.Web.UI.WebControls.Image imgFirmaLogo;
         
         /// <summary>
         /// grdSatisAdetRapor control.

@@ -276,5 +276,65 @@ namespace Kobsis.Util
                 HttpContext.Current.Session["ReferansDetay"] = value;
             }
         }
+
+        public static DataTable GunlukIsTakipListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["GunlukIsTakipListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["GunlukIsTakipListesi"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["GunlukIsTakipListesi"] = value;
+            }
+        }
+
+        public static DataTable SatisAdetListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["SatisAdetListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["SatisAdetListesi"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SatisAdetListesi"] = value;
+            }
+        }
+
+        public static DataTable SatisTutarListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["SatisTutarListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["SatisTutarListesi"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["SatisTutarListesi"] = value;
+            }
+        }
+
+        public static DataSet IlIlceyeGoreSatilanAdet
+        {
+            get
+            {
+                if (HttpContext.Current.Session["IlIlceyeGoreSatilanAdet"] != null)
+                    return (DataSet)HttpContext.Current.Session["IlIlceyeGoreSatilanAdet"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["IlIlceyeGoreSatilanAdet"] = value;
+            }
+        }
     }
 }
