@@ -19,16 +19,16 @@ namespace Kobsis.Business
             return dt;
         }
 
-        public bool ConfigDegerleriniKaydet(bool montajKotaKontrolu, string montajKotaVarsayilan)
+        public bool ConfigDegerleriniKaydet(bool teslimatKotaKontrolu, string teslimatKotaVarsayilan)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
             string sqlText = @"TRUNCATE TABLE dbo.CONFIG
-                               INSERT INTO dbo.CONFIG VALUES('MONTAJ_KOTA_KONTROLU',@MontajKotaKontrol)
-                               INSERT INTO dbo.CONFIG VALUES('MONTAJ_KOTA_VARSAYILAN',@MontajKotaVarsayilan)";
+                               INSERT INTO dbo.CONFIG VALUES('TESLIMAT_KOTA_KONTROLU',@TeslimatKotaKontrol)
+                               INSERT INTO dbo.CONFIG VALUES('TESLIMAT_KOTA_VARSAYILAN',@TeslimatKotaVarsayilan)";
 
-            data.AddSqlParameter("MontajKotaKontrol", montajKotaKontrolu, SqlDbType.Bit, 50);
-            data.AddSqlParameter("MontajKotaVarsayilan", montajKotaVarsayilan, SqlDbType.Int, 50);
+            data.AddSqlParameter("TeslimatKotaKontrol", teslimatKotaKontrolu, SqlDbType.Bit, 50);
+            data.AddSqlParameter("TeslimatKotaVarsayilan", teslimatKotaVarsayilan, SqlDbType.Int, 50);
             data.ExecuteStatement(sqlText);
             return true;
         }

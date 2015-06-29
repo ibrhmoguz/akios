@@ -85,7 +85,7 @@ namespace Kobsis.Web
                      url.Contains("PersonelTanimlama") ||
                      url.Contains("Hatalar") ||
                      url.Contains("FormOgeGuncelleme") ||
-                     url.Contains("MontajKotaTanimla") ||
+                     url.Contains("TeslimatKotaTanimla") ||
                      url.Contains("UygulamaAyarlari"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 2;

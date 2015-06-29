@@ -18,10 +18,7 @@ namespace Kobsis.Web.Takvim
         {
             get
             {
-                if (Session["Takvim_Appointments"] != null)
-                    return Session["Takvim_Appointments"] as List<Appointment>;
-                else
-                    return null;
+                return Session["Takvim_Appointments"] as List<Appointment>;
             }
             set
             {
@@ -34,7 +31,7 @@ namespace Kobsis.Web.Takvim
             if (!Page.IsPostBack)
             {
                 TakvimVarsayilanAyarlari();
-                HaftaMontajlariniYukle();
+                HaftaTeslimatlariniYukle();
                 IsleriTakvimeYukle();
                 PersonelListesiYukle();
             }
@@ -74,7 +71,7 @@ namespace Kobsis.Web.Takvim
                 dtBitis = dtBaslangic.AddMonths(1).AddDays(-1);
             }
 
-            MontajlariListele(dtBaslangic, dtBitis);
+            TeslimatlariListele(dtBaslangic, dtBitis);
             RadSchedulerIsTakvimi.SelectedDate = dtSelectedDate;
             RadSchedulerIsTakvimi.Rebind();
             IsleriTakvimeYukle();
@@ -82,20 +79,20 @@ namespace Kobsis.Web.Takvim
 
         private void IsleriTakvimeYukle()
         {
-            MontajlariAppointmenteCevir();
+            TeslimatlariAppointmenteCevir();
             RadSchedulerIsTakvimi.DataSource = this.Appointments;
         }
 
-        private void HaftaMontajlariniYukle()
+        private void HaftaTeslimatlariniYukle()
         {
             DateTime dtBaslangic = HaftaBaslangicGunu(RadSchedulerIsTakvimi.SelectedDate);
             DateTime dtBitis = HaftaBitisGunu(dtBaslangic);
-            MontajlariListele(dtBaslangic, dtBitis);
+            TeslimatlariListele(dtBaslangic, dtBitis);
         }
 
-        private void MontajlariListele(DateTime dtBaslangic, DateTime dtBitis)
+        private void TeslimatlariListele(DateTime dtBaslangic, DateTime dtBitis)
         {
-            SessionManager.MontajListesi = new MontajBS().MontajlariListele(dtBaslangic, dtBitis);
+            SessionManager.TeslimatListesi = new TeslimatBS().TeslimatlariListele(dtBaslangic, dtBitis);
         }
 
         public DateTime HaftaBaslangicGunu(DateTime dtStart)
@@ -114,22 +111,22 @@ namespace Kobsis.Web.Takvim
             return HaftaBaslangicGunu(dtStart).AddDays(6);
         }
 
-        private void MontajlariAppointmenteCevir()
+        private void TeslimatlariAppointmenteCevir()
         {
-            DataTable dtMontajlar = SessionManager.MontajListesi;
-            if (dtMontajlar == null)
+            DataTable dtTeslimatlar = SessionManager.TeslimatListesi;
+            if (dtTeslimatlar == null)
                 return;
 
             List<Appointment> appointmentList = new List<Appointment>();
             DateTime tempDate = new DateTime();
 
-            for (int i = 0; i < dtMontajlar.Rows.Count; i++)
+            for (int i = 0; i < dtTeslimatlar.Rows.Count; i++)
             {
-                DataRow row = dtMontajlar.Rows[i];
+                DataRow row = dtTeslimatlar.Rows[i];
                 if (row == null)
                     continue;
 
-                int montajID = Convert.ToInt32(row[0]);
+                int teslimatId = Convert.ToInt32(row[0]);
                 string seriKodu = SessionManager.SiparisSeri.FirstOrDefault(q => q.SiparisSeriID == Convert.ToInt32(row["SeriID"].ToString())).SeriKodu;
                 string siparisNo = seriKodu + "-" + row["SiparisNo"].ToString();
                 int siparisAdedi;
@@ -140,16 +137,16 @@ namespace Kobsis.Web.Takvim
                         siparisNo += " ADT:" + siparisAdedi.ToString();
                     }
                 }
-                DateTime montajTarihi = Convert.ToDateTime(row["TeslimTarih"]);
-                if (tempDate.Date == montajTarihi.Date)
+                DateTime teslimatTarihi = Convert.ToDateTime(row["TeslimTarih"]);
+                if (tempDate.Date == teslimatTarihi.Date)
                 {
                     tempDate = tempDate.AddHours(0.5);
-                    if (tempDate > montajTarihi)
-                        montajTarihi = tempDate;
+                    if (tempDate > teslimatTarihi)
+                        teslimatTarihi = tempDate;
                 }
-                tempDate = montajTarihi;
+                tempDate = teslimatTarihi;
 
-                Appointment app = new Appointment(montajID, montajTarihi, montajTarihi.AddHours(0.5), siparisNo);
+                Appointment app = new Appointment(teslimatId, teslimatTarihi, teslimatTarihi.AddHours(0.5), siparisNo);
                 appointmentList.Add(app);
             }
 
@@ -166,28 +163,34 @@ namespace Kobsis.Web.Takvim
         {
             if (e.CommandName == "IsKaydet")
             {
-                RadListBox lstBoxPersonelListesi = (RadListBox)e.Container.FindControl("ListBoxMontajEkibi");
+                RadListBox lstBoxPersonelListesi = (RadListBox)e.Container.FindControl("ListBoxTeslimatEkibi");
                 List<string> personelListesi = new List<string>();
                 foreach (RadListBoxItem item in lstBoxPersonelListesi.Items)
                 {
                     if (item.Checked)
                         personelListesi.Add(item.Value);
                 }
-                Label lblMontajID = (Label)e.Container.FindControl("LabelEditMontajID");
-                RadDateTimePicker dtTeslimTarihi = (RadDateTimePicker)e.Container.FindControl("DateTimePickerMontajTarihSaat");
-                CheckBox chcMontajDurumu = (CheckBox)e.Container.FindControl("chcBoxMontajDurumu");
+                Label lblTeslimatId = (Label)e.Container.FindControl("LabelEditTeslimatID");
+                RadDateTimePicker dtTeslimTarihi = (RadDateTimePicker)e.Container.FindControl("DateTimePickerTeslimatTarihSaat");
+                CheckBox chcTeslimatDurumu = (CheckBox)e.Container.FindControl("chcBoxTeslimatDurumu");
 
-                string montajDurumu = chcMontajDurumu.Checked == true ? "K" : "A";
-                bool status = new MontajBS().MontajGuncelle(lblMontajID.Text, dtTeslimTarihi.SelectedDate.Value, personelListesi, montajDurumu, Session["user"].ToString(), DateTime.Now);
+                if (dtTeslimTarihi.SelectedDate == null)
+                {
+                    MessageBox.Uyari(this.Page, "Lütfen teslim tarihi seçiniz!");
+                    return;
+                }
+
+                var teslimatDurumu = chcTeslimatDurumu.Checked == true ? "K" : "A";
+                var status = new TeslimatBS().TeslimatGuncelle(lblTeslimatId.Text, dtTeslimTarihi.SelectedDate.Value, personelListesi, teslimatDurumu, SessionManager.KullaniciBilgi.KullaniciAdi, DateTime.Now, SessionManager.MusteriBilgi.Kod);
                 if (status)
                 {
-                    MessageBox.Basari(this, "Montaj bilgisi güncellendi.");
+                    MessageBox.Basari(this, "Teslimat bilgisi güncellendi.");
                     RadSchedulerIsTakvimi.Rebind();
                     IsleriTakvimeYukle(RadCalendarIsTakvimi.SelectedDate);
                 }
                 else
                 {
-                    MessageBox.Hata(this, "Montaj güncelleme işleminde hata oluştu!");
+                    MessageBox.Hata(this, "Teslimat güncelleme işleminde hata oluştu!");
                 }
             }
             else if (e.CommandName == "IsIptal")
@@ -200,11 +203,11 @@ namespace Kobsis.Web.Takvim
         {
             LinkButton linkSiparisNo = (LinkButton)e.Container.FindControl("LabelAppointmentSiparisNo");
             Label lblAdres = (Label)e.Container.FindControl("LabelAppointmentAdres");
-            Label lblMontajEkibi = (Label)e.Container.FindControl("LabelAppointmentMontajEkibi");
+            Label lblTeslimatEkibi = (Label)e.Container.FindControl("LabelAppointmentTeslimatEkibi");
             Label lblMusteriAdSoyad = (Label)e.Container.FindControl("LabelAppointmentMusteriAdSoyad");
             Label lblAdresIlIlce = (Label)e.Container.FindControl("LabelAppointmentAdresIlIlce");
             Label lblTelefon = (Label)e.Container.FindControl("LabelAppointmentTelefon");
-            Label lblMontajDurum = (Label)e.Container.FindControl("LableMontajDurum");
+            Label lblTeslimatDurum = (Label)e.Container.FindControl("LableTeslimatDurum");
 
 
             RadScheduler scheduler = sender as RadScheduler;
@@ -212,65 +215,61 @@ namespace Kobsis.Web.Takvim
             switch (scheduler.SelectedView)
             {
                 case SchedulerViewType.DayView:
-                    lblMontajEkibi.Visible = true;
+                    lblTeslimatEkibi.Visible = true;
                     lblAdres.Visible = true;
                     lblMusteriAdSoyad.Visible = true;
                     lblTelefon.Visible = true;
                     lblAdresIlIlce.Visible = true;
                     break;
                 case SchedulerViewType.WeekView:
-                    lblMontajEkibi.Visible = true;
+                    lblTeslimatEkibi.Visible = true;
                     lblAdres.Visible = true;
                     lblMusteriAdSoyad.Visible = true;
                     lblTelefon.Visible = true;
                     lblAdresIlIlce.Visible = true;
                     break;
                 case SchedulerViewType.MonthView:
-                    lblMontajEkibi.Visible = false;
+                    lblTeslimatEkibi.Visible = false;
                     lblAdres.Visible = false;
                     lblMusteriAdSoyad.Visible = false;
                     lblTelefon.Visible = false;
                     lblAdresIlIlce.Visible = false;
                     break;
                 case SchedulerViewType.TimelineView:
-                    lblMontajEkibi.Visible = false;
+                    lblTeslimatEkibi.Visible = false;
                     lblAdres.Visible = false;
                     lblMusteriAdSoyad.Visible = false;
                     lblTelefon.Visible = false;
                     lblAdresIlIlce.Visible = false;
                     break;
-                default:
-                    break;
             }
 
-            DataTable dtMontajlar = SessionManager.MontajListesi;
-            if (dtMontajlar == null)
+            DataTable dtTeslimatlar = SessionManager.TeslimatListesi;
+            if (dtTeslimatlar == null)
                 return;
 
-            DataRow[] rows = dtMontajlar.Select("ID=" + e.Appointment.ID);
+            DataRow[] rows = dtTeslimatlar.Select("ID=" + e.Appointment.ID);
             if (rows.Length == 0)
                 return;
             DataRow row = rows[0];
             lblAdres.Text = (row["Adres"] != DBNull.Value) ? row["Adres"].ToString() : String.Empty;
-            lblMontajEkibi.Text = (row["Personel"] != DBNull.Value) ? row["Personel"].ToString() : String.Empty;
+            lblTeslimatEkibi.Text = (row["Personel"] != DBNull.Value) ? row["Personel"].ToString() : String.Empty;
             lblMusteriAdSoyad.Text = (row["Musteri"] != DBNull.Value) ? row["Musteri"].ToString() : String.Empty;
             lblAdresIlIlce.Text = (row["IlIlce"] != DBNull.Value) ? row["IlIlce"].ToString() : String.Empty;
             lblTelefon.Text = (row["Tel"] != DBNull.Value) ? row["Tel"].ToString() : String.Empty;
-            string siparisID = (row["SiparisID"] != DBNull.Value) ? row["SiparisID"].ToString() : String.Empty;
-            string siparisSeri = (row["SeriID"] != DBNull.Value) ? row["SeriID"].ToString() : String.Empty;
+            lblTeslimatDurum.BackColor = row["DURUM"].ToString() == "A" ? Color.Red : Color.Blue;
+            var siparisId = (row["SiparisID"] != DBNull.Value) ? row["SiparisID"].ToString() : String.Empty;
+            var siparisSeri = (row["SeriID"] != DBNull.Value) ? row["SeriID"].ToString() : String.Empty;
 
-            linkSiparisNo.PostBackUrl = "SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + siparisSeri;
+            linkSiparisNo.PostBackUrl = "~/Siparis/SiparisGoruntule.aspx?SiparisID=" + siparisId + "&SiparisSeri=" + siparisSeri;
 
-            if (row["DURUM"].ToString() == "A")
-                lblMontajDurum.BackColor = Color.Red;
-            else
-                lblMontajDurum.BackColor = Color.Blue;
+
         }
 
         protected void RadSchedulerIsTakvimi_FormCreated(object sender, SchedulerFormCreatedEventArgs e)
         {
-            DataTable dtMontajlar = SessionManager.MontajListesi;
-            if (dtMontajlar == null)
+            DataTable dtTeslimatlar = SessionManager.TeslimatListesi;
+            if (dtTeslimatlar == null)
                 return;
 
             RadScheduler scheduler = (RadScheduler)sender;
@@ -278,15 +277,15 @@ namespace Kobsis.Web.Takvim
             if (e.Container.Mode == SchedulerFormMode.AdvancedEdit)
             {
                 Label lblSiparisNo = (Label)e.Container.FindControl("LabelEditSiparisNo");
-                Label lblMontajID = (Label)e.Container.FindControl("LabelEditMontajID");
+                Label lblTeslimatID = (Label)e.Container.FindControl("LabelEditTeslimatID");
                 Label lblAdres = (Label)e.Container.FindControl("LabelEditAdres");
                 Label lblMusteriAdSoyad = (Label)e.Container.FindControl("LabelEditMusteriAdSoyad");
                 Label lblTelefon = (Label)e.Container.FindControl("LabelEditTelefon");
-                RadDateTimePicker dtTeslimTarihi = (RadDateTimePicker)e.Container.FindControl("DateTimePickerMontajTarihSaat");
-                RadListBox lstBoxPersonelListesi = (RadListBox)e.Container.FindControl("ListBoxMontajEkibi");
-                CheckBox chcMontajDurumu = (CheckBox)e.Container.FindControl("chcBoxMontajDurumu");
+                RadDateTimePicker dtTeslimTarihi = (RadDateTimePicker)e.Container.FindControl("DateTimePickerTeslimatTarihSaat");
+                RadListBox lstBoxPersonelListesi = (RadListBox)e.Container.FindControl("ListBoxTeslimatEkibi");
+                CheckBox chcTeslimatDurumu = (CheckBox)e.Container.FindControl("chcBoxTeslimatDurumu");
 
-                DataRow[] rows = dtMontajlar.Select("ID=" + e.Appointment.ID);
+                DataRow[] rows = dtTeslimatlar.Select("ID=" + e.Appointment.ID);
                 if (rows.Length == 0)
                     return;
                 DataRow row = rows[0];
@@ -294,11 +293,11 @@ namespace Kobsis.Web.Takvim
                 string adres = (row["Adres"] != DBNull.Value) ? row["Adres"].ToString() : String.Empty;
 
                 lblAdres.Text = adres + " " + ilIlce;
-                lblMontajID.Text = (row["ID"] != DBNull.Value) ? row["ID"].ToString() : String.Empty;
+                lblTeslimatID.Text = (row["ID"] != DBNull.Value) ? row["ID"].ToString() : String.Empty;
                 lblSiparisNo.Text = (row["SiparisNo"] != DBNull.Value) ? row["SiparisNo"].ToString() : String.Empty;
                 lblMusteriAdSoyad.Text = (row["Musteri"] != DBNull.Value) ? row["Musteri"].ToString() : String.Empty;
                 lblTelefon.Text = (row["Tel"] != DBNull.Value) ? row["Tel"].ToString() : String.Empty;
-                chcMontajDurumu.Checked = (row["Durum"].ToString() == "K") ? true : false;
+                chcTeslimatDurumu.Checked = (row["Durum"].ToString() == "K") ? true : false;
                 if (row["TeslimTarih"] != DBNull.Value)
                     dtTeslimTarihi.SelectedDate = Convert.ToDateTime(row["TeslimTarih"]);
 
@@ -327,7 +326,7 @@ namespace Kobsis.Web.Takvim
                 DateTime dtBaslangic = new DateTime(RadCalendarIsTakvimi.SelectedDate.Year, RadCalendarIsTakvimi.SelectedDate.Month, 1);
                 DateTime dtBitis = dtBaslangic.AddDays(ayGunSayisi - 1);
 
-                MontajlariListele(dtBaslangic, dtBitis);
+                TeslimatlariListele(dtBaslangic, dtBitis);
                 IsleriTakvimeYukle();
             }
         }

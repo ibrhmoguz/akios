@@ -149,36 +149,36 @@ namespace Kobsis.Web.Siparis
                 return;
             }
 
-            //Montaj kota kontrolu acik ise
-            if (SessionManager.MontajKotaKontrolu != null && SessionManager.MontajKotaKontrolu == "1")
+            //Teslimat kota kontrolu acik ise
+            if (SessionManager.TeslimatKotaKontrolu != null && SessionManager.TeslimatKotaKontrolu == "1")
             {
-                MontajBS montajBS = new MontajBS();
-                int yapilanMontajSayisi = montajBS.GunlukMontajSayisiniGetir(rdtTeslimTarih.SelectedDate.Value);
-                DataTable dt = montajBS.GunlukMontajKotaBilgisiGetir(rdtTeslimTarih.SelectedDate.Value);
+                TeslimatBS teslimatBS = new TeslimatBS();
+                int yapilanTeslimatSayisi = teslimatBS.GunlukTeslimatSayisiniGetir(rdtTeslimTarih.SelectedDate.Value);
+                DataTable dt = teslimatBS.GunlukTeslimatKotaBilgisiGetir(rdtTeslimTarih.SelectedDate.Value);
                 if (dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
-                    bool montajKabul = Convert.ToBoolean(row["MontajKabul"]);
-                    if (!montajKabul)
+                    bool teslimatKabul = Convert.ToBoolean(row["TeslimatKabul"]);
+                    if (!teslimatKabul)
                     {
-                        MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için montaj alınamaz!");
+                        MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için teslimat alınamaz!");
                         return;
                     }
                     else
                     {
-                        int gunlukMontakKotaDegeri = Convert.ToInt32(row["MaxMontajSayi"]);
-                        if (yapilanMontajSayisi >= gunlukMontakKotaDegeri)
+                        int gunlukMontakKotaDegeri = Convert.ToInt32(row["MaxTeslimatSayi"]);
+                        if (yapilanTeslimatSayisi >= gunlukMontakKotaDegeri)
                         {
-                            MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için montaj kotası (" + gunlukMontakKotaDegeri.ToString() + ") değerine ulaşılmıştır.");
+                            MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için teslimat kotası (" + gunlukMontakKotaDegeri.ToString() + ") değerine ulaşılmıştır.");
                             return;
                         }
                     }
                 }
                 else
                 {
-                    if (yapilanMontajSayisi >= SessionManager.MontajKotaVarsayilan)
+                    if (yapilanTeslimatSayisi >= SessionManager.TeslimatKotaVarsayilan)
                     {
-                        MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için montaj kotası (" + SessionManager.MontajKotaVarsayilan.ToString() + ") değerine ulaşılmıştır.");
+                        MessageBox.Uyari(this.Page, rdtTeslimTarih.SelectedDate.Value.Date.ToShortDateString() + " tarihi için teslimat kotası (" + SessionManager.TeslimatKotaVarsayilan.ToString() + ") değerine ulaşılmıştır.");
                         return;
                     }
                 }

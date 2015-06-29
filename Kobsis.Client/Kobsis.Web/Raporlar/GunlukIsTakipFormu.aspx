@@ -36,7 +36,7 @@
                         <asp:BoundField DataField="Adres" HeaderText="ADRES" />
                         <asp:BoundField DataField="Tel" HeaderText="TEL" ItemStyle-Font-Size="12px" />
                         <asp:BoundField DataField="Semt" HeaderText="SEMT" />
-                        <asp:BoundField DataField="MontajEkibi" HeaderText="MONTAJ EKİBİ" />
+                        <asp:BoundField DataField="TeslimatEkibi" HeaderText="TESLİMAT EKİBİ" />
                     </Columns>
                 </asp:GridView>
             </td>

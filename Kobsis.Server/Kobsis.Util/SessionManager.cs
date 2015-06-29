@@ -172,33 +172,33 @@ namespace Kobsis.Util
             }
         }
 
-        public static string MontajKotaKontrolu
+        public static string TeslimatKotaKontrolu
         {
             get
             {
-                if (HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"] != null)
-                    return HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"].ToString();
+                if (HttpContext.Current.Session["TeslimatKotaKontrolu"] != null)
+                    return HttpContext.Current.Session["TeslimatKotaKontrolu"].ToString();
 
                 return string.Empty;
             }
             set
             {
-                HttpContext.Current.Session["MONTAJ_KOTA_KONTROLU"] = value;
+                HttpContext.Current.Session["TeslimatKotaKontrolu"] = value;
             }
         }
 
-        public static int MontajKotaVarsayilan
+        public static int TeslimatKotaVarsayilan
         {
             get
             {
-                if (HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] != null && !string.IsNullOrWhiteSpace(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString()))
-                    return Convert.ToInt32(HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"].ToString());
+                if (HttpContext.Current.Session["TeslimatKotaVarsayilan"] != null && !string.IsNullOrWhiteSpace(HttpContext.Current.Session["TeslimatKotaVarsayilan"].ToString()))
+                    return Convert.ToInt32(HttpContext.Current.Session["TeslimatKotaVarsayilan"].ToString());
 
                 return 0;
             }
             set
             {
-                HttpContext.Current.Session["MONTAJ_KOTA_VARSAYILAN"] = value;
+                HttpContext.Current.Session["TeslimatKotaVarsayilan"] = value;
             }
         }
 
@@ -232,18 +232,18 @@ namespace Kobsis.Util
             }
         }
 
-        public static DataTable MontajListesi
+        public static DataTable TeslimatListesi
         {
             get
             {
-                if (HttpContext.Current.Session["Takvim_MontajListesi"] != null)
-                    return HttpContext.Current.Session["Takvim_MontajListesi"] as DataTable;
+                if (HttpContext.Current.Session["Takvim_TeslimatListesi"] != null)
+                    return HttpContext.Current.Session["Takvim_TeslimatListesi"] as DataTable;
 
                 return null;
             }
             set
             {
-                HttpContext.Current.Session["Takvim_MontajListesi"] = value;
+                HttpContext.Current.Session["Takvim_TeslimatListesi"] = value;
             }
         }
 

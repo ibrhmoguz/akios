@@ -3,7 +3,7 @@
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
-    <table style="width: 100%" class="normalTablo">
+    <table style="width: 100%" class="CerceveTablo">
         <tr>
             <td rowspan="4" style="width: 70px; padding: 5px 5px 5px 5px">
                <asp:Image ID="imgFirmaLogo"  runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />

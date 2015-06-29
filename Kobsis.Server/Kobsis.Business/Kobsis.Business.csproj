@@ -45,7 +45,7 @@
     <Compile Include="MusteriBS.cs" />
     <Compile Include="RaporBS.cs" />
     <Compile Include="KullaniciBS.cs" />
-    <Compile Include="MontajBS.cs" />
+    <Compile Include="TeslimatBS.cs" />
     <Compile Include="PersonelBS.cs" />
     <Compile Include="ReferansDataBS.cs" />
     <Compile Include="SiparisIslemleriBS.cs" />

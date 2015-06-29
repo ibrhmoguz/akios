@@ -224,7 +224,7 @@
                 <telerik:RadBinaryImage ID="RadBinaryImage2" runat="server" ImageUrl="~/App_Themes/Theme/Raster/olcu3.png" 
                     Width="300" Height="250" />
             </td>
-            <th colspan="4" style="text-align: center">ÖLÇÜM ve MONTAJ</th>
+            <th colspan="4" style="text-align: center">ÖLÇÜM ve TESLIMAT</th>
         </tr>
         <tr>
             <td>Ölçümü Alan Kişi : </td>
@@ -237,9 +237,9 @@
             </td>
         </tr>
         <tr>
-            <td>Montaj Şekli: </td>
+            <td>Teslimat Şekli: </td>
             <td>
-                <asp:Label ID="lblMontajSekli" runat="server" RenderMode="Lightweight"></asp:Label>
+                <asp:Label ID="lblTeslimatSekli" runat="server" RenderMode="Lightweight"></asp:Label>
             </td>
             <td>Teslim Şekli: </td>
             <td>

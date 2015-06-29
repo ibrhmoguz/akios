@@ -22,7 +22,7 @@ namespace Kobsis.Business
                                    ISNULL(CASE WHEN S.MusteriIsTel IS NOT NULL THEN 'İŞ: '+ S.MusteriIsTel ELSE NULL END,'') AS Tel
                                 , S.MusteriAdres AS Adres
                                 , RI.IlAd +'/'+ RC.IlceAd + '/'+ RS.SemtAd AS Semt
-                                , dbo.MONTAJ_EKIP_LISTESI(M.ID) AS MontajEkibi
+                                , dbo.TESLIMAT_EKIP_LISTESI(M.ID) AS TeslimatEkibi
                                 --, ISNULL(CASE WHEN S.KILITSISTEM IS NOT NULL THEN S.KILITSISTEM +', ' ELSE NULL END,'')+
                                 --  ISNULL(CASE WHEN S.CITA IS NOT NULL THEN S.CITA +',  ' ELSE NULL END,'') +
                                 --  ISNULL(CASE WHEN S.ESIK IS NOT NULL THEN S.ESIK +',' ELSE NULL END,'') +
@@ -40,7 +40,7 @@ namespace Kobsis.Business
                                 --  ISNULL(CASE WHEN S.ALARM IS NOT NULL THEN 'Alarm:'+S.ALARM +', ' ELSE NULL END,'') +
                                 --  ISNULL(CASE WHEN S.OTOKILIT IS NOT NULL THEN 'Otomatik Kilit:'+S.OTOKILIT +', ' ELSE NULL END,'') AS ACIKLAMA
                             FROM dbo.SIPARIS_{0} AS S
-                                INNER JOIN MONTAJ AS M ON M.SiparisID = S.ID
+                                INNER JOIN TESLIMAT AS M ON M.SiparisID = S.ID
                                 LEFT OUTER JOIN dbo.REF_SEMT AS RS ON RS.SemtKod = S.MusteriSemtKod
                                 INNER JOIN dbo.REF_ILCE AS RC ON RC.IlceKod = S.MusteriIlceKod
                                 INNER JOIN dbo.REF_IL AS RI ON RI.IlKod = S.MusteriIlKod

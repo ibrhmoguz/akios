@@ -136,7 +136,7 @@
     <Content Include="Raporlar\SeriyeGoreSatilanAdet.aspx" />
     <Content Include="AdminLogin.aspx" />
     <Content Include="Manage.aspx" />
-    <Content Include="YonetimKonsolu\MontajKotaTanimla.aspx" />
+    <Content Include="YonetimKonsolu\TeslimatKotaTanimla.aspx" />
     <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="Print\SeriyeGoreSatilanAdet.aspx" />
     <Content Include="Print\PrintYangin.aspx" />
@@ -263,12 +263,12 @@
     <Compile Include="Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="YonetimKonsolu\MontajKotaTanimla.aspx.cs">
-      <DependentUpon>MontajKotaTanimla.aspx</DependentUpon>
+    <Compile Include="YonetimKonsolu\TeslimatKotaTanimla.aspx.cs">
+      <DependentUpon>TeslimatKotaTanimla.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="YonetimKonsolu\MontajKotaTanimla.aspx.designer.cs">
-      <DependentUpon>MontajKotaTanimla.aspx</DependentUpon>
+    <Compile Include="YonetimKonsolu\TeslimatKotaTanimla.aspx.designer.cs">
+      <DependentUpon>TeslimatKotaTanimla.aspx</DependentUpon>
     </Compile>
     <Compile Include="YonetimKonsolu\PersonelTanimlama.aspx.cs">
       <DependentUpon>PersonelTanimlama.aspx</DependentUpon>

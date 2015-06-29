@@ -54,7 +54,7 @@
             </td>
         </tr>
     </table>
-    <table id="trSiparisGenelBilgileri" runat="server" class="PrintTablo" style="width: 100%">
+    <table id="trSiparisGenelBilgileri" runat="server" class="kucukPrintTablo" style="width: 100%">
         <tr>
             <th style="width: 13%">Sipariş No : </th>
             <td style="width: 20%">

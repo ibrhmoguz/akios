@@ -10,34 +10,34 @@
 namespace Kobsis.Web.YonetimKonsolu {
     
     
-    public partial class MontajKotaTanimla {
+    public partial class TeslimatKotaTanimla {
         
         /// <summary>
-        /// rdtMontajTarih control.
+        /// rdtTeslimatTarih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker rdtMontajTarih;
+        protected global::Telerik.Web.UI.RadDatePicker rdtTeslimatTarih;
         
         /// <summary>
-        /// txtMontajKota control.
+        /// txtTeslimatKota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtMontajKota;
+        protected global::Telerik.Web.UI.RadTextBox txtTeslimatKota;
         
         /// <summary>
-        /// chcBoxMontajKabul control.
+        /// chcBoxTeslimatKabul control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chcBoxMontajKabul;
+        protected global::System.Web.UI.WebControls.CheckBox chcBoxTeslimatKabul;
         
         /// <summary>
         /// btnKaydet control.
@@ -49,12 +49,12 @@ namespace Kobsis.Web.YonetimKonsolu {
         protected global::Telerik.Web.UI.RadButton btnKaydet;
         
         /// <summary>
-        /// grdMontajKota control.
+        /// grdTeslimatKota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdMontajKota;
+        protected global::System.Web.UI.WebControls.GridView grdTeslimatKota;
     }
 }

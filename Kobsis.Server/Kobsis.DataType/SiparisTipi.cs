@@ -166,11 +166,11 @@ namespace Kobsis.DataType
 
     public class Olcum
     {
-        public string MontajdaTakilacak { get; set; }
+        public string TeslimatdaTakilacak { get; set; }
         public string OlcumBilgi { get; set; }
         public DateTime? OlcumTarih { get; set; }
         public string OlcumAlanKisi { get; set; }
-        public string MontajSekli { get; set; }
+        public string TeslimatSekli { get; set; }
         public string TeslimSekli { get; set; }
         public string IcKasaGenislik { get; set; }
         public string IcKasaYukseklik { get; set; }
@@ -186,10 +186,10 @@ namespace Kobsis.DataType
 
         public Olcum()
         {
-            this.MontajdaTakilacak = null;
+            this.TeslimatdaTakilacak = null;
             this.OlcumBilgi = null;
             this.OlcumAlanKisi = null;
-            this.MontajSekli = null;
+            this.TeslimatSekli = null;
             this.TeslimSekli = null;
             this.IcKasaGenislik = null;
             this.IcKasaYukseklik = null;
@@ -212,8 +212,8 @@ namespace Kobsis.DataType
         public string Fiyat { get; set; }
         public string VergiDairesi { get; set; }
         public string VergiNumarası { get; set; }
-        public DateTime? MontajTeslimTarih { get; set; }
-        public string MontajDurum { get; set; }
+        public DateTime? TeslimatTeslimTarih { get; set; }
+        public string TeslimatDurum { get; set; }
 
         public Sozlesme()
         {
@@ -222,8 +222,8 @@ namespace Kobsis.DataType
             this.Fiyat = null;
             this.VergiDairesi = null;
             this.VergiNumarası = null;
-            this.MontajTeslimTarih = null;
-            this.MontajDurum = null;
+            this.TeslimatTeslimTarih = null;
+            this.TeslimatDurum = null;
         }
     }
 }

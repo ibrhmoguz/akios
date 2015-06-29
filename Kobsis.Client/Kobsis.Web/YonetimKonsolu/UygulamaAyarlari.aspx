@@ -16,13 +16,13 @@
             </td>
         </tr>
         <tr>
-            <th style="width: 11%">Montaj Kota Kontrolü: </th>
+            <th style="width: 11%">Teslimat Kota Kontrolü: </th>
             <td style="width: 8%">
-                <asp:CheckBox ID="chcBoxMontajKotaKontrolu" runat="server" Text="" Checked="true" ToolTip="Montaj kota kontrolünü aktifleştir." />
+                <asp:CheckBox ID="chcBoxTeslimatKotaKontrolu" runat="server" Text="" Checked="true" ToolTip="Teslimat kota kontrolünü aktifleştir." />
             </td>
-            <th style="width: 13%">Montaj Kota Varsayılan Değeri: </th>
+            <th style="width: 13%">Teslimat Kota Varsayılan Değeri: </th>
             <td style="width: 8%">
-                <telerik:RadTextBox ID="txtMontajKotaVarsayilan" runat="server" Width="50" RenderMode="Lightweight" MaxLength="99">
+                <telerik:RadTextBox ID="txtTeslimatKotaVarsayilan" runat="server" Width="50" RenderMode="Lightweight" MaxLength="99">
                 </telerik:RadTextBox>
             </td>
             <td>

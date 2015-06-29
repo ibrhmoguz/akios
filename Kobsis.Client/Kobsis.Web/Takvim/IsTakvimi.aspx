@@ -96,7 +96,7 @@
                                 <th style="width: 10%">Sipariş No:</th>
                                 <td class="TdRenkSolaYasla">
                                     <asp:Label ID="LabelEditSiparisNo" runat="server"> <%# Eval("Subject") %></asp:Label>
-                                    <asp:Label ID="LabelEditMontajID" runat="server" Visible="false"></asp:Label>
+                                    <asp:Label ID="LabelEditTeslimatID" runat="server" Visible="false"></asp:Label>
                                 </td>
                             </tr>
                             <tr>
@@ -117,22 +117,22 @@
                                     <asp:Label ID="LabelEditTelefon" runat="server">Telefon</asp:Label></td>
                             </tr>
                             <tr>
-                                <th>Montaj Tarihi:</th>
+                                <th>Teslimat Tarihi:</th>
                                 <td>
-                                    <telerik:RadDateTimePicker ID="DateTimePickerMontajTarihSaat" runat="server" Width="200px"></telerik:RadDateTimePicker>
+                                    <telerik:RadDateTimePicker ID="DateTimePickerTeslimatTarihSaat" runat="server" Width="200px"></telerik:RadDateTimePicker>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Montaj Ekibi</th>
+                                <th>Teslimat Ekibi</th>
                                 <td>
-                                    <telerik:RadListBox ID="ListBoxMontajEkibi" runat="server" Height="300" Width="350" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
+                                    <telerik:RadListBox ID="ListBoxTeslimatEkibi" runat="server" Height="300" Width="350" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
                                     </telerik:RadListBox>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Montaj Durumu</th>
+                                <th>Teslimat Durumu</th>
                                 <td>
-                                    <asp:CheckBox ID="chcBoxMontajDurumu" runat="server" Text="Montaj Tamamlandı" Checked="false" ToolTip="Montaj tamamlandı ise seçiniz" />
+                                    <asp:CheckBox ID="chcBoxTeslimatDurumu" runat="server" Text="Teslimat Tamamlandı" Checked="false" ToolTip="Teslimat tamamlandı ise seçiniz" />
 
                                 </td>
                             </tr>
@@ -150,14 +150,14 @@
                     </AdvancedEditTemplate>
                     <AppointmentTemplate>
                         <div>
-                            <asp:Label ID="LableMontajDurum" runat="server">&nbsp;&nbsp;</asp:Label>
+                            <asp:Label ID="LableTeslimatDurum" runat="server">&nbsp;&nbsp;</asp:Label>
                             <asp:LinkButton ID="LabelAppointmentSiparisNo" runat="server" Font-Bold="true"><%# Eval("Subject") %></asp:LinkButton>
                             <br />
                             <asp:Label ID="LabelAppointmentMusteriAdSoyad" runat="server">Müşteri Adı Soyadı</asp:Label>
                             <asp:Label ID="LabelAppointmentAdresIlIlce" runat="server">Adres İl İlçe</asp:Label>
                             <asp:Label ID="LabelAppointmentAdres" runat="server">Adres</asp:Label>
                             <asp:Label ID="LabelAppointmentTelefon" runat="server">Telefon</asp:Label>
-                            <asp:Label ID="LabelAppointmentMontajEkibi" runat="server">Montaj Ekibi</asp:Label>
+                            <asp:Label ID="LabelAppointmentTeslimatEkibi" runat="server">Teslimat Ekibi</asp:Label>
                         </div>
                     </AppointmentTemplate>
                 </telerik:RadScheduler>

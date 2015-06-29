@@ -99,9 +99,9 @@
                         <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE DÜZENLE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/YonetimKonsolu/FormOgeGuncelleme.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
-                <telerik:RibbonBarGroup Text="Günlük Montaj Kota Tanımlama">
+                <telerik:RibbonBarGroup Text="Teslimat Kota Tanımlama">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbMontajKota" Size="Large" Text="MONTAJ KOTA TANIMLA" ToolTip="Günlük montaj kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/montajKota.png" CommandName="~/YonetimKonsolu/MontajKotaTanimla.aspx" />
+                        <telerik:RibbonBarButton ID="rbbTeslimatKota" Size="Large" Text="TESLİMAT KOTA TANIMLA" ToolTip="Günlük teslimat kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/teslimatKota.png" CommandName="~/YonetimKonsolu/TeslimatKotaTanimla.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Uygulama Ayarları">

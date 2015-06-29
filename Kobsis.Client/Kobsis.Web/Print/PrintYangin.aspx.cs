@@ -98,7 +98,7 @@ namespace Kobsis.Web.Print
             lblOlcumBilgileri.Text = (row["OLCUMBILGI"] != DBNull.Value) ? row["OLCUMBILGI"].ToString() : String.Empty;
             lblOlcuTarihSaat.Text = (row["OLCUMTARIH"] != DBNull.Value) ? Convert.ToDateTime(row["OLCUMTARIH"].ToString()).ToShortDateString() : String.Empty;
             lblOlcumAlan.Text = (row["OLCUMALANKISI"] != DBNull.Value) ? row["OLCUMALANKISI"].ToString() : String.Empty;
-            lblMontajSekli.Text = (row["MONTAJSEKLI"] != DBNull.Value) ? row["MONTAJSEKLI"].ToString() : String.Empty;
+            lblTeslimatSekli.Text = (row["TESLIMATSEKLI"] != DBNull.Value) ? row["TESLIMATSEKLI"].ToString() : String.Empty;
             lblTeslimSekli.Text = (row["TESLIMSEKLI"] != DBNull.Value) ? row["TESLIMSEKLI"].ToString() : String.Empty;
             lblMusteriAdSoyad.Text = ad + " " + soyad;
             lblMusteriAdres.Text = adres + "   " + ilce + " / " + il;

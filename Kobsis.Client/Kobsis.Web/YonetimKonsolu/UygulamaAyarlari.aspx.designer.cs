@@ -13,22 +13,22 @@ namespace Kobsis.Web.YonetimKonsolu {
     public partial class UygulamaAyarlari {
         
         /// <summary>
-        /// chcBoxMontajKotaKontrolu control.
+        /// chcBoxTeslimatKotaKontrolu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chcBoxMontajKotaKontrolu;
+        protected global::System.Web.UI.WebControls.CheckBox chcBoxTeslimatKotaKontrolu;
         
         /// <summary>
-        /// txtMontajKotaVarsayilan control.
+        /// txtTeslimatKotaVarsayilan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox txtMontajKotaVarsayilan;
+        protected global::Telerik.Web.UI.RadTextBox txtTeslimatKotaVarsayilan;
         
         /// <summary>
         /// btnKaydet control.

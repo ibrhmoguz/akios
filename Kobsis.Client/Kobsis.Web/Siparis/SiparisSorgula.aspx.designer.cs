@@ -49,13 +49,13 @@ namespace Kobsis.Web.Siparis {
         protected global::Telerik.Web.UI.RadTextBox txtMusteriAdres;
         
         /// <summary>
-        /// ListBoxMontajEkibi control.
+        /// ListBoxTeslimatEkibi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadListBox ListBoxMontajEkibi;
+        protected global::Telerik.Web.UI.RadListBox ListBoxTeslimatEkibi;
         
         /// <summary>
         /// txtSiparisAdeti control.

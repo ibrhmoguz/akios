@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
-    <table style="width: 100%" class="normalTablo">
+    <table style="width: 100%" class="CerceveTablo">
         <tr>
             <td rowspan="4" style="width: 70px; padding: 5px 5px 5px 5px">
                 <asp:Image ID="imgFirmaLogo" runat="server" ImageUrl="~/App_Themes/Theme/Raster/ackLogo.PNG" Width="70" Height="70" />
@@ -35,7 +35,7 @@
                         <asp:BoundField DataField="Adres" HeaderText="ADRES" />
                         <asp:BoundField DataField="Tel" HeaderText="TEL" ItemStyle-Font-Size="12px" />
                         <asp:BoundField DataField="Semt" HeaderText="SEMT" />
-                        <asp:BoundField DataField="MontajEkibi" HeaderText="MONTAJ EKİBİ" />
+                        <asp:BoundField DataField="TeslimatEkibi" HeaderText="TESLIMAT EKİBİ" />
                     </Columns>
                 </asp:GridView>
             </td>

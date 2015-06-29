@@ -29,9 +29,9 @@
                                 <telerik:RadTextBox ID="txtMusteriAdres" runat="server" Width="250px" RenderMode="Lightweight"></telerik:RadTextBox>
                             </td>
 
-                            <th rowspan="5" style="width: 8%">Montaj Ekibi</th>
+                            <th rowspan="5" style="width: 8%">Teslimat Ekibi</th>
                             <td rowspan="5">
-                                <telerik:RadListBox ID="ListBoxMontajEkibi" runat="server" Width="160" Height="100%" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
+                                <telerik:RadListBox ID="ListBoxTeslimatEkibi" runat="server" Width="160" Height="100%" SelectionMode="Multiple" CheckBoxes="true" DataValueField="ID" DataTextField="AD">
                                 </telerik:RadListBox>
                             </td>
                         </tr>

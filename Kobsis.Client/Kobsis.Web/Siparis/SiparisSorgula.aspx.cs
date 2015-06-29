@@ -49,8 +49,8 @@ namespace Kobsis.Web.Siparis
             else
                 dt = SessionManager.PersonelListesi;
 
-            ListBoxMontajEkibi.DataSource = dt;
-            ListBoxMontajEkibi.DataBind();
+            ListBoxTeslimatEkibi.DataSource = dt;
+            ListBoxTeslimatEkibi.DataBind();
         }
 
         protected void btnSorgula_Click(object sender, EventArgs e)
@@ -151,7 +151,7 @@ namespace Kobsis.Web.Siparis
 
         protected void btnTemizle_Click(object sender, EventArgs e)
         {
-            foreach (RadListBoxItem item in ListBoxMontajEkibi.Items)
+            foreach (RadListBoxItem item in ListBoxTeslimatEkibi.Items)
             {
                 if (item.Checked) item.Checked = false;
             }

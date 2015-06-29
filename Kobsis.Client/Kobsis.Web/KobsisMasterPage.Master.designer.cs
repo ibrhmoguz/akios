@@ -139,13 +139,13 @@ namespace Kobsis.Web {
         protected global::Telerik.Web.UI.RibbonBarButton rbbFormOgeGuncelle;
         
         /// <summary>
-        /// rbbMontajKota control.
+        /// rbbTeslimatKota control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbMontajKota;
+        protected global::Telerik.Web.UI.RibbonBarButton rbbTeslimatKota;
         
         /// <summary>
         /// rbbUygulamaAyar control.

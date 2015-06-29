@@ -24,18 +24,18 @@ namespace Kobsis.Web.YonetimKonsolu
                 DataRow row = dt.Rows[0];
                 if (row != null)
                 {
-                    if (row["ConfigName"] != DBNull.Value && row["ConfigName"].ToString() == "MONTAJ_KOTA_KONTROLU")
+                    if (row["ConfigName"] != DBNull.Value && row["ConfigName"].ToString() == "TESLIMAT_KOTA_KONTROLU")
                         if (row["ConfigValue"].ToString() == "1")
-                            chcBoxMontajKotaKontrolu.Checked = true;
+                            chcBoxTeslimatKotaKontrolu.Checked = true;
                         else
-                            chcBoxMontajKotaKontrolu.Checked = false;
+                            chcBoxTeslimatKotaKontrolu.Checked = false;
 
                 }
                 DataRow row1 = dt.Rows[1];
                 if (row1 != null)
                 {
-                    if (row1["ConfigName"] != DBNull.Value && row1["ConfigName"].ToString() == "MONTAJ_KOTA_VARSAYILAN")
-                        txtMontajKotaVarsayilan.Text = row1["ConfigValue"].ToString();
+                    if (row1["ConfigName"] != DBNull.Value && row1["ConfigName"].ToString() == "TESLIMAT_KOTA_VARSAYILAN")
+                        txtTeslimatKotaVarsayilan.Text = row1["ConfigValue"].ToString();
                 }
             }
         }
@@ -43,26 +43,26 @@ namespace Kobsis.Web.YonetimKonsolu
         protected void btnKaydet_Click(object sender, EventArgs e)
         {
             string varsayilan;
-            if (chcBoxMontajKotaKontrolu.Checked)
+            if (chcBoxTeslimatKotaKontrolu.Checked)
             {
-                if (string.IsNullOrEmpty(txtMontajKotaVarsayilan.Text))
+                if (string.IsNullOrEmpty(txtTeslimatKotaVarsayilan.Text))
                 {
-                    MessageBox.Uyari(this.Page, "Montaj kota varsayılan değeri giriniz.");
+                    MessageBox.Uyari(this.Page, "Teslimat kota varsayılan değeri giriniz.");
                     return;
                 }
-                varsayilan = txtMontajKotaVarsayilan.Text;
+                varsayilan = txtTeslimatKotaVarsayilan.Text;
 
-                SessionManager.MontajKotaKontrolu = "1";
-                SessionManager.MontajKotaVarsayilan = Convert.ToInt32(varsayilan);
+                SessionManager.TeslimatKotaKontrolu = "1";
+                SessionManager.TeslimatKotaVarsayilan = Convert.ToInt32(varsayilan);
             }
             else
             {
                 varsayilan = "0";
-                SessionManager.MontajKotaKontrolu = "0";
-                SessionManager.MontajKotaVarsayilan = 0;
+                SessionManager.TeslimatKotaKontrolu = "0";
+                SessionManager.TeslimatKotaVarsayilan = 0;
             }
 
-            bool islemDurumu = new ConfigBS().ConfigDegerleriniKaydet(chcBoxMontajKotaKontrolu.Checked, varsayilan);
+            bool islemDurumu = new ConfigBS().ConfigDegerleriniKaydet(chcBoxTeslimatKotaKontrolu.Checked, varsayilan);
 
             if (islemDurumu)
             {

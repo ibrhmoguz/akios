@@ -27,7 +27,7 @@ namespace Kobsis.Business
             ds.Tables.Add(CitaGetir(prms));
             ds.Tables.Add(EsikGetir(prms));
             ds.Tables.Add(AksesuarRenkGetir(prms));
-            ds.Tables.Add(MontajSekliGetir(prms));
+            ds.Tables.Add(TeslimatSekliGetir(prms));
             ds.Tables.Add(TeslimSekliGetir(prms));
             ds.Tables.Add(AluminyumRenkGetir(prms));
             ds.Tables.Add(TacTipGetir(prms));
@@ -421,17 +421,17 @@ namespace Kobsis.Business
             return dt;
         }
 
-        private DataTable MontajSekliGetir(Dictionary<string, object> prms)
+        private DataTable TeslimatSekliGetir(Dictionary<string, object> prms)
         {
             DataTable dt = new DataTable();
-            dt.TableName = "MONTAJSEKLI";
+            dt.TableName = "TESLIMATSEKLI";
             IData data = GetDataObject();
             string durum = "1";
 
             data.AddSqlParameter("KAPISERI", prms["KAPISERI"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("DURUM", durum, SqlDbType.VarChar, 50);
 
-            string sqlText = @"SELECT ID,AD FROM REF_MONTAJSEKLI WHERE " + prms["KAPISERI"].ToString() + "=@DURUM";
+            string sqlText = @"SELECT ID,AD FROM REF_TESLIMATSEKLI WHERE " + prms["KAPISERI"].ToString() + "=@DURUM";
             data.GetRecords(dt, sqlText);
 
             return dt;
@@ -628,11 +628,11 @@ namespace Kobsis.Business
                 data.AddSqlParameter("KAYITYAPANKAMERA", siparis.KayitYapanKamera, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("ALARM", siparis.Alarm, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OTOKILIT", siparis.OtomatikKilit, SqlDbType.VarChar, 50);
-                data.AddSqlParameter("MONTAJDATAKILACAK", olcum.MontajdaTakilacak, SqlDbType.VarChar, 50);
+                data.AddSqlParameter("TESLIMATDATAKILACAK", olcum.TeslimatdaTakilacak, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OLCUMBILGI", olcum.OlcumBilgi, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OLCUMTARIH", olcum.OlcumTarih, SqlDbType.Date, 50);
                 data.AddSqlParameter("OLCUMALANKISI", olcum.OlcumAlanKisi, SqlDbType.VarChar, 50);
-                data.AddSqlParameter("MONTAJSEKLI", olcum.MontajSekli, SqlDbType.VarChar, 50);
+                data.AddSqlParameter("TESLIMATSEKLI", olcum.TeslimatSekli, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("TESLIMSEKLI", olcum.TeslimSekli, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("PESINAT", sozlesme.Pesinat, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("KALANODEME", sozlesme.KalanOdeme, SqlDbType.VarChar, 50);
@@ -723,11 +723,11 @@ namespace Kobsis.Business
                                    ,[KAYITYAPANKAMERA]
                                    ,[ALARM]
                                    ,[OTOKILIT]
-                                   ,[MONTAJDATAKILACAK]
+                                   ,[TESLIMATDATAKILACAK]
                                    ,[OLCUMBILGI]
                                    ,[OLCUMTARIH]
                                    ,[OLCUMALANKISI]
-                                   ,[MONTAJSEKLI]
+                                   ,[TESLIMATSEKLI]
                                    ,[TESLIMSEKLI]
                                    ,[PESINAT]
                                    ,[KALANODEME]
@@ -817,11 +817,11 @@ namespace Kobsis.Business
                                    @KAYITYAPANKAMERA,
                                    @ALARM,
                                    @OTOKILIT,
-                                   @MONTAJDATAKILACAK,
+                                   @TESLIMATDATAKILACAK,
                                    @OLCUMBILGI,
                                    @OLCUMTARIH,
                                    @OLCUMALANKISI,
-                                   @MONTAJSEKLI,
+                                   @TESLIMATSEKLI,
                                    @TESLIMSEKLI,
                                    @PESINAT,
                                    @KALANODEME,
@@ -879,18 +879,18 @@ namespace Kobsis.Business
                 SELECT MAX(ID) FROM [ACKAppDB].[dbo].[SIPARIS]";
                 int siparisID = Convert.ToInt32(data.ExecuteScalar(sqlKaydet, CommandType.Text));
 
-                //MONTAJ BILGISI KAYDET
+                //TESLIMAT BILGISI KAYDET
 
                 data.AddSqlParameter("SIPARISNO", siparis.SiparisNo, SqlDbType.VarChar, 50);
-                data.AddSqlParameter("TESLIMTARIH", sozlesme.MontajTeslimTarih, SqlDbType.DateTime, 50);
-                data.AddSqlParameter("DURUM", sozlesme.MontajDurum, SqlDbType.VarChar, 50);
+                data.AddSqlParameter("TESLIMTARIH", sozlesme.TeslimatTeslimTarih, SqlDbType.DateTime, 50);
+                data.AddSqlParameter("DURUM", sozlesme.TeslimatDurum, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("CREATEDBY", siparis.CreatedBy, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("CREATEDTIME", siparis.CreatedTime, SqlDbType.DateTime, 50);
                 data.AddSqlParameter("SIPARISID", siparisID, SqlDbType.Int, 50);
 
-                string sqlKaydetMontaj = @"INSERT INTO [ACKAppDB].[dbo].[MONTAJ] (SIPARISNO,TESLIMTARIH,DURUM,CREATEDBY,CREATEDTIME,SIPARISID) 
+                string sqlKaydetTeslimat = @"INSERT INTO [ACKAppDB].[dbo].[TESLIMAT] (SIPARISNO,TESLIMTARIH,DURUM,CREATEDBY,CREATEDTIME,SIPARISID) 
                                            VALUES (@SIPARISNO, @TESLIMTARIH, @DURUM, @CREATEDBY, @CREATEDTIME,@SIPARISID)";
-                data.ExecuteStatement(sqlKaydetMontaj);
+                data.ExecuteStatement(sqlKaydetTeslimat);
 
 
                 data.CommitTransaction();
@@ -949,11 +949,11 @@ namespace Kobsis.Business
                 data.AddSqlParameter("ALARM", siparis.Alarm, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OTOKILIT", siparis.OtomatikKilit, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("ADET", siparis.SiparisAdedi, SqlDbType.Int, 50);
-                data.AddSqlParameter("MONTAJDATAKILACAK", olcum.MontajdaTakilacak, SqlDbType.VarChar, 50);
+                data.AddSqlParameter("TESLIMATDATAKILACAK", olcum.TeslimatdaTakilacak, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OLCUMBILGI", olcum.OlcumBilgi, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("OLCUMTARIH", olcum.OlcumTarih, SqlDbType.Date, 50);
                 data.AddSqlParameter("OLCUMALANKISI", olcum.OlcumAlanKisi, SqlDbType.VarChar, 50);
-                data.AddSqlParameter("MONTAJSEKLI", olcum.MontajSekli, SqlDbType.VarChar, 50);
+                data.AddSqlParameter("TESLIMATSEKLI", olcum.TeslimatSekli, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("TESLIMSEKLI", olcum.TeslimSekli, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("PESINAT", sozlesme.Pesinat, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("KALANODEME", sozlesme.KalanOdeme, SqlDbType.VarChar, 50);
@@ -1044,11 +1044,11 @@ namespace Kobsis.Business
                                           ,[KAYITYAPANKAMERA] = @KAYITYAPANKAMERA
                                           ,[ALARM] = @ALARM
                                           ,[OTOKILIT]= @OTOKILIT
-                                          ,[MONTAJDATAKILACAK] = @MONTAJDATAKILACAK
+                                          ,[TESLIMATDATAKILACAK] = @TESLIMATDATAKILACAK
                                           ,[OLCUMBILGI] = @OLCUMBILGI
                                           ,[OLCUMTARIH] = @OLCUMTARIH
                                           ,[OLCUMALANKISI] = @OLCUMALANKISI
-                                          ,[MONTAJSEKLI] = @MONTAJSEKLI
+                                          ,[TESLIMATSEKLI] = @TESLIMATSEKLI
                                           ,[TESLIMSEKLI] = @TESLIMSEKLI
                                           ,[PESINAT] = @PESINAT
                                           ,[KALANODEME] = @KALANODEME
@@ -1106,19 +1106,19 @@ namespace Kobsis.Business
 
                 data.ExecuteStatement(sqlGuncelle);
 
-                //MONTAJ BILGISI GUNCELLE
+                //TESLIMAT BILGISI GUNCELLE
 
                 data.AddSqlParameter("ID", siparis.SiparisID, SqlDbType.VarChar, 50);
-                data.AddSqlParameter("TESLIMTARIH", sozlesme.MontajTeslimTarih, SqlDbType.DateTime, 50);
+                data.AddSqlParameter("TESLIMTARIH", sozlesme.TeslimatTeslimTarih, SqlDbType.DateTime, 50);
                 data.AddSqlParameter("UPDATEDBY", siparis.UpdatedBy, SqlDbType.VarChar, 50);
                 data.AddSqlParameter("UPDATEDTIME", siparis.UpdatedTime, SqlDbType.DateTime, 50);
 
-                string sqlGuncelleMontaj = @"UPDATE [ACKAppDB].[dbo].[MONTAJ]
+                string sqlGuncelleTeslimat = @"UPDATE [ACKAppDB].[dbo].[TESLIMAT]
                                              SET  [TESLIMTARIH] =@TESLIMTARIH
                                                   ,UPDATEDBY=@UPDATEDBY
                                                   ,UPDATEDTIME=@UPDATEDTIME
                                              WHERE [SIPARISID] =@ID";
-                data.ExecuteStatement(sqlGuncelleMontaj);
+                data.ExecuteStatement(sqlGuncelleTeslimat);
 
 
                 data.CommitTransaction();
@@ -1141,7 +1141,7 @@ namespace Kobsis.Business
 
             string sqlText = @"SELECT 
                                     S.*
-                                    ,(SELECT TESLIMTARIH FROM [dbo].[MONTAJ] WHERE SIPARISID = S.ID) AS TESLIMTARIH
+                                    ,(SELECT TESLIMTARIH FROM [dbo].[TESLIMAT] WHERE SIPARISID = S.ID) AS TESLIMTARIH
                                FROM SIPARIS AS S
                                WHERE ID=@ID";
             data.GetRecords(dt, sqlText);
@@ -1168,7 +1168,7 @@ namespace Kobsis.Business
             data.AddSqlParameter("ddlCita", prms["ddlCita"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("ddlEsik", prms["ddlEsik"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("ddlAksesuarRengi", prms["ddlAksesuarRengi"], SqlDbType.VarChar, 50);
-            data.AddSqlParameter("ddlMontajSekli", prms["ddlMontajSekli"], SqlDbType.VarChar, 50);
+            data.AddSqlParameter("ddlTeslimatSekli", prms["ddlTeslimatSekli"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("ddlAluminyumRengi", prms["ddlAluminyumRengi"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("ddlTacTipi", prms["ddlTacTipi"], SqlDbType.VarChar, 50);
             data.AddSqlParameter("ddlPervazTipi", prms["ddlPervazTipi"], SqlDbType.VarChar, 50);
@@ -1199,13 +1199,13 @@ namespace Kobsis.Business
                                 ,(CASE WHEN [TACTIP]='Seçiniz' THEN '' ELSE [TACTIP] END) AS [TACTIP]
                                 ,(CASE WHEN [PERVAZTIP]='Seçiniz' THEN '' ELSE [PERVAZTIP] END) AS [PERVAZTIP]
                                 ,[OLCUMBILGI]
-                                ,[MONTAJSEKLI]
-                                ,CONVERT(VARCHAR(10), M.[TESLIMTARIH],104)  AS MONTAJTARIHI
+                                ,[TESLIMATSEKLI]
+                                ,CONVERT(VARCHAR(10), M.[TESLIMTARIH],104)  AS TESLIMATTARIHI
                                 ,S.ADET
                                 ,S.MUSTERISEMT
                             FROM SIPARIS AS S
-	                            INNER JOIN [dbo].[MONTAJ] AS M ON S.ID = M.SIPARISID
-	                            LEFT OUTER JOIN [dbo].[MONTAJ_PERSONEL] AS MP ON M.[ID] = MP.[MONTAJID]
+	                            INNER JOIN [dbo].[TESLIMAT] AS M ON S.ID = M.SIPARISID
+	                            LEFT OUTER JOIN [dbo].[TESLIMAT_PERSONEL] AS MP ON M.[ID] = MP.[TESLIMATID]
                             WHERE (@SiparisNo IS NULL OR S.SIPARISNO=@SiparisNo)
 	                                AND (@SiparisTarihiBas IS NULL OR S.[SIPARISTARIH]>=@SiparisTarihiBas)
 	                                AND (@SiparisTarihiBit IS NULL OR S.[SIPARISTARIH]<=@SiparisTarihiBit)
@@ -1221,7 +1221,7 @@ namespace Kobsis.Business
 	                                AND (@ddlCita IS NULL OR [CITA] = @ddlCita)
 	                                AND (@ddlEsik IS NULL OR [ESIK] = @ddlEsik)
 	                                AND (@ddlAksesuarRengi IS NULL OR [AKSESUARRENK] = @ddlAksesuarRengi)
-	                                AND (@ddlMontajSekli IS NULL OR [MONTAJSEKLI] = @ddlMontajSekli)
+	                                AND (@ddlTeslimatSekli IS NULL OR [TESLIMATSEKLI] = @ddlTeslimatSekli)
 	                                AND (@ddlAluminyumRengi IS NULL OR [ALUMINYUMRENK] = @ddlAluminyumRengi)
 	                                AND (@ddlTacTipi IS NULL OR [TACTIP] = @ddlTacTipi)
 	                                AND (@ddlPervazTipi IS NULL OR [PERVAZTIP] = @ddlPervazTipi)

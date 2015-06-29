@@ -84,7 +84,7 @@ namespace Kobsis.Business
                                 ,RIL.ILAD as MusteriIl
                                 ,RILCE.ILCEAD as MusteriIlce
                                 ,SM.SEMTAD as MusteriSemt
-                                ,(SELECT TeslimTarih FROM [dbo].[MONTAJ] WHERE SiparisID = S.ID) AS TESLIMTARIH
+                                ,(SELECT TeslimTarih FROM [dbo].[TESLIMAT] WHERE SiparisID = S.ID) AS TESLIMTARIH
                             FROM SIPARIS_ABC AS S
 	                           INNER JOIN dbo.REF_IL AS RIL ON S.MusteriIlKod = RIL.IlKod
 	                           INNER JOIN dbo.REF_ILCE AS RILCE ON S.MusteriIlceKod = RILCE.IlceKod

@@ -345,10 +345,13 @@ namespace Kobsis.Generation
         {
             if (!string.IsNullOrWhiteSpace(layout.Text))
             {
+                if (this.IslemTipi == FormIslemTipi.Print && layout.Text.Equals("<br />"))
+                    return null;
+
                 return new LiteralWebControl(layout.Text) { ID = KontrolIDGetir(layout) };
             }
-            else
-                return null;
+
+            return null;
         }
 
         private WebControl TextBoxOlustur(Layout layout)
