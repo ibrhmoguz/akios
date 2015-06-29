@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Kobsis.Util;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
@@ -88,7 +89,7 @@ namespace Kobsis.Business
             }
             catch (Exception exc)
             {
-                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeSil", "", null);
+                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeSil", SessionManager.KullaniciBilgi.KullaniciAdi, null);
                 return false;
             }
         }
@@ -123,7 +124,7 @@ namespace Kobsis.Business
             catch (Exception exc)
             {
                 data.RollbackTransaction();
-                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeEkle", "", null);
+                new LogWriter().Write(AppModules.YonetimKonsolu, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "OgeEkle", SessionManager.KullaniciBilgi.KullaniciAdi, null);
                 return false;
             }
         }

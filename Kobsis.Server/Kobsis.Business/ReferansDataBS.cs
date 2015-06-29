@@ -74,7 +74,7 @@ namespace Kobsis.Business
             data.AddSqlParameter("MusteriID", musteriId, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
             return dt;
-        }  
+        }
 
         public DataTable IlleriGetir()
         {
@@ -142,6 +142,42 @@ namespace Kobsis.Business
             }
 
             return seriList;
+        }
+
+        public List<MusteriRapor> MusteriRaporlariniGetir(int pMusteriId)
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            string sqlText = @"SELECT
+	                                R.*
+                                FROM dbo.RAPOR AS R
+	                                INNER JOIN dbo.MUSTERI_RAPOR AS MR ON MR.RaporID=R.RaporID
+                                WHERE MR.MusteriID=@MusteriID
+                                ORDER BY MR.SiraNo, R.RaporAdi";
+
+            data.AddSqlParameter("MusteriID", pMusteriId, SqlDbType.Int, 50);
+            data.GetRecords(dt, sqlText);
+
+            var raporList = new List<MusteriRapor>();
+            foreach (DataRow row in dt.Rows)
+            {
+                var musteriRapor = new MusteriRapor();
+                if (row["RaporID"] != DBNull.Value)
+                    musteriRapor.RaporId = row["RaporID"].ToString();
+                if (row["RaporAdi"] != DBNull.Value)
+                    musteriRapor.RaporAdi = row["RaporAdi"].ToString();
+                if (row["RaporMenuBaslik"] != DBNull.Value)
+                    musteriRapor.RaporMenuBaslik = row["RaporMenuBaslik"].ToString();
+                if (row["Dizin"] != DBNull.Value)
+                    musteriRapor.Dizin = row["Dizin"].ToString();
+                if (row["IkonImajID"] != DBNull.Value)
+                    musteriRapor.IkonImajId = row["IkonImajID"].ToString();
+
+                raporList.Add(musteriRapor);
+            }
+
+            return raporList;
         }
     }
 }

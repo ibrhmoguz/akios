@@ -71,39 +71,40 @@ namespace Kobsis.Business
                                 WITH KAPI_FILITRELE AS 
                                 (
 	                                SELECT
-		                                 KS.AD AS KapiTipi
-		                                 , S.FIYAT
-		                                 ,  CAST(S.SIPARISTARIH AS DATE) AS SIPARISTARIH
+		                                 SS.SeriAdi AS SeriAdi
+		                                 , S.Fiyat AS FIYAT
+		                                 ,  CAST(S.SiparisTarih AS DATE) AS SIPARISTARIH
+		                                 ,DATEPART(YEAR,SiparisTarih) as yearr
 	                                FROM dbo.SIPARIS_{0} AS S
-		                                INNER JOIN dbo.REF_KAPISERI_HEPSI AS KS ON SUBSTRING(S.SIPARISNO, 1, 1) = KS.VALUE 
-	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
-		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
-		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
+		                                INNER JOIN dbo.SIPARIS_SERI AS SS ON SS.SiparisSeriID=S.SeriID
+	                                WHERE (@IlKod IS NULL OR MusteriIlKod= @IlKod) AND
+		                                  (@IlceKod IS NULL OR  MusteriIlceKod= @IlceKod) AND
+		                                  (@Yil IS NULL OR DATEPART(YEAR,SiparisTarih) = @Yil)
                                 )
 
                                 SELECT
-	                                KapiTipi AS [TOPLAM TUTAR]
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,1,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '1'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,1,@Period) AND SIPARISTARIH < DATEADD(MONTH,2,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '2'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,2,@Period) AND SIPARISTARIH < DATEADD(MONTH,3,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '3'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,3,@Period) AND SIPARISTARIH < DATEADD(MONTH,4,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '4'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,4,@Period) AND SIPARISTARIH < DATEADD(MONTH,5,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '5'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,5,@Period) AND SIPARISTARIH < DATEADD(MONTH,6,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '6'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,6,@Period) AND SIPARISTARIH < DATEADD(MONTH,7,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '7'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,7,@Period) AND SIPARISTARIH < DATEADD(MONTH,8,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '8'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,8,@Period) AND SIPARISTARIH < DATEADD(MONTH,9,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '9'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,9,@Period) AND SIPARISTARIH < DATEADD(MONTH,10,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '10'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,10,@Period) AND SIPARISTARIH < DATEADD(MONTH,11,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '11'
-	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,11,@Period) AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND KapiTipi=KF.KapiTipi),'0') AS '12'
-                                    , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND KapiTipi=KF.KapiTipi),'0') AS 'Yillik'
+	                                SeriAdi AS [TOPLAM TUTAR]
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,1,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '1'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,1,@Period) AND SIPARISTARIH < DATEADD(MONTH,2,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '2'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,2,@Period) AND SIPARISTARIH < DATEADD(MONTH,3,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '3'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,3,@Period) AND SIPARISTARIH < DATEADD(MONTH,4,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '4'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,4,@Period) AND SIPARISTARIH < DATEADD(MONTH,5,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '5'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,5,@Period) AND SIPARISTARIH < DATEADD(MONTH,6,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '6'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,6,@Period) AND SIPARISTARIH < DATEADD(MONTH,7,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '7'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,7,@Period) AND SIPARISTARIH < DATEADD(MONTH,8,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '8'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,8,@Period) AND SIPARISTARIH < DATEADD(MONTH,9,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '9'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,9,@Period) AND SIPARISTARIH < DATEADD(MONTH,10,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '10'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,10,@Period) AND SIPARISTARIH < DATEADD(MONTH,11,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '11'
+	                                , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,11,@Period) AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND SeriAdi=KF.SeriAdi),'0') AS '12'
+                                    , ISNULL((SELECT SUM(ISNULL(FIYAT,'0')) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND SeriAdi=KF.SeriAdi),'0') AS 'Yillik'
                                     , '' AS [Yuzde(%)]
                                 FROM KAPI_FILITRELE AS KF
-                                GROUP BY KapiTipi";
+                                GROUP BY SeriAdi";
             
             sqlText = String.Format(sqlText, musteriKod);
 
-            data.AddSqlParameter("Il", il, SqlDbType.VarChar, 50);
-            data.AddSqlParameter("Ilce", ilce, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("IlKod", il, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("IlceKod", ilce, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Yil", yil, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
 
@@ -118,40 +119,41 @@ namespace Kobsis.Business
                                 SET @Period = CAST('01.01.' + @Yil AS DATE);
                                 WITH KAPI_FILITRELE AS 
                                 (
-	                                SELECT
-		                                 KS.AD AS KapiTipi
-		                                 , S.ADET
-		                                 ,  CAST(S.SIPARISTARIH AS DATE) AS SIPARISTARIH
+	                                 SELECT
+		                                 SS.SeriAdi AS SeriAdi
+		                                 , S.Adet
+		                                 ,  CAST(S.SiparisTarih AS DATE) AS SIPARISTARIH
+		                                 ,DATEPART(YEAR,SiparisTarih) as yearr
 	                                FROM dbo.SIPARIS_{0} AS S
-		                                INNER JOIN dbo.REF_KAPISERI_HEPSI AS KS ON SUBSTRING(S.SIPARISNO, 1, 1) = KS.VALUE 
-	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
-		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
-		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
+		                                INNER JOIN dbo.SIPARIS_SERI AS SS ON SS.SiparisSeriID=S.SeriID
+	                                WHERE (@IlKod IS NULL OR MusteriIlKod= @IlKod) AND
+		                                  (@IlceKod IS NULL OR  MusteriIlceKod= @IlceKod) AND
+		                                  (@Yil IS NULL OR DATEPART(YEAR,SiparisTarih) = @Yil)
                                 )
 
                                 SELECT
-	                                KapiTipi AS [TOPLAM SATIŞ]
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,1,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '1'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,1,@Period) AND SIPARISTARIH < DATEADD(MONTH,2,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '2'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,2,@Period) AND SIPARISTARIH < DATEADD(MONTH,3,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '3'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,3,@Period) AND SIPARISTARIH < DATEADD(MONTH,4,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '4'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,4,@Period) AND SIPARISTARIH < DATEADD(MONTH,5,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '5'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,5,@Period) AND SIPARISTARIH < DATEADD(MONTH,6,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '6'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,6,@Period) AND SIPARISTARIH < DATEADD(MONTH,7,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '7'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,7,@Period) AND SIPARISTARIH < DATEADD(MONTH,8,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '8'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,8,@Period) AND SIPARISTARIH < DATEADD(MONTH,9,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '9'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,9,@Period) AND SIPARISTARIH < DATEADD(MONTH,10,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '10'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,10,@Period) AND SIPARISTARIH < DATEADD(MONTH,11,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '11'
-	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,11,@Period) AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS '12'
-                                    , CAST(ISNULL((SELECT SUM(CAST(ISNULL(ADET,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND KapiTipi=KF.KapiTipi),0) AS VARCHAR) AS 'Yillik'
+	                                SeriAdi AS [TOPLAM SATIŞ]
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,1,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '1'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,1,@Period) AND SIPARISTARIH < DATEADD(MONTH,2,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '2'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,2,@Period) AND SIPARISTARIH < DATEADD(MONTH,3,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '3'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,3,@Period) AND SIPARISTARIH < DATEADD(MONTH,4,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '4'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,4,@Period) AND SIPARISTARIH < DATEADD(MONTH,5,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '5'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,5,@Period) AND SIPARISTARIH < DATEADD(MONTH,6,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '6'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,6,@Period) AND SIPARISTARIH < DATEADD(MONTH,7,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '7'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,7,@Period) AND SIPARISTARIH < DATEADD(MONTH,8,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '8'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,8,@Period) AND SIPARISTARIH < DATEADD(MONTH,9,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '9'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,9,@Period) AND SIPARISTARIH < DATEADD(MONTH,10,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '10'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,10,@Period) AND SIPARISTARIH < DATEADD(MONTH,11,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '11'
+	                                , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= DATEADD(MONTH,11,@Period) AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS '12'
+                                    , CAST(ISNULL((SELECT SUM(CAST(ISNULL(Adet,'0') AS INT)) FROM KAPI_FILITRELE WHERE SIPARISTARIH >= @Period AND SIPARISTARIH < DATEADD(MONTH,12,@Period) AND SeriAdi=KF.SeriAdi),0) AS VARCHAR) AS 'Yillik'
                                     , '' AS [Yuzde(%)]
                                 FROM KAPI_FILITRELE AS KF
-                                GROUP BY KapiTipi";
+                                GROUP BY SeriAdi";
 
             sqlText = String.Format(sqlText, musteriKod);
 
-            data.AddSqlParameter("Il", il, SqlDbType.VarChar, 50);
-            data.AddSqlParameter("Ilce", ilce, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("IlKod", il, SqlDbType.VarChar, 50);
+            data.AddSqlParameter("IlceKod", ilce, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Yil", yil, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
 

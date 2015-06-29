@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Security;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kobsis.Business;
 using Kobsis.DataType;
 using Kobsis.Util;
-using Kobsis.Web.Helper;
 using Telerik.Web.UI;
 
 namespace Kobsis.Web
 {
-    public partial class KobsisMasterPage : System.Web.UI.MasterPage
+    public partial class KobsisMasterPage : MasterPage
     {
         protected override void OnInit(EventArgs e)
         {
             SiparisSeriYukle();
+            MusteriRaporlariniYukle();
             base.OnInit(e);
         }
 
@@ -50,6 +51,45 @@ namespace Kobsis.Web
                     CommandName = "~/Siparis/SiparisKayit.aspx?SiparisSeri=" + seri.SiparisSeriID.ToString()
                 };
                 rbbSiparisSeriMenu.Items.Add(item);
+            }
+        }
+
+        private void MusteriRaporlariniYukle()
+        {
+            var tabRaporlar = RadRibbonBarMenu.Tabs[4];
+
+            tabRaporlar.Groups.Clear();
+            List<MusteriRapor> raporlar = null;
+            if (SessionManager.MusteriRaporlar == null)
+            {
+                raporlar = new ReferansDataBS().MusteriRaporlariniGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+                SessionManager.MusteriRaporlar = raporlar;
+            }
+            else
+                raporlar = SessionManager.MusteriRaporlar;
+
+            foreach (MusteriRapor rapor in raporlar)
+            {
+                var ribbonBar = new RibbonBarGroup
+                {
+                    Text = rapor.RaporMenuBaslik
+                };
+
+                var button = new RibbonBarButton
+                {
+                    ID = "RibbonBarButton" + rapor.RaporId,
+                    Text = rapor.RaporAdi,
+                    CommandName = rapor.Dizin,
+                    Size = RibbonBarItemSize.Large
+                };
+
+                if (!string.IsNullOrEmpty(rapor.IkonImajId))
+                    button.ImageUrlLarge = "ImageForm.aspx?ImageID=" + rapor.IkonImajId;
+                else
+                    button.ImageUrlLarge = "/App_Themes/Theme/Raster/BlankProfile.gif";
+
+                ribbonBar.Items.Add(button);
+                tabRaporlar.Groups.Add(ribbonBar);
             }
         }
 

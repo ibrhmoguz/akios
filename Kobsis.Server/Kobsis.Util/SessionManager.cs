@@ -336,5 +336,20 @@ namespace Kobsis.Util
                 HttpContext.Current.Session["IlIlceyeGoreSatilanAdet"] = value;
             }
         }
+
+        public static List<MusteriRapor> MusteriRaporlar
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MusteriRaporlar"] != null)
+                    return (List<MusteriRapor>)HttpContext.Current.Session["MusteriRaporlar"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["MusteriRaporlar"] = value;
+            }
+        }
     }
 }

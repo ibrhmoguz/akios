@@ -99,7 +99,7 @@
     <Content Include="App_Themes\Theme\Raster\loading.gif" />
     <Content Include="App_Themes\Theme\Raster\lock.gif" />
     <Content Include="App_Themes\Theme\Raster\menuSeperator.gif" />
-    <Content Include="App_Themes\Theme\Raster\montajKota.png" />
+    <Content Include="App_Themes\Theme\Raster\teslimatKota.png" />
     <Content Include="App_Themes\Theme\Raster\nova.png" />
     <Content Include="App_Themes\Theme\Raster\novaKapiOrta.png" />
     <Content Include="App_Themes\Theme\Raster\ok.gif" />

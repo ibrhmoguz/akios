@@ -15,7 +15,6 @@
                 <div style="padding-top: 25px; text-align: center; width: 45%;">
 
                     <table class="AnaTablo">
-
                         <tr>
                             <th>Kullanıcı Adı</th>
                             <th>Yetki</th>

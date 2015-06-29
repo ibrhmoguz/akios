@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using Kobsis.DataType;
+using Kobsis.Util;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
@@ -27,13 +28,14 @@ namespace Kobsis.Business
             Dictionary<string, object> output = data.ExecuteStatementUDI("dbo.KaydetGuncelleSiparis" + musteriKodu);
             if (output["ErrorMessage"] != null && output["ErrorMessage"].ToString() != string.Empty)
             {
-                new LogWriter().Write(AppModules.Siparis, System.Diagnostics.EventLogEntryType.Error, new Exception(output["ErrorMessage"].ToString()), "ServerSide", "SiparisKaydet", "", null);
+                new LogWriter().Write(AppModules.Siparis, System.Diagnostics.EventLogEntryType.Error, new Exception(output["ErrorMessage"].ToString()), "ServerSide", "SiparisKaydet", SessionManager.KullaniciBilgi.KullaniciAdi, null);
                 return null;
             }
-            else if (output["ID"] != null && output["ID"].ToString() != string.Empty)
+            
+            if (output["ID"] != null && output["ID"].ToString() != string.Empty)
                 return Convert.ToInt32(output["ID"].ToString());
-            else
-                return null;
+            
+            return null;
         }
 
         public List<SiparisMetadata> SiparisMetdataGetir(string musteriId)

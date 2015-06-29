@@ -123,7 +123,7 @@
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="RAPORLAR">
-                <telerik:RibbonBarGroup Text="Takip Formu">
+                <%--<telerik:RibbonBarGroup Text="Takip Formu">
                     <Items>
                         <telerik:RibbonBarButton ID="rbbGunlukIsTakipFormu" Size="Large" Text="GÜNLÜK İŞ TAKİP FORMU" ToolTip="Günlük iş takip formu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/gunlukRapor.png" CommandName="~/Raporlar/GunlukIsTakipFormu.aspx" />
                     </Items>
@@ -137,7 +137,7 @@
                     <Items>
                         <telerik:RibbonBarButton ID="rbbIlIlceyeGoreSatilanAdet" Size="Large" Text="İL İLÇEYE GÖRE SATIŞ RAPORU" ToolTip="İl İlçeye göre satılan adet raporu için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report2.png" CommandName="~/Raporlar/IlIlceyeGoreSatilanAdet.aspx" />
                     </Items>
-                </telerik:RibbonBarGroup>
+                </telerik:RibbonBarGroup>--%>
             </telerik:RibbonBarTab>
         </telerik:RadRibbonBar>
         <div>

@@ -36,8 +36,8 @@ namespace Kobsis.Web
         {
             //string user = string.Empty;
             //Exception exc = this.Server.GetLastError();
-            //if (Session["user"] != null && Session["user"].ToString() != "mangacece")
-            //    user = Session["user"].ToString();
+            //if (SessionManager.KullaniciBilgi != null && SessionManager.KullaniciBilgi.KullaniciAdi != "mangacece")
+            //    user = SessionManager.KullaniciBilgi.KullaniciAdi;
             //new LogWriter().Write(AppModules.KobsisSiparisTakip, System.Diagnostics.EventLogEntryType.Error, exc, "", "", "", user);
             //Response.Redirect("Hata.aspx");
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using Kobsis.Util;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
@@ -98,7 +99,7 @@ namespace Kobsis.Business
             catch (Exception exc)
             {
                 data.RollbackTransaction();
-                new LogWriter().Write(AppModules.IsTakvimi, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "TeslimatGuncelle", "", null);
+                new LogWriter().Write(AppModules.IsTakvimi, System.Diagnostics.EventLogEntryType.Error, exc, "ServerSide", "TeslimatGuncelle", SessionManager.KullaniciBilgi.KullaniciAdi, null);
                 return false;
             }
         }

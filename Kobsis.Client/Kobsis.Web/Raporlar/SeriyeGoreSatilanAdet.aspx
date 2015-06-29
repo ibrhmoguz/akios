@@ -42,7 +42,7 @@
                         <td colspan="7">
                             <br />
                             <asp:GridView ID="grdSatisAdetRapor" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-                                Width="100%" CssClass="AnaTablo" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                                Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                                 EmptyDataText="Satış bulunamamıştır!" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                                 EmptyDataRowStyle-CssClass="TdRenkAciklama">
                                 <Columns>
@@ -66,7 +66,7 @@
 
                             <br />
                             <asp:GridView ID="grdSatisTutarRapor" runat="server" AutoGenerateColumns="false" AllowPaging="false" PageSize="30"
-                                Width="100%" CssClass="AnaTablo" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
+                                Width="100%" CssClass="grid" AlternatingRowStyle-BackColor="Wheat" HeaderStyle-CssClass="ThBaslikRenk2"
                                 EmptyDataText="Satış tutarı bulunamamıştır!" EmptyDataRowStyle-Font-Bold="true" EmptyDataRowStyle-ForeColor="Red" EmptyDataRowStyle-HorizontalAlign="Center"
                                 EmptyDataRowStyle-CssClass="TdRenkAciklama">
                                 <Columns>
