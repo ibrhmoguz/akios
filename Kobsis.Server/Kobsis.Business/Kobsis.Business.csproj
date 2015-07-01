@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="FormLayoutBS.cs" />
     <Compile Include="ConfigBS.cs" />
+    <Compile Include="ImajBS.cs" />
     <Compile Include="SiparisBS.cs" />
     <Compile Include="MusteriBS.cs" />
     <Compile Include="RaporBS.cs" />

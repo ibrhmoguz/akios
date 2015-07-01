@@ -8,9 +8,7 @@ using System.Web.UI.WebControls;
 using Kobsis.Business;
 using Kobsis.Util;
 using Kobsis.Web.Helper;
-using Telerik.Web.Design;
 using Telerik.Web.UI;
-using ImageButton = System.Web.UI.WebControls.ImageButton;
 
 namespace Kobsis.Web.YonetimKonsolu
 {
@@ -39,7 +37,7 @@ namespace Kobsis.Web.YonetimKonsolu
                 ddlReferanslar.DataTextField = "RefAdi";
                 ddlReferanslar.DataValueField = "RefID";
                 ddlReferanslar.DataBind();
-                ddlReferanslar.Items.Insert(0, new Telerik.Web.UI.DropDownListItem("Seçiniz", "0"));
+                ddlReferanslar.Items.Insert(0, new DropDownListItem("Seçiniz", "0"));
             }
             else
             {
@@ -155,7 +153,7 @@ namespace Kobsis.Web.YonetimKonsolu
             }
         }
 
-        protected void imageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+        protected void imageButton_Click(object sender, ImageClickEventArgs e)
         {
             var footerRow = gvReferansDetay.FooterRow;
             var textBoxRefDetayAdi = footerRow.FindControl("FooterTextBoxRefDetayAdi") as TextBox;

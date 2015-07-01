@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using Kobsis.Business;
 using Kobsis.DataType;
 using Kobsis.Generation;
@@ -20,12 +18,7 @@ namespace Kobsis.Web.Siparis
         {
             get
             {
-                if (!String.IsNullOrWhiteSpace(Request.QueryString["SiparisSeri"]))
-                {
-                    return Request.QueryString["SiparisSeri"].ToString();
-                }
-                else
-                    return String.Empty;
+                return !String.IsNullOrWhiteSpace(Request.QueryString["SiparisSeri"]) ? Request.QueryString["SiparisSeri"] : String.Empty;
             }
         }
 
@@ -33,12 +26,7 @@ namespace Kobsis.Web.Siparis
         {
             get
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["SiparisID"]))
-                {
-                    return Request.QueryString["SiparisID"].ToString();
-                }
-                else
-                    return String.Empty;
+                return !String.IsNullOrEmpty(Request.QueryString["SiparisID"]) ? Request.QueryString["SiparisID"] : String.Empty;
             }
         }
 
@@ -306,7 +294,7 @@ namespace Kobsis.Web.Siparis
             }
         }
 
-        protected void ddlMusteriIl_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        protected void ddlMusteriIl_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             ddlMusteriIlce.Text = "";
             ddlMusteriIlce.Items.Clear();
@@ -315,7 +303,7 @@ namespace Kobsis.Web.Siparis
             IlceleriGetir(e.Value);
         }
 
-        protected void ddlMusteriIlce_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        protected void ddlMusteriIlce_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             ddlMusteriSemt.Items.Clear();
             ddlMusteriSemt.Text = "";

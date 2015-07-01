@@ -15,12 +15,7 @@ namespace Kobsis.Web.Siparis
         {
             get
             {
-                if (!String.IsNullOrWhiteSpace(Request.QueryString["SiparisSeri"]))
-                {
-                    return Request.QueryString["SiparisSeri"].ToString();
-                }
-                else
-                    return String.Empty;
+                return !String.IsNullOrWhiteSpace(Request.QueryString["SiparisSeri"]) ? Request.QueryString["SiparisSeri"] : String.Empty;
             }
         }
 
@@ -28,12 +23,7 @@ namespace Kobsis.Web.Siparis
         {
             get
             {
-                if (!String.IsNullOrEmpty(Request.QueryString["SiparisID"]))
-                {
-                    return Request.QueryString["SiparisID"].ToString();
-                }
-                else
-                    return String.Empty;
+                return !String.IsNullOrEmpty(Request.QueryString["SiparisID"]) ? Request.QueryString["SiparisID"] : String.Empty;
             }
         }
 

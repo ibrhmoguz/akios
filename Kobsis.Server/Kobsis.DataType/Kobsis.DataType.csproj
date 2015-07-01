@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DbParametre.cs" />
     <Compile Include="FormIslemTipi.cs" />
+    <Compile Include="Imaj.cs" />
     <Compile Include="KapiTipi.cs" />
     <Compile Include="Kullanici.cs" />
     <Compile Include="KullaniciRol.cs" />
