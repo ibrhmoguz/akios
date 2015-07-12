@@ -1,0 +1,55 @@
+﻿html, body, form {
+    background-color: #f2f2f2;
+     background-repeat: repeat-y;
+    margin: 0px;
+    text-align: center;
+    /*height: 100%;*/
+    margin: 0px 0px 131px 0px;
+}
+div#genel{
+     background-color: #f2f2f2;
+     background-repeat: repeat-y;
+    margin: 0px;
+    text-align: center;
+    height: 100%;
+    margin: 0px 0px 131px 0px;
+}
+
+div#ContentBase {
+    background-image: url(m.jpg);
+    width: 95%;
+    min-height: 95%;
+    text-align: center;
+}
+
+div#ContentMaster {
+    background-image: url(m.jpg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    width: 95%;
+    min-height: 95%;
+}
+
+div#ContentHeader {
+    background-image: url(h.jpg);
+    background-repeat: no-repeat;
+    height: 100px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+}
+
+div#ContentPage {
+    text-align: left;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 15px;
+}
+
+div#ContentFooter {
+    background-image: url(m.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    width: 984px;
+    height: 131px;
+}

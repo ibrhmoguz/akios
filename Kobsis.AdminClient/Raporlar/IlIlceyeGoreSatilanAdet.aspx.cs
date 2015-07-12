@@ -12,7 +12,7 @@ namespace Kobsis.Web.Raporlar
     public partial class IlIlceyeGoreSatilanAdet : KobsisBasePage
     {
         private static string ANKARA_IL_KODU = "6";
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -135,8 +135,8 @@ namespace Kobsis.Web.Raporlar
                 {
                     if (row["Yillik"] != DBNull.Value)
                     {
-                        yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString())/toplamAdet));
-                        row["Yuzde(%)"] = (yuzde*100).ToString("0.00", CultureInfo.InvariantCulture);
+                        yuzde = Convert.ToDecimal((Convert.ToDecimal(row["Yillik"].ToString()) / toplamAdet));
+                        row["Yuzde(%)"] = (yuzde * 100).ToString("0.00", CultureInfo.InvariantCulture);
                     }
                 }
             }

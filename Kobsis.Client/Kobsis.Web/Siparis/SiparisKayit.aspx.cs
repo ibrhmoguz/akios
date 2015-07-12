@@ -235,7 +235,7 @@ namespace Kobsis.Web.Siparis
             if (siparisID.HasValue)
             {
                 MessageBox.Basari(this, "Sipariş eklendi.");
-                Response.Redirect("~/SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + this.SiparisSeri);
+                Response.Redirect("~/Siparis/SiparisGoruntule.aspx?SiparisID=" + siparisID + "&SiparisSeri=" + this.SiparisSeri);
             }
             else
                 MessageBox.Hata(this, "Sipariş eklenemedi.");

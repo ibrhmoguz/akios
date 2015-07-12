@@ -1,0 +1,89 @@
+﻿/*CSS Standartları bu şekilde olacak FORMATLAMA YAPMAYINIZ!!!*/
+.RadioButtonCssRed{font-family:verdana;Font-Size:x-small;COLOR:Red;}
+.RadioButtonCssBlue{font-family:verdana;Font-Size:x-small;COLOR:Blue;}
+.RadioButtonCssOrange{font-family:verdana;Font-Size:x-small;COLOR:Orange;}
+.LinkButtonCss{font-family: Verdana;Font-Size:x-small;color:Teal;font-weight:normal;}
+.LinkButtonCss2{font-family: Verdana;Font-Size:small;color:Blue;font-weight:normal;}
+.LinkButtonCss3{font-family: Segoe UI;Font-Size:9pt;color:Blue;font-weight:normal;}
+.LinkButtonCss4{font-family: Verdana;Font-Size:x-small;color:Blue;font-weight:normal;text-decoration:none;}
+.LinkButtonCssBrown{font-family: Segoe UI;Font-Size:9pt;color:#aa0000;font-weight:normal;}
+.ButtonKaydet{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/kaydetbtn.jpg); height:29px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonUygula{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/uygulabtn.jpg); height:29px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonEkle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/eklebtn.jpg); height:28px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYeniKayit{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/yenikayitbtn.jpg); height:29px; width:89px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonTemizle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/temizlebtn.jpg); height:29px; width:89px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonExceleAktar{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/exceleaktar.jpg); height:28px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonWordeAktar{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/wordeaktar.jpg); height:28px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonPDFeAktar{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/pdfeaktar.jpg); height:28px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonGoruntule{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/goruntulebtn.jpg); height:29px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonGuncelle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/guncellebtn.jpg); height:29px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYetki{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/yetki.jpg); height:28px; width:61px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonMalzemeEkle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/btnmalzemeekle.jpg); height:28px; width:111px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonRaporAl{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/raporalbtn.jpg); height:28px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonDevam{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/devambtn.jpg); height:28px; width:73px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonSil{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/silbtn.jpg); height:29px; width:56px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonIptal{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/iptalbtn.jpg); height:28px; width:65px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonAra{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/arabtn.jpg); height:29px; width:60px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYazdir{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/yazdirbtn.jpg); height:28px; width:69px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonKaydetYadaGuncelle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/kaydetyadaguncelle.jpg); height:29px; width:134px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYardim{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/btnyardim.jpg); height:29px; width:77px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYonlendir{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/yonlendirbtn.jpg); height:29px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonListeAl{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/listealbtn.jpg); height:29px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonHatirla{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/hatirlabtn.jpg); height:29px; width:87px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonCevapla{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/cevaplabtn.jpg); height:29px; width:79px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonEvet{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/evetbtn.jpg); height:29px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonHayir{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/hayirbtn.jpg); height:29px; width:65px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonKontrolEt{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/kontroletbtn.jpg); height:29px; width:94px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonOnayla{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/onaylabtn.jpg); height:29px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonTamam{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/tamambtn.jpg); height:29px; width:74px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonTerfiYap{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/terfiyapbtn.jpg); height:29px; width:94px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonDosyaYukle{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/dosyayuklebtn.jpg); height:29px; width:99px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonIleri{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/ileribtn.gif); height:29px; width:60px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonGeri{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/geribtn.gif); height:29px; width:60px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonAktif{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/aktifbtn.gif); height:29px; width:67px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonFume{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/fumebtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonKirmizi{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/kirmizibtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonSari{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/saribtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonTurkuaz{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/turkuazbtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonTuruncu{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/turuncubtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonYesil{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/yesilbtn.jpg); height:21px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.ButtonPasif{background:transparent; background-image:url(../../App_Themes/Main/Images/Buttons/pasifbtn.jpg); height:29px; width:63px; border:none; cursor:hand; background-repeat:no-repeat;}
+.AjandaOzet { background-color:ButtonHighlight; padding:5px 5px 5px 5px; background-image:url(../../App_Themes/Main/Anasayfa/ajandaozet.gif); background-repeat:no-repeat; background-position:left;}
+.AjandaOzet a{ margin-left:10px; margin-right:5px; color:#0a246a;  background-image:url(../../App_Themes/Main/Anasayfa/ajandaozetlinkbg.gif); background-repeat:no-repeat; background-position:left; padding-left:15px;}
+.AjandaOzet a:hover{ text-decoration:none;}
+.BelgelerDokumanlar a{ display:block; height:17px; width:182px; background-image:url(../../App_Themes/Main/Images/Anasayfa/belgelerbtnbg.gif); background-repeat:no-repeat; padding-left:25px; color:White; text-decoration:none; padding-top:5px; font-size:11px; float:right;}
+.BelgelerDokumanlar a:hover{ text-decoration:underline;}
+.DinamikButton{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonmavidoseme.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButton .DinamikButtonSol{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonmavisol.jpg);height: 29px;background-repeat: no-repeat;background-position: left;}
+.DinamikButton .DinamikButtonSol .DinamikButtonSag{height: 29px;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonmavisag.jpg);height: 22px;background-repeat: no-repeat;background-position: right;padding-top: 7px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonKirmizi{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonkirmizidoseme.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonKirmizi .DinamikButtonSolKirmizi{background-image: url../..(/App_Themes/Main/Images/Buttons/Dinamik/buttonkirmizisol.jpg);height: 29px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonKirmizi .DinamikButtonSolKirmizi .DinamikButtonSagKirmizi{height: 29px;background-image: url(/App_Themes/Main/Images/Buttons/Dinamik/buttonkirmizisag.jpg);height: 22px;background-repeat: no-repeat;background-position: right;padding-top: 7px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonSari{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonsaridoseme.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonSari .DinamikButtonSolSari{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonsarisol.jpg);height: 29px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonSari .DinamikButtonSolSari .DinamikButtonSagSari{height: 29px;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonsarisag.jpg);height: 22px;background-repeat: no-repeat;background-position: right;padding-top: 7px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonYesil{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonyesildoseme.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonYesil .DinamikButtonSolYesil{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonyesilsol.jpg);height: 29px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonYesil .DinamikButtonSolYesil .DinamikButtonSagYesil{height: 29px;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/buttonyesilsag.jpg);height: 22px; background-repeat: no-repeat;background-position: right;padding-top: 7px;padding-left: 5px;padding-right: 5px;}
+.valilikkaymakamliklinkler a{color:#0b2340; font-weight:bold;}
+.valilikkaymakamliklinkler a:hover{ text-decoration:none;}
+.DinamikButtonKYesilKucuk{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/fumebtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonKYesilKucuk .DinamikButtonSolKYesilKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/fumebtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonKYesilKucuk .DinamikButtonSolKYesilKucuk .DinamikButtonSagKYesilKucuk{height: 29px;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/fumebtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonKirmiziKucuk{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/kirmizibtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonKirmiziKucuk .DinamikButtonSolKirmiziKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/kirmizibtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonKirmiziKucuk .DinamikButtonSolKirmiziKucuk .DinamikButtonSagKirmiziKucuk{background-image: url(/App_Themes/Main/Images/Buttons/Dinamik/Kucuk/kirmizibtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonSariKucuk{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/saribtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonSariKucuk .DinamikButtonSolSariKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/saribtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonSariKucuk .DinamikButtonSolSariKucuk .DinamikButtonSagSariKucuk{background-image: url(/App_Themes/Main/Images/Buttons/Dinamik/Kucuk/saribtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonMaviKucuk{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turkuazbtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonMaviKucuk .DinamikButtonSolMaviKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turkuazbtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonMaviKucuk .DinamikButtonSolMaviKucuk .DinamikButtonSagMaviKucuk{background-image: url(/App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turkuazbtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonTuruncuKucuk{color: White;display: block;background-image: url(/App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turuncubtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonTuruncuKucuk .DinamikButtonSolTuruncuKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turuncubtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonTuruncuKucuk .DinamikButtonSolTuruncuKucuk .DinamikButtonSagTuruncuKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/turuncubtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonYesilKucuk{color: White;display: block;background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/yesilbtnorta.jpg);font-size: 12px;text-decoration: none;}
+.DinamikButtonYesilKucuk .DinamikButtonSolYesilKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/yesilbtnsol.jpg);height: 21px;background-repeat: no-repeat;background-position: left;}
+.DinamikButtonYesilKucuk .DinamikButtonSolYesilKucuk .DinamikButtonSagYesilKucuk{background-image: url(../../App_Themes/Main/Images/Buttons/Dinamik/Kucuk/yesilbtnsag.jpg);height: 18px;background-repeat: no-repeat;background-position: right;padding-top: 3px;padding-left: 5px;padding-right: 5px;}
+.DinamikButtonKYesilKucuk,.DinamikButtonKirmiziKucuk,.DinamikButtonSariKucuk,.DinamikButtonMaviKucuk,.DinamikButtonTuruncuKucuk,.DinamikButtonYesilKucuk{color:Black;}
+.DinamikButtonKYesilKucuk a,.DinamikButtonKirmiziKucuk a,.DinamikButtonSariKucuk a,.DinamikButtonMaviKucuk a,.DinamikButtonTuruncuKucuk a,DinamikButtonYesilKucuk a{text-decoration:none;color:Black;}

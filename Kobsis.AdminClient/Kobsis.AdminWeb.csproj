@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kobsis.Web</RootNamespace>
+    <AssemblyName>Kobsis.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Telerik.Web.Design, Version=2013.2.717.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\WebFrame\DLL\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\WebFrame\DLL\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\WebFrame\DLL\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Theme\Buttons.css" />
+    <Content Include="App_Themes\Theme\GridView\empdatarowbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\footer.gif" />
+    <Content Include="App_Themes\Theme\GridView\gridviewfooterbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbghover.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewpagerbgsecili.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbg.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbg1.jpg" />
+    <Content Include="App_Themes\Theme\GridView\gridviewthbgAnasayfa.jpg" />
+    <Content Include="App_Themes\Theme\GridView\pager_bg.gif" />
+    <Content Include="App_Themes\Theme\Raster\ackLogo.PNG" />
+    <Content Include="App_Themes\Theme\Raster\BlankProfile.gif" />
+    <Content Include="App_Themes\Theme\Raster\buton.jpg" />
+    <Content Include="App_Themes\Theme\Raster\calendar.jpg" />
+    <Content Include="App_Themes\Theme\Raster\cancel.gif" />
+    <Content Include="App_Themes\Theme\Raster\clear.png" />
+    <Content Include="App_Themes\Theme\Raster\dl.png" />
+    <Content Include="App_Themes\Theme\Raster\ekle.gif" />
+    <Content Include="App_Themes\Theme\Raster\error.png" />
+    <Content Include="App_Themes\Theme\Raster\guard.png" />
+    <Content Include="App_Themes\Theme\Raster\guardKapiOrta.png" />
+    <Content Include="App_Themes\Theme\Raster\guncelle.png" />
+    <Content Include="App_Themes\Theme\Raster\gunlukRapor.png" />
+    <Content Include="App_Themes\Theme\Raster\hataLog.png" />
+    <Content Include="App_Themes\Theme\Raster\iptal.gif" />
+    <Content Include="App_Themes\Theme\Raster\kroma.png" />
+    <Content Include="App_Themes\Theme\Raster\KromaKapiOrta.png" />
+    <Content Include="App_Themes\Theme\Raster\kullaniciEkle.png" />
+    <Content Include="App_Themes\Theme\Raster\loading.gif" />
+    <Content Include="App_Themes\Theme\Raster\lock.gif" />
+    <Content Include="App_Themes\Theme\Raster\menuSeperator.gif" />
+    <Content Include="App_Themes\Theme\Raster\teslimatKota.png" />
+    <Content Include="App_Themes\Theme\Raster\nova.png" />
+    <Content Include="App_Themes\Theme\Raster\novaKapiOrta.png" />
+    <Content Include="App_Themes\Theme\Raster\ok.gif" />
+    <Content Include="App_Themes\Theme\Raster\olcu1.png" />
+    <Content Include="App_Themes\Theme\Raster\olcu2.png" />
+    <Content Include="App_Themes\Theme\Raster\olcu3.png" />
+    <Content Include="App_Themes\Theme\Raster\personelEkle.png" />
+    <Content Include="App_Themes\Theme\Raster\porte.png" />
+    <Content Include="App_Themes\Theme\Raster\print.jpg" />
+    <Content Include="App_Themes\Theme\Raster\report1.gif" />
+    <Content Include="App_Themes\Theme\Raster\report2.png" />
+    <Content Include="App_Themes\Theme\Raster\Settings.png" />
+    <Content Include="App_Themes\Theme\Raster\sorgulama.png" />
+    <Content Include="App_Themes\Theme\Raster\update.PNG" />
+    <Content Include="App_Themes\Theme\Raster\user.gif" />
+    <Content Include="App_Themes\Theme\Raster\user.png" />
+    <Content Include="App_Themes\Theme\Raster\yangin.png" />
+    <Content Include="App_Themes\Theme\StyleSheet.css" />
+    <Content Include="App_Themes\Theme\Template\f.jpg" />
+    <Content Include="App_Themes\Theme\Template\h.jpg" />
+    <Content Include="App_Themes\Theme\Template\m.jpg" />
+    <Content Include="App_Themes\Theme\Template\Template.css" />
+    <Content Include="Captcha.aspx" />
+    <Content Include="YonetimKonsolu\FormOgeGuncelleme.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="YonetimKonsolu\Hatalar.aspx" />
+    <Content Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx" />
+    <Content Include="ImageForm.aspx" />
+    <Content Include="Raporlar\SeriyeGoreSatilanAdet.aspx" />
+    <Content Include="YonetimKonsolu\TeslimatKotaTanimla.aspx" />
+    <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
+    <Content Include="Print\SeriyeGoreSatilanAdet.aspx" />
+    <Content Include="Print\PrintYangin.aspx" />
+    <Content Include="Script\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="YonetimKonsolu\KullaniciTanimlama.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="YonetimKonsolu\PersonelTanimlama.aspx" />
+    <Content Include="Print\GunlukIsTakip.aspx" />
+    <Content Include="Print\Print.aspx" />
+    <Content Include="Print\PrinterFriendly.css" />
+    <Content Include="Script\NumberFormat.js" />
+    <Content Include="SifreGuncelleme.aspx" />
+    <Content Include="YonetimKonsolu\UygulamaAyarlari.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ImageForm.aspx.cs">
+      <DependentUpon>ImageForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImageForm.aspx.designer.cs">
+      <DependentUpon>ImageForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Captcha.aspx.cs">
+      <DependentUpon>Captcha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Captcha.aspx.designer.cs">
+      <DependentUpon>Captcha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CaptchaImage.cs" />
+    <Compile Include="YonetimKonsolu\Hatalar.aspx.cs">
+      <DependentUpon>Hatalar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\Hatalar.aspx.designer.cs">
+      <DependentUpon>Hatalar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\FormOgeGuncelleme.aspx.cs">
+      <DependentUpon>FormOgeGuncelleme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\FormOgeGuncelleme.aspx.designer.cs">
+      <DependentUpon>FormOgeGuncelleme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\JavascriptHelper.cs" />
+    <Compile Include="Helper\MessageBox.cs" />
+    <Compile Include="Helper\PopupPageHelper.cs" />
+    <Compile Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Raporlar\SeriyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Raporlar\SeriyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="KobsisMasterPage.Master.cs">
+      <DependentUpon>KobsisMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="KobsisMasterPage.Master.designer.cs">
+      <DependentUpon>KobsisMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.cs">
+      <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.designer.cs">
+      <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\TeslimatKotaTanimla.aspx.cs">
+      <DependentUpon>TeslimatKotaTanimla.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\TeslimatKotaTanimla.aspx.designer.cs">
+      <DependentUpon>TeslimatKotaTanimla.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\PersonelTanimlama.aspx.cs">
+      <DependentUpon>PersonelTanimlama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\PersonelTanimlama.aspx.designer.cs">
+      <DependentUpon>PersonelTanimlama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\GunlukIsTakip.aspx.cs">
+      <DependentUpon>GunlukIsTakip.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\GunlukIsTakip.aspx.designer.cs">
+      <DependentUpon>GunlukIsTakip.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\IlIlceyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\IlIlceyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>IlIlceyeGoreSatilanAdet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\SeriyeGoreSatilanAdet.aspx.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\SeriyeGoreSatilanAdet.aspx.designer.cs">
+      <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\PrintYangin.aspx.cs">
+      <DependentUpon>PrintYangin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\PrintYangin.aspx.designer.cs">
+      <DependentUpon>PrintYangin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\Print.aspx.cs">
+      <DependentUpon>Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\Print.aspx.designer.cs">
+      <DependentUpon>Print.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print\PrinterFriendly.Master.cs">
+      <DependentUpon>PrinterFriendly.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print\PrinterFriendly.Master.designer.cs">
+      <DependentUpon>PrinterFriendly.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SifreGuncelleme.aspx.cs">
+      <DependentUpon>SifreGuncelleme.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SifreGuncelleme.aspx.designer.cs">
+      <DependentUpon>SifreGuncelleme.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Helper\ReferansDataManager.cs" />
+    <Compile Include="YonetimKonsolu\UygulamaAyarlari.aspx.cs">
+      <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\UygulamaAyarlari.aspx.designer.cs">
+      <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Print\PrinterFriendly.Master" />
+    <Content Include="KobsisMasterPage.Master" />
+    <None Include="Properties\PublishProfiles\ACK.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kobsis.Server\Kobsis.Business\Kobsis.Business.csproj">
+      <Project>{9E4898F1-CA14-4C1E-A71F-8288847F0781}</Project>
+      <Name>Kobsis.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kobsis.Server\Kobsis.DataType\Kobsis.DataType.csproj">
+      <Project>{F5859796-4B0F-4BE8-9760-698DC6352639}</Project>
+      <Name>Kobsis.DataType</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kobsis.Server\Kobsis.Generation\Kobsis.Generation.csproj">
+      <Project>{47b48915-1ea7-4e0f-9cb8-7e57891ddb90}</Project>
+      <Name>Kobsis.Generation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kobsis.Server\Kobsis.Util\Kobsis.Util.csproj">
+      <Project>{576AAAF0-3A56-49F9-8A70-D8C93947A776}</Project>
+      <Name>Kobsis.Util</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrame\WebFrame.Business\WebFrame.Business.csproj">
+      <Project>{4b93f83b-e6d9-4151-9dd4-7ddd456aa400}</Project>
+      <Name>WebFrame.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrame\WebFrame.Datatype.Common\WebFrame.DataType.Common.csproj">
+      <Project>{bce5b574-97ad-4bb6-a906-39812ea4f007}</Project>
+      <Name>WebFrame.DataType.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4910/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

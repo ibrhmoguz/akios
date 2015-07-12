@@ -43,6 +43,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.DataType", "Kobsis.S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.Util", "Kobsis.Server\Kobsis.Util\Kobsis.Util.csproj", "{576AAAF0-3A56-49F9-8A70-D8C93947A776}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kobsis.AdminClient", "Kobsis.AdminClient", "{3FCFCEE0-A6F9-413A-8E1A-E61FBB985859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kobsis.AdminWeb", "Kobsis.AdminClient\Kobsis.AdminWeb.csproj", "{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,10 @@ Global
 		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{576AAAF0-3A56-49F9-8A70-D8C93947A776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,5 +118,6 @@ Global
 		{9E4898F1-CA14-4C1E-A71F-8288847F0781} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
 		{F5859796-4B0F-4BE8-9760-698DC6352639} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
 		{576AAAF0-3A56-49F9-8A70-D8C93947A776} = {B85D12F1-9703-47B7-BD9F-FB445C184DAD}
+		{81FD8A2C-6DE9-4A73-A4D9-1E5FC629C024} = {3FCFCEE0-A6F9-413A-8E1A-E61FBB985859}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PrinterFriendly.master.cs" Inherits="Kobsis.Web.Print.PrinterFriendly" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <script src="../Script/jquery.js"></script>
+    <script src="../Script/NumberFormat.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="PrinterFriendly.css" rel="stylesheet" />
+    <script type="text/javascript">
+        jQuery.jPrintArea = function (el) {
+            $('#yazdir').css('visibility', 'hidden');
+            window.print();
+        }
+
+        $(function () {
+            $('.NumericFieldClass').priceFormat({
+                prefix: '',
+                suffix: '',
+                thousandsSeparator: '.',
+                centsSeparator: ',',
+                centsLimit: 2
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <form id="form2" runat="server">
+        <asp:ScriptManager ID="ScriptManager" runat="server" EnableScriptGlobalization="true"
+            LoadScriptsBeforeUI="true" EnableScriptLocalization="true" EnablePageMethods="true"
+            EnablePartialRendering="true">
+        </asp:ScriptManager>
+        <input id="yazdir" type="button" value="yazdır" style="width: 50px;"
+            visible="true" onclick="$.jPrintArea();" />
+        <asp:HiddenField ID="HiddenFieldInnerHtml" runat="server" />
+        <asp:HiddenField ID="HiddenFieldPageOrientation" runat="server" />
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>

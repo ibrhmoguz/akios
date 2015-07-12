@@ -160,29 +160,29 @@ namespace Kobsis.Business
             return dt;
         }
 
-        public DataSet IlIlceyeGoreSatilanAdet(string il, string ilce, string yil)
+        public DataSet IlIlceyeGoreSatilanAdet(string il, string ilce, string yil, string musteriKod)
         {
             DataSet ds = new DataSet();
             if (string.IsNullOrEmpty(il))
             {
-                DataTable dtIl = IlSatilanAdetGetir(il, yil);
+                DataTable dtIl = IlSatilanAdetGetir(il, yil, musteriKod);
                 ds.Tables.Add(dtIl);
                 ds.Tables.Add(new DataTable());
                 ds.Tables.Add(new DataTable());
             }
             else if (string.IsNullOrEmpty(ilce))
             {
-                DataTable dtIl = IlSatilanAdetGetir(il, yil);
-                DataTable dtIlce = IlceSatilanAdetGetir(il, ilce, yil);
+                DataTable dtIl = IlSatilanAdetGetir(il, yil, musteriKod);
+                DataTable dtIlce = IlceSatilanAdetGetir(il, ilce, yil, musteriKod);
                 ds.Tables.Add(dtIl);
                 ds.Tables.Add(dtIlce);
                 ds.Tables.Add(new DataTable());
             }
             else
             {
-                DataTable dtIl = IlSatilanAdetGetir(il, yil);
-                DataTable dtIlce = IlceSatilanAdetGetir(il, ilce, yil);
-                DataTable dtSemt = SemtSatilanAdetGetir(il, ilce, yil);
+                DataTable dtIl = IlSatilanAdetGetir(il, yil, musteriKod);
+                DataTable dtIlce = IlceSatilanAdetGetir(il, ilce, yil, musteriKod);
+                DataTable dtSemt = SemtSatilanAdetGetir(il, ilce, yil, musteriKod);
                 ds.Tables.Add(dtIl);
                 ds.Tables.Add(dtIlce);
                 ds.Tables.Add(dtSemt);
@@ -191,7 +191,7 @@ namespace Kobsis.Business
             return ds;
         }
 
-        private DataTable IlSatilanAdetGetir(string il, string yil)
+        private DataTable IlSatilanAdetGetir(string il, string yil, string musteriKod)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -206,7 +206,7 @@ namespace Kobsis.Business
 		                                 , MUSTERISEMT AS Semt
 		                                 , ADET
 		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS
+	                                FROM dbo.SIPARIS_{0}
 	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
 		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
                                 )
@@ -228,7 +228,8 @@ namespace Kobsis.Business
                                     , '' AS [Yuzde(%)]
 		                        FROM KAPI_FILITRELE AS KF
 		                        GROUP BY Il";
-
+            
+            sqlText = String.Format(sqlText, musteriKod);
             data.AddSqlParameter("Il", il, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Yil", yil, SqlDbType.VarChar, 50);
             data.GetRecords(dt, sqlText);
@@ -236,7 +237,7 @@ namespace Kobsis.Business
             return dt;
         }
 
-        private DataTable IlceSatilanAdetGetir(string il, string ilce, string yil)
+        private DataTable IlceSatilanAdetGetir(string il, string ilce, string yil, string musteriKod)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -251,7 +252,7 @@ namespace Kobsis.Business
 		                                 , MUSTERISEMT AS Semt
 		                                 , ADET
 		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS
+	                                FROM dbo.SIPARIS_{0}
 	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
 		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
 		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
@@ -275,6 +276,7 @@ namespace Kobsis.Business
                                 FROM KAPI_FILITRELE AS KF
 		                        GROUP BY Il,IlIlce";
 
+            sqlText = String.Format(sqlText, musteriKod);
             data.AddSqlParameter("Il", il, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Ilce", ilce, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Yil", yil, SqlDbType.VarChar, 50);
@@ -283,7 +285,7 @@ namespace Kobsis.Business
             return dt;
         }
 
-        private DataTable SemtSatilanAdetGetir(string il, string ilce, string yil)
+        private DataTable SemtSatilanAdetGetir(string il, string ilce, string yil, string musteriKod)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -298,7 +300,7 @@ namespace Kobsis.Business
 		                                 , MUSTERISEMT AS Semt
 		                                 , ADET
 		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS
+	                                FROM dbo.SIPARIS_{0}
 	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
 		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
 		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
@@ -322,6 +324,7 @@ namespace Kobsis.Business
 		                    FROM KAPI_FILITRELE AS KF
 		                    GROUP BY Il,IlIlce,Semt";
 
+            sqlText = String.Format(sqlText, musteriKod);
             data.AddSqlParameter("Il", il, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Ilce", ilce, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Yil", yil, SqlDbType.VarChar, 50);
