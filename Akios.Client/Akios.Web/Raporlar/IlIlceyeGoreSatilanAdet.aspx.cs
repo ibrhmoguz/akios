@@ -91,9 +91,9 @@ namespace Akios.WebClient.Raporlar
             string ilce = null;
 
             if (ddlMusteriIl.SelectedIndex != 0)
-                il = ddlMusteriIl.SelectedText;
+                il = ddlMusteriIl.SelectedValue;
             if (ddlMusteriIlce.SelectedIndex != 0)
-                ilce = ddlMusteriIlce.SelectedText;
+                ilce = ddlMusteriIlce.SelectedValue;
 
             DataSet ds = new RaporBS().IlIlceyeGoreSatilanAdet(il, ilce, ddlYil.SelectedValue, SessionManager.MusteriBilgi.Kod);
 

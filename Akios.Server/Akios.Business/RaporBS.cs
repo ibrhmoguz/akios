@@ -201,14 +201,13 @@ namespace Akios.Business
                                 WITH KAPI_FILITRELE AS 
                                 (
 	                                SELECT
-		                                MUSTERIIL AS Il
-		                                 , MUSTERIILCE AS IlIlce
-		                                 , MUSTERISEMT AS Semt
-		                                 , ADET
-		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS_{0}
-	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
-		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
+		                                RI.IlAd AS Il
+		                                 , S.ADET
+		                                 , CAST(S.SiparisTarih AS DATE) AS SIPARISTARIH
+	                                FROM dbo.SIPARIS_{0} AS S
+										INNER JOIN dbo.REF_IL AS RI ON RI.IlKod = S.MusteriIlKod
+	                                WHERE (@Il IS NULL OR S.MusteriIlKod = @Il) AND
+		                                  (@Yil IS NULL OR DATEPART(YEAR,S.SiparisTarih) = @Yil)
                                 )
                                 SELECT
 			                        Il 
@@ -247,15 +246,16 @@ namespace Akios.Business
                                 WITH KAPI_FILITRELE AS 
                                 (
 	                                SELECT
-		                                MUSTERIIL AS Il
-		                                 , MUSTERIILCE AS IlIlce
-		                                 , MUSTERISEMT AS Semt
-		                                 , ADET
-		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS_{0}
-	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
-		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
-		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
+		                                RI.IlAd AS Il
+		                                 , RC.IlceAd AS IlIlce
+		                                 , S.Adet
+		                                 , CAST(S.SiparisTarih AS DATE) AS SIPARISTARIH
+	                                FROM dbo.SIPARIS_{0} AS S
+										INNER JOIN dbo.REF_IL AS RI ON RI.IlKod = S.MusteriIlKod
+										INNER JOIN dbo.REF_ILCE AS RC ON RC.IlceKod = S.MusteriIlceKod
+	                                WHERE (@Il IS NULL OR S.MusteriIlKod = @Il) AND
+		                                  (@Ilce IS NULL OR S.MusteriIlceKod = @Ilce) AND
+		                                  (@Yil IS NULL OR DATEPART(YEAR,S.SiparisTarih) = @Yil)
                                 )
                                 SELECT
 			                        IlIlce
@@ -289,21 +289,24 @@ namespace Akios.Business
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
-            string sqlText = @"DECLARE @Period AS DATE;
+            string sqlText = @" DECLARE @Period AS DATE;
                                 SET @Period = CAST('01.01.' + @Yil AS DATE);
 
                                 WITH KAPI_FILITRELE AS 
                                 (
 	                                SELECT
-		                                MUSTERIIL AS Il
-		                                 , MUSTERIILCE AS IlIlce
-		                                 , MUSTERISEMT AS Semt
-		                                 , ADET
-		                                 , CAST(SIPARISTARIH AS DATE) AS SIPARISTARIH
-	                                FROM dbo.SIPARIS_{0}
-	                                WHERE (@Il IS NULL OR MUSTERIIL = @Il) AND
-		                                  (@Ilce IS NULL OR MUSTERIILCE = @Ilce) AND
-		                                  (@Yil IS NULL OR DATEPART(YEAR,SIPARISTARIH) = @Yil)
+		                                RI.IlAd AS Il
+		                                 , RC.IlceAd AS IlIlce
+		                                 , RS.SemtAd AS Semt
+		                                 , S.Adet
+		                                 , CAST(S.SiparisTarih AS DATE) AS SIPARISTARIH
+	                                FROM dbo.SIPARIS_{0} AS S
+										INNER JOIN dbo.REF_IL AS RI ON RI.IlKod = S.MusteriIlKod
+										INNER JOIN dbo.REF_ILCE AS RC ON RC.IlceKod = S.MusteriIlceKod
+										INNER JOIN dbo.REF_SEMT AS RS ON RS.SemtKod = S.MusteriSemtKod
+	                                WHERE (@Il IS NULL OR S.MusteriIlKod = @Il) AND
+		                                  (@Ilce IS NULL OR S.MusteriIlceKod = @Ilce) AND
+		                                  (@Yil IS NULL OR DATEPART(YEAR,S.SiparisTarih) = @Yil)
                                 )
                                 SELECT
 			                    Semt
