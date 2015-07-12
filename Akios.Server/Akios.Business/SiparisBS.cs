@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using Kobsis.DataType;
-using Kobsis.Util;
+using Akios.DataType;
+using Akios.Util;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
 using WebFrame.DataType.Common.Logging;
 
-namespace Kobsis.Business
+namespace Akios.Business
 {
     [ServiceConnectionName("KobsisConnectionString")]
     public class SiparisBS : BusinessBase

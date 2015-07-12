@@ -3,9 +3,9 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
-using Kobsis.Util;
+using Akios.Util;
 
-namespace Akios.Web.Print
+namespace Akios.WebClient.Print
 {
     public partial class IlIlceyeGoreSatilanAdet : System.Web.UI.Page
     {

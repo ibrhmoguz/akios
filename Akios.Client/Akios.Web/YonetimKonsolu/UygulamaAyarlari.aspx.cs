@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Data;
-using Akios.Web.Helper;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.Util;
+using Akios.WebClient.Helper;
 
-namespace Akios.Web.YonetimKonsolu
+namespace Akios.WebClient.YonetimKonsolu
 {
     public partial class UygulamaAyarlari : KobsisBasePage
     {

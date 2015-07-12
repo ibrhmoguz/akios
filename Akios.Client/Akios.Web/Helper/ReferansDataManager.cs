@@ -1,9 +1,9 @@
 ﻿using System.Data;
 using System.Linq;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.Util;
 
-namespace Akios.Web.Helper
+namespace Akios.WebClient.Helper
 {
     public class ReferansDataManager
     {

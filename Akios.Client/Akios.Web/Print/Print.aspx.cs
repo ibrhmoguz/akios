@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
-using Kobsis.DataType;
-using Kobsis.Generation;
-using Kobsis.Util;
+using Akios.DataType;
+using Akios.Generation;
+using Akios.Util;
 
-namespace Akios.Web.Print
+namespace Akios.WebClient.Print
 {
     public partial class Print : System.Web.UI.Page
     {

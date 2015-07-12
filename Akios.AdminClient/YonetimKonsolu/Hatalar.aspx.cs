@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.DataType;
-using Kobsis.Util;
+using Akios.AdminWebClient.Helper;
+using Akios.Business;
+using Akios.DataType;
+using Akios.Util;
 
-namespace Akios.Web.YonetimKonsolu
+namespace Akios.AdminWebClient.YonetimKonsolu
 {
     public partial class Hatalar : KobsisBasePage
     {

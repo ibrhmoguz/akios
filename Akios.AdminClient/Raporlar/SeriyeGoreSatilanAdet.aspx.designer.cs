@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Raporlar {
+namespace Akios.AdminWebClient.Raporlar {
     
     
     public partial class SeriyeGoreSatilanAdet {

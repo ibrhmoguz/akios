@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.YonetimKonsolu {
+namespace Akios.WebClient.YonetimKonsolu {
     
     
     public partial class FormOgeGuncelleme {

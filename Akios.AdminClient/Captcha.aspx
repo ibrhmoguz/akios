@@ -1,16 +1,16 @@
 ﻿<%@ Page Language="C#" %>
 
 <%@ Import Namespace="System.Drawing.Imaging" %>
+<%@ Import Namespace="Akios.Util" %>
 <%@ Import Namespace="KobsisSiparisTakip.Web.Helper" %>
-<%@ Import Namespace="Kobsis.Util" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <script runat="server">
     private void Page_Load(object sender, System.EventArgs e)
     {
-        if (Kobsis.Util.SessionManager.CaptchaImageText != null)
+        if (SessionManager.CaptchaImageText != null)
         {
             // CREATE A CAPTCHA IMAGE USING THE TEXT STORED IN THE SESSION OBJECT.
-            CaptchaImage ci = new CaptchaImage(Kobsis.Util.SessionManager.CaptchaImageText, 200, 50);
+            CaptchaImage ci = new CaptchaImage(SessionManager.CaptchaImageText, 200, 50);
 
             //YOU CAN USE THE OTHER OVERLOADED METHODS ALSO
             //CaptchaImage ci = new CaptchaImage(Session["CaptchaImageText"].ToString(), 200, 50, "Courier New");

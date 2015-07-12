@@ -1,4 +1,4 @@
-﻿namespace Kobsis.Util
+﻿namespace Akios.Util
 {
     public enum KontrolTipEnum
     {

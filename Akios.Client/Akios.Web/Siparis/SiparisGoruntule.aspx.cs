@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.DataType;
-using Kobsis.Generation;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.DataType;
+using Akios.Generation;
+using Akios.Util;
+using Akios.WebClient.Helper;
 
-namespace Akios.Web.Siparis
+namespace Akios.WebClient.Siparis
 {
     public partial class SiparisGoruntule : System.Web.UI.Page
     {

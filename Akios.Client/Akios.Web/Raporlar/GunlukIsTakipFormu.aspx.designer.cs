@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Raporlar {
+namespace Akios.WebClient.Raporlar {
     
     
     public partial class GunlukIsTakipFormu {

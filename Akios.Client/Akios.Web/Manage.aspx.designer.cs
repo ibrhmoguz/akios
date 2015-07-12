@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web {
+namespace Akios.WebClient {
     
     
     public partial class Manage {

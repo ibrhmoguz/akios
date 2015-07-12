@@ -4,7 +4,7 @@ using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
 
-namespace Kobsis.Business
+namespace Akios.Business
 {
     [ServiceConnectionName("KobsisConnectionString")]
     public class RaporBS : BusinessBase

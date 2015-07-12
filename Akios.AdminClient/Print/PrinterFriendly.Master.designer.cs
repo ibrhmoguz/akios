@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Print {
+namespace Akios.AdminWebClient.Print {
     
     
     public partial class PrinterFriendly {

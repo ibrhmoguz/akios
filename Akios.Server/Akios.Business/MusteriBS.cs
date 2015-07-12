@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data;
-using Kobsis.DataType;
+using Akios.DataType;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
 
-namespace Kobsis.Business
+namespace Akios.Business
 {
     [ServiceConnectionName("KobsisConnectionString")]
     public class MusteriBS : BusinessBase

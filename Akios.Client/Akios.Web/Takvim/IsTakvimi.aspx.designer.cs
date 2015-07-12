@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Takvim {
+namespace Akios.WebClient.Takvim {
     
     
     public partial class IsTakvimi {

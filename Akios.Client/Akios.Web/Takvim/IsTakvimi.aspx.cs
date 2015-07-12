@@ -4,13 +4,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web.UI.WebControls;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.Util;
+using Akios.WebClient.Helper;
 using Telerik.Web.UI;
 using Telerik.Web.UI.Calendar;
 
-namespace Akios.Web.Takvim
+namespace Akios.WebClient.Takvim
 {
     public partial class IsTakvimi : KobsisBasePage
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
-using Kobsis.Util;
+using Akios.Util;
 
-namespace Akios.Web.Print
+namespace Akios.AdminWebClient.Print
 {
     public partial class GunlukIsTakip : System.Web.UI.Page
     {

@@ -1,4 +1,4 @@
-﻿namespace Kobsis.DataType
+﻿namespace Akios.DataType
 {
     public class SiparisMetadata
     {

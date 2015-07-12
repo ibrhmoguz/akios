@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Web.UI.WebControls;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.AdminWebClient.Helper;
+using Akios.Business;
+using Akios.Util;
 
-namespace Akios.Web.YonetimKonsolu
+namespace Akios.AdminWebClient.YonetimKonsolu
 {
     public partial class KullaniciTanimlama : KobsisBasePage
     {

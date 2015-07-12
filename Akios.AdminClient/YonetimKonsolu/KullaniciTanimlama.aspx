@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="KullaniciTanimlama.aspx.cs" Inherits="Akios.Web.YonetimKonsolu.KullaniciTanimlama" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="KullaniciTanimlama.aspx.cs" Inherits="Akios.AdminWebClient.YonetimKonsolu.KullaniciTanimlama" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

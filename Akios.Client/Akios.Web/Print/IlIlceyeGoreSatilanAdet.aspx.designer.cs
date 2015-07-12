@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Print {
+namespace Akios.WebClient.Print {
     
     
     public partial class IlIlceyeGoreSatilanAdet {

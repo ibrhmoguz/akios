@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="KobsisMasterPage.Master.cs" Inherits="Akios.Web.KobsisMasterPage" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="KobsisMasterPage.Master.cs" Inherits="Akios.AdminWebClient.KobsisMasterPage" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

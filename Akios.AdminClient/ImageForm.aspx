@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ImageForm.aspx.cs" Inherits="Akios.Web.ImageForm" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ImageForm.aspx.cs" Inherits="Akios.AdminWebClient.ImageForm" %>
 
 <!DOCTYPE html>
 

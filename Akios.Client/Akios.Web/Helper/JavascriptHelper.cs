@@ -2,7 +2,7 @@
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Akios.Web.Helper
+namespace Akios.WebClient.Helper
 {
     public static class JavascriptHelper
     {

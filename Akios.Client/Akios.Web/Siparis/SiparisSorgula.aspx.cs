@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web.UI.WebControls;
-using Kobsis.Business;
-using Kobsis.DataType;
-using Kobsis.Generation;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.DataType;
+using Akios.Generation;
+using Akios.Util;
 using Telerik.Web.UI;
 
-namespace Akios.Web.Siparis
+namespace Akios.WebClient.Siparis
 {
     public partial class SiparisSorgula : KobsisBasePage
     {

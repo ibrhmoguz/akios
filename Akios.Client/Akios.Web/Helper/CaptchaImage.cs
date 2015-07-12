@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace Akios.Web.Helper
+namespace Akios.WebClient.Helper
 {
     public class CaptchaImage
     {

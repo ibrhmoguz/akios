@@ -3,7 +3,7 @@
 //using Helpers.Utils;
 
 
-namespace Akios.Web.Print
+namespace Akios.AdminWebClient.Print
 {
     
 public partial class PrinterFriendly : System.Web.UI.MasterPage

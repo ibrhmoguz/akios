@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data;
+using Akios.Business;
 
-namespace Akios.Web
+namespace Akios.AdminWebClient
 {
     public class Global : System.Web.HttpApplication
     {

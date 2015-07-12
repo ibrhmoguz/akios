@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.UI;
-using Kobsis.Business;
+using Akios.Business;
 
-namespace Akios.Web
+namespace Akios.WebClient
 {
     public partial class ImageForm : Page
     {

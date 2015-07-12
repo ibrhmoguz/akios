@@ -7,8 +7,8 @@
     <ProjectGuid>{47B48915-1EA7-4E0F-9CB8-7E57891DDB90}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kobsis.Generation</RootNamespace>
-    <AssemblyName>Kobsis.Generation</AssemblyName>
+    <RootNamespace>Akios.Generation</RootNamespace>
+    <AssemblyName>Akios.Generation</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -54,15 +54,15 @@
     </ProjectReference>
     <ProjectReference Include="..\Akios.Business\Akios.Business.csproj">
       <Project>{9E4898F1-CA14-4C1E-A71F-8288847F0781}</Project>
-      <Name>Kobsis.Business</Name>
+      <Name>Akios.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\Akios.DataType\Akios.DataType.csproj">
       <Project>{F5859796-4B0F-4BE8-9760-698DC6352639}</Project>
-      <Name>Kobsis.DataType</Name>
+      <Name>Akios.DataType</Name>
     </ProjectReference>
     <ProjectReference Include="..\Akios.Util\Akios.Util.csproj">
       <Project>{576AAAF0-3A56-49F9-8A70-D8C93947A776}</Project>
-      <Name>Kobsis.Util</Name>
+      <Name>Akios.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

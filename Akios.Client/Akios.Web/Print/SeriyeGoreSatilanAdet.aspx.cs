@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.WebControls;
-using Kobsis.Util;
+using Akios.Util;
 
-namespace Akios.Web.Print
+namespace Akios.WebClient.Print
 {
     public partial class SeriyeGoreSatilanAdet : System.Web.UI.Page
     {

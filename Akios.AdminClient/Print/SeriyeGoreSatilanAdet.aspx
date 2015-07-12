@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Print/PrinterFriendly.Master" AutoEventWireup="true" CodeBehind="SeriyeGoreSatilanAdet.aspx.cs" Inherits="Akios.Web.Print.SeriyeGoreSatilanAdet" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Print/PrinterFriendly.Master" AutoEventWireup="true" CodeBehind="SeriyeGoreSatilanAdet.aspx.cs" Inherits="Akios.AdminWebClient.Print.SeriyeGoreSatilanAdet" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

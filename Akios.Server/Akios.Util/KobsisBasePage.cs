@@ -1,7 +1,7 @@
 ﻿using System;
-using Kobsis.DataType;
+using Akios.DataType;
 
-namespace Kobsis.Util
+namespace Akios.Util
 {
     public class KobsisBasePage : System.Web.UI.Page
     {

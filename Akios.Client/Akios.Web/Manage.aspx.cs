@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Data;
+using Akios.Business;
 
-namespace Akios.Web
+namespace Akios.WebClient
 {
     public partial class Manage : System.Web.UI.Page
     {

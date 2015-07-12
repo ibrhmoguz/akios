@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kobsis.DataType
+namespace Akios.DataType
 {
     public class Firma_Musteri
     {

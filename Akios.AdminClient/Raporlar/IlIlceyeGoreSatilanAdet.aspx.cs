@@ -3,11 +3,11 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web.UI.WebControls;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.AdminWebClient.Helper;
+using Akios.Business;
+using Akios.Util;
 
-namespace Akios.Web.Raporlar
+namespace Akios.AdminWebClient.Raporlar
 {
     public partial class IlIlceyeGoreSatilanAdet : KobsisBasePage
     {

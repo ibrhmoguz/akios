@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.Siparis {
+namespace Akios.WebClient.Siparis {
     
     
     public partial class SiparisSorgula {

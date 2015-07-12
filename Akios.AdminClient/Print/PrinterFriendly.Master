@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PrinterFriendly.master.cs" Inherits="Akios.Web.Print.PrinterFriendly" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PrinterFriendly.master.cs" Inherits="Akios.AdminWebClient.Print.PrinterFriendly" %>
 
 <!DOCTYPE html>
 

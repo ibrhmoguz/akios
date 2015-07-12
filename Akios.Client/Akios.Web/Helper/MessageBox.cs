@@ -1,7 +1,7 @@
 ﻿using System.Web.UI;
 using Telerik.Web.UI;
 
-namespace Akios.Web.Helper
+namespace Akios.WebClient.Helper
 {
     public static class MessageBox
     {

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Akios.Web.YonetimKonsolu {
+namespace Akios.AdminWebClient.YonetimKonsolu {
     
     
     public partial class KullaniciTanimlama {

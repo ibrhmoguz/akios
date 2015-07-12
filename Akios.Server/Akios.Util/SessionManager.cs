@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Web;
-using Kobsis.DataType;
+using Akios.DataType;
 
-namespace Kobsis.Util
+namespace Akios.Util
 {
     public static class SessionManager
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace Akios.Web.Print
+namespace Akios.WebClient.Print
 {
     public partial class PrintYangin : System.Web.UI.Page
     {

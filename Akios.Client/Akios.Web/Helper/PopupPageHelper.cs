@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 
-namespace Akios.Web.Helper
+namespace Akios.WebClient.Helper
 {
     /// <summary>
     /// Herhangi bir kontrolün (button, linkbutton vs) bir popup sayfa açması istendiğinde, o kontrol için gerekli script kodunu otomatik olarak oluşturup sayfaya eklemek için kullanılır

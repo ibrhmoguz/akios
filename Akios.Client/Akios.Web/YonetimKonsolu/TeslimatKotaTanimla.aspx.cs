@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Data;
 using System.Web.UI.WebControls;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.Util;
+using Akios.WebClient.Helper;
 
-namespace Akios.Web.YonetimKonsolu
+namespace Akios.WebClient.YonetimKonsolu
 {
     public partial class TeslimatKotaTanimla : KobsisBasePage
     {

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using Kobsis.Util;
+using Akios.Util;
 using WebFrame.Business;
 using WebFrame.DataAccess;
 using WebFrame.DataType.Common.Attributes;
 using WebFrame.DataType.Common.Logging;
 
-namespace Kobsis.Business
+namespace Akios.Business
 {
     [ServiceConnectionName("KobsisConnectionString")]
     public class TeslimatBS : BusinessBase

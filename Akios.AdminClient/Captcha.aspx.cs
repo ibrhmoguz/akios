@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Akios.Web
+namespace Akios.AdminWebClient
 {
     public partial class Captcha : System.Web.UI.Page
     {

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace Kobsis.DataType
+namespace Akios.DataType
 {
     public class DbParametre
     {

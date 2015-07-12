@@ -5,12 +5,12 @@ using System.Drawing;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.Util;
+using Akios.WebClient.Helper;
 using Telerik.Web.UI;
 
-namespace Akios.Web.YonetimKonsolu
+namespace Akios.WebClient.YonetimKonsolu
 {
     public partial class FormOgeGuncelleme : KobsisBasePage
     {

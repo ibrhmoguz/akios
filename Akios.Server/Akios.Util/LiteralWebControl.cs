@@ -1,7 +1,7 @@
 ﻿using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Kobsis.Util
+namespace Akios.Util
 {
     public class LiteralWebControl : WebControl
     {

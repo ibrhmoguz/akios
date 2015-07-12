@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
 using System.Web.Security;
-using Akios.Web.Helper;
-using Kobsis.Business;
-using Kobsis.DataType;
-using Kobsis.Util;
+using Akios.Business;
+using Akios.DataType;
+using Akios.Util;
+using Akios.WebClient.Helper;
 
-namespace Akios.Web
+namespace Akios.WebClient
 {
     public partial class AdminLogin : System.Web.UI.Page
     {
