@@ -50,9 +50,9 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %>' type="hidden" />
+                                    <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' type="hidden" />
                                     <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolAdi") %>' type="hidden" />
-                                    <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KULLANICIADI") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
+                                    <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "RolAdi") %></td>

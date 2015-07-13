@@ -44,16 +44,18 @@ namespace Akios.Business
             return k;
         }
 
-        public DataTable KullanicilariGetir()
+        public DataTable KullanicilariGetir(int musteriID)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
+            data.AddSqlParameter("MusteriID", musteriID, SqlDbType.Int, 50);
 
             string sqlText = @"SELECT 
 	                                K.*
 	                                ,KR.RolAdi
                                 FROM KULLANICI AS K 
 	                            INNER JOIN KULLANICI_ROL AS KR ON KR.RolID=K.RolID
+                                WHERE K.MusteriID=@MusteriID
                                 ORDER BY K.KullaniciID";
             data.GetRecords(dt, sqlText);
             return dt;
@@ -74,12 +76,12 @@ namespace Akios.Business
             return true;
         }
 
-        public bool KullaniciSil(string kullaniciAdi)
+        public bool KullaniciSil(int kullaniciID)
         {
             IData data = GetDataObject();
 
-            data.AddSqlParameter("KullaniciAdi", kullaniciAdi, SqlDbType.VarChar, 50);
-            string sqlSil = @"DELETE FROM KULLANICI WHERE KullaniciAdi=@KullaniciAdi";
+            data.AddSqlParameter("KullaniciID", kullaniciID, SqlDbType.Int, 50);
+            string sqlSil = @"DELETE FROM KULLANICI WHERE KullaniciID=@KullaniciID";
             data.ExecuteStatement(sqlSil);
 
             return true;

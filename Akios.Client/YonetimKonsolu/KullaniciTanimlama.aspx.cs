@@ -40,7 +40,7 @@ namespace Akios.WebClient.YonetimKonsolu
 
         private void KullaniciDoldur()
         {
-            RP_Kullanici.DataSource = new KullaniciBS().KullanicilariGetir();
+            RP_Kullanici.DataSource = new KullaniciBS().KullanicilariGetir(SessionManager.MusteriBilgi.MusteriID.Value);
             RP_Kullanici.DataBind();
         }
 
@@ -85,9 +85,9 @@ namespace Akios.WebClient.YonetimKonsolu
         {
             bool sonuc = false;
 
-            if (e.CommandName == "Delete")
+            if (e.CommandName == "Delete" && e.CommandArgument != null && !string.IsNullOrEmpty(e.CommandArgument.ToString()))
             {
-                sonuc = new KullaniciBS().KullaniciSil(e.CommandArgument.ToString());
+                sonuc = new KullaniciBS().KullaniciSil(Convert.ToInt32(e.CommandArgument.ToString()));
 
                 if (sonuc)
                 {
