@@ -49,6 +49,15 @@ namespace Akios.AdminWebClient {
         protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
         
         /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
         /// LabelUserName control.
         /// </summary>
         /// <remarks>
@@ -74,42 +83,6 @@ namespace Akios.AdminWebClient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadRibbonBar RadRibbonBarMenu;
-        
-        /// <summary>
-        /// SiparisBarGroup control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarGroup SiparisBarGroup;
-        
-        /// <summary>
-        /// rbbSiparisSeriMenu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarMenu rbbSiparisSeriMenu;
-        
-        /// <summary>
-        /// rbbSiparisSorgula control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbSiparisSorgula;
-        
-        /// <summary>
-        /// rbbIsTakvimiTakvimGorunumu control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RibbonBarButton rbbIsTakvimiTakvimGorunumu;
         
         /// <summary>
         /// rbbKullaniciEkle control.

@@ -15,7 +15,6 @@ namespace Akios.AdminWebClient
     {
         protected override void OnInit(EventArgs e)
         {
-            SiparisSeriYukle();
             MusteriRaporlariniYukle();
             base.OnInit(e);
         }
@@ -29,34 +28,9 @@ namespace Akios.AdminWebClient
             }
         }
 
-        private void SiparisSeriYukle()
-        {
-            rbbSiparisSeriMenu.Items.Clear();
-            List<SiparisSeri> seriList = null;
-            if (SessionManager.SiparisSeri == null)
-            {
-                seriList = new ReferansDataBS().SeriGetirMusteriIdGore(SessionManager.MusteriBilgi.MusteriID.Value);
-                SessionManager.SiparisSeri = seriList;
-            }
-            else
-                seriList = SessionManager.SiparisSeri;
-
-            foreach (SiparisSeri seri in seriList)
-            {
-                var item = new RibbonBarMenuItem()
-                {
-                    ID = seri.SiparisSeriID.ToString(),
-                    Text = seri.SeriAdi,
-                    Value = seri.SiparisSeriID.ToString(),
-                    CommandName = "~/Siparis/SiparisKayit.aspx?SiparisSeri=" + seri.SiparisSeriID.ToString()
-                };
-                rbbSiparisSeriMenu.Items.Add(item);
-            }
-        }
-
         private void MusteriRaporlariniYukle()
         {
-            var tabRaporlar = RadRibbonBarMenu.Tabs[4];
+            var tabRaporlar = RadRibbonBarMenu.Tabs[2];
 
             tabRaporlar.Groups.Clear();
             List<MusteriRapor> raporlar = null;
@@ -99,46 +73,31 @@ namespace Akios.AdminWebClient
             {
                 LabelUserName.Text += SessionManager.KullaniciBilgi.KullaniciAdi;
             }
-            if (SessionManager.KullaniciBilgi != null && SessionManager.KullaniciBilgi.Rol != KullaniciRol.Yonetici)
-            {
-                RadRibbonBarMenu.Tabs[0].FindGroupByValue("Sorgula").Visible = false;
-                RadRibbonBarMenu.Tabs[1].Visible = false;
-                RadRibbonBarMenu.Tabs[2].Visible = false;
-                RadRibbonBarMenu.Tabs[4].Visible = false;
-            }
         }
 
         private void SeciliMenuAyarla()
         {
             string url = Request.Url.AbsoluteUri;
 
-            if (url.Contains("Siparis"))
+            if (url.Contains("YonetimKonsolu") ||
+                    url.Contains("KullaniciTanimlama") ||
+                    url.Contains("PersonelTanimlama") ||
+                    url.Contains("Hatalar") ||
+                    url.Contains("FormOgeGuncelleme") ||
+                    url.Contains("TeslimatKotaTanimla") ||
+                    url.Contains("UygulamaAyarlari"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 0;
             }
-            else if (url.Contains("IsTakvimi"))
-            {
-                RadRibbonBarMenu.SelectedTabIndex = 1;
-            }
-            else if (url.Contains("YonetimKonsolu") ||
-                     url.Contains("KullaniciTanimlama") ||
-                     url.Contains("PersonelTanimlama") ||
-                     url.Contains("Hatalar") ||
-                     url.Contains("FormOgeGuncelleme") ||
-                     url.Contains("TeslimatKotaTanimla") ||
-                     url.Contains("UygulamaAyarlari"))
-            {
-                RadRibbonBarMenu.SelectedTabIndex = 2;
-            }
             else if (url.Contains("SifreGuncelleme"))
             {
-                RadRibbonBarMenu.SelectedTabIndex = 3;
+                RadRibbonBarMenu.SelectedTabIndex = 1;
             }
             else if (url.Contains("GunlukIsTakipFormu") ||
                      url.Contains("SeriyeGoreSatilanAdet") ||
                      url.Contains("IlIlceyeGoreSatilanAdet"))
             {
-                RadRibbonBarMenu.SelectedTabIndex = 4;
+                RadRibbonBarMenu.SelectedTabIndex = 2;
             }
         }
 

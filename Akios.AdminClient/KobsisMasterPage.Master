@@ -60,6 +60,9 @@
         <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Telerik" ShowChooser="false"></telerik:RadSkinManager>
         <table style="width: 100%">
             <tr style="text-align: right">
+                 <td>
+                    <asp:Label ID="Label1" runat="server" Text="Müşteri: "></asp:Label>
+                </td>
                 <td>
                     <asp:Label ID="LabelUserName" runat="server" Text="Kullanıcı: "></asp:Label>
                     <asp:LinkButton ID="LB_Logout" runat="server" OnClick="LB_Logout_Click">(Çıkış)</asp:LinkButton>
@@ -67,26 +70,6 @@
             </tr>
         </table>
         <telerik:RadRibbonBar ID="RadRibbonBarMenu" runat="server" Width="100%" OnCommand="RadRibbonBarMenu_Command" OnMenuItemClick="RadRibbonBarMenu_MenuItemClick">
-            <telerik:RibbonBarTab Text="SİPARİŞ">
-                <telerik:RibbonBarGroup ID="SiparisBarGroup" runat="server" Text="Sipariş Ekle">
-                    <Items>
-                        <telerik:RibbonBarMenu ID="rbbSiparisSeriMenu" runat="server" Size="Large" Text="SİPARİŞ SERİ" ImageUrlLarge="App_Themes/Theme/Raster/porte.png">
-                        </telerik:RibbonBarMenu>
-                    </Items>
-                </telerik:RibbonBarGroup>
-                <telerik:RibbonBarGroup Value="Sorgula" Text="Sorgula">
-                    <Items>
-                        <telerik:RibbonBarButton ID="rbbSiparisSorgula" Size="Large" Text="SORGULA" ToolTip="Sipariş sorgulamak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/sorgulama.png" CommandName="~/Siparis/SiparisSorgula.aspx" />
-                    </Items>
-                </telerik:RibbonBarGroup>
-            </telerik:RibbonBarTab>
-            <telerik:RibbonBarTab Text="İŞ TAKVİMİ">
-                <telerik:RibbonBarGroup Text="Takvim Görünümü">
-                    <Items>
-                        <telerik:RibbonBarButton ID="rbbIsTakvimiTakvimGorunumu" Size="Large" Text="TAKVİM" ToolTip="İş Takvimini görüntülemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/calendar.jpg" CommandName="~/Takvim/IsTakvimi.aspx" />
-                    </Items>
-                </telerik:RibbonBarGroup>
-            </telerik:RibbonBarTab>
             <telerik:RibbonBarTab Text="YÖNETİM KONSOLU">
                 <telerik:RibbonBarGroup Text="Kullanıcı İşlemleri">
                     <Items>
