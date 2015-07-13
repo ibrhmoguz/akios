@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebFrame.DLL", "WebFrame.DL
 		WebFrame\DLL\Telerik.Web.UI.Skins.dll = WebFrame\DLL\Telerik.Web.UI.Skins.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akios.WebClient", "Akios.Client\Akios.Web\Akios.WebClient.csproj", "{5D267216-3EAC-43E3-B769-993DACD08737}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Akios.WebClient", "Akios.Client\Akios.WebClient.csproj", "{5D267216-3EAC-43E3-B769-993DACD08737}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Akios.Server", "Akios.Server", "{B85D12F1-9703-47B7-BD9F-FB445C184DAD}"
 EndProject
