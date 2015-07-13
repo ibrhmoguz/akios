@@ -7,7 +7,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class MusteriBS : BusinessBase
     {
         public Musteri MusteriBilgiGetirKullaniciAdinaGore(int pKullaniciID)

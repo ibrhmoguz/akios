@@ -10,7 +10,7 @@ using WebFrame.DataType.Common.Logging;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class TeslimatBS : BusinessBase
     {
         public DataTable TeslimatlariListele(DateTime dtBaslangic, DateTime dtBitis)

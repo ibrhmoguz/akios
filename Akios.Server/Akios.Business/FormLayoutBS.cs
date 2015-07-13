@@ -8,7 +8,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class FormLayoutBS : BusinessBase
     {
         public List<Layout> FormKontrolleriniGetir(int musteriID)

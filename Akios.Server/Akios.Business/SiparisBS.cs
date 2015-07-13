@@ -10,7 +10,7 @@ using WebFrame.DataType.Common.Logging;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class SiparisBS : BusinessBase
     {
         public int? SiparisKaydetGuncelle(List<DbParametre> parametreler, string musteriKodu)

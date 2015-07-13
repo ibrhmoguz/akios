@@ -10,7 +10,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class ReferansDataBS : BusinessBase
     {
         public string SiparisSeri { get; set; }

@@ -5,7 +5,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class ConfigBS : BusinessBase
     {
         public DataTable ConfigBilgileriniGetir()

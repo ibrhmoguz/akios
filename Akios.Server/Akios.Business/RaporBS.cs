@@ -6,7 +6,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class RaporBS : BusinessBase
     {
         public DataTable GunlukIsTakipFormuListele(DateTime raporTarihi, string musteriKod)

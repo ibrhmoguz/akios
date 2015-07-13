@@ -8,7 +8,7 @@ using WebFrame.DataType.Common.Logging;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class YonetimKonsoluBS : BusinessBase
     {
         public DataTable FormOgeDetayGetir(int musteriId, string refId)

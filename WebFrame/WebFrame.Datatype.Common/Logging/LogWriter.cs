@@ -46,7 +46,7 @@ namespace WebFrame.DataType.Common.Logging
             //                     };
 
             //LogToOracle();
-            this.ConnectionStringName = "KobsisConnectionString";
+            this.ConnectionStringName = "AkiosConnectionString";
             LogToSqlServer();
         }
         public LogWriter(string ConnectionStringName)

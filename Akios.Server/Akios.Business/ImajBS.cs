@@ -6,7 +6,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class ImajBS : BusinessBase
     {
         public Imaj ImajGetirImajIdIle(string pImajId)

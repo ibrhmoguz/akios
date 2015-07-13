@@ -8,7 +8,7 @@ using WebFrame.DataType.Common.Attributes;
 
 namespace Akios.Business
 {
-    [ServiceConnectionName("KobsisConnectionString")]
+    [ServiceConnectionName("AkiosConnectionString")]
     public class KullaniciBS : BusinessBase
     {
         public Kullanici KullaniciBilgisiGetir(string pKullaniciAdi, string pSifre)

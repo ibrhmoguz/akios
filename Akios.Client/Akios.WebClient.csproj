@@ -365,27 +365,27 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Akios.Server\Akios.Business\Akios.Business.csproj">
+    <ProjectReference Include="..\Akios.Server\Akios.Business\Akios.Business.csproj">
       <Project>{9E4898F1-CA14-4C1E-A71F-8288847F0781}</Project>
       <Name>Akios.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Akios.Server\Akios.DataType\Akios.DataType.csproj">
+    <ProjectReference Include="..\Akios.Server\Akios.DataType\Akios.DataType.csproj">
       <Project>{F5859796-4B0F-4BE8-9760-698DC6352639}</Project>
       <Name>Akios.DataType</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Akios.Server\Akios.Generation\Akios.Generation.csproj">
+    <ProjectReference Include="..\Akios.Server\Akios.Generation\Akios.Generation.csproj">
       <Project>{47b48915-1ea7-4e0f-9cb8-7e57891ddb90}</Project>
       <Name>Akios.Generation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Akios.Server\Akios.Util\Akios.Util.csproj">
+    <ProjectReference Include="..\Akios.Server\Akios.Util\Akios.Util.csproj">
       <Project>{576AAAF0-3A56-49F9-8A70-D8C93947A776}</Project>
       <Name>Akios.Util</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\WebFrame\WebFrame.Business\WebFrame.Business.csproj">
+    <ProjectReference Include="..\WebFrame\WebFrame.Business\WebFrame.Business.csproj">
       <Project>{4b93f83b-e6d9-4151-9dd4-7ddd456aa400}</Project>
       <Name>WebFrame.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\WebFrame\WebFrame.Datatype.Common\WebFrame.DataType.Common.csproj">
+    <ProjectReference Include="..\WebFrame\WebFrame.Datatype.Common\WebFrame.DataType.Common.csproj">
       <Project>{bce5b574-97ad-4bb6-a906-39812ea4f007}</Project>
       <Name>WebFrame.DataType.Common</Name>
     </ProjectReference>
