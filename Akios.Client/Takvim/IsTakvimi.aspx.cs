@@ -12,7 +12,7 @@ using Telerik.Web.UI.Calendar;
 
 namespace Akios.WebClient.Takvim
 {
-    public partial class IsTakvimi : KobsisBasePage
+    public partial class IsTakvimi : AkiosBasePage
     {
         private List<Appointment> Appointments
         {

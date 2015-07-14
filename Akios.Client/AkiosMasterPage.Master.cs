@@ -11,7 +11,7 @@ using Telerik.Web.UI;
 
 namespace Akios.WebClient
 {
-    public partial class KobsisMasterPage : MasterPage
+    public partial class AkiosMasterPage : MasterPage
     {
         protected override void OnInit(EventArgs e)
         {

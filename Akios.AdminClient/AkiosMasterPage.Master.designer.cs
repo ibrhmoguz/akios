@@ -10,7 +10,7 @@
 namespace Akios.AdminWebClient {
     
     
-    public partial class KobsisMasterPage {
+    public partial class AkiosMasterPage {
         
         /// <summary>
         /// head control.

@@ -11,7 +11,7 @@ using Telerik.Web.UI;
 
 namespace Akios.WebClient.Siparis
 {
-    public partial class SiparisSorgula : KobsisBasePage
+    public partial class SiparisSorgula : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -7,7 +7,7 @@ using Akios.Util;
 
 namespace Akios.AdminWebClient.YonetimKonsolu
 {
-    public partial class Hatalar : KobsisBasePage
+    public partial class Hatalar : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

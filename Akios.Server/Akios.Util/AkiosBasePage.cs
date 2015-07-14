@@ -3,7 +3,7 @@ using Akios.DataType;
 
 namespace Akios.Util
 {
-    public class KobsisBasePage : System.Web.UI.Page
+    public class AkiosBasePage : System.Web.UI.Page
     {
         protected override void OnLoad(EventArgs e)
         {

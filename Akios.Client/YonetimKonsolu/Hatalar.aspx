@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="Hatalar.aspx.cs" Inherits="Akios.WebClient.YonetimKonsolu.Hatalar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AkiosMasterPage.Master" AutoEventWireup="true" CodeBehind="Hatalar.aspx.cs" Inherits="Akios.WebClient.YonetimKonsolu.Hatalar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

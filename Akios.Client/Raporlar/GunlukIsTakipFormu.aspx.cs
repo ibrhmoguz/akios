@@ -7,7 +7,7 @@ using Akios.WebClient.Helper;
 
 namespace Akios.WebClient.Raporlar
 {
-    public partial class GunlukIsTakipFormu : KobsisBasePage
+    public partial class GunlukIsTakipFormu : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

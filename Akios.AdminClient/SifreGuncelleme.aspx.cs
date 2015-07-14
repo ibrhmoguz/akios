@@ -7,7 +7,7 @@ using Akios.Util;
 
 namespace Akios.AdminWebClient
 {
-    public partial class SifreGuncelleme : KobsisBasePage
+    public partial class SifreGuncelleme : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

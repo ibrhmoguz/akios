@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/KobsisMasterPage.Master" AutoEventWireup="true" CodeBehind="SiparisSorgula.aspx.cs" Inherits="Akios.WebClient.Siparis.SiparisSorgula" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AkiosMasterPage.Master" AutoEventWireup="true" CodeBehind="SiparisSorgula.aspx.cs" Inherits="Akios.WebClient.Siparis.SiparisSorgula" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 

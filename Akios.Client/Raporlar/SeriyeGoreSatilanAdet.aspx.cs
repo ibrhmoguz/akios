@@ -8,7 +8,7 @@ using Akios.WebClient.Helper;
 
 namespace Akios.WebClient.Raporlar
 {
-    public partial class SeriyeGoreSatilanAdet : KobsisBasePage
+    public partial class SeriyeGoreSatilanAdet : AkiosBasePage
     {
         private static string ANKARA_IL_KODU = "6";
 

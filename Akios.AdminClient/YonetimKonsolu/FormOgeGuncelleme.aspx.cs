@@ -12,7 +12,7 @@ using Telerik.Web.UI;
 
 namespace Akios.AdminWebClient.YonetimKonsolu
 {
-    public partial class FormOgeGuncelleme : KobsisBasePage
+    public partial class FormOgeGuncelleme : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -11,7 +11,7 @@ using Telerik.Web.UI;
 
 namespace Akios.WebClient.Siparis
 {
-    public partial class SiparisKayit : KobsisBasePage
+    public partial class SiparisKayit : AkiosBasePage
     {
         string ANKARA_IL_KODU = "6";
         public string SiparisSeri

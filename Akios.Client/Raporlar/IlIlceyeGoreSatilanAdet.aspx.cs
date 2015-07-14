@@ -9,7 +9,7 @@ using Akios.WebClient.Helper;
 
 namespace Akios.WebClient.Raporlar
 {
-    public partial class IlIlceyeGoreSatilanAdet : KobsisBasePage
+    public partial class IlIlceyeGoreSatilanAdet : AkiosBasePage
     {
         private static string ANKARA_IL_KODU = "6";
         

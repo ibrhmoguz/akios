@@ -8,7 +8,7 @@ using Akios.WebClient.Helper;
 
 namespace Akios.WebClient.YonetimKonsolu
 {
-    public partial class PersonelTanimlama : KobsisBasePage
+    public partial class PersonelTanimlama : AkiosBasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

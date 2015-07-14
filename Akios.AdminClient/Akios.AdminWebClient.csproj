@@ -196,12 +196,12 @@
     <Compile Include="Raporlar\SeriyeGoreSatilanAdet.aspx.designer.cs">
       <DependentUpon>SeriyeGoreSatilanAdet.aspx</DependentUpon>
     </Compile>
-    <Compile Include="KobsisMasterPage.Master.cs">
-      <DependentUpon>KobsisMasterPage.Master</DependentUpon>
+    <Compile Include="AkiosMasterPage.Master.cs">
+      <DependentUpon>AkiosMasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="KobsisMasterPage.Master.designer.cs">
-      <DependentUpon>KobsisMasterPage.Master</DependentUpon>
+    <Compile Include="AkiosMasterPage.Master.designer.cs">
+      <DependentUpon>AkiosMasterPage.Master</DependentUpon>
     </Compile>
     <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.cs">
       <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
@@ -295,7 +295,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Print\PrinterFriendly.Master" />
-    <Content Include="KobsisMasterPage.Master" />
+    <Content Include="AkiosMasterPage.Master" />
     <None Include="Properties\PublishProfiles\ACK.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
