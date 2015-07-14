@@ -125,10 +125,15 @@
     <Content Include="Captcha.aspx" />
     <Content Include="YonetimKonsolu\FormOgeGuncelleme.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="FormIslemleri\FormOlustur.aspx" />
+    <Content Include="FormIslemleri\FormYerlesim.aspx" />
     <Content Include="YonetimKonsolu\Hatalar.aspx" />
     <Content Include="Raporlar\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="ImageForm.aspx" />
     <Content Include="Raporlar\SeriyeGoreSatilanAdet.aspx" />
+    <Content Include="YonetimKonsolu\MusteriTanimlama.aspx" />
+    <Content Include="YonetimKonsolu\Rapor.aspx" />
+    <Content Include="YonetimKonsolu\ReferansVeri.aspx" />
     <Content Include="YonetimKonsolu\TeslimatKotaTanimla.aspx" />
     <Content Include="Print\IlIlceyeGoreSatilanAdet.aspx" />
     <Content Include="Print\SeriyeGoreSatilanAdet.aspx" />
@@ -144,6 +149,8 @@
     <Content Include="Print\PrinterFriendly.css" />
     <Content Include="Script\NumberFormat.js" />
     <Content Include="SifreGuncelleme.aspx" />
+    <Content Include="YonetimKonsolu\UrunSeri.aspx" />
+    <Content Include="YonetimKonsolu\Uyelik.aspx" />
     <Content Include="YonetimKonsolu\UygulamaAyarlari.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -165,6 +172,20 @@
       <DependentUpon>Captcha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Helper\CaptchaImage.cs" />
+    <Compile Include="FormIslemleri\FormOlustur.aspx.cs">
+      <DependentUpon>FormOlustur.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormIslemleri\FormOlustur.aspx.designer.cs">
+      <DependentUpon>FormOlustur.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormIslemleri\FormYerlesim.aspx.cs">
+      <DependentUpon>FormYerlesim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormIslemleri\FormYerlesim.aspx.designer.cs">
+      <DependentUpon>FormYerlesim.aspx</DependentUpon>
+    </Compile>
     <Compile Include="YonetimKonsolu\Hatalar.aspx.cs">
       <DependentUpon>Hatalar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -209,6 +230,27 @@
     </Compile>
     <Compile Include="YonetimKonsolu\KullaniciTanimlama.aspx.designer.cs">
       <DependentUpon>KullaniciTanimlama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\MusteriTanimlama.aspx.cs">
+      <DependentUpon>MusteriTanimlama.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\MusteriTanimlama.aspx.designer.cs">
+      <DependentUpon>MusteriTanimlama.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\Rapor.aspx.cs">
+      <DependentUpon>Rapor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\Rapor.aspx.designer.cs">
+      <DependentUpon>Rapor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\ReferansVeri.aspx.cs">
+      <DependentUpon>ReferansVeri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\ReferansVeri.aspx.designer.cs">
+      <DependentUpon>ReferansVeri.aspx</DependentUpon>
     </Compile>
     <Compile Include="YonetimKonsolu\TeslimatKotaTanimla.aspx.cs">
       <DependentUpon>TeslimatKotaTanimla.aspx</DependentUpon>
@@ -285,6 +327,20 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helper\ReferansDataManager.cs" />
+    <Compile Include="YonetimKonsolu\UrunSeri.aspx.cs">
+      <DependentUpon>UrunSeri.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\UrunSeri.aspx.designer.cs">
+      <DependentUpon>UrunSeri.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="YonetimKonsolu\Uyelik.aspx.cs">
+      <DependentUpon>Uyelik.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="YonetimKonsolu\Uyelik.aspx.designer.cs">
+      <DependentUpon>Uyelik.aspx</DependentUpon>
+    </Compile>
     <Compile Include="YonetimKonsolu\UygulamaAyarlari.aspx.cs">
       <DependentUpon>UygulamaAyarlari.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -13,57 +14,31 @@ namespace Akios.AdminWebClient
 {
     public partial class AkiosMasterPage : MasterPage
     {
-        protected override void OnInit(EventArgs e)
-        {
-            MusteriRaporlariniYukle();
-            base.OnInit(e);
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
                 SeciliMenuAyarla();
                 YetkiyeGoreMenuAyarla();
+                MusteriListesiYukle();
             }
         }
 
-        private void MusteriRaporlariniYukle()
+        private void MusteriListesiYukle()
         {
-            var tabRaporlar = RadRibbonBarMenu.Tabs[2];
-
-            tabRaporlar.Groups.Clear();
-            List<MusteriRapor> raporlar = null;
-            if (SessionManager.MusteriRaporlar == null)
+            DataTable dt = new MusteriBS().MusteriListesiGetir();
+            if (dt.Rows.Count > 0)
             {
-                raporlar = new ReferansDataBS().MusteriRaporlariniGetir(SessionManager.MusteriBilgi.MusteriID.Value);
-                SessionManager.MusteriRaporlar = raporlar;
+                ddlMusteri.DataSource = dt;
+                ddlMusteri.DataTextField = "Adi";
+                ddlMusteri.DataValueField = "MusteriID";
+                ddlMusteri.DataBind();
+                ddlMusteri.Items.Insert(0, new DropDownListItem("Seçiniz", "0"));
             }
             else
-                raporlar = SessionManager.MusteriRaporlar;
-
-            foreach (MusteriRapor rapor in raporlar)
             {
-                var ribbonBar = new RibbonBarGroup
-                {
-                    Text = rapor.RaporMenuBaslik
-                };
-
-                var button = new RibbonBarButton
-                {
-                    ID = "RibbonBarButton" + rapor.RaporId,
-                    Text = rapor.RaporAdi,
-                    CommandName = rapor.Dizin,
-                    Size = RibbonBarItemSize.Large
-                };
-
-                if (!string.IsNullOrEmpty(rapor.IkonImajId))
-                    button.ImageUrlLarge = "ImageForm.aspx?ImageID=" + rapor.IkonImajId;
-                else
-                    button.ImageUrlLarge = "/App_Themes/Theme/Raster/BlankProfile.gif";
-
-                ribbonBar.Items.Add(button);
-                tabRaporlar.Groups.Add(ribbonBar);
+                ddlMusteri.DataSource = null;
+                ddlMusteri.DataBind();
             }
         }
 
@@ -79,9 +54,14 @@ namespace Akios.AdminWebClient
         {
             string url = Request.Url.AbsoluteUri;
 
-            if (url.Contains("YonetimKonsolu") ||
+            if (url.Contains("Musteri") ||
                     url.Contains("KullaniciTanimlama") ||
+                    url.Contains("MusteriTanimlama") ||
                     url.Contains("PersonelTanimlama") ||
+                    url.Contains("ReferansVeri") ||
+                    url.Contains("UrunSeri") ||
+                    url.Contains("Rapor") ||
+                    url.Contains("Uyelik") ||
                     url.Contains("Hatalar") ||
                     url.Contains("FormOgeGuncelleme") ||
                     url.Contains("TeslimatKotaTanimla") ||
@@ -89,13 +69,11 @@ namespace Akios.AdminWebClient
             {
                 RadRibbonBarMenu.SelectedTabIndex = 0;
             }
-            else if (url.Contains("SifreGuncelleme"))
+            else if (url.Contains("FormOlustur") || url.Contains("FormYerlesim"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 1;
             }
-            else if (url.Contains("GunlukIsTakipFormu") ||
-                     url.Contains("SeriyeGoreSatilanAdet") ||
-                     url.Contains("IlIlceyeGoreSatilanAdet"))
+            else if (url.Contains("SifreGuncelleme"))
             {
                 RadRibbonBarMenu.SelectedTabIndex = 2;
             }
@@ -113,15 +91,15 @@ namespace Akios.AdminWebClient
 
         protected void RadRibbonBarMenu_Command(object sender, CommandEventArgs e)
         {
-            NavigateURL(e.CommandName);
+            NavigateUrl(e.CommandName);
         }
 
         protected void RadRibbonBarMenu_MenuItemClick(object sender, RibbonBarMenuItemClickEventArgs e)
         {
-            NavigateURL(e.Item.CommandName);
+            NavigateUrl(e.Item.CommandName);
         }
 
-        private void NavigateURL(string url)
+        private void NavigateUrl(string url)
         {
             Response.Redirect(url);
         }

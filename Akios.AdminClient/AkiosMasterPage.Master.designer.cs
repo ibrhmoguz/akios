@@ -49,13 +49,22 @@ namespace Akios.AdminWebClient {
         protected global::Telerik.Web.UI.RadSkinManager RadSkinManager1;
         
         /// <summary>
-        /// Label1 control.
+        /// lblMusteri control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblMusteri;
+        
+        /// <summary>
+        /// ddlMusteri control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadDropDownList ddlMusteri;
         
         /// <summary>
         /// LabelUserName control.
@@ -85,6 +94,15 @@ namespace Akios.AdminWebClient {
         protected global::Telerik.Web.UI.RadRibbonBar RadRibbonBarMenu;
         
         /// <summary>
+        /// rbbMusteriEkle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbMusteriEkle;
+        
+        /// <summary>
         /// rbbKullaniciEkle control.
         /// </summary>
         /// <remarks>
@@ -103,6 +121,24 @@ namespace Akios.AdminWebClient {
         protected global::Telerik.Web.UI.RibbonBarButton rbbPersonelEkle;
         
         /// <summary>
+        /// rbbSeri control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbSeri;
+        
+        /// <summary>
+        /// rbbReferansData control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbReferansData;
+        
+        /// <summary>
         /// rbbFormOgeGuncelle control.
         /// </summary>
         /// <remarks>
@@ -110,6 +146,24 @@ namespace Akios.AdminWebClient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RibbonBarButton rbbFormOgeGuncelle;
+        
+        /// <summary>
+        /// rbbRapor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbRapor;
+        
+        /// <summary>
+        /// rbbUyelik control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbUyelik;
         
         /// <summary>
         /// rbbTeslimatKota control.
@@ -137,6 +191,24 @@ namespace Akios.AdminWebClient {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RibbonBarButton rbbHatalar;
+        
+        /// <summary>
+        /// rbbFormOlustur control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbFormOlustur;
+        
+        /// <summary>
+        /// rbbFormYerlesim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RibbonBarButton rbbFormYerlesim;
         
         /// <summary>
         /// rbbSifreGuncelle control.

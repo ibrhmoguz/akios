@@ -58,43 +58,58 @@
     <form id="form1" runat="server">
         <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
         <telerik:RadSkinManager ID="RadSkinManager1" runat="server" Skin="Telerik" ShowChooser="false"></telerik:RadSkinManager>
+        <br />
         <table style="width: 100%">
-            <tr style="text-align: right">
-                 <td>
-                    <asp:Label ID="Label1" runat="server" Text="Müşteri: "></asp:Label>
+            <tr>
+                <td style="text-align: left; font-weight:bold">
+                    <asp:Label ID="lblMusteri" runat="server" Text="Müşteri: "></asp:Label> <telerik:RadDropDownList ID="ddlMusteri" runat="server" RenderMode="Lightweight" Width="250"></telerik:RadDropDownList>
                 </td>
-                <td>
+                <td style="text-align: right; font-weight:bold">
                     <asp:Label ID="LabelUserName" runat="server" Text="Kullanıcı: "></asp:Label>
                     <asp:LinkButton ID="LB_Logout" runat="server" OnClick="LB_Logout_Click">(Çıkış)</asp:LinkButton>
                 </td>
             </tr>
         </table>
+        <br />
         <telerik:RadRibbonBar ID="RadRibbonBarMenu" runat="server" Width="100%" OnCommand="RadRibbonBarMenu_Command" OnMenuItemClick="RadRibbonBarMenu_MenuItemClick">
             <telerik:RibbonBarTab Text="YÖNETİM KONSOLU">
                 <telerik:RibbonBarGroup Text="Kullanıcı İşlemleri">
                     <Items>
+                        <telerik:RibbonBarButton ID="rbbMusteriEkle" Size="Large" Text="MÜŞTERİ" ToolTip="Müşteri eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/musteri.png" CommandName="~/YonetimKonsolu/MusteriTanimlama.aspx" />
                         <telerik:RibbonBarButton ID="rbbKullaniciEkle" Size="Large" Text="KULLANICI" ToolTip="Kullanıcı eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/kullaniciEkle.png" CommandName="~/YonetimKonsolu/KullaniciTanimlama.aspx" />
                         <telerik:RibbonBarButton ID="rbbPersonelEkle" Size="Large" Text="PERSONEL" ToolTip="Personel eklemek ya da silmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/personelEkle.png" CommandName="~/YonetimKonsolu/PersonelTanimlama.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Form Öğelerini Güncelleme">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE DÜZENLE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/YonetimKonsolu/FormOgeGuncelleme.aspx" />
+                        <telerik:RibbonBarButton ID="rbbSeri" Size="Large" Text="ÜRÜN SERİ" ToolTip="Ürün seri düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/YonetimKonsolu/UrunSeri.aspx" />
+                        <telerik:RibbonBarButton ID="rbbReferansData" Size="Large" Text="REFERANS VERİ" ToolTip="Referans verilerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/referans.png" CommandName="~/YonetimKonsolu/ReferansVeri.aspx" />
+                        <telerik:RibbonBarButton ID="rbbFormOgeGuncelle" Size="Large" Text="FORM ÖĞE" ToolTip="Form öğelerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/YonetimKonsolu/FormOgeGuncelleme.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
-                <telerik:RibbonBarGroup Text="Teslimat Kota Tanımlama">
+                <telerik:RibbonBarGroup Text="Rapor/Üyelik İşlemleri">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbTeslimatKota" Size="Large" Text="TESLİMAT KOTA TANIMLA" ToolTip="Günlük teslimat kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/teslimatKota.png" CommandName="~/YonetimKonsolu/TeslimatKotaTanimla.aspx" />
+                        <telerik:RibbonBarButton ID="rbbRapor" Size="Large" Text="RAPOR" ToolTip="Ürün seri düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/report1.gif" CommandName="~/YonetimKonsolu/Rapor.aspx" />
+                        <telerik:RibbonBarButton ID="rbbUyelik" Size="Large" Text="ÜYELİK" ToolTip="Referans verilerini düzenlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/uyelik.png" CommandName="~/YonetimKonsolu/Uyelik.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Uygulama Ayarları">
                     <Items>
-                        <telerik:RibbonBarButton ID="rbbUygulamaAyar" Size="Large" Text="UYGULAMA AYARLARI" ToolTip="Uygulama ayarlarını belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/Settings.png" CommandName="~/YonetimKonsolu/UygulamaAyarlari.aspx" />
+                        <telerik:RibbonBarButton ID="rbbTeslimatKota" Size="Large" Text="TESLİMAT KOTA" ToolTip="Günlük teslimat kotası belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/teslimatKota.png" CommandName="~/YonetimKonsolu/TeslimatKotaTanimla.aspx" />
+                        <telerik:RibbonBarButton ID="rbbUygulamaAyar" Size="Large" Text="TESLİMAT AYARLARI" ToolTip="Uygulama ayarlarını belirlemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/Settings.png" CommandName="~/YonetimKonsolu/UygulamaAyarlari.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
                 <telerik:RibbonBarGroup Text="Hatalar">
                     <Items>
                         <telerik:RibbonBarButton ID="rbbHatalar" Size="Large" Text="HATA LOG" ToolTip="Uygulamada alınan hataları görmek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/hataLog.png" CommandName="~/YonetimKonsolu/Hatalar.aspx" />
+                    </Items>
+                </telerik:RibbonBarGroup>
+            </telerik:RibbonBarTab>
+            <telerik:RibbonBarTab Text="FORM İŞLEMLERİ">
+                <telerik:RibbonBarGroup Text="Müşteri form oluştur">
+                    <Items>
+                        <telerik:RibbonBarButton ID="rbbFormOlustur" Size="Large" Text="FORM OLUŞTUR" ToolTip="Ürün seri bazlı form oluşturmak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/formOustur.png" CommandName="~/FormIslemleri/FormOlustur.aspx" />
+                        <telerik:RibbonBarButton ID="rbbFormYerlesim" Size="Large" Text="FORM YERLEŞİM" ToolTip="Ürün seri bazlı form oluşturmak için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/formYerlesim.png" CommandName="~/FormIslemleri/FormYerlesim.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
             </telerik:RibbonBarTab>
@@ -104,8 +119,6 @@
                         <telerik:RibbonBarButton ID="rbbSifreGuncelle" Size="Large" Text="GÜNCELLEME" ToolTip="Şifrenizi güncellemek için tıklayınız." ImageUrlLarge="App_Themes/Theme/Raster/guncelle.png" CommandName="~/SifreGuncelleme.aspx" />
                     </Items>
                 </telerik:RibbonBarGroup>
-            </telerik:RibbonBarTab>
-            <telerik:RibbonBarTab Text="RAPORLAR">
             </telerik:RibbonBarTab>
         </telerik:RadRibbonBar>
         <div>
