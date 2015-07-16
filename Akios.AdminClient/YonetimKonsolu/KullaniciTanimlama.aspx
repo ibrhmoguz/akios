@@ -16,15 +16,19 @@
 
                     <table class="AnaTablo">
                         <tr>
+                            <th>Müşteri Adı</th>
                             <th>Kullanıcı Adı</th>
                             <th>Yetki</th>
                         </tr>
                         <tr>
                             <td>
-                                <telerik:RadTextBox ID="txtKullaniciAdi" runat="server"></telerik:RadTextBox></td>
+                                <telerik:RadDropDownList ID="ddlMusteriAdi" runat="server"></telerik:RadDropDownList>
+                            </td>
                             <td>
-                                <telerik:RadDropDownList ID="ddlKullaniciRol" runat="server">
-                                </telerik:RadDropDownList>
+                                <telerik:RadTextBox ID="txtKullaniciAdi" runat="server"></telerik:RadTextBox>
+                            </td>
+                            <td>
+                                <telerik:RadDropDownList ID="ddlKullaniciRol" runat="server"></telerik:RadDropDownList>
                             </td>
                         </tr>
                         <tr>
@@ -43,6 +47,7 @@
                                 <table class="grid" style="width: 100%">
                                     <tr>
                                         <th></th>
+                                        <th>Müşteri Adı</th>
                                         <th>Kullanıcı Adı</th>
                                         <th>Rolü</th>
                                     </tr>
@@ -50,10 +55,12 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
+                                    <input id="musteri" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "MusteriID") %>' type="hidden" />
                                     <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' type="hidden" />
-                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolAdi") %>' type="hidden" />
+                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolID") %>' type="hidden" />
                                     <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "Adi") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "KullaniciAdi") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "RolAdi") %></td>
                             </tr>

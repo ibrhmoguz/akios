@@ -61,10 +61,11 @@
         <br />
         <table style="width: 100%">
             <tr>
-                <td style="text-align: left; font-weight:bold">
-                    <asp:Label ID="lblMusteri" runat="server" Text="Müşteri: "></asp:Label> <telerik:RadDropDownList ID="ddlMusteri" runat="server" RenderMode="Lightweight" Width="250"></telerik:RadDropDownList>
+                <td style="text-align: left; font-weight: bold">
+                    <asp:Label ID="lblMusteri" runat="server" Text="Müşteri: "></asp:Label>
+                    <telerik:RadDropDownList ID="ddlMusteri" runat="server" RenderMode="Lightweight" AutoPostBack="true" Width="250"></telerik:RadDropDownList>
                 </td>
-                <td style="text-align: right; font-weight:bold">
+                <td style="text-align: right; font-weight: bold">
                     <asp:Label ID="LabelUserName" runat="server" Text="Kullanıcı: "></asp:Label>
                     <asp:LinkButton ID="LB_Logout" runat="server" OnClick="LB_Logout_Click">(Çıkış)</asp:LinkButton>
                 </td>

@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using Akios.AdminWebClient.Helper;
 using Akios.Business;
 using Akios.Util;
+using Telerik.Web.UI;
 
 namespace Akios.AdminWebClient.YonetimKonsolu
 {
@@ -15,8 +16,10 @@ namespace Akios.AdminWebClient.YonetimKonsolu
             if (!Page.IsPostBack)
             {
                 RolleriDoldur();
-                KullaniciDoldur();
+                MusteriListesiYukle();
             }
+            
+            KullaniciDoldur();
         }
 
         private void RolleriDoldur()
@@ -38,10 +41,43 @@ namespace Akios.AdminWebClient.YonetimKonsolu
             }
         }
 
+        private void MusteriListesiYukle()
+        {
+            DataTable dt = new MusteriBS().MusteriListesiGetir();
+            if (dt.Rows.Count > 0)
+            {
+                ddlMusteriAdi.DataSource = dt;
+                ddlMusteriAdi.DataTextField = "Adi";
+                ddlMusteriAdi.DataValueField = "MusteriID";
+                ddlMusteriAdi.DataBind();
+                ddlMusteriAdi.Items.Insert(0, new DropDownListItem("Seçiniz", "0"));
+            }
+            else
+            {
+                ddlMusteriAdi.DataSource = null;
+                ddlMusteriAdi.DataBind();
+            }
+        }
+
         private void KullaniciDoldur()
         {
-            RP_Kullanici.DataSource = new KullaniciBS().KullanicilariGetir(SessionManager.MusteriBilgi.MusteriID.Value);
-            RP_Kullanici.DataBind();
+            string musteriId = MusteriGetir();
+            if (musteriId == null || musteriId.Equals("") || musteriId.Equals("0"))
+            {
+                RP_Kullanici.DataSource = new KullaniciBS().TumKullanicilariGetir();
+                RP_Kullanici.DataBind();
+            }
+            else
+            {
+                RP_Kullanici.DataSource = new KullaniciBS().KullanicilariGetir(Convert.ToInt32(musteriId));
+                RP_Kullanici.DataBind();
+            }
+        }
+
+        private string MusteriGetir()
+        {
+            RadDropDownList rddlMusteri = (RadDropDownList)Master.FindControl("ddlMusteri");
+            return rddlMusteri.SelectedValue;
         }
 
         protected void btnEkle_Click(object sender, EventArgs e)
@@ -51,14 +87,20 @@ namespace Akios.AdminWebClient.YonetimKonsolu
                 MessageBox.Uyari(this, "Kullanıcı adı giriniz");
                 return;
             }
-            if (ddlKullaniciRol.SelectedIndex == 0)
+            if (ddlKullaniciRol.SelectedValue == null || ddlKullaniciRol.SelectedValue.Equals("") || ddlKullaniciRol.SelectedValue.Equals("0"))
             {
                 MessageBox.Uyari(this, "Kullanıcı rolü seçiniz");
+                return;
+            }
+            if (ddlMusteriAdi.SelectedValue == null || ddlMusteriAdi.SelectedValue.Equals("") || ddlMusteriAdi.SelectedValue.Equals("0"))
+            {
+                MessageBox.Uyari(this, "Müşteri seçiniz");
                 return;
             }
 
             string kullanici = txtKullaniciAdi.Text.Trim();
             string yetki = ddlKullaniciRol.SelectedValue;
+            string musteri = ddlMusteriAdi.SelectedValue;
             string sifre = "12345";
             bool sonuc = false;
 
@@ -66,7 +108,7 @@ namespace Akios.AdminWebClient.YonetimKonsolu
             prms.Add("KullaniciAdi", kullanici);
             prms.Add("RolID", yetki);
             prms.Add("Sifre", sifre);
-            prms.Add("MusteriID", SessionManager.KullaniciBilgi.MusteriID);
+            prms.Add("MusteriID", musteri);
 
             sonuc = new KullaniciBS().KullaniciTanimla(prms);
 

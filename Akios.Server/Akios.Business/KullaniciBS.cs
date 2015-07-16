@@ -53,9 +53,28 @@ namespace Akios.Business
             string sqlText = @"SELECT 
 	                                K.*
 	                                ,KR.RolAdi
+                                    ,M.Adi
                                 FROM KULLANICI AS K 
 	                            INNER JOIN KULLANICI_ROL AS KR ON KR.RolID=K.RolID
+                                INNER JOIN MUSTERI AS M ON M.MusteriID=K.MusteriID
                                 WHERE K.MusteriID=@MusteriID
+                                ORDER BY K.KullaniciID";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
+
+        public DataTable TumKullanicilariGetir()
+        {
+            DataTable dt = new DataTable();
+            IData data = GetDataObject();
+
+            string sqlText = @"SELECT 
+	                                K.*
+	                                ,KR.RolAdi
+                                    ,M.Adi
+                                FROM KULLANICI AS K 
+	                            INNER JOIN KULLANICI_ROL AS KR ON KR.RolID=K.RolID
+                                INNER JOIN MUSTERI AS M ON M.MusteriID=K.MusteriID
                                 ORDER BY K.KullaniciID";
             data.GetRecords(dt, sqlText);
             return dt;
