@@ -16,14 +16,10 @@
 
                     <table class="AnaTablo">
                         <tr>
-                            <th>Müşteri Adı</th>
                             <th>Kullanıcı Adı</th>
                             <th>Yetki</th>
                         </tr>
                         <tr>
-                            <td>
-                                <telerik:RadDropDownList ID="ddlMusteriAdi" runat="server"></telerik:RadDropDownList>
-                            </td>
                             <td>
                                 <telerik:RadTextBox ID="txtKullaniciAdi" runat="server"></telerik:RadTextBox>
                             </td>
@@ -55,9 +51,9 @@
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <input id="musteri" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "MusteriID") %>' type="hidden" />
+                                    <input id="musteri" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "Adi") %>' type="hidden" />
                                     <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' type="hidden" />
-                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolID") %>' type="hidden" />
+                                    <input id="yetki" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "RolAdi") %>' type="hidden" />
                                     <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "KullaniciID") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "Adi") %></td>

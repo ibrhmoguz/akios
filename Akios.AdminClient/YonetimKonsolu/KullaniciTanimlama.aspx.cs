@@ -16,7 +16,6 @@ namespace Akios.AdminWebClient.YonetimKonsolu
             if (!Page.IsPostBack)
             {
                 RolleriDoldur();
-                MusteriListesiYukle();
             }
             
             KullaniciDoldur();
@@ -41,28 +40,10 @@ namespace Akios.AdminWebClient.YonetimKonsolu
             }
         }
 
-        private void MusteriListesiYukle()
-        {
-            DataTable dt = new MusteriBS().MusteriListesiGetir();
-            if (dt.Rows.Count > 0)
-            {
-                ddlMusteriAdi.DataSource = dt;
-                ddlMusteriAdi.DataTextField = "Adi";
-                ddlMusteriAdi.DataValueField = "MusteriID";
-                ddlMusteriAdi.DataBind();
-                ddlMusteriAdi.Items.Insert(0, new DropDownListItem("Seçiniz", "0"));
-            }
-            else
-            {
-                ddlMusteriAdi.DataSource = null;
-                ddlMusteriAdi.DataBind();
-            }
-        }
-
         private void KullaniciDoldur()
         {
             string musteriId = MusteriGetir();
-            if (musteriId == null || musteriId.Equals("") || musteriId.Equals("0"))
+            if (String.IsNullOrWhiteSpace(musteriId) || musteriId.Equals("0"))
             {
                 RP_Kullanici.DataSource = new KullaniciBS().TumKullanicilariGetir();
                 RP_Kullanici.DataBind();
@@ -92,7 +73,7 @@ namespace Akios.AdminWebClient.YonetimKonsolu
                 MessageBox.Uyari(this, "Kullanıcı rolü seçiniz");
                 return;
             }
-            if (ddlMusteriAdi.SelectedValue == null || ddlMusteriAdi.SelectedValue.Equals("") || ddlMusteriAdi.SelectedValue.Equals("0"))
+            if (String.IsNullOrWhiteSpace(MusteriGetir()) || MusteriGetir().Equals("0"))
             {
                 MessageBox.Uyari(this, "Müşteri seçiniz");
                 return;
@@ -100,7 +81,7 @@ namespace Akios.AdminWebClient.YonetimKonsolu
 
             string kullanici = txtKullaniciAdi.Text.Trim();
             string yetki = ddlKullaniciRol.SelectedValue;
-            string musteri = ddlMusteriAdi.SelectedValue;
+            string musteri = MusteriGetir();
             string sifre = "12345";
             bool sonuc = false;
 

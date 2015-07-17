@@ -41,15 +41,17 @@
                                 <table class="grid" style="width: 100%">
                                     <tr>
                                         <th style="width: 15%"></th>
+                                        <th>Müşteri Adı</th>
                                         <th>Personel</th>
                                     </tr>
                         </HeaderTemplate>
                         <ItemTemplate>
                             <tr>
                                 <td>
-                                    <input id="Ad" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "AD") %>' type="hidden" />
+                                    <input id="kullanici" runat="server" value='<%# DataBinder.Eval(Container.DataItem, "ID") %>' type="hidden" />
                                     <asp:ImageButton OnClientClick=" return confirm('Silmek istediğinize emin misiniz?') " ID="LB_Sil" CommandName="Delete" CommandArgument='<%# DataBinder.Eval(Container.DataItem, "ID") %>' runat="server" ImageUrl="~/App_Themes/Theme/Raster/iptal.gif" />
                                 </td>
+                                <td><%# DataBinder.Eval(Container.DataItem, "Adi") %></td>
                                 <td><%# DataBinder.Eval(Container.DataItem, "AD") %></td>
                             </tr>
                         </ItemTemplate>

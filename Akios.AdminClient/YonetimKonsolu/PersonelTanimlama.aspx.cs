@@ -5,6 +5,7 @@ using Akios.AdminWebClient.Helper;
 using Akios.Business;
 using Akios.DataType;
 using Akios.Util;
+using Telerik.Web.UI;
 
 namespace Akios.AdminWebClient.YonetimKonsolu
 {
@@ -12,34 +13,57 @@ namespace Akios.AdminWebClient.YonetimKonsolu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (SessionManager.KullaniciBilgi.Rol == KullaniciRol.Kullanici)
-            {
-                MessageBox.Hata(this, "Bu sayfaya erişim yetkiniz yoktur!");
-                return;
-            }
-
-            if (!Page.IsPostBack)
-            {
-                PersonelDoldur();
-            }
+            PersonelDoldur();
         }
 
         private void PersonelDoldur()
         {
-            DataTable dt = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
-            RP_Personel.DataSource = dt;
-            RP_Personel.DataBind();
-            SessionManager.PersonelListesi = dt;
+            string musteriId = MusteriGetir();
+            if (String.IsNullOrWhiteSpace(musteriId) || musteriId.Equals("0"))
+            {
+                DataTable dt = new PersonelBS().TumPersonelListesiGetir();
+                RP_Personel.DataSource = dt;
+                RP_Personel.DataBind();
+            }
+            else
+            {
+                DataTable dt = new PersonelBS().PersonelListesiGetir(Convert.ToInt32(musteriId));
+                RP_Personel.DataSource = dt;
+                RP_Personel.DataBind();
+            }
+            //SessionManager.PersonelListesi = dt;
+        }
+
+        private string MusteriGetir()
+        {
+            RadDropDownList rddlMusteri = (RadDropDownList)Master.FindControl("ddlMusteri");
+            return rddlMusteri.SelectedValue;
         }
 
         protected void btnEkle_Click(object sender, EventArgs e)
         {
+            string musteri = MusteriGetir();
+            if (String.IsNullOrWhiteSpace(txtAd.Text))
+            {
+                MessageBox.Uyari(this, "Personel adı giriniz");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(txtSoyad.Text))
+            {
+                MessageBox.Uyari(this, "Personel soyadı giriniz");
+                return;
+            }
+            if (String.IsNullOrWhiteSpace(musteri) || musteri.Equals("0"))
+            {
+                MessageBox.Uyari(this, "Müşteri seçiniz");
+                return;
+            }
             string ad = txtAd.Text.Trim();
             string soyad = txtSoyad.Text.Trim();
 
             bool sonuc = false;
 
-            sonuc = new PersonelBS().PersonelTanimla(SessionManager.MusteriBilgi.MusteriID.Value, ad, soyad);
+            sonuc = new PersonelBS().PersonelTanimla(musteri, ad, soyad);
 
             if (sonuc)
             {

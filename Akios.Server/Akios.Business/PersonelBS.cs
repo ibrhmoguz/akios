@@ -14,12 +14,37 @@ namespace Akios.Business
             dt.TableName = "PERSONEL";
             IData data = GetDataObject();
             data.AddSqlParameter("MusteriID", musteriID, SqlDbType.Int, 50);
-            string sqlText = @"SELECT ID, RTRIM(Ad)+' ' + Soyad AS AD FROM PERSONEL WHERE MusteriID=@MusteriID ORDER BY 1";
+            string sqlText = @"SELECT P.ID
+                                      , RTRIM(P.Ad)+' '+ P.Soyad AS AD
+                                      , M.MusteriID
+                                      , M.Adi 
+                                FROM PERSONEL P 
+                                     INNER JOIN MUSTERI M 
+                                     ON P.MusteriID=M.MusteriID 
+                                WHERE P.MusteriID=@MusteriID 
+                                ORDER BY 1";
             data.GetRecords(dt, sqlText);
             return dt;
         }
 
-        public bool PersonelTanimla(int musteriID, string ad, string soyad)
+        public DataTable TumPersonelListesiGetir()
+        {
+            DataTable dt = new DataTable();
+            dt.TableName = "PERSONEL";
+            IData data = GetDataObject();
+            string sqlText = @"SELECT P.ID
+                                      , RTRIM(P.Ad)+' '+ P.Soyad AS AD
+                                      , M.MusteriID
+                                      , M.Adi 
+                                FROM PERSONEL P 
+                                     INNER JOIN MUSTERI M 
+                                     ON P.MusteriID=M.MusteriID 
+                                ORDER BY 3, 1";
+            data.GetRecords(dt, sqlText);
+            return dt;
+        }
+
+        public bool PersonelTanimla(string musteriID, string ad, string soyad)
         {
             IData data = GetDataObject();
 

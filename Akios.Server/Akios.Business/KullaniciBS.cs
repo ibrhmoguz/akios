@@ -72,10 +72,11 @@ namespace Akios.Business
 	                                K.*
 	                                ,KR.RolAdi
                                     ,M.Adi
+                                    ,M.MusteriID
                                 FROM KULLANICI AS K 
 	                            INNER JOIN KULLANICI_ROL AS KR ON KR.RolID=K.RolID
                                 INNER JOIN MUSTERI AS M ON M.MusteriID=K.MusteriID
-                                ORDER BY K.KullaniciID";
+                                ORDER BY M.MusteriID, K.KullaniciID";
             data.GetRecords(dt, sqlText);
             return dt;
         }
