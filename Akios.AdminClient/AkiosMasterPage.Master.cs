@@ -26,7 +26,17 @@ namespace Akios.AdminWebClient
 
         private void MusteriListesiYukle()
         {
-            DataTable dt = new MusteriBS().MusteriListesiGetir();
+            DataTable dt;
+            if (SessionManager.MusteriListesi == null)
+            {
+                dt = new MusteriBS().MusteriListesiGetir();
+                SessionManager.MusteriListesi = dt;
+            }
+            else
+            {
+                dt = SessionManager.MusteriListesi;
+            }
+
             if (dt.Rows.Count > 0)
             {
                 ddlMusteri.DataSource = dt;
@@ -84,7 +94,9 @@ namespace Akios.AdminWebClient
             Session.Clear();
 
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cookies[FormsAuthentication.FormsCookieName].Expires = DateTime.Now;
+            var httpCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
+            if (httpCookie != null)
+                httpCookie.Expires = DateTime.Now;
             FormsAuthentication.SignOut();
             FormsAuthentication.RedirectToLoginPage();
         }

@@ -44,11 +44,11 @@ namespace Akios.Business
             return dt;
         }
 
-        public bool PersonelTanimla(string musteriID, string ad, string soyad)
+        public bool PersonelTanimla(string musteriId, string ad, string soyad)
         {
             IData data = GetDataObject();
 
-            data.AddSqlParameter("MusteriID", musteriID, SqlDbType.Int, 50);
+            data.AddSqlParameter("MusteriID", musteriId, SqlDbType.Int, 50);
             data.AddSqlParameter("Ad", ad, SqlDbType.VarChar, 50);
             data.AddSqlParameter("Soyad", soyad, SqlDbType.VarChar, 50);
 

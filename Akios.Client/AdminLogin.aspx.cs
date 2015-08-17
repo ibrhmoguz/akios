@@ -73,7 +73,7 @@ namespace Akios.WebClient
 
         private void UserValid()
         {
-            Musteri m = new MusteriBS().MusteriBilgiGetirMusteriIDGore(Convert.ToInt32(ddlMusteri.SelectedValue));
+            Musteri m = new MusteriBS().MusteriBilgiGetirMusteriIdGore(Convert.ToInt32(ddlMusteri.SelectedValue));
             SessionManager.MusteriBilgi = m;
             Kullanici k = new Kullanici()
             {

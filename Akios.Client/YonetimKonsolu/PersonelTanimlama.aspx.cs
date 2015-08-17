@@ -26,10 +26,13 @@ namespace Akios.WebClient.YonetimKonsolu
 
         private void PersonelDoldur()
         {
-            DataTable dt = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
-            RP_Personel.DataSource = dt;
-            RP_Personel.DataBind();
-            SessionManager.PersonelListesi = dt;
+            if (SessionManager.MusteriBilgi.MusteriID != null)
+            {
+                DataTable dt = new PersonelBS().PersonelListesiGetir(SessionManager.MusteriBilgi.MusteriID.Value);
+                RP_Personel.DataSource = dt;
+                RP_Personel.DataBind();
+                SessionManager.PersonelListesi = dt;
+            }
         }
 
         protected void btnEkle_Click(object sender, EventArgs e)
@@ -39,7 +42,8 @@ namespace Akios.WebClient.YonetimKonsolu
 
             bool sonuc = false;
 
-            sonuc = new PersonelBS().PersonelTanimla(SessionManager.MusteriBilgi.MusteriID.Value, ad, soyad);
+            if (SessionManager.MusteriBilgi.MusteriID != null)
+                sonuc = new PersonelBS().PersonelTanimla(SessionManager.MusteriBilgi.MusteriID.Value.ToString(), ad, soyad);
 
             if (sonuc)
             {

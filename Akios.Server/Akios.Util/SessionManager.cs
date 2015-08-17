@@ -351,5 +351,20 @@ namespace Akios.Util
                 HttpContext.Current.Session["MusteriRaporlar"] = value;
             }
         }
+
+        public static DataTable MusteriListesi
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MusteriListesi"] != null)
+                    return (DataTable)HttpContext.Current.Session["MusteriListesi"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["MusteriListesi"] = value;
+            }
+        }
     }
 }

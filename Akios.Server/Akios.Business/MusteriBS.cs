@@ -10,7 +10,7 @@ namespace Akios.Business
     [ServiceConnectionName("AkiosConnectionString")]
     public class MusteriBS : BusinessBase
     {
-        public Musteri MusteriBilgiGetirKullaniciAdinaGore(int pKullaniciID)
+        public Musteri MusteriBilgiGetirKullaniciAdinaGore(int pKullaniciId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
@@ -20,25 +20,25 @@ namespace Akios.Business
 	                                INNER JOIN KULLANICI AS K ON K.MusteriID=M.MusteriID
                                 WHERE K.KullaniciID=@KullaniciID";
 
-            data.AddSqlParameter("KullaniciID", pKullaniciID, SqlDbType.Int, 50);
+            data.AddSqlParameter("KullaniciID", pKullaniciId, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
             return ConvertToMusteri(dt);
         }
 
-        public Musteri MusteriBilgiGetirMusteriIDGore(int pMusteriID)
+        public Musteri MusteriBilgiGetirMusteriIdGore(int pMusteriId)
         {
             DataTable dt = new DataTable();
             IData data = GetDataObject();
             string sqlText = @"SELECT * FROM MUSTERI WHERE MusteriID=@MusteriID";
 
-            data.AddSqlParameter("MusteriID", pMusteriID, SqlDbType.Int, 50);
+            data.AddSqlParameter("MusteriID", pMusteriId, SqlDbType.Int, 50);
             data.GetRecords(dt, sqlText);
 
             return ConvertToMusteri(dt);
         }
 
-        private Musteri ConvertToMusteri(DataTable dt)
+        private static Musteri ConvertToMusteri(DataTable dt)
         {
             Musteri m = new Musteri();
             if (dt.Rows.Count > 0)

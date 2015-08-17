@@ -11,12 +11,6 @@ namespace Akios.AdminWebClient.YonetimKonsolu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (SessionManager.KullaniciBilgi.Rol == KullaniciRol.Kullanici)
-            {
-                MessageBox.Hata(this, "Bu sayfaya erişim yetkiniz yoktur!");
-                return;
-            }
-
             if (!Page.IsPostBack)
             {
                 HatalariYukle();
