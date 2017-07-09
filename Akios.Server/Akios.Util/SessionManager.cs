@@ -366,5 +366,20 @@ namespace Akios.Util
                 HttpContext.Current.Session["MusteriListesi"] = value;
             }
         }
+
+        public static Imaj MusteriLogo
+        {
+            get
+            {
+                if (HttpContext.Current.Session["MusteriLogo"] != null)
+                    return (Imaj)HttpContext.Current.Session["MusteriLogo"];
+
+                return null;
+            }
+            set
+            {
+                HttpContext.Current.Session["MusteriLogo"] = value;
+            }
+        }
     }
 }

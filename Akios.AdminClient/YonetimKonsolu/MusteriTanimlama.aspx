@@ -53,9 +53,20 @@
                         </td>
                     </tr>
                     <tr>
+                        <th>Adres:</th>
+                        <td>
+                            <telerik:RadTextBox ID="txtAdres" runat="server" Width="250" TextMode="MultiLine"></telerik:RadTextBox>
+                        </td>
+                        <th>Logo:</th>
+                        <td>
+                            <asp:FileUpload ID="logoFileUpload" runat="server" Width="160px" AllowMultiple="false"></asp:FileUpload>
+                        </td>
+                        <td colspan="4"></td>
+                    </tr>
+                    <tr>
                         <td colspan="8" style="text-align: center">
                             <br />
-                            <telerik:RadButton ID="btnKaydet" runat="server" Text="Kaydet">
+                            <telerik:RadButton ID="btnKaydet" runat="server" Text="Kaydet" OnClick="btnKaydet_OnClick">
                                 <Icon PrimaryIconCssClass="rbSave" PrimaryIconLeft="4" PrimaryIconTop="3" />
                             </telerik:RadButton>
                             <telerik:RadButton ID="btnIptal" runat="server" Text="İptal">

@@ -28,7 +28,7 @@ namespace Akios.AdminWebClient
             if (imaj.ImajData == null) 
                 return;
 
-            Response.ContentType = "image/jpg";
+            Response.ContentType = imaj.Type;
             Response.BinaryWrite(imaj.ImajData);
         }
     }

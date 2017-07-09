@@ -57,8 +57,12 @@ namespace Akios.AdminWebClient.YonetimKonsolu
 
         private string MusteriGetir()
         {
-            RadDropDownList rddlMusteri = (RadDropDownList)Master.FindControl("ddlMusteri");
-            return rddlMusteri.SelectedValue;
+            if (this.Master != null)
+            {
+                var rddlMusteri = (RadDropDownList)this.Master.FindControl("ddlMusteri");
+                return rddlMusteri.SelectedValue;
+            }
+            return string.Empty;
         }
 
         protected void btnEkle_Click(object sender, EventArgs e)
